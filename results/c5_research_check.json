@@ -1,0 +1,495 @@
+{
+ "blocked": [
+  {
+   "domain": "rtl",
+   "failure": "compile_error",
+   "module": null,
+   "failures": 9,
+   "example": "Implement a `verilog_semantic_validator` tool in `tools/verilog_semantic_validator.py` that takes the generated Verilog module and a dummy testbench, "
+  },
+  {
+   "domain": "rtl",
+   "failure": "compile_error",
+   "module": "tool",
+   "failures": 7,
+   "example": "Implement a `verilog_semantic_validator` tool in `tools/verilog_semantic_validator.py` that takes the generated Verilog module and a dummy testbench, "
+  },
+  {
+   "domain": "rtl",
+   "failure": "compile_error",
+   "module": "workflow",
+   "failures": 4,
+   "example": "Implement a lightweight regex-based Verilog syntax validator in `tools/verilog_regex_checker.py` that checks for fatal structural errors (e.g., `wire`"
+  }
+ ],
+ "preview": [
+  {
+   "id": "p014",
+   "status": "valid",
+   "module": "agent/workflow.py",
+   "kind": [
+    "math",
+    "no_final_answer",
+    "workflow"
+   ],
+   "diagnose_attempts": 1,
+   "diagnose_errors": [],
+   "hypothesis": "Increase the `max_tokens` parameter in the LLM call within `agent/workflow.py` from 4096 to 8192 for math domain tasks.",
+   "implement_attempts": 1,
+   "problems": [],
+   "error": null,
+   "note": null
+  },
+  {
+   "id": "p015",
+   "status": "valid",
+   "module": "agent/workflow.py",
+   "kind": [
+    "math",
+    "no_final_answer",
+    "workflow"
+   ],
+   "diagnose_attempts": 1,
+   "diagnose_errors": [],
+   "hypothesis": "Enable thinking=True and set max_tokens=2048 in agent/workflow.py to force the model to produce a concise plan before reasoning, preventing it from getting lost in long derivations.",
+   "implement_attempts": 1,
+   "problems": [],
+   "error": null,
+   "note": null
+  },
+  {
+   "id": "p016",
+   "status": "valid",
+   "module": "agent/workflow.py",
+   "kind": [
+    "math",
+    "no_final_answer",
+    "workflow"
+   ],
+   "diagnose_attempts": 1,
+   "diagnose_errors": [],
+   "hypothesis": "Increasing the max_tokens parameter in the single LLM call from 4096 to 8192 will provide sufficient context for the model to complete its reasoning and generate the final boxed answer without truncation.",
+   "implement_attempts": 1,
+   "problems": [],
+   "error": null,
+   "note": null
+  },
+  {
+   "id": "p017",
+   "status": "valid",
+   "module": "agent/workflow.py",
+   "kind": [
+    "math",
+    "no_final_answer",
+    "workflow"
+   ],
+   "diagnose_attempts": 1,
+   "diagnose_errors": [],
+   "hypothesis": "Increase max_tokens to 8192 for math domain tasks in agent/workflow.py to prevent token exhaustion during long reasoning chains.",
+   "implement_attempts": 1,
+   "problems": [],
+   "error": null,
+   "note": null
+  }
+ ],
+ "tool_template": {
+  "with_example": [
+   {
+    "plan": "python_calc",
+    "seed": 1,
+    "variant": "with_example",
+    "id": "python_calc_1",
+    "status": "valid",
+    "module": "tools/python_calc.py",
+    "kind": [
+     "math",
+     "no_final_answer",
+     "tool"
+    ],
+    "diagnose_attempts": null,
+    "diagnose_errors": null,
+    "hypothesis": "A tool that runs a short Python computation lets the workflow check the final number before answering.",
+    "implement_attempts": 2,
+    "problems": [],
+    "error": null,
+    "note": null
+   },
+   {
+    "plan": "python_calc",
+    "seed": 2,
+    "variant": "with_example",
+    "id": "python_calc_2",
+    "status": "invalid_patch",
+    "module": "tools/python_calc.py",
+    "kind": [
+     "math",
+     "no_final_answer",
+     "tool"
+    ],
+    "diagnose_attempts": null,
+    "diagnose_errors": null,
+    "hypothesis": "A tool that runs a short Python computation lets the workflow check the final number before answering.",
+    "implement_attempts": 3,
+    "problems": [
+     "syntax error: f-string: valid expression required before '}' (<unknown>, line 55)"
+    ],
+    "error": null,
+    "note": "python_calc_2 (not evaluated): A tool that runs a short Python computation lets the workflow check the final number before answering. -> rejected because it failed validation: syntax error: f-string: valid expression required before '}' (<unknown>, line 55)."
+   },
+   {
+    "plan": "python_calc",
+    "seed": 3,
+    "variant": "with_example",
+    "id": "python_calc_3",
+    "status": "invalid_patch",
+    "module": "tools/python_calc.py",
+    "kind": [
+     "math",
+     "no_final_answer",
+     "tool"
+    ],
+    "diagnose_attempts": null,
+    "diagnose_errors": null,
+    "hypothesis": "A tool that runs a short Python computation lets the workflow check the final number before answering.",
+    "implement_attempts": 3,
+    "problems": [
+     "the workflow failed on math task aime_2025-1 with stand-in model answers: IndexError: Replacement index 0 out of range for positional args tuple"
+    ],
+    "error": null,
+    "note": "python_calc_3 (not evaluated): A tool that runs a short Python computation lets the workflow check the final number before answering. -> rejected because it failed validation: the workflow failed on math task aime_2025-1 with stand-in model answers: IndexError: Replacement index 0 out of range for positional args tuple."
+   },
+   {
+    "plan": "run_samples",
+    "seed": 1,
+    "variant": "with_example",
+    "id": "run_samples_1",
+    "status": "valid",
+    "module": "tools/run_samples.py",
+    "kind": [
+     "code",
+     "runtime_error",
+     "tool"
+    ],
+    "diagnose_attempts": null,
+    "diagnose_errors": null,
+    "hypothesis": "Running the solution on the sample input from the statement catches crashes before submitting.",
+    "implement_attempts": 1,
+    "problems": [],
+    "error": null,
+    "note": null
+   },
+   {
+    "plan": "run_samples",
+    "seed": 2,
+    "variant": "with_example",
+    "id": "run_samples_2",
+    "status": "invalid_patch",
+    "module": "tools/run_samples.py",
+    "kind": [
+     "code",
+     "runtime_error",
+     "tool"
+    ],
+    "diagnose_attempts": null,
+    "diagnose_errors": null,
+    "hypothesis": "Running the solution on the sample input from the statement catches crashes before submitting.",
+    "implement_attempts": 3,
+    "problems": [
+     "the workflow failed on code task lcb-3674 with stand-in model answers: IndexError: no such group"
+    ],
+    "error": null,
+    "note": "run_samples_2 (not evaluated): Running the solution on the sample input from the statement catches crashes before submitting. -> rejected because it failed validation: the workflow failed on code task lcb-3674 with stand-in model answers: IndexError: no such group."
+   },
+   {
+    "plan": "run_samples",
+    "seed": 3,
+    "variant": "with_example",
+    "id": "run_samples_3",
+    "status": "valid",
+    "module": "tools/run_samples.py",
+    "kind": [
+     "code",
+     "runtime_error",
+     "tool"
+    ],
+    "diagnose_attempts": null,
+    "diagnose_errors": null,
+    "hypothesis": "Running the solution on the sample input from the statement catches crashes before submitting.",
+    "implement_attempts": 1,
+    "problems": [],
+    "error": null,
+    "note": null
+   },
+   {
+    "plan": "verilog_compile",
+    "seed": 1,
+    "variant": "with_example",
+    "id": "verilog_compile_1",
+    "status": "invalid_patch",
+    "module": "tools/verilog_compile.py",
+    "kind": [
+     "rtl",
+     "compile_error",
+     "tool"
+    ],
+    "diagnose_attempts": null,
+    "diagnose_errors": null,
+    "hypothesis": "Compiling the generated design with iverilog and feeding the errors back fixes compile errors.",
+    "implement_attempts": 3,
+    "problems": [
+     "test() of tools/verilog_compile.py failed: AssertionError: Expected compilation success, got: {'compiled': False, 'log': \"design.sv:5: error: 'tb' has already been declared in this scope.\\ntb.sv:1:      : It was declared here as a module.\\ndesign.sv:11: error: Module tb was already declared here: tb.sv:1\\n\\n\", 'stdout': '', 'timed_out': Fals"
+    ],
+    "error": null,
+    "note": "verilog_compile_1 (not evaluated): Compiling the generated design with iverilog and feeding the errors back fixes compile errors. -> rejected because it failed validation: test() of tools/verilog_compile.py failed: AssertionError: Expected compilation success, got: {'compiled': False, 'log': \"design.sv:5: error: 'tb' has already been declared in this scope.\\ntb.sv:1:   ."
+   },
+   {
+    "plan": "verilog_compile",
+    "seed": 2,
+    "variant": "with_example",
+    "id": "verilog_compile_2",
+    "status": "valid",
+    "module": "tools/verilog_compile.py",
+    "kind": [
+     "rtl",
+     "compile_error",
+     "tool"
+    ],
+    "diagnose_attempts": null,
+    "diagnose_errors": null,
+    "hypothesis": "Compiling the generated design with iverilog and feeding the errors back fixes compile errors.",
+    "implement_attempts": 2,
+    "problems": [],
+    "error": null,
+    "note": null
+   },
+   {
+    "plan": "verilog_compile",
+    "seed": 3,
+    "variant": "with_example",
+    "id": "verilog_compile_3",
+    "status": "valid",
+    "module": "tools/verilog_compile.py",
+    "kind": [
+     "rtl",
+     "compile_error",
+     "tool"
+    ],
+    "diagnose_attempts": null,
+    "diagnose_errors": null,
+    "hypothesis": "Compiling the generated design with iverilog and feeding the errors back fixes compile errors.",
+    "implement_attempts": 3,
+    "problems": [],
+    "error": null,
+    "note": null
+   }
+  ],
+  "without_example": [
+   {
+    "plan": "python_calc",
+    "seed": 1,
+    "variant": "without_example",
+    "id": "python_calc_1",
+    "status": "invalid_patch",
+    "module": "tools/python_calc.py",
+    "kind": [
+     "math",
+     "no_final_answer",
+     "tool"
+    ],
+    "diagnose_attempts": null,
+    "diagnose_errors": null,
+    "hypothesis": "A tool that runs a short Python computation lets the workflow check the final number before answering.",
+    "implement_attempts": 3,
+    "problems": [
+     "the tool defines no top-level SCHEMA"
+    ],
+    "error": null,
+    "note": "python_calc_1 (not evaluated): A tool that runs a short Python computation lets the workflow check the final number before answering. -> rejected because it failed validation: the tool defines no top-level SCHEMA."
+   },
+   {
+    "plan": "python_calc",
+    "seed": 2,
+    "variant": "without_example",
+    "id": "python_calc_2",
+    "status": "invalid_patch",
+    "module": "tools/python_calc.py",
+    "kind": [
+     "math",
+     "no_final_answer",
+     "tool"
+    ],
+    "diagnose_attempts": null,
+    "diagnose_errors": null,
+    "hypothesis": "A tool that runs a short Python computation lets the workflow check the final number before answering.",
+    "implement_attempts": 3,
+    "problems": [
+     "test() of tools/python_calc.py failed: AssertionError: Expected '42', got '42\n'"
+    ],
+    "error": null,
+    "note": "python_calc_2 (not evaluated): A tool that runs a short Python computation lets the workflow check the final number before answering. -> rejected because it failed validation: test() of tools/python_calc.py failed: AssertionError: Expected '42', got '42\n'."
+   },
+   {
+    "plan": "python_calc",
+    "seed": 3,
+    "variant": "without_example",
+    "id": "python_calc_3",
+    "status": "invalid_patch",
+    "module": "tools/python_calc.py",
+    "kind": [
+     "math",
+     "no_final_answer",
+     "tool"
+    ],
+    "diagnose_attempts": null,
+    "diagnose_errors": null,
+    "hypothesis": "A tool that runs a short Python computation lets the workflow check the final number before answering.",
+    "implement_attempts": 3,
+    "problems": [
+     "tool has more than 150 lines"
+    ],
+    "error": null,
+    "note": "python_calc_3 (not evaluated): A tool that runs a short Python computation lets the workflow check the final number before answering. -> rejected because it failed validation: tool has more than 150 lines."
+   },
+   {
+    "plan": "run_samples",
+    "seed": 1,
+    "variant": "without_example",
+    "id": "run_samples_1",
+    "status": "valid",
+    "module": "tools/run_samples.py",
+    "kind": [
+     "code",
+     "runtime_error",
+     "tool"
+    ],
+    "diagnose_attempts": null,
+    "diagnose_errors": null,
+    "hypothesis": "Running the solution on the sample input from the statement catches crashes before submitting.",
+    "implement_attempts": 3,
+    "problems": [],
+    "error": null,
+    "note": null
+   },
+   {
+    "plan": "run_samples",
+    "seed": 2,
+    "variant": "without_example",
+    "id": "run_samples_2",
+    "status": "invalid_patch",
+    "module": "tools/run_samples.py",
+    "kind": [
+     "code",
+     "runtime_error",
+     "tool"
+    ],
+    "diagnose_attempts": null,
+    "diagnose_errors": null,
+    "hypothesis": "Running the solution on the sample input from the statement catches crashes before submitting.",
+    "implement_attempts": 3,
+    "problems": [
+     "tool has more than 150 lines"
+    ],
+    "error": null,
+    "note": "run_samples_2 (not evaluated): Running the solution on the sample input from the statement catches crashes before submitting. -> rejected because it failed validation: tool has more than 150 lines."
+   },
+   {
+    "plan": "run_samples",
+    "seed": 3,
+    "variant": "without_example",
+    "id": "run_samples_3",
+    "status": "invalid_patch",
+    "module": "tools/run_samples.py",
+    "kind": [
+     "code",
+     "runtime_error",
+     "tool"
+    ],
+    "diagnose_attempts": null,
+    "diagnose_errors": null,
+    "hypothesis": "Running the solution on the sample input from the statement catches crashes before submitting.",
+    "implement_attempts": 3,
+    "problems": [
+     "syntax error: unterminated triple-quoted f-string literal (detected at line 85) (<unknown>, line 81)"
+    ],
+    "error": null,
+    "note": "run_samples_3 (not evaluated): Running the solution on the sample input from the statement catches crashes before submitting. -> rejected because it failed validation: syntax error: unterminated triple-quoted f-string literal (detected at line 85) (<unknown>, line 81)."
+   },
+   {
+    "plan": "verilog_compile",
+    "seed": 1,
+    "variant": "without_example",
+    "id": "verilog_compile_1",
+    "status": "invalid_patch",
+    "module": "tools/verilog_compile.py",
+    "kind": [
+     "rtl",
+     "compile_error",
+     "tool"
+    ],
+    "diagnose_attempts": null,
+    "diagnose_errors": null,
+    "hypothesis": "Compiling the generated design with iverilog and feeding the errors back fixes compile errors.",
+    "implement_attempts": 3,
+    "problems": [
+     "the tool defines no top-level SCHEMA"
+    ],
+    "error": null,
+    "note": "verilog_compile_1 (not evaluated): Compiling the generated design with iverilog and feeding the errors back fixes compile errors. -> rejected because it failed validation: the tool defines no top-level SCHEMA."
+   },
+   {
+    "plan": "verilog_compile",
+    "seed": 2,
+    "variant": "without_example",
+    "id": "verilog_compile_2",
+    "status": "invalid_patch",
+    "module": "tools/verilog_compile.py",
+    "kind": [
+     "rtl",
+     "compile_error",
+     "tool"
+    ],
+    "diagnose_attempts": null,
+    "diagnose_errors": null,
+    "hypothesis": "Compiling the generated design with iverilog and feeding the errors back fixes compile errors.",
+    "implement_attempts": 3,
+    "problems": [
+     "the tool defines no top-level SCHEMA"
+    ],
+    "error": null,
+    "note": "verilog_compile_2 (not evaluated): Compiling the generated design with iverilog and feeding the errors back fixes compile errors. -> rejected because it failed validation: the tool defines no top-level SCHEMA."
+   },
+   {
+    "plan": "verilog_compile",
+    "seed": 3,
+    "variant": "without_example",
+    "id": "verilog_compile_3",
+    "status": "invalid_patch",
+    "module": "tools/verilog_compile.py",
+    "kind": [
+     "rtl",
+     "compile_error",
+     "tool"
+    ],
+    "diagnose_attempts": null,
+    "diagnose_errors": null,
+    "hypothesis": "Compiling the generated design with iverilog and feeding the errors back fixes compile errors.",
+    "implement_attempts": 3,
+    "problems": [
+     "the tool defines no top-level SCHEMA",
+     "syntax error: unterminated triple-quoted f-string literal (detected at line 71) (<unknown>, line 69)"
+    ],
+    "error": null,
+    "note": "verilog_compile_3 (not evaluated): Compiling the generated design with iverilog and feeding the errors back fixes compile errors. -> rejected because it failed validation: the tool defines no top-level SCHEMA; syntax error: unterminated triple-quoted f-string literal (detected at line 71) (<unknown>, line 69)."
+   }
+  ]
+ },
+ "valid_tools": {
+  "with_example": 5,
+  "without_example": 1
+ },
+ "llm_usage": {
+  "calls": 124,
+  "prompt_tokens": 484312,
+  "completion_tokens": 123819
+ }
+}

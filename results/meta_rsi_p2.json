@@ -1,0 +1,356 @@
+{
+ "scan": {
+  "spec_nofail": {
+   "a0": [
+    40,
+    46,
+    183
+   ],
+   "review": [
+    41,
+    45,
+    283
+   ],
+   "sample4_majority": [
+    39,
+    46,
+    520
+   ],
+   "code_only": [
+    42,
+    46,
+    75
+   ],
+   "selftest_retry2": [
+    39,
+    50,
+    756
+   ],
+   "selftest_retry2_review": [
+    38,
+    48,
+    894
+   ],
+   "selftest_sample4_pass": [
+    39,
+    47,
+    619
+   ]
+  },
+  "nofail": {
+   "a0": [
+    27,
+    36,
+    206
+   ],
+   "review": [
+    25,
+    35,
+    434
+   ],
+   "sample4_majority": [
+    26,
+    34,
+    509
+   ],
+   "code_only": [
+    28,
+    36,
+    64
+   ],
+   "selftest_retry2": [
+    26,
+    36,
+    1032
+   ],
+   "selftest_retry2_review": [
+    27,
+    33,
+    1559
+   ],
+   "selftest_sample4_pass": [
+    26,
+    34,
+    616
+   ]
+  },
+  "fail_b2048": {
+   "a0": [
+    25,
+    40,
+    238
+   ],
+   "review": [
+    33,
+    44,
+    385
+   ],
+   "sample4_majority": [
+    25,
+    32,
+    710
+   ],
+   "code_only": [
+    26,
+    40,
+    64
+   ],
+   "retry2": [
+    36,
+    50,
+    398
+   ],
+   "retry2_review": [
+    40,
+    49,
+    549
+   ],
+   "sample4_pass": [
+    31,
+    44,
+    706
+   ],
+   "code_only_retry3_1024": [
+    37,
+    48,
+    134
+   ]
+  }
+ },
+ "choice": {
+  "sets": {
+   "spec_nofail": {
+    "a0_select": 46,
+    "best": "selftest_retry2",
+    "best_kind": "self_test",
+    "best_select": 50,
+    "room": false
+   },
+   "nofail": {
+    "a0_select": 36,
+    "best": "code_only",
+    "best_kind": "brevity",
+    "best_select": 36,
+    "room": false
+   },
+   "fail_b2048": {
+    "a0_select": 40,
+    "best": "retry2",
+    "best_kind": "test",
+    "best_select": 50,
+    "room": true,
+    "m0c_select": [
+     50,
+     47
+    ],
+    "m0c_kept": [
+     1,
+     1
+    ],
+    "gap": 1.5,
+    "unsaturated": false
+   }
+  },
+  "held_out": null,
+  "training": null
+ },
+ "archive": [],
+ "runs": {
+  "45519130e5_fail_b2048_s1": {
+   "improver": "m0c",
+   "set": "fail_b2048",
+   "seed": 1,
+   "select_solved": 50,
+   "test_solved": null,
+   "imp": null,
+   "budget": {
+    "rollouts": 384,
+    "completion_tokens": 193200,
+    "prompt_tokens": 204721,
+    "improver_completion_tokens": 3810,
+    "improver_prompt_tokens": 24490,
+    "improver_calls": 10
+   },
+   "rounds": [
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 3,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 2,
+      "feedback": "stderr",
+      "review": false,
+      "max_tokens": 4096
+     },
+     "select_gain": 10,
+     "kept": true,
+     "predicted_gain": 12,
+     "keep_probability": 0.85,
+     "hypothesis": "Setting test_retry to 2, attempts to 3, and temperature to 0.3 will allow the agent to attempt diverse solutions and, crucially, iterate on the first answer using the 'stderr' feedback to fix logic errors and runtime crashes."
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 3,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 3,
+      "feedback": "stderr",
+      "review": true,
+      "max_tokens": 4096
+     },
+     "select_gain": -2,
+     "kept": false,
+     "predicted_gain": 18,
+     "keep_probability": 0.82,
+     "hypothesis": "{max_tokens: 8192, review: true, select: 'passes_test', test_retry: 3}"
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 3,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 3,
+      "feedback": "stderr",
+      "review": false,
+      "max_tokens": 4096
+     },
+     "select_gain": 0,
+     "kept": false,
+     "predicted_gain": 4,
+     "keep_probability": 0.85,
+     "hypothesis": ":token_limit hard-fails are a critical bottleneck. Increasing max_tokens to 8192 will eliminate truncation-induced failures. Removing 'review' (which was in r2 and likely a cost driver) and increasing 'test_retry' to 3 will allow the model more chances to self-correct logic errors without the overhead of a final review pass. This targets the specific failure modes (cut-offs and wrong answers) seen"
+    },
+    {
+     "status": "stage_failed",
+     "config": null,
+     "select_gain": null,
+     "kept": null,
+     "predicted_gain": null,
+     "keep_probability": null,
+     "hypothesis": null
+    }
+   ],
+   "improver_tokens": 3810
+  },
+  "45519130e5_fail_b2048_s2": {
+   "improver": "m0c",
+   "set": "fail_b2048",
+   "seed": 2,
+   "select_solved": 47,
+   "test_solved": null,
+   "imp": null,
+   "budget": {
+    "rollouts": 451,
+    "completion_tokens": 337791,
+    "prompt_tokens": 268250,
+    "improver_completion_tokens": 3232,
+    "improver_prompt_tokens": 18088,
+    "improver_calls": 8
+   },
+   "rounds": [
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "system message for every model call (max 1500 chars)",
+      "instruction": "text appended to the task's prompt (max 500 chars)",
+      "attempts": 3,
+      "temperature": 0.3,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 1,
+      "feedback": "stderr_and_test",
+      "review": true,
+      "max_tokens": 4096
+     },
+     "select_gain": 7,
+     "kept": true,
+     "predicted_gain": 15,
+     "keep_probability": 0.82,
+     "hypothesis": "Increasing attempts to 3 and temperature to 0.35 allows the model to self-correct its reasoning in subsequent turns. Setting 'select' to 'passes_test' ensures the first logically correct version is kept, and 'test_retry' to 1 ensures the test suite validates the fix before final selection. Adding 'review' to 1 provides a final safety check."
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 3,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 1,
+      "feedback": "stderr_and_test",
+      "review": false,
+      "max_tokens": 2048
+     },
+     "select_gain": 1,
+     "kept": false,
+     "predicted_gain": 15,
+     "keep_probability": 0.92,
+     "hypothesis": "Reducing max_tokens to 2048 (matching the observed safe generation length) and setting review to false will eliminate truncation and save tokens for retry attempts, while keeping attempts=3 and temperature=0.3 to maintain reasoning depth."
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 3,
+      "temperature": 0.3,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 2,
+      "feedback": "stderr_and_test",
+      "review": true,
+      "max_tokens": 2048
+     },
+     "select_gain": -4,
+     "kept": false,
+     "predicted_gain": 22,
+     "keep_probability": 0.95,
+     "hypothesis": ":Setting `max_tokens` to 2048 will eliminate the 23 truncation failures. Increasing `test_retry` to 2 will help resolve some of the 9 'wrong_answer' failures by allowing the model more iterations to correct logical errors before accepting a solution."
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 3,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 2,
+      "feedback": "stderr_and_test",
+      "review": false,
+      "max_tokens": 2048
+     },
+     "select_gain": 2,
+     "kept": false,
+     "predicted_gain": 3,
+     "keep_probability": 0.75,
+     "hypothesis": "Reducing max_tokens to 2048 eliminates truncation. Increasing test_retry to 2 provides an extra opportunity to fix remaining logic errors. Removing review saves tokens and reduces failure risk."
+    }
+   ],
+   "improver_tokens": 3232
+  }
+ },
+ "forecasts": {
+  "m0c": {
+   "n": 7,
+   "gain_mse": 193.85714285714286,
+   "brier": 0.5373142857142857,
+   "mean_keep_probability": 0.8514285714285714,
+   "kept_rate": 0.2857142857142857
+  }
+ }
+}

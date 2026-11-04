@@ -1,0 +1,179 @@
+{
+ "training": {
+  "tag": "seed1",
+  "args": {
+   "model": "~/alter/models/Qwen3.5-4B",
+   "run_dir": "~/alter/rive/recipe",
+   "seed": 1,
+   "epochs": 2,
+   "lr": 2e-05,
+   "rank": 16,
+   "grad_accum": 8,
+   "max_len": 3072,
+   "probe": 0,
+   "no_upcast": false
+  },
+  "examples": 373,
+  "skipped_too_long": 19,
+  "steps": 94,
+  "answer_tokens": 214649,
+  "seconds": 945,
+  "tokens_per_s": 758.8,
+  "loss_first": [
+   0.3852,
+   0.2547,
+   0.2583,
+   0.2759,
+   0.2277
+  ],
+  "loss_last": [
+   0.179,
+   0.1177,
+   0.1865,
+   0.2203,
+   0.1465
+  ],
+  "peak_allocated_gib": 8.22,
+  "peak_reserved_gib": 8.72,
+  "exceeded_physical_vram": false,
+  "vllm_tensors": 496
+ },
+ "canary": {
+  "differ": 2,
+  "of": 3,
+  "starts": [
+   [
+    "```python\nclass Solution:\n    def maxSum(self, nums: List[int]) -> int:\n        # Dictionary to store the maximum number seen so far for each max digit\n        max_by_digit = {}\n        result = -1\n  ",
+    "```python\nfrom typing import List\n\nclass Solution:\n    def maxSum(self, nums: List[int]) -> int:\n        # Dictionary to store the maximum number seen so far for each max digit\n        max_by_digit = "
+   ],
+   [
+    "```python\nfrom typing import List\n\nclass Solution:\n    def sumOfSquares(self, nums: List[int]) -> int:\n        n = len(nums)\n        total = 0\n        # Iterate from 1 to n (1-indexed positions)\n     ",
+    "```python\nfrom typing import List\n\nclass Solution:\n    def sumOfSquares(self, nums: List[int]) -> int:\n        n = len(nums)\n        total = 0\n        # Iterate from 1 to n (1-indexed positions)\n     "
+   ],
+   [
+    "```python\nclass Solution:\n    def countTestedDevices(self, batteryPercentages: List[int]) -> int:\n        n = len(batteryPercentages)\n        tested_count = 0\n        current_decrease = 0  # Tracks ho",
+    "To solve this problem, we need to simulate the testing process but optimize it to avoid the costly simulation of decrementing all subsequent battery percentages.\n\n### Approach\n1. **Understanding the E"
+   ]
+  ]
+ },
+ "evals": {
+  "base_dev_s0": {
+   "solved": 30,
+   "tasks": 74,
+   "tokens": 1531,
+   "cut_off": 17,
+   "failures": {
+    "wrong_answer": 22,
+    "runtime_error": 18,
+    "load_error": 4
+   }
+  },
+  "base_dev_s1": {
+   "solved": 39,
+   "tasks": 74,
+   "tokens": 1319,
+   "cut_off": 13,
+   "failures": {
+    "wrong_answer": 17,
+    "time_limit": 2,
+    "runtime_error": 13,
+    "load_error": 3
+   }
+  },
+  "gentle_dev_s0": {
+   "solved": 31,
+   "tasks": 74,
+   "tokens": 1253,
+   "cut_off": 13,
+   "failures": {
+    "wrong_answer": 21,
+    "runtime_error": 17,
+    "time_limit": 2,
+    "load_error": 3
+   }
+  },
+  "gentle_dev_s1": {
+   "solved": 30,
+   "tasks": 74,
+   "tokens": 1230,
+   "cut_off": 11,
+   "failures": {
+    "wrong_answer": 27,
+    "runtime_error": 12,
+    "load_error": 2,
+    "time_limit": 3
+   }
+  },
+  "gentle_select_s0": {
+   "solved": 110,
+   "tasks": 249,
+   "tokens": 1369,
+   "cut_off": 42,
+   "failures": {
+    "wrong_answer": 80,
+    "runtime_error": 47,
+    "load_error": 8,
+    "time_limit": 4
+   }
+  },
+  "gentle_select_s1": {
+   "solved": 97,
+   "tasks": 249,
+   "tokens": 1345,
+   "cut_off": 45,
+   "failures": {
+    "wrong_answer": 72,
+    "runtime_error": 56,
+    "load_error": 14,
+    "time_limit": 10
+   }
+  },
+  "self_dev_s1": {
+   "solved": 33,
+   "tasks": 74,
+   "tokens": 1207,
+   "cut_off": 12,
+   "failures": {
+    "wrong_answer": 22,
+    "load_error": 5,
+    "runtime_error": 11,
+    "time_limit": 3
+   }
+  }
+ },
+ "fidelity": {
+  "rows": 64,
+  "served_loss": {
+   "qwen3.5-4b": 0.2172,
+   "self-s1": 0.1449,
+   "gentle-s1": 0.1809
+  },
+  "training_loss_last": {
+   "self-s1": 0.1225,
+   "gentle-s1": 0.16999999999999998
+  }
+ },
+ "reading": {
+  "base_dev": [
+   30,
+   39
+  ],
+  "self_dev": [
+   27,
+   33
+  ],
+  "gentle_dev": [
+   31,
+   30
+  ],
+  "faithful": true,
+  "half_way_loss": 0.1699,
+  "case": "R3",
+  "gentle_select": [
+   110,
+   97
+  ],
+  "gain": -9.166666666666671,
+  "useful": false
+ }
+}

@@ -1,0 +1,3115 @@
+{
+ "researchers": [
+  "qwen3.5-0.8b",
+  "qwen3.5-2b",
+  "qwen3.5-4b"
+ ],
+ "seed_runs": 4,
+ "situations": [
+  [
+   "r01",
+   1,
+   [
+    "rtl",
+    "compile_error"
+   ]
+  ],
+  [
+   "r02",
+   2,
+   [
+    "rtl",
+    "compile_error"
+   ]
+  ],
+  [
+   "r03",
+   3,
+   [
+    "rtl",
+    "compile_error"
+   ]
+  ],
+  [
+   "r04",
+   4,
+   [
+    "rtl",
+    "compile_error"
+   ]
+  ],
+  [
+   "r05",
+   5,
+   [
+    "math",
+    "no_final_answer"
+   ]
+  ],
+  [
+   "r06",
+   6,
+   [
+    "math",
+    "no_final_answer"
+   ]
+  ],
+  [
+   "r07",
+   7,
+   [
+    "math",
+    "no_final_answer"
+   ]
+  ],
+  [
+   "r08",
+   8,
+   [
+    "math",
+    "no_final_answer"
+   ]
+  ],
+  [
+   "r09",
+   9,
+   [
+    "code",
+    "runtime_error"
+   ]
+  ],
+  [
+   "r10",
+   10,
+   [
+    "code",
+    "runtime_error"
+   ]
+  ],
+  [
+   "r11",
+   11,
+   [
+    "code",
+    "runtime_error"
+   ]
+  ],
+  [
+   "r12",
+   12,
+   [
+    "code",
+    "runtime_error"
+   ]
+  ],
+  [
+   "r13",
+   13,
+   [
+    "rtl",
+    "mismatch"
+   ]
+  ],
+  [
+   "r14",
+   14,
+   [
+    "rtl",
+    "mismatch"
+   ]
+  ],
+  [
+   "r15",
+   15,
+   [
+    "rtl",
+    "mismatch"
+   ]
+  ],
+  [
+   "r16",
+   16,
+   [
+    "rtl",
+    "mismatch"
+   ]
+  ]
+ ],
+ "summary": {
+  "qwen3.5-0.8b": {
+   "steps": 16,
+   "status": {
+    "valid": 7,
+    "invalid_patch": 8,
+    "stage_failed": 1
+   },
+   "duplicates": 0,
+   "measured": 7,
+   "evidence_matches_records": 1,
+   "mean_diff_measured": -0.06318195693195698,
+   "mean_diff_per_step": -0.027642106157731175,
+   "se_per_step": 0.017173122207113742,
+   "better": 0,
+   "worse": 3,
+   "prediction_hits": {
+    "True": 3,
+    "False": 3,
+    "None": 1
+   },
+   "median_seconds": 27.0,
+   "median_completion_tokens": 4805.5
+  },
+  "qwen3.5-2b": {
+   "steps": 16,
+   "status": {
+    "valid": 7,
+    "invalid_patch": 9
+   },
+   "duplicates": 0,
+   "measured": 7,
+   "evidence_matches_records": 2,
+   "mean_diff_measured": -0.04014457764457767,
+   "mean_diff_per_step": -0.01756325271950273,
+   "se_per_step": 0.014369168407663842,
+   "better": 0,
+   "worse": 2,
+   "prediction_hits": {
+    "False": 5,
+    "True": 2
+   },
+   "median_seconds": 67.5,
+   "median_completion_tokens": 6411.5
+  },
+  "qwen3.5-4b": {
+   "steps": 16,
+   "status": {
+    "invalid_patch": 5,
+    "valid": 11
+   },
+   "duplicates": 0,
+   "measured": 11,
+   "evidence_matches_records": 11,
+   "mean_diff_measured": -0.0923745761813944,
+   "mean_diff_per_step": -0.06350752112470864,
+   "se_per_step": 0.021815155169632002,
+   "better": 0,
+   "worse": 7,
+   "prediction_hits": {
+    "False": 10,
+    "True": 1
+   },
+   "median_seconds": 129.5,
+   "median_completion_tokens": 4804.0
+  }
+ },
+ "proposals": {
+  "qwen3.5-0.8b": [
+   {
+    "id": "r01",
+    "researcher": "qwen3.5-0.8b",
+    "seed": 1,
+    "assigned": [
+     "rtl",
+     "compile_error"
+    ],
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "code_hash": "a78f7d7bdf140d26",
+    "dir": "~/alter/evo/runs/research-ability/qwen3.5-0.8b/candidates/r01",
+    "kind": [
+     "rtl",
+     "compile_error",
+     "workflow"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": false,
+     "patch_valid": true,
+     "leak_scan_clean": true
+    },
+    "problems": [],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H1",
+     "hypothesis": "Increase the model's `max_tokens` parameter in `ctx.llm`. The current limit of 4096 tokens is insufficient for RTL with 1049 tokens, causing premature cut-off. Increasing this to 16384 tokens should provide more room to justify the full symbolic generation.",
+     "target": "agent/workflow.py",
+     "tool_name": "",
+     "proposed_change": "",
+     "prediction": {
+      "metric": "completion_tokens",
+      "direction": "increase"
+     },
+     "control": "",
+     "potential_regression": ""
+    },
+    "domains": null,
+    "seconds": 21,
+    "usage": {
+     "calls": 8,
+     "prompt_tokens": 36221,
+     "completion_tokens": 3064
+    },
+    "duplicate_of": null,
+    "verdict": {
+     "domains": [
+      "math",
+      "code",
+      "rtl"
+     ],
+     "diff": 0.0015807109557108845,
+     "p": 0.46541943360884197,
+     "p_worse": 0.534580566391158,
+     "sd": 0.015974670249867807,
+     "champion_runs": 4,
+     "child_runs": 1,
+     "regression": 0.10526315789473684,
+     "expected_regression": 0.11164887743835113,
+     "p_regression": 0.5571266384566121,
+     "pass_dev": false,
+     "pass_regression": true
+    },
+    "prediction": {
+     "metric": "completion_tokens",
+     "direction": "increase",
+     "champion": 1998.5,
+     "child": 2051.324324324324,
+     "hit": true
+    }
+   },
+   {
+    "id": "r03",
+    "researcher": "qwen3.5-0.8b",
+    "seed": 3,
+    "assigned": [
+     "rtl",
+     "compile_error"
+    ],
+    "status": "invalid_patch",
+    "module": "agent/workflow.py",
+    "code_hash": null,
+    "dir": "~/alter/evo/runs/research-ability/qwen3.5-0.8b/candidates/r03",
+    "kind": [
+     "rtl",
+     "compile_error",
+     "workflow"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": true,
+     "patch_valid": false
+    },
+    "problems": [
+     "ctx.llm(max_tokens=10000) changes nothing: one call returns at most 4096 completion tokens; the 8192 of a task are used through more calls"
+    ],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H1",
+     "hypothesis": "{selected_domain: ",
+     "target": "agent/workflow.py",
+     "tool_name": "",
+     "proposed_change": "Instruction the agent to generate formal verification code directly from the problem statement and parameter constraints, bypassing its internal reasoning phase for syntax generation. This aligns with the goal of solving RTL tasks by having the model produce the code first, which can then be compiled and verified.",
+     "prediction": {
+      "metric": "compile_error_count",
+      "direction": "decrease"
+     },
+     "control": "{selected_domain: ",
+     "potential_regression": "N/A, but may introduce code generation drift if not carefully controlled"
+    },
+    "domains": null,
+    "seconds": 36,
+    "usage": {
+     "calls": 9,
+     "prompt_tokens": 36889,
+     "completion_tokens": 5745
+    }
+   },
+   {
+    "id": "r05",
+    "researcher": "qwen3.5-0.8b",
+    "seed": 5,
+    "assigned": [
+     "math",
+     "no_final_answer"
+    ],
+    "status": "invalid_patch",
+    "module": "agent/workflow.py",
+    "code_hash": null,
+    "dir": "~/alter/evo/runs/research-ability/qwen3.5-0.8b/candidates/r05",
+    "kind": [
+     "math",
+     "no_final_answer",
+     "workflow"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": true,
+     "patch_valid": false
+    },
+    "problems": [
+     "the workflow failed on math task aime_2025-1 with stand-in model answers: TypeError: Context.llm() got an unexpected keyword argument 'reasoning_timeout'"
+    ],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H1",
+     "hypothesis": "Implement_reasoning_timeout",
+     "target": "agent/workflow.py",
+     "tool_name": "None",
+     "proposed_change": "Add a timeout parameter to ctx.llm(messages, max_tokens=4096, reasoning_timeout=2000, temperature=0.0) that forces the model to return a non-empty text after the timeout, regardless of token count. This prevents token exhaustion and ensures the model produces the full answer within the 4096 limit.",
+     "prediction": {
+      "metric": "math_accuracy",
+      "direction": "increase"
+     },
+     "control": "None",
+     "potential_regression": "None"
+    },
+    "domains": null,
+    "seconds": 19,
+    "usage": {
+     "calls": 9,
+     "prompt_tokens": 35253,
+     "completion_tokens": 3194
+    }
+   },
+   {
+    "id": "r06",
+    "researcher": "qwen3.5-0.8b",
+    "seed": 6,
+    "assigned": [
+     "math",
+     "no_final_answer"
+    ],
+    "status": "valid",
+    "module": "agent/prompts/math.md",
+    "code_hash": "e5f6444efec1936d",
+    "dir": "~/alter/evo/runs/research-ability/qwen3.5-0.8b/candidates/r06",
+    "kind": [
+     "math",
+     "no_final_answer",
+     "prompt"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": true,
+     "patch_valid": true,
+     "leak_scan_clean": true
+    },
+    "problems": [],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H2",
+     "hypothesis": "Modify agent/prompts/math.md to include a mandatory instruction such as 'Please reason step by step and box your answer. If you cannot box the answer, you are expected to state that clearly and not provide an answer.'",
+     "target": "agent/prompts/math.md",
+     "tool_name": "",
+     "proposed_change": "Append the instruction 'Please reason step by step and box your answer.' to the system message for math and code tasks, ensuring the model is aware of the output format and token limits.",
+     "prediction": {
+      "metric": "no_final_answer_count",
+      "direction": "increase"
+     },
+     "control": "agent/workflow.py remains unchanged. The model will have a stronger signal to reason, potentially reducing the frequency of token exhaustion, but the current failure count will not decrease.",
+     "potential_regression": ""
+    },
+    "domains": [
+     "math"
+    ],
+    "seconds": 15,
+    "usage": {
+     "calls": 7,
+     "prompt_tokens": 33196,
+     "completion_tokens": 2504
+    },
+    "duplicate_of": null,
+    "verdict": {
+     "domains": [
+      "math"
+     ],
+     "diff": -0.05769230769230771,
+     "p": 0.9251167195675961,
+     "p_worse": 0.0748832804324039,
+     "sd": 0.03364770856881053,
+     "champion_runs": 4,
+     "child_runs": 1,
+     "regression": 0.2926829268292683,
+     "expected_regression": 0.10909943714821765,
+     "p_regression": 0.041436148042389695,
+     "pass_dev": false,
+     "pass_regression": false
+    },
+    "prediction": {
+     "metric": "no_final_answer_count",
+     "direction": "increase",
+     "champion": 26.75,
+     "child": 28.0,
+     "hit": true
+    }
+   },
+   {
+    "id": "r02",
+    "researcher": "qwen3.5-0.8b",
+    "seed": 2,
+    "assigned": [
+     "rtl",
+     "compile_error"
+    ],
+    "status": "invalid_patch",
+    "module": "tools/tools_verilog_sim.py",
+    "code_hash": null,
+    "dir": "~/alter/evo/runs/research-ability/qwen3.5-0.8b/candidates/r02",
+    "kind": [
+     "rtl",
+     "compile_error",
+     "tool"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": true,
+     "patch_valid": false,
+     "tool_example_similarity": 1.0
+    },
+    "problems": [
+     "no top-level function named solve"
+    ],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H2",
+     "hypothesis": "Modify `tools/verilog_sim` to accept a `design` parameter that includes the full `testbench` and `top` definitions, and update `tools/` to export a tool that accepts these parameters.",
+     "target": "tool",
+     "tool_name": "tools/verilog_sim",
+     "proposed_change": "Add a `design` parameter to `tools/verilog_sim` that accepts `design`, `testbench`, and optionally `top`, and update the implementation to use this parameter.",
+     "prediction": {
+      "metric": "mismatch_count",
+      "direction": "increase"
+     },
+     "control": "If Hypothesis 2 is implemented, the tool would correctly detect mismatches, reducing `mismatch` errors from 22 to 0.",
+     "potential_regression": "Still possible if the mismatches do not correlate with the missing `top` parameter in the testbench definition."
+    },
+    "domains": null,
+    "seconds": 51,
+    "usage": {
+     "calls": 12,
+     "prompt_tokens": 45371,
+     "completion_tokens": 8647
+    }
+   },
+   {
+    "id": "r07",
+    "researcher": "qwen3.5-0.8b",
+    "seed": 7,
+    "assigned": [
+     "math",
+     "no_final_answer"
+    ],
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "code_hash": "a49db15a434ca805",
+    "dir": "~/alter/evo/runs/research-ability/qwen3.5-0.8b/candidates/r07",
+    "kind": [
+     "math",
+     "no_final_answer",
+     "workflow"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": true,
+     "patch_valid": true,
+     "leak_scan_clean": true
+    },
+    "problems": [],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H1",
+     "hypothesis": "Modify ctx.llm to use max_tokens=2096 for math tasks to reduce buffer for complex derivations",
+     "target": "agent/workflow.py",
+     "tool_name": "None",
+     "proposed_change": "Modify the `llm` call in `solve` to `max_tokens=2096` instead of the hardcoded 4096, ensuring the model has less budget for symbolic reasoning that often cuts off prematurely",
+     "prediction": {
+      "metric": "no_final_answer_count",
+      "direction": "decrease"
+     },
+     "control": "Hypothesis 2",
+     "potential_regression": "no_final_answer_count = beta1 * max_tokens + beta2 * (4096 - max_tokens)"
+    },
+    "domains": null,
+    "seconds": 17,
+    "usage": {
+     "calls": 7,
+     "prompt_tokens": 33750,
+     "completion_tokens": 2848
+    },
+    "duplicate_of": null,
+    "verdict": {
+     "domains": [
+      "math",
+      "code",
+      "rtl"
+     ],
+     "diff": -0.04115433177933184,
+     "p": 0.9802727281097365,
+     "p_worse": 0.01972727189026345,
+     "sd": 0.015974670249867807,
+     "champion_runs": 4,
+     "child_runs": 1,
+     "regression": 0.1674641148325359,
+     "expected_regression": 0.11164887743835113,
+     "p_regression": 0.11150305425396986,
+     "pass_dev": false,
+     "pass_regression": true
+    },
+    "prediction": {
+     "metric": "no_final_answer_count",
+     "direction": "decrease",
+     "champion": 26.75,
+     "child": 31.0,
+     "hit": false
+    }
+   },
+   {
+    "id": "r04",
+    "researcher": "qwen3.5-0.8b",
+    "seed": 4,
+    "assigned": [
+     "rtl",
+     "compile_error"
+    ],
+    "status": "stage_failed",
+    "module": "tools/tools_rtl_py.py",
+    "code_hash": null,
+    "dir": "~/alter/evo/runs/research-ability/qwen3.5-0.8b/candidates/r04",
+    "kind": [
+     "rtl",
+     "compile_error",
+     "tool"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": true
+    },
+    "problems": null,
+    "error": "Error code: 400 - This model's maximum context length is 12288 tokens. However, your prompt contains at least 12289 input tokens, which exceeds this limit even without any output tokens. Please reduce the length of the input prompt. (parameter=input_tokens, value=12289)",
+    "hypothesis": {
+     "hypothesis_id": "H2",
+     "hypothesis": "Modify tool schema for RTL to strip 'testbench' parameter and ensure only compiled, stdout, timed_out are returned.",
+     "target": "tool",
+     "tool_name": "tools/rtl.py",
+     "proposed_change": "[get_schema('rtl') -> schema[0]['args'] = {'design': design}; return {'compiled': True, 'stdout': '', 'timed_out': False}; schema[0]['args'] = {'design': design}; return schema[0]['result']]",
+     "prediction": {
+      "metric": "mismatch_count",
+      "direction": "decrease"
+     },
+     "control": "[tool_name]: tools/rtl.py",
+     "potential_regression": "The module will be updated with a new file tools/rtl.py that contains the modified schema and logic. The old file will remain but will serve as a placeholder."
+    },
+    "domains": null,
+    "seconds": 72,
+    "usage": {
+     "calls": 9,
+     "prompt_tokens": 47923,
+     "completion_tokens": 12279
+    }
+   },
+   {
+    "id": "r08",
+    "researcher": "qwen3.5-0.8b",
+    "seed": 8,
+    "assigned": [
+     "math",
+     "no_final_answer"
+    ],
+    "status": "valid",
+    "module": "tools/tool.py",
+    "code_hash": "cf9a1b9434b2e1bd",
+    "dir": "~/alter/evo/runs/research-ability/qwen3.5-0.8b/candidates/r08",
+    "kind": [
+     "math",
+     "no_final_answer",
+     "tool"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": true,
+     "hypothesis_testable": true,
+     "patch_valid": true,
+     "tool_example_similarity": 1.0,
+     "leak_scan_clean": true
+    },
+    "problems": [],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H1",
+     "hypothesis": "Model capability: Reasoning timeout limit. Implement a 'think' parameter with a longer reasoning timeout (e.g., 100 tokens or higher) in agent/workflow.py to allow the model to complete the long reasoning chain before the token budget expires. This addresses the specific domain limitation of long-context reasoning failure without requiring a tool fix, which seems to be the root cause.",
+     "target": "tool",
+     "tool_name": "",
+     "proposed_change": "",
+     "prediction": {
+      "metric": "completion_tokens",
+      "direction": "increase"
+     },
+     "control": "agent/workflow.py (unchanged)",
+     "potential_regression": ""
+    },
+    "domains": null,
+    "seconds": 31,
+    "usage": {
+     "calls": 12,
+     "prompt_tokens": 49907,
+     "completion_tokens": 5418
+    },
+    "duplicate_of": null,
+    "verdict": {
+     "domains": [
+      "math",
+      "code",
+      "rtl"
+     ],
+     "diff": -0.2750121406371407,
+     "p": 0.9999989699233285,
+     "p_worse": 1.0300766714953737e-06,
+     "sd": 0.015974670249867807,
+     "champion_runs": 4,
+     "child_runs": 1,
+     "regression": 0.9808612440191388,
+     "expected_regression": 0.11164887743835113,
+     "p_regression": 6.323891490987605e-07,
+     "pass_dev": false,
+     "pass_regression": false
+    },
+    "prediction": {
+     "metric": "completion_tokens",
+     "direction": "increase",
+     "champion": 1998.5,
+     "child": 1021.5135135135135,
+     "hit": false
+    }
+   },
+   {
+    "id": "r11",
+    "researcher": "qwen3.5-0.8b",
+    "seed": 11,
+    "assigned": [
+     "code",
+     "runtime_error"
+    ],
+    "status": "invalid_patch",
+    "module": "agent/workflow.py",
+    "code_hash": null,
+    "dir": "~/alter/evo/runs/research-ability/qwen3.5-0.8b/candidates/r11",
+    "kind": [
+     "code",
+     "runtime_error",
+     "workflow"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": true,
+     "patch_valid": false
+    },
+    "problems": [
+     "the workflow failed on math task aime_2025-1 with stand-in model answers: TypeError: Context.llm() got an unexpected keyword argument 'timeout'"
+    ],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H2",
+     "hypothesis": "Tools",
+     "target": "tool",
+     "tool_name": "python_exec",
+     "proposed_change": "Modify run() to accept a 'timeout' parameter (default 20) and return it. Also modify test() to validate that the tool's returndict includes 'timeout' if not already present.",
+     "prediction": {
+      "metric": "runtime_error_count",
+      "direction": "decrease"
+     },
+     "control": "tool/python_exec (unchanged)",
+     "potential_regression": "runtime_error_count: 25, baseline: 25"
+    },
+    "domains": null,
+    "seconds": 19,
+    "usage": {
+     "calls": 9,
+     "prompt_tokens": 36423,
+     "completion_tokens": 3281
+    }
+   },
+   {
+    "id": "r10",
+    "researcher": "qwen3.5-0.8b",
+    "seed": 10,
+    "assigned": [
+     "code",
+     "runtime_error"
+    ],
+    "status": "invalid_patch",
+    "module": "agent/workflow.py",
+    "code_hash": null,
+    "dir": "~/alter/evo/runs/research-ability/qwen3.5-0.8b/candidates/r10",
+    "kind": [
+     "code",
+     "runtime_error",
+     "workflow"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": false,
+     "patch_valid": false
+    },
+    "problems": [
+     "forbidden import: os",
+     "forbidden call: open()"
+    ],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H1",
+     "hypothesis": "Modify solver.py to check for tool availability/execution failures before calling ctx.llm",
+     "target": "agent/workflow.py",
+     "tool_name": "",
+     "proposed_change": "",
+     "prediction": {
+      "metric": "code_accuracy",
+      "direction": "increase"
+     },
+     "control": "",
+     "potential_regression": ""
+    },
+    "domains": null,
+    "seconds": 36,
+    "usage": {
+     "calls": 9,
+     "prompt_tokens": 40249,
+     "completion_tokens": 6532
+    }
+   },
+   {
+    "id": "r12",
+    "researcher": "qwen3.5-0.8b",
+    "seed": 12,
+    "assigned": [
+     "code",
+     "runtime_error"
+    ],
+    "status": "invalid_patch",
+    "module": "tools/top_module_debug.py",
+    "code_hash": null,
+    "dir": "~/alter/evo/runs/research-ability/qwen3.5-0.8b/candidates/r12",
+    "kind": [
+     "code",
+     "runtime_error",
+     "tool"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": true,
+     "patch_valid": false,
+     "tool_example_similarity": 0.916
+    },
+    "problems": [
+     "no top-level function named solve"
+    ],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H1",
+     "hypothesis": "The tool is fundamentally broken for the `load_error` domain, failing to interpret the specific error messages in the `load_error` examples. The tool likely has a hardcoded error message or a placeholder that doesn't handle the specific error codes or missing parts of the code snippets in the `load_error` examples.",
+     "target": "tool",
+     "tool_name": "top_module_debug",
+     "proposed_change": "code/tools/top_module_debug.py",
+     "prediction": {
+      "metric": "load_error_count",
+      "direction": "increase"
+     },
+     "control": "agent/workflow.py",
+     "potential_regression": "No regression to correct output is expected; the model should output the correct final answer for math problems (e.g., '18081')."
+    },
+    "domains": null,
+    "seconds": 24,
+    "usage": {
+     "calls": 11,
+     "prompt_tokens": 42758,
+     "completion_tokens": 4193
+    }
+   },
+   {
+    "id": "r14",
+    "researcher": "qwen3.5-0.8b",
+    "seed": 14,
+    "assigned": [
+     "rtl",
+     "mismatch"
+    ],
+    "status": "valid",
+    "module": "agent/prompts/rtl.md",
+    "code_hash": "356028afd86c857d",
+    "dir": "~/alter/evo/runs/research-ability/qwen3.5-0.8b/candidates/r14",
+    "kind": [
+     "rtl",
+     "mismatch",
+     "prompt"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": true,
+     "patch_valid": true,
+     "leak_scan_clean": true
+    },
+    "problems": [],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H2",
+     "hypothesis": "RTL Logic Error: The RTL generation logic fails to correctly parse 'testtype' and 'func_name' from the prompt, resulting in invalid code structures.",
+     "target": "agent/prompts/rtl.md",
+     "tool_name": ",",
+     "proposed_change": "",
+     "prediction": {
+      "metric": "wrong_answer_count",
+      "direction": "increase"
+     },
+     "control": "agent/prompts/rtl.md",
+     "potential_regression": ""
+    },
+    "domains": [
+     "rtl"
+    ],
+    "seconds": 22,
+    "usage": {
+     "calls": 7,
+     "prompt_tokens": 34058,
+     "completion_tokens": 3821
+    },
+    "duplicate_of": null,
+    "verdict": {
+     "domains": [
+      "rtl"
+     ],
+     "diff": -0.04062500000000002,
+     "p": 0.9742118451253674,
+     "p_worse": 0.025788154874632558,
+     "sd": 0.016863097978324536,
+     "champion_runs": 4,
+     "child_runs": 1,
+     "regression": 0.22580645161290322,
+     "expected_regression": 0.11410256410256411,
+     "p_regression": 0.05742332239127622,
+     "pass_dev": false,
+     "pass_regression": true
+    },
+    "prediction": {
+     "metric": "wrong_answer_count",
+     "direction": "increase",
+     "champion": 0.0,
+     "child": 0.0,
+     "hit": null
+    }
+   },
+   {
+    "id": "r09",
+    "researcher": "qwen3.5-0.8b",
+    "seed": 9,
+    "assigned": [
+     "code",
+     "runtime_error"
+    ],
+    "status": "invalid_patch",
+    "module": "agent/workflow.py",
+    "code_hash": null,
+    "dir": "~/alter/evo/runs/research-ability/qwen3.5-0.8b/candidates/r09",
+    "kind": [
+     "code",
+     "runtime_error",
+     "workflow"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": true,
+     "patch_valid": false
+    },
+    "problems": [
+     "workflow has more than 200 lines"
+    ],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H1",
+     "hypothesis": "Tool Call Overload: The `tools/<code>.py` module is being called before the `solve()` function completes, leading to runtime errors on the prompt/llm calls. Prediction: Reduce max_tokens in ctx.llm() or limit tool invocation count.",
+     "target": "agent/prompts/code.md",
+     "tool_name": "",
+     "proposed_change": "",
+     "prediction": {
+      "metric": "code_accuracy",
+      "direction": "decrease"
+     },
+     "control": "agent/workflow.py",
+     "potential_regression": ""
+    },
+    "domains": null,
+    "seconds": 68,
+    "usage": {
+     "calls": 9,
+     "prompt_tokens": 43082,
+     "completion_tokens": 12228
+    }
+   },
+   {
+    "id": "r16",
+    "researcher": "qwen3.5-0.8b",
+    "seed": 16,
+    "assigned": [
+     "rtl",
+     "mismatch"
+    ],
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "code_hash": "dbd418c400d5f5ea",
+    "dir": "~/alter/evo/runs/research-ability/qwen3.5-0.8b/candidates/r16",
+    "kind": [
+     "rtl",
+     "mismatch",
+     "workflow"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": true,
+     "patch_valid": true,
+     "leak_scan_clean": true
+    },
+    "problems": [],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H1",
+     "hypothesis": "Add a Python file `tools/python_exec.py` to the directory.",
+     "target": "tool",
+     "tool_name": "python_exec",
+     "proposed_change": "Modify `tools/python_exec.py` to accept `spec` and `language` and return `compiled` and `log`. Modify `workflow.py` to call `ctx.tool(name, args)` with `args = {'spec': spec, 'language': language, ...}`.",
+     "prediction": {
+      "metric": "runtime_error_count",
+      "direction": "decrease"
+     },
+     "control": "Agent unchanged; tools/ directory remains empty; `workflow.py` structure unchanged.",
+     "potential_regression": "None; existing failure types (`compile_error`, `runtime_error`) should be resolved by having the tool run the code correctly."
+    },
+    "domains": null,
+    "seconds": 16,
+    "usage": {
+     "calls": 7,
+     "prompt_tokens": 33459,
+     "completion_tokens": 2907
+    },
+    "duplicate_of": null,
+    "verdict": {
+     "domains": [
+      "math",
+      "code",
+      "rtl"
+     ],
+     "diff": -0.02624562937062941,
+     "p": 0.9169551629936998,
+     "p_worse": 0.08304483700630019,
+     "sd": 0.015974670249867807,
+     "champion_runs": 4,
+     "child_runs": 1,
+     "regression": 0.21052631578947367,
+     "expected_regression": 0.11164887743835113,
+     "p_regression": 0.021001418238010806,
+     "pass_dev": false,
+     "pass_regression": false
+    },
+    "prediction": {
+     "metric": "runtime_error_count",
+     "direction": "decrease",
+     "champion": 24.5,
+     "child": 25.0,
+     "hit": false
+    }
+   },
+   {
+    "id": "r15",
+    "researcher": "qwen3.5-0.8b",
+    "seed": 15,
+    "assigned": [
+     "rtl",
+     "mismatch"
+    ],
+    "status": "invalid_patch",
+    "module": "agent/workflow.py",
+    "code_hash": null,
+    "dir": "~/alter/evo/runs/research-ability/qwen3.5-0.8b/candidates/r15",
+    "kind": [
+     "rtl",
+     "mismatch",
+     "workflow"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": true,
+     "patch_valid": false
+    },
+    "problems": [
+     "no top-level function named solve"
+    ],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H1",
+     "hypothesis": "tools/ directory is empty, prompting returns empty string. The workflow fails when calling ctx.prompt() or invokes the tool with an empty prompt. The feedback suggests tools/ contains nothing and the prompt generator is missing the RTL file.",
+     "target": "agent/workflow.py",
+     "tool_name": "",
+     "proposed_change": "Add agent/prompts/rtl.md file with the RTL specification and a system prompt.",
+     "prediction": {
+      "metric": "mismatch_count",
+      "direction": "increase"
+     },
+     "control": "agent/prompts/rtl.md is empty or missing. Workflow returns empty string, tool execution fails or misinterprets prompt. The mismatch count is reset to 0.",
+     "potential_regression": ""
+    },
+    "domains": null,
+    "seconds": 30,
+    "usage": {
+     "calls": 9,
+     "prompt_tokens": 36971,
+     "completion_tokens": 5732
+    }
+   },
+   {
+    "id": "r13",
+    "researcher": "qwen3.5-0.8b",
+    "seed": 13,
+    "assigned": [
+     "rtl",
+     "mismatch"
+    ],
+    "status": "valid",
+    "module": "agent/prompts/rtl.md",
+    "code_hash": "e3e5980820ce1a3a",
+    "dir": "~/alter/evo/runs/research-ability/qwen3.5-0.8b/candidates/r13",
+    "kind": [
+     "rtl",
+     "mismatch",
+     "prompt"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": true,
+     "patch_valid": true,
+     "leak_scan_clean": true
+    },
+    "problems": [],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H1",
+     "hypothesis": "The RTL tool is returning the code as a raw string without the required final answer block (e.g., missing the 'endmodule' or 'endmodule' wrapper, or only returning the code while the model does not render the required answer heading). This explains both the compile_error failures (37) and the mismatch failures (22), but fails to explain the 'no_final_answer' failure mode for the two buggy RTL examples.",
+     "target": "agent/prompts/rtl.md",
+     "tool_name": "",
+     "proposed_change": "Modify the prompt in agent/prompts/rtl.md to explicitly instruct the model to use the final answer block syntax (e.g., the standard Verilog/RTL block format) and ensure the model renders the final answer line even when the code generates successfully, potentially by providing a template or explicit instruction on how to format the block in the model's prompt.",
+     "prediction": {
+      "metric": "rtl_accuracy",
+      "direction": "decrease"
+     },
+     "control": "same as proposed_change",
+     "potential_regression": ""
+    },
+    "domains": [
+     "rtl"
+    ],
+    "seconds": 56,
+    "usage": {
+     "calls": 9,
+     "prompt_tokens": 40514,
+     "completion_tokens": 11173
+    },
+    "duplicate_of": null,
+    "verdict": {
+     "domains": [
+      "rtl"
+     ],
+     "diff": -0.0031250000000000444,
+     "p": 0.5645353606288999,
+     "p_worse": 0.43546463937110014,
+     "sd": 0.016863097978324536,
+     "champion_runs": 4,
+     "child_runs": 1,
+     "regression": 0.3118279569892473,
+     "expected_regression": 0.11410256410256411,
+     "p_regression": 0.005620115501206849,
+     "pass_dev": false,
+     "pass_regression": false
+    },
+    "prediction": {
+     "metric": "rtl_accuracy",
+     "direction": "decrease",
+     "champion": 0.290625,
+     "child": 0.2875,
+     "hit": true
+    }
+   }
+  ],
+  "qwen3.5-2b": [
+   {
+    "id": "r02",
+    "researcher": "qwen3.5-2b",
+    "seed": 2,
+    "assigned": [
+     "rtl",
+     "compile_error"
+    ],
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "code_hash": "f0a53345d43f4d2b",
+    "dir": "~/alter/evo/runs/research-ability/qwen3.5-2b/candidates/r02",
+    "kind": [
+     "rtl",
+     "compile_error",
+     "workflow"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": true,
+     "patch_valid": true,
+     "leak_scan_clean": true
+    },
+    "problems": [],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H1",
+     "hypothesis": "The agent is failing to generate valid SystemVerilog due to a lack of structural constraints in the prompt, causing the model to hallucinate invalid syntax (e.g., unmarked registers, incorrect port declarations).",
+     "target": "agent/workflow.py",
+     "tool_name": "",
+     "proposed_change": ": Add a system prompt section in `agent/workflow.py` that explicitly enforces strict syntax rules, such as requiring the use of `output reg` instead of `output wire`, using `always @(posedge clk)` blocks, and ensuring all ports are declared with `output` keywords. The prompt should be updated to include a specific instruction: 'Ensure all ports use the 'output' keyword for valid SystemVerilog RTL.'",
+     "prediction": {
+      "metric": "compile_error_count",
+      "direction": "decrease"
+     },
+     "control": ": Running the same workflow with `thinking=False` and the existing system prompt (without structural constraints) on a subset of 10 RTL tasks, expecting the `compile_error` count to remain at 37.",
+     "potential_regression": ": The fix might cause the model to over-constrain, leading to a 5-10% reduction in acceptable answers if the prompt is too restrictive, but this is mitigated by the task's explicit 'one bit' requirement."
+    },
+    "domains": null,
+    "seconds": 38,
+    "usage": {
+     "calls": 7,
+     "prompt_tokens": 31845,
+     "completion_tokens": 3337
+    },
+    "duplicate_of": null,
+    "verdict": {
+     "domains": [
+      "math",
+      "code",
+      "rtl"
+     ],
+     "diff": -0.00036179098679101074,
+     "p": 0.5079253004801986,
+     "p_worse": 0.4920746995198015,
+     "sd": 0.015974670249867807,
+     "champion_runs": 4,
+     "child_runs": 1,
+     "regression": 0.07655502392344497,
+     "expected_regression": 0.11164887743835113,
+     "p_regression": 0.7823969600328123,
+     "pass_dev": false,
+     "pass_regression": true
+    },
+    "prediction": {
+     "metric": "compile_error_count",
+     "direction": "decrease",
+     "champion": 35.0,
+     "child": 36.0,
+     "hit": false
+    }
+   },
+   {
+    "id": "r05",
+    "researcher": "qwen3.5-2b",
+    "seed": 5,
+    "assigned": [
+     "math",
+     "no_final_answer"
+    ],
+    "status": "valid",
+    "module": "agent/prompts/math.md",
+    "code_hash": "1db23b14c2bca05f",
+    "dir": "~/alter/evo/runs/research-ability/qwen3.5-2b/candidates/r05",
+    "kind": [
+     "math",
+     "no_final_answer",
+     "prompt"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": true,
+     "hypothesis_testable": false,
+     "patch_valid": true,
+     "leak_scan_clean": true
+    },
+    "problems": [],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H1",
+     "hypothesis": "The math domain expects a specific structured output format (e.g., JSON or strict LaTeX template) that the current single-pass model fails to generate due to token truncation during reasoning.",
+     "target": "agent/prompts/math.md",
+     "tool_name": "",
+     "proposed_change": "Update math domain prompt to require the model to output the answer in a specific format (e.g., `answer: boxed{...}` or JSON), preventing truncation of intermediate reasoning needed to derive the final boxed format.",
+     "prediction": {
+      "metric": "no_final_answer_count",
+      "direction": "decrease"
+     },
+     "control": "",
+     "potential_regression": ""
+    },
+    "domains": [
+     "math"
+    ],
+    "seconds": 24,
+    "usage": {
+     "calls": 7,
+     "prompt_tokens": 31769,
+     "completion_tokens": 2228
+    },
+    "duplicate_of": null,
+    "verdict": {
+     "domains": [
+      "math"
+     ],
+     "diff": -0.006410256410256443,
+     "p": 0.5663260046384921,
+     "p_worse": 0.4336739953615079,
+     "sd": 0.03364770856881053,
+     "champion_runs": 4,
+     "child_runs": 1,
+     "regression": 0.17073170731707318,
+     "expected_regression": 0.10909943714821765,
+     "p_regression": 0.2689424423781197,
+     "pass_dev": false,
+     "pass_regression": true
+    },
+    "prediction": {
+     "metric": "no_final_answer_count",
+     "direction": "decrease",
+     "champion": 26.75,
+     "child": 28.0,
+     "hit": false
+    }
+   },
+   {
+    "id": "r01",
+    "researcher": "qwen3.5-2b",
+    "seed": 1,
+    "assigned": [
+     "rtl",
+     "compile_error"
+    ],
+    "status": "invalid_patch",
+    "module": "agent/workflow.py",
+    "code_hash": null,
+    "dir": "~/alter/evo/runs/research-ability/qwen3.5-2b/candidates/r01",
+    "kind": [
+     "rtl",
+     "compile_error",
+     "workflow"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": true,
+     "patch_valid": false
+    },
+    "problems": [
+     "no top-level function named solve",
+     "forbidden call: eval()",
+     "forbidden call: eval()",
+     "forbidden call: open()",
+     "forbidden call: open()",
+     "forbidden call: open()"
+    ],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H1",
+     "hypothesis": ":Provide a strict prompt template in `agent/prompts/rtl.md` that forces the model to output Verilog code using specific structural patterns (e.g., `always @(*) begin case(...)`), including a pre-generated correct example of the same 6-to-1 mux complexity. This targets the hypothesis that the model lacks the capability to generate valid Verilog syntax and hierarchy.",
+     "target": "agent/prompts/rtl.md",
+     "tool_name": "",
+     "proposed_change": "Add a system message containing a 'Correct Verilog Example' block for a similar 6-to-1 mux, followed by instructions to match this structure strictly.",
+     "prediction": {
+      "metric": "rtl_accuracy",
+      "direction": "increase"
+     },
+     "control": ":Leave `agent/prompts/rtl.md` unchanged, using the current empty prompt that likely lacks structural guidance.",
+     "potential_regression": ":If this approach fails to increase accuracy, the model's hallucinations of complex syntax will remain, potentially causing more 'compile_error' failures despite seemingly more tokens being generated."
+    },
+    "domains": null,
+    "seconds": 67,
+    "usage": {
+     "calls": 9,
+     "prompt_tokens": 39387,
+     "completion_tokens": 6004
+    }
+   },
+   {
+    "id": "r07",
+    "researcher": "qwen3.5-2b",
+    "seed": 7,
+    "assigned": [
+     "math",
+     "no_final_answer"
+    ],
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "code_hash": "a0af6a2f12d233f3",
+    "dir": "~/alter/evo/runs/research-ability/qwen3.5-2b/candidates/r07",
+    "kind": [
+     "math",
+     "no_final_answer",
+     "workflow"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": true,
+     "patch_valid": true,
+     "leak_scan_clean": true
+    },
+    "problems": [],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H1",
+     "hypothesis": "The model's internal reasoning process is too verbose or prone to hallucinations, causing it to generate thousands of tokens on the reasoning step alone. By adding a strict token limit (e.g., 1024) to the reasoning step in the model call, the model is forced to finish reasoning quickly and output the answer immediately after, preventing the cut-off.",
+     "target": "agent/workflow.py",
+     "tool_name": "",
+     "proposed_change": "Modify `ctx.llm` call to enforce `max_tokens=1024` for reasoning. Add a system instruction to penalize verbosity and force a stop condition after reasoning is deemed complete.",
+     "prediction": {
+      "metric": "completion_tokens",
+      "direction": "decrease"
+     },
+     "control": "agent/workflow.py (current behavior: no token limit on reasoning, model can hallucinate or get stuck, leading to 4096 tokens)",
+     "potential_regression": "None, as limiting reasoning to 1024 tokens is unlikely to prevent valid mathematical derivation if the problem is hard, but will prevent the specific 'cut-off before answer' failure."
+    },
+    "domains": null,
+    "seconds": 26,
+    "usage": {
+     "calls": 7,
+     "prompt_tokens": 33487,
+     "completion_tokens": 2372
+    },
+    "duplicate_of": null,
+    "verdict": {
+     "domains": [
+      "math",
+      "code",
+      "rtl"
+     ],
+     "diff": -0.006296134421134414,
+     "p": 0.634922776027639,
+     "p_worse": 0.36507722397236103,
+     "sd": 0.015974670249867807,
+     "champion_runs": 4,
+     "child_runs": 1,
+     "regression": 0.1291866028708134,
+     "expected_regression": 0.11164887743835113,
+     "p_regression": 0.34695170574727136,
+     "pass_dev": false,
+     "pass_regression": true
+    },
+    "prediction": {
+     "metric": "completion_tokens",
+     "direction": "decrease",
+     "champion": 1998.5,
+     "child": 5845.459459459459,
+     "hit": false
+    }
+   },
+   {
+    "id": "r04",
+    "researcher": "qwen3.5-2b",
+    "seed": 4,
+    "assigned": [
+     "rtl",
+     "compile_error"
+    ],
+    "status": "invalid_patch",
+    "module": "tools/verilog_sim.py",
+    "code_hash": null,
+    "dir": "~/alter/evo/runs/research-ability/qwen3.5-2b/candidates/r04",
+    "kind": [
+     "rtl",
+     "compile_error",
+     "tool"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": true,
+     "patch_valid": false,
+     "tool_example_similarity": 0.17
+    },
+    "problems": [
+     "tool has more than 150 lines",
+     "no top-level function named solve"
+    ],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H1",
+     "hypothesis": ": The `verilog_sim` tool in `tools/verilog_sim.py` is missing or incomplete, causing the workflow to crash or fail to execute the simulation logic before returning a result. This explains the 37 `compile_error` failures where the tool likely exits early or crashes instead of returning the expected `compiled` status.",
+     "target": "tool",
+     "tool_name": "verilog_sim",
+     "proposed_change": ":Implement the tool to explicitly check for compilation errors and return a valid `compiled` string in the `result` dict. Ensure the tool catches specific errors (like invalid ports) and returns a result indicating the design failed to compile, rather than crashing or returning an empty dict.",
+     "prediction": {
+      "metric": "rtl_accuracy",
+      "direction": "increase"
+     },
+     "control": ": The current implementation of `verilog_sim` (if it exists) would likely not return a valid `compiled` status for non-compiling designs, causing the workflow to fail due to a mismatch between the `if",
+     "potential_regression": ": Fixing the workflow's error handling to gracefully handle the `compiled` status returned by the tool, preventing the task from failing prematurely. However, this secondary fix is less effective than addressing the root cause in the tool itself, which is causing 37 out of 185 RTL tasks to fail."
+    },
+    "domains": null,
+    "seconds": 122,
+    "usage": {
+     "calls": 12,
+     "prompt_tokens": 54730,
+     "completion_tokens": 11101
+    }
+   },
+   {
+    "id": "r08",
+    "researcher": "qwen3.5-2b",
+    "seed": 8,
+    "assigned": [
+     "math",
+     "no_final_answer"
+    ],
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "code_hash": "5eae2e34ebf09cd4",
+    "dir": "~/alter/evo/runs/research-ability/qwen3.5-2b/candidates/r08",
+    "kind": [
+     "math",
+     "no_final_answer",
+     "workflow"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": true,
+     "hypothesis_testable": true,
+     "patch_valid": true,
+     "leak_scan_clean": true
+    },
+    "problems": [],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H2",
+     "hypothesis": ": Modify the workflow's `ctx.llm` call in `agent/workflow.py` to add a few-shot example or a more verbose 'end of task' instruction in the system prompt context, such as 'Finish your response with `boxed{your answer}`.', ",
+     "target": "agent/workflow.py",
+     "tool_name": "",
+     "proposed_change": ": Change `agent/workflow.py` to include a custom system message in the `messages` list that mirrors the content of `agent/prompts/math.md` but adds the specific instruction to end with `boxed{}`. Alternatively, if the prompt module is truly empty, modify the `ctx.prompt` call to include a more descriptive text: 'Here is the math problem... Please reason step by step and conclude with `boxed{answer}`.', ",
+     "prediction": {
+      "metric": "no_final_answer_count",
+      "direction": "decrease"
+     },
+     "control": ": Current agent, where `ctx.prompt` returns empty string, resulting in no system message directing the model to box the answer.",
+     "potential_regression": ": None, as this is a direct fix for the missing instruction."
+    },
+    "domains": null,
+    "seconds": 29,
+    "usage": {
+     "calls": 7,
+     "prompt_tokens": 34597,
+     "completion_tokens": 2638
+    },
+    "duplicate_of": null,
+    "verdict": {
+     "domains": [
+      "math",
+      "code",
+      "rtl"
+     ],
+     "diff": 0.01517822455322454,
+     "p": 0.20549562498172136,
+     "p_worse": 0.7945043750182786,
+     "sd": 0.015974670249867807,
+     "champion_runs": 4,
+     "child_runs": 1,
+     "regression": 0.08133971291866028,
+     "expected_regression": 0.11164887743835113,
+     "p_regression": 0.7504861424590197,
+     "pass_dev": false,
+     "pass_regression": true
+    },
+    "prediction": {
+     "metric": "no_final_answer_count",
+     "direction": "decrease",
+     "champion": 26.75,
+     "child": 24.0,
+     "hit": true
+    }
+   },
+   {
+    "id": "r06",
+    "researcher": "qwen3.5-2b",
+    "seed": 6,
+    "assigned": [
+     "math",
+     "no_final_answer"
+    ],
+    "status": "invalid_patch",
+    "module": "agent/workflow.py",
+    "code_hash": null,
+    "dir": "~/alter/evo/runs/research-ability/qwen3.5-2b/candidates/r06",
+    "kind": [
+     "math",
+     "no_final_answer",
+     "workflow"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": true,
+     "patch_valid": false
+    },
+    "problems": [
+     "no ```python code block for agent/workflow.py"
+    ],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H1",
+     "hypothesis": ",Modify `agent/workflow.py`: Implement a fallback mechanism to inject a placeholder (e.g., a pre-defined LaTeX string) when the model response is empty or cut off due to token limits. This tests the hypothesis that the model's inability to complete the reasoning block directly impacts the final answer format.",
+     "target": "agent/workflow.py",
+     "tool_name": "",
+     "proposed_change": "Change `solve` to check if `ctx.llm` returns `None` or empty string; if so, construct a valid LaTeX string with a placeholder and override the final `answer` field.",
+     "prediction": {
+      "metric": "completion_tokens",
+      "direction": "decrease"
+     },
+     "control": ":The current agent will still return an empty string or `None` for math tasks, resulting in a `RuntimeError` or `AssertionError` (depending on the judge's tolerance) or a failed test.",
+     "potential_regression": ""
+    },
+    "domains": null,
+    "seconds": 94,
+    "usage": {
+     "calls": 9,
+     "prompt_tokens": 42551,
+     "completion_tokens": 8679
+    }
+   },
+   {
+    "id": "r03",
+    "researcher": "qwen3.5-2b",
+    "seed": 3,
+    "assigned": [
+     "rtl",
+     "compile_error"
+    ],
+    "status": "invalid_patch",
+    "module": "tools/verilog_sim.py",
+    "code_hash": null,
+    "dir": "~/alter/evo/runs/research-ability/qwen3.5-2b/candidates/r03",
+    "kind": [
+     "rtl",
+     "compile_error",
+     "tool"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": false,
+     "patch_valid": false
+    },
+    "problems": [
+     "tool has more than 150 lines",
+     "syntax error: unterminated f-string literal (detected at line 181) (<unknown>, line 181)",
+     "syntax error: expected an indented block after 'if' statement on line 115 (<unknown>, line 123)"
+    ],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H1",
+     "hypothesis": "The tool `verilog_sim` does not reliably return the `compiled` field (often null) or `log` field (empty), causing the workflow to interpret an incomplete response as a failure. This invalidates the design and leads to compile_error/mismatch errors.",
+     "target": "tool",
+     "tool_name": "verilog_sim",
+     "proposed_change": "Add explicit validation for the `compiled` and `log` fields in `run()` (returning `null` if missing or empty) and update the workflow to check for these fields before proceeding, or handle the error gracefully rather than propagating a schema mismatch.",
+     "prediction": {
+      "metric": "compile_error_count",
+      "direction": "decrease"
+     },
+     "control": "",
+     "potential_regression": "workflow handles partial tool output correctly without crashing."
+    },
+    "domains": null,
+    "seconds": 185,
+    "usage": {
+     "calls": 12,
+     "prompt_tokens": 74415,
+     "completion_tokens": 16897
+    }
+   },
+   {
+    "id": "r10",
+    "researcher": "qwen3.5-2b",
+    "seed": 10,
+    "assigned": [
+     "code",
+     "runtime_error"
+    ],
+    "status": "invalid_patch",
+    "module": "agent/workflow.py",
+    "code_hash": null,
+    "dir": "~/alter/evo/runs/research-ability/qwen3.5-2b/candidates/r10",
+    "kind": [
+     "code",
+     "runtime_error",
+     "workflow"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": false,
+     "patch_valid": false
+    },
+    "problems": [
+     "the workflow failed on math task aime_2025-1 with stand-in model answers: solve() must return {'answer': str} of at most 50000 characters"
+    ],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H1",
+     "hypothesis": "Increasing the `max_tokens` parameter from 1024 to 4096 (or higher, e.g., 8192) to enable the model to generate complete reasoning and answers before hitting the hard 12k token cutoff on hard math/code/RTL tasks. Prediction: The number of tasks with `cut_off_by_token_limit` will decrease significantly, and `accuracy_by_domain` will improve, particularly for RTL and math domains currently failing due to empty outputs.",
+     "target": "agent/workflow.py",
+     "tool_name": "",
+     "proposed_change": "Modify the `ctx.llm` call in `solve()` to use a higher `max_tokens` value (e.g., 8192) instead of the current 4096, ensuring the model has sufficient budget to complete the task before the 12k token limit is reached.",
+     "prediction": {
+      "metric": "completion_tokens",
+      "direction": "increase"
+     },
+     "control": "",
+     "potential_regression": ""
+    },
+    "domains": null,
+    "seconds": 79,
+    "usage": {
+     "calls": 9,
+     "prompt_tokens": 38437,
+     "completion_tokens": 7337
+    }
+   },
+   {
+    "id": "r13",
+    "researcher": "qwen3.5-2b",
+    "seed": 13,
+    "assigned": [
+     "rtl",
+     "mismatch"
+    ],
+    "status": "valid",
+    "module": "agent/prompts/rtl.md",
+    "code_hash": "853b10a0ba4fcc81",
+    "dir": "~/alter/evo/runs/research-ability/qwen3.5-2b/candidates/r13",
+    "kind": [
+     "rtl",
+     "mismatch",
+     "prompt"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": true,
+     "patch_valid": true,
+     "leak_scan_clean": true
+    },
+    "problems": [],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H1",
+     "hypothesis": ",target_module_name",
+     "target": "agent/prompts/rtl.md",
+     "tool_name": "",
+     "proposed_change": "Add explicit constraints in the prompt requiring all input/output ports to be declared with 'input'/'output' keywords, all sequential logic to be wrapped in 'always @(*)' blocks, and a strict instruction to ensure the module ends with 'endmodule' containing all necessary code blocks (module, endmodule, always, wire, assign, case, etc.) without truncation. This directly addresses the 'compile_error' and 'mismatch' failures (59 total) where simple Verilog structures were missing declarations.",
+     "prediction": {
+      "metric": "compile_error_count",
+      "direction": "decrease"
+     },
+     "control": ":current_agent",
+     "potential_regression": ":none"
+    },
+    "domains": [
+     "rtl"
+    ],
+    "seconds": 21,
+    "usage": {
+     "calls": 7,
+     "prompt_tokens": 34030,
+     "completion_tokens": 1892
+    },
+    "duplicate_of": null,
+    "verdict": {
+     "domains": [
+      "rtl"
+     ],
+     "diff": -0.06562500000000002,
+     "p": 0.9975953433722032,
+     "p_worse": 0.002404656627796726,
+     "sd": 0.016863097978324536,
+     "champion_runs": 4,
+     "child_runs": 1,
+     "regression": 0.3870967741935484,
+     "expected_regression": 0.11410256410256411,
+     "p_regression": 0.0008098801763053297,
+     "pass_dev": false,
+     "pass_regression": false
+    },
+    "prediction": {
+     "metric": "compile_error_count",
+     "direction": "decrease",
+     "champion": 35.0,
+     "child": 43.0,
+     "hit": false
+    }
+   },
+   {
+    "id": "r09",
+    "researcher": "qwen3.5-2b",
+    "seed": 9,
+    "assigned": [
+     "code",
+     "runtime_error"
+    ],
+    "status": "invalid_patch",
+    "module": "agent/workflow.py",
+    "code_hash": null,
+    "dir": "~/alter/evo/runs/research-ability/qwen3.5-2b/candidates/r09",
+    "kind": [
+     "code",
+     "runtime_error",
+     "workflow"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": true,
+     "patch_valid": false
+    },
+    "problems": [
+     "workflow has more than 200 lines",
+     "syntax error: f-string: valid expression required before '}' (<unknown>, line 29)"
+    ],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H1",
+     "hypothesis": ",The LLM fails to detect termination conditions (e.g., infinite loops, undefined behavior, or infinite recursion), leading to `runtime_error` when the completion token limit is reached. The model likely enters a reasoning loop or fails to converge on a solution within the 8192 token budget, resulting in a cut-off response with no final answer.",
+     "target": "agent/workflow.py",
+     "tool_name": "",
+     "proposed_change": "Modify `solve()` to be more robust against infinite loops by adding a heuristic check for recursive calls or unbounded structures before invoking LLM. Alternatively, add a `ctx.tool(termination_check, args=...)` in `solve()` to validate code for obvious crashes (e.g., `RuntimeError`, `IndentationError`, `IndentationError`, `IndexError`, `RecursionError`), and if detected, raise a `ToolError` or fallback to a simpler refutation strategy.",
+     "prediction": {
+      "metric": "code_accuracy",
+      "direction": "increase"
+     },
+     "control": "current_agent",
+     "potential_regression": ":If we simply add a tool call to check for errors, tasks that legitimately do not crash but are just slow or have complex logic might still fail if the tool is too strict or the tool call itself consumes tokens/budget prematurely (which we don't control here as tool calls are separate). However, the"
+    },
+    "domains": null,
+    "seconds": 108,
+    "usage": {
+     "calls": 9,
+     "prompt_tokens": 40974,
+     "completion_tokens": 10098
+    }
+   },
+   {
+    "id": "r12",
+    "researcher": "qwen3.5-2b",
+    "seed": 12,
+    "assigned": [
+     "code",
+     "runtime_error"
+    ],
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "code_hash": "cd7cd9537b51885f",
+    "dir": "~/alter/evo/runs/research-ability/qwen3.5-2b/candidates/r12",
+    "kind": [
+     "code",
+     "runtime_error",
+     "workflow"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": true,
+     "patch_valid": true,
+     "leak_scan_clean": true
+    },
+    "problems": [],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H2",
+     "hypothesis": ":The workflow lacks robust error recovery for truncated outputs. Implementing a retry loop to re-call the model if the first response is incomplete or malformed.",
+     "target": "agent/workflow.py",
+     "tool_name": "",
+     "proposed_change": "Modify `solve(task, ctx)` to loop: `while True: response = ctx.llm(...) if valid_output(response): break else: continue`. The validation checks for `boxed{}` in math or valid code blocks.",
+     "prediction": {
+      "metric": "runtime_error_count",
+      "direction": "decrease"
+     },
+     "control": ":The current agent will fail 25% of code tasks on the first try due to truncation, with `runtime_error` count increasing by ~25.",
+     "potential_regression": ":The retry logic might increase total completion tokens per task (e.g., 4096 * 3 attempts), but it solves the runtime error issue."
+    },
+    "domains": null,
+    "seconds": 66,
+    "usage": {
+     "calls": 9,
+     "prompt_tokens": 38562,
+     "completion_tokens": 6067
+    },
+    "duplicate_of": null,
+    "verdict": {
+     "domains": [
+      "math",
+      "code",
+      "rtl"
+     ],
+     "diff": 0.005747377622377536,
+     "p": 0.3763874465783364,
+     "p_worse": 0.6236125534216637,
+     "sd": 0.015974670249867807,
+     "champion_runs": 4,
+     "child_runs": 1,
+     "regression": 0.09569377990430622,
+     "expected_regression": 0.11164887743835113,
+     "p_regression": 0.6399177454256681,
+     "pass_dev": false,
+     "pass_regression": true
+    },
+    "prediction": {
+     "metric": "runtime_error_count",
+     "direction": "decrease",
+     "champion": 24.5,
+     "child": 10.0,
+     "hit": true
+    }
+   },
+   {
+    "id": "r14",
+    "researcher": "qwen3.5-2b",
+    "seed": 14,
+    "assigned": [
+     "rtl",
+     "mismatch"
+    ],
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "code_hash": "8f773b4f5925e133",
+    "dir": "~/alter/evo/runs/research-ability/qwen3.5-2b/candidates/r14",
+    "kind": [
+     "rtl",
+     "mismatch",
+     "workflow"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": true,
+     "patch_valid": true,
+     "leak_scan_clean": true
+    },
+    "problems": [],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H2",
+     "hypothesis": ": The model is generating too many reasoning tokens before the final answer, consuming the budget prematurely.",
+     "target": "agent/workflow.py",
+     "tool_name": "",
+     "proposed_change": ": Enable `thinking=True` in the LLM call. This forces the model to output reasoning first (which counts as tokens) and then only the final answer. If the model was cutting off during reasoning (as noted in the feedback), this might resolve the budget issue by ensuring the model only tokens used are for the final answer, provided it can finish reasoning within the remaining budget without cutting off prematurely.",
+     "prediction": {
+      "metric": "completion_tokens",
+      "direction": "decrease"
+     },
+     "control": ": The current agent with `thinking=False` generates responses that include the full model output with reasoning, which may still exceed the budget if the reasoning is verbose or if the model is slow.",
+     "potential_regression": ": Enabling `thinking=True` might cause the model to fail to generate a valid answer if the reasoning step is too long, potentially leading to `cut_off_by_token_limit: true` even with `thinking=False`."
+    },
+    "domains": null,
+    "seconds": 29,
+    "usage": {
+     "calls": 7,
+     "prompt_tokens": 33837,
+     "completion_tokens": 2604
+    },
+    "duplicate_of": null,
+    "verdict": {
+     "domains": [
+      "math",
+      "code",
+      "rtl"
+     ],
+     "diff": -0.2232444638694639,
+     "p": 0.999998176038614,
+     "p_worse": 1.8239613860684963e-06,
+     "sd": 0.015974670249867807,
+     "champion_runs": 4,
+     "child_runs": 1,
+     "regression": 0.7751196172248804,
+     "expected_regression": 0.11164887743835113,
+     "p_regression": 1.0571716989492855e-06,
+     "pass_dev": false,
+     "pass_regression": false
+    },
+    "prediction": {
+     "metric": "completion_tokens",
+     "direction": "decrease",
+     "champion": 1998.5,
+     "child": 3909.2432432432433,
+     "hit": false
+    }
+   },
+   {
+    "id": "r11",
+    "researcher": "qwen3.5-2b",
+    "seed": 11,
+    "assigned": [
+     "code",
+     "runtime_error"
+    ],
+    "status": "invalid_patch",
+    "module": "agent/workflow.py",
+    "code_hash": null,
+    "dir": "~/alter/evo/runs/research-ability/qwen3.5-2b/candidates/r11",
+    "kind": [
+     "code",
+     "runtime_error",
+     "workflow"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": true,
+     "patch_valid": false
+    },
+    "problems": [
+     "no ```python code block for agent/workflow.py"
+    ],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H1",
+     "hypothesis": ":The agent/workflow.py module lacks a strict pre-generation syntax validator or a mandatory code template that enforces the generation of valid Python code. This is supported by the high rate of 'runtime_error' and 'load_error' (syntax errors) which indicate the model is hallucinating invalid code rather than using an existing tool.",
+     "target": "agent/workflow.py",
+     "tool_name": "none",
+     "proposed_change": ":Add a pre-computed, robust Python code template to the system message when generating the user prompt. This template should explicitly forbid the use of restricted functions (os, sys, subprocess, etc.), use only standard library features, and include a final instruction to 'verify syntax before execution' using a built-in Python interpreter or a simple syntax checker that the agent does not use directly, but which the model can call if needed (or better yet, have the model generate safe code that passes a local validator).",
+     "prediction": {
+      "metric": "runtime_error_count",
+      "direction": "decrease"
+     },
+     "control": ":The current agent generates Python code without a strict template or validator, resulting in hallucinated syntax errors. Expected: High runtime_error count. Actual: High runtime_error count (as seen,",
+     "potential_regression": ":None, as the control is the current baseline of hallucinated code which is already failing."
+    },
+    "domains": null,
+    "seconds": 130,
+    "usage": {
+     "calls": 9,
+     "prompt_tokens": 42588,
+     "completion_tokens": 12294
+    }
+   },
+   {
+    "id": "r15",
+    "researcher": "qwen3.5-2b",
+    "seed": 15,
+    "assigned": [
+     "rtl",
+     "mismatch"
+    ],
+    "status": "invalid_patch",
+    "module": "tools/verilog_sim.py",
+    "code_hash": null,
+    "dir": "~/alter/evo/runs/research-ability/qwen3.5-2b/candidates/r15",
+    "kind": [
+     "rtl",
+     "mismatch",
+     "tool"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": false,
+     "patch_valid": false,
+     "tool_example_similarity": 0.312
+    },
+    "problems": [
+     "the tool defines no top-level SCHEMA",
+     "syntax error: expected an indented block after 'if' statement on line 62 (<unknown>, line 67)"
+    ],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H1",
+     "hypothesis": "Add a functional RTL simulator (e.g., Verilator) to the tool layer to catch compilation and logic errors before the model generates the final answer.",
+     "target": "tool",
+     "tool_name": "verilog_sim",
+     "proposed_change": "Modify agent/workflow.py to invoke `ctx.tool('verilog_sim', design, testbench, top=None)` before generating the final answer. If the simulator fails or exits with a non-zero status, the workflow should retry with a refined prompt or switch to a different domain/tool rather than submitting an incorrect answer to the judge.",
+     "prediction": {
+      "metric": "rtl_accuracy",
+      "direction": "decrease"
+     },
+     "control": "",
+     "potential_regression": ""
+    },
+    "domains": null,
+    "seconds": 79,
+    "usage": {
+     "calls": 12,
+     "prompt_tokens": 53436,
+     "completion_tokens": 7645
+    }
+   },
+   {
+    "id": "r16",
+    "researcher": "qwen3.5-2b",
+    "seed": 16,
+    "assigned": [
+     "rtl",
+     "mismatch"
+    ],
+    "status": "invalid_patch",
+    "module": "agent/workflow.py",
+    "code_hash": null,
+    "dir": "~/alter/evo/runs/research-ability/qwen3.5-2b/candidates/r16",
+    "kind": [
+     "rtl",
+     "mismatch",
+     "workflow"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": false,
+     "patch_valid": false
+    },
+    "problems": [
+     "the workflow failed on code task lcb-3674 with stand-in model answers: TypeError: Context.tool() got an unexpected keyword argument 'code'"
+    ],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H2",
+     "hypothesis": "The `agent/workflow.py` does not call the `verilog_sim` tool to verify generated code, leading to unverified buggy RTL. Prediction: Adding the tool call to `ctx.tool('verilog_sim', ...)` will reduce mismatch errors. Control: No change.",
+     "target": "agent/workflow.py",
+     "tool_name": "verilog_sim",
+     "proposed_change": "Modify `solve` function to invoke `ctx.tool('verilog_sim', design=task['module'], testbench=task['testbench'], top=task['top'])` before generating the RTL code.",
+     "prediction": {
+      "metric": "mismatch_count",
+      "direction": "decrease"
+     },
+     "control": "",
+     "potential_regression": ""
+    },
+    "domains": null,
+    "seconds": 68,
+    "usage": {
+     "calls": 9,
+     "prompt_tokens": 37519,
+     "completion_tokens": 6756
+    }
+   }
+  ],
+  "qwen3.5-4b": [
+   {
+    "id": "r01",
+    "researcher": "qwen3.5-4b",
+    "seed": 1,
+    "assigned": [
+     "rtl",
+     "compile_error"
+    ],
+    "status": "invalid_patch",
+    "module": "agent/workflow.py",
+    "code_hash": null,
+    "dir": "~/alter/evo/runs/research-ability/qwen3.5-4b/candidates/r01",
+    "kind": [
+     "rtl",
+     "compile_error",
+     "workflow"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": true,
+     "hypothesis_testable": true,
+     "patch_valid": false
+    },
+    "problems": [
+     "the workflow failed on rtl task JC_counter with stand-in model answers: solve() must return {'answer': str} of at most 50000 characters"
+    ],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H1",
+     "hypothesis": "Add an iterative loop in workflow.py that calls verilog_sim after code generation; if compile_error, pass the error log to the next LLM call for syntax repair.",
+     "target": "agent/workflow.py",
+     "tool_name": "verilog_sim",
+     "proposed_change": "Replace single-shot solve with a while loop checking ctx.tool('verilog_sim', ...); break on success or token limit; append error log to messages.",
+     "prediction": {
+      "metric": "rtl_accuracy",
+      "direction": "increase"
+     },
+     "control": "Current single-shot workflow",
+     "potential_regression": "RTL tasks hitting token limit may fail due to excessive loop iterations without model improvement, but syntax errors should vanish."
+    },
+    "domains": null,
+    "seconds": 126,
+    "usage": {
+     "calls": 9,
+     "prompt_tokens": 38798,
+     "completion_tokens": 4596
+    }
+   },
+   {
+    "id": "r02",
+    "researcher": "qwen3.5-4b",
+    "seed": 2,
+    "assigned": [
+     "rtl",
+     "compile_error"
+    ],
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "code_hash": "6ca32e615cbd93e3",
+    "dir": "~/alter/evo/runs/research-ability/qwen3.5-4b/candidates/r02",
+    "kind": [
+     "rtl",
+     "compile_error",
+     "workflow"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": true,
+     "hypothesis_testable": true,
+     "patch_valid": true,
+     "leak_scan_clean": true
+    },
+    "problems": [],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H1",
+     "hypothesis": "Add an iterative feedback loop in agent/workflow.py where the agent calls ctx.tool('verilog_sim') on its generated code; if the result indicates a 'compile_error', the agent appends the specific error log to its context and generates a new revision with instructions to fix the error, repeating until compilation succeeds.",
+     "target": "agent/workflow.py",
+     "tool_name": "verilog_sim",
+     "proposed_change": "Modify solve() to: 1. Generate initial code. 2. Call verilog_sim. 3. If 'compile_error' is present in the log, enhance system prompt context with the error message and re-generate code. 4. Repeat up to 3 times.",
+     "prediction": {
+      "metric": "rtl_accuracy",
+      "direction": "increase"
+     },
+     "control": ":[{",
+     "potential_regression": "runtime_time_increase due to retries"
+    },
+    "domains": null,
+    "seconds": 128,
+    "usage": {
+     "calls": 8,
+     "prompt_tokens": 35839,
+     "completion_tokens": 4802
+    },
+    "duplicate_of": null,
+    "verdict": {
+     "domains": [
+      "math",
+      "code",
+      "rtl"
+     ],
+     "diff": -0.24584547397047402,
+     "p": 0.999998630950803,
+     "p_worse": 1.3690491969765639e-06,
+     "sd": 0.015974670249867807,
+     "champion_runs": 4,
+     "child_runs": 1,
+     "regression": 0.8660287081339713,
+     "expected_regression": 0.11164887743835113,
+     "p_regression": 8.042380135293355e-07,
+     "pass_dev": false,
+     "pass_regression": false
+    },
+    "prediction": {
+     "metric": "rtl_accuracy",
+     "direction": "increase",
+     "champion": 0.290625,
+     "child": 0.1,
+     "hit": false
+    }
+   },
+   {
+    "id": "r06",
+    "researcher": "qwen3.5-4b",
+    "seed": 6,
+    "assigned": [
+     "math",
+     "no_final_answer"
+    ],
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "code_hash": "b65372dc58a4bbd1",
+    "dir": "~/alter/evo/runs/research-ability/qwen3.5-4b/candidates/r06",
+    "kind": [
+     "math",
+     "no_final_answer",
+     "workflow"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": true,
+     "hypothesis_testable": true,
+     "patch_valid": true,
+     "leak_scan_clean": true
+    },
+    "problems": [],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H1",
+     "hypothesis": "Enabling thinking=True in agent/workflow.py allows the model to complete its reasoning chain within the extended budget before the final answer is truncated, directly addressing the token cutoff.",
+     "target": "agent/workflow.py",
+     "tool_name": "",
+     "proposed_change": "Change ctx.llm(messages, max_tokens=1024, thinking=False, temperature=0.0) to ctx.llm(messages, max_tokens=1024, thinking=True, temperature=0.0).",
+     "prediction": {
+      "metric": "math_accuracy",
+      "direction": "increase"
+     },
+     "control": ": ",
+     "potential_regression": ": "
+    },
+    "domains": null,
+    "seconds": 79,
+    "usage": {
+     "calls": 7,
+     "prompt_tokens": 33241,
+     "completion_tokens": 2353
+    },
+    "duplicate_of": null,
+    "verdict": {
+     "domains": [
+      "math",
+      "code",
+      "rtl"
+     ],
+     "diff": -0.26667880730380733,
+     "p": 0.9999988917586309,
+     "p_worse": 1.1082413690749678e-06,
+     "sd": 0.015974670249867807,
+     "champion_runs": 4,
+     "child_runs": 1,
+     "regression": 0.9425837320574163,
+     "expected_regression": 0.11164887743835113,
+     "p_regression": 6.783277926248196e-07,
+     "pass_dev": false,
+     "pass_regression": false
+    },
+    "prediction": {
+     "metric": "math_accuracy",
+     "direction": "increase",
+     "champion": 0.26282051282051283,
+     "child": 0.0,
+     "hit": false
+    }
+   },
+   {
+    "id": "r03",
+    "researcher": "qwen3.5-4b",
+    "seed": 3,
+    "assigned": [
+     "rtl",
+     "compile_error"
+    ],
+    "status": "invalid_patch",
+    "module": "tools/verilog_syntax.py",
+    "code_hash": null,
+    "dir": "~/alter/evo/runs/research-ability/qwen3.5-4b/candidates/r03",
+    "kind": [
+     "rtl",
+     "compile_error",
+     "tool"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": true,
+     "patch_valid": false,
+     "tool_example_similarity": 0.259
+    },
+    "problems": [
+     "test() of tools/verilog_syntax.py failed: TypeError: run() missing 1 required positional argument: 'public'"
+    ],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H1",
+     "hypothesis": "Implement a Verilog syntax reference tool that returns valid port declaration patterns (e.g., `output reg name` vs `wire name`) to fix interface errors.",
+     "target": "tool",
+     "tool_name": "verilog_syntax",
+     "proposed_change": "Create `tools/verilog_syntax.py` defining a `run(args)` that returns a dictionary with `valid_port_declarations` and `common_interface_errors` lists. Update `agent/workflow.py` to call `ctx.tool(",
+     "prediction": {
+      "metric": "rtl_accuracy",
+      "direction": "increase"
+     },
+     "control": ": The current agent (no tool) achieves 0.2625 RTL accuracy with 37 compile errors. With the tool, the model can explicitly retrieve valid syntax patterns, reducing `compile_error` failures from 37 to ",
+     "potential_regression": "mismatch_count may increase slightly if the model blindly copies a correct interface but misses specific logic constraints, but overall accuracy should improve significantly."
+    },
+    "domains": null,
+    "seconds": 241,
+    "usage": {
+     "calls": 12,
+     "prompt_tokens": 54628,
+     "completion_tokens": 8141
+    }
+   },
+   {
+    "id": "r05",
+    "researcher": "qwen3.5-4b",
+    "seed": 5,
+    "assigned": [
+     "math",
+     "no_final_answer"
+    ],
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "code_hash": "809f0ae5df6e0fa1",
+    "dir": "~/alter/evo/runs/research-ability/qwen3.5-4b/candidates/r05",
+    "kind": [
+     "math",
+     "no_final_answer",
+     "workflow"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": true,
+     "patch_valid": true,
+     "leak_scan_clean": true
+    },
+    "problems": [],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H1",
+     "hypothesis": "Modify agent/workflow.py to issue two sequential model calls: first requesting only the reasoning steps (with a lower token budget or truncated context), and second requesting the final boxed answer based on the generated reasoning.",
+     "target": "agent/workflow.py",
+     "tool_name": "",
+     "proposed_change": "split_reasoning_then_answer",
+     "prediction": {
+      "metric": "no_final_answer_count",
+      "direction": "decrease"
+     },
+     "control": "current_single_call_workflow",
+     "potential_regression": "runtime_error if total tokens across both calls exceeds the shared budget per task (approx 8192 tokens)."
+    },
+    "domains": null,
+    "seconds": 127,
+    "usage": {
+     "calls": 7,
+     "prompt_tokens": 32418,
+     "completion_tokens": 3809
+    },
+    "duplicate_of": null,
+    "verdict": {
+     "domains": [
+      "math",
+      "code",
+      "rtl"
+     ],
+     "diff": 0.0013670357420356716,
+     "p": 0.47008332787989,
+     "p_worse": 0.52991667212011,
+     "sd": 0.015974670249867807,
+     "champion_runs": 4,
+     "child_runs": 1,
+     "regression": 0.09090909090909091,
+     "expected_regression": 0.11164887743835113,
+     "p_regression": 0.678979645977261,
+     "pass_dev": false,
+     "pass_regression": true
+    },
+    "prediction": {
+     "metric": "no_final_answer_count",
+     "direction": "decrease",
+     "champion": 26.75,
+     "child": 27.0,
+     "hit": false
+    }
+   },
+   {
+    "id": "r08",
+    "researcher": "qwen3.5-4b",
+    "seed": 8,
+    "assigned": [
+     "math",
+     "no_final_answer"
+    ],
+    "status": "invalid_patch",
+    "module": "agent/workflow.py",
+    "code_hash": null,
+    "dir": "~/alter/evo/runs/research-ability/qwen3.5-4b/candidates/r08",
+    "kind": [
+     "math",
+     "no_final_answer",
+     "workflow"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": true,
+     "hypothesis_testable": true,
+     "patch_valid": false
+    },
+    "problems": [
+     "ctx.llm(max_tokens=8192) changes nothing: one call returns at most 4096 completion tokens; the 8192 of a task are used through more calls"
+    ],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H1",
+     "hypothesis": "Increase the max_tokens parameter in the single LLM call within agent/workflow.py from 4096 to 8192.",
+     "target": "agent/workflow.py",
+     "tool_name": "",
+     "proposed_change": "ctx.llm(messages, max_tokens=8196, thinking=False, temperature=0.0)",
+     "prediction": {
+      "metric": "no_final_answer_count",
+      "direction": "decrease"
+     },
+     "control": "Current agent with max_tokens=4096",
+     "potential_regression": "None, as the model was already cut off. If reasoning takes >8192, we risk the initial model cutoff failure, but the math domain mean usage is 3485, suggesting 8192 is sufficient for completion."
+    },
+    "domains": null,
+    "seconds": 102,
+    "usage": {
+     "calls": 9,
+     "prompt_tokens": 37728,
+     "completion_tokens": 3301
+    }
+   },
+   {
+    "id": "r07",
+    "researcher": "qwen3.5-4b",
+    "seed": 7,
+    "assigned": [
+     "math",
+     "no_final_answer"
+    ],
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "code_hash": "bd028374c916bfa7",
+    "dir": "~/alter/evo/runs/research-ability/qwen3.5-4b/candidates/r07",
+    "kind": [
+     "math",
+     "no_final_answer",
+     "workflow"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": true,
+     "hypothesis_testable": true,
+     "patch_valid": true,
+     "leak_scan_clean": true
+    },
+    "problems": [],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H1",
+     "hypothesis": "Modify agent/workflow.py to split math tasks into two distinct LLM calls: a 'Plan' phase that generates a step-by-step reasoning outline, and a 'Solve' phase that uses the plan to compute the final answer. This splits the token budget (8192 total) between two calls, ensuring the long reasoning chain in the 'Plan' phase completes before hitting the 4096 token cutoff, and the 'Solve' phase (which is shorter) completes within the remaining budget.",
+     "target": "agent/workflow.py",
+     "tool_name": "",
+     "proposed_change": "In solve(), detect domain=='math'. Send initial prompt with 'Create a detailed solving plan...' to get 'plan_text'. Append plan_text to messages. Send second prompt with 'Based on the plan, compute and output the final answer in ...' to get 'final_answer'. Return plan + final_answer.",
+     "prediction": {
+      "metric": "math_accuracy",
+      "direction": "increase"
+     },
+     "control": "Run the current agent (single-step math solving) on the same 185-task dataset to establish baseline accuracy (approx 0.2821).",
+     "potential_regression": "The 'Plan' step might be too verbose or the 'Solve' step might hallucinate steps not in the plan, but splitting the cognitive load usually helps completion rate. If the model fails to generate a coherent plan, accuracy drops."
+    },
+    "domains": null,
+    "seconds": 149,
+    "usage": {
+     "calls": 8,
+     "prompt_tokens": 36976,
+     "completion_tokens": 4714
+    },
+    "duplicate_of": null,
+    "verdict": {
+     "domains": [
+      "math",
+      "code",
+      "rtl"
+     ],
+     "diff": -0.10783071095571098,
+     "p": 0.9999334536448541,
+     "p_worse": 6.654635514586628e-05,
+     "sd": 0.015974670249867807,
+     "champion_runs": 4,
+     "child_runs": 1,
+     "regression": 0.4449760765550239,
+     "expected_regression": 0.11164887743835113,
+     "p_regression": 1.58154906296642e-05,
+     "pass_dev": false,
+     "pass_regression": false
+    },
+    "prediction": {
+     "metric": "math_accuracy",
+     "direction": "increase",
+     "champion": 0.26282051282051283,
+     "child": 0.07692307692307693,
+     "hit": false
+    }
+   },
+   {
+    "id": "r04",
+    "researcher": "qwen3.5-4b",
+    "seed": 4,
+    "assigned": [
+     "rtl",
+     "compile_error"
+    ],
+    "status": "invalid_patch",
+    "module": "tools/verilog_sim.py",
+    "code_hash": null,
+    "dir": "~/alter/evo/runs/research-ability/qwen3.5-4b/candidates/r04",
+    "kind": [
+     "rtl",
+     "compile_error",
+     "tool"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": true,
+     "patch_valid": false,
+     "tool_example_similarity": 0.24
+    },
+    "problems": [
+     "tool has more than 150 lines",
+     "agent/workflow.py reads is_compliant from ctx.tool('verilog_sim'), whose result has only compiled, log, stdout, timed_out"
+    ],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H1",
+     "hypothesis": "Augment the `verilog_sim` tool to perform a strict pre-simulation syntax check against the provided interface spec, returning a boolean `is_compliant` and a list of specific declaration errors before running the simulation. The workflow will be changed to call this tool first, and only proceed to simulation if `is_compliant` is true.",
+     "target": "tool",
+     "tool_name": "verilog_sim",
+     "proposed_change": "Modify tools/verilog_sim.py to parse the generated module header and port usage, compare them against the `spec` interface, and return `{",
+     "prediction": {
+      "metric": "rtl_accuracy",
+      "direction": "increase"
+     },
+     "control": "current_agent",
+     "potential_regression": "false"
+    },
+    "domains": null,
+    "seconds": 368,
+    "usage": {
+     "calls": 12,
+     "prompt_tokens": 62533,
+     "completion_tokens": 12340
+    }
+   },
+   {
+    "id": "r09",
+    "researcher": "qwen3.5-4b",
+    "seed": 9,
+    "assigned": [
+     "code",
+     "runtime_error"
+    ],
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "code_hash": "70fd60921f868022",
+    "dir": "~/alter/evo/runs/research-ability/qwen3.5-4b/candidates/r09",
+    "kind": [
+     "code",
+     "runtime_error",
+     "workflow"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": true,
+     "hypothesis_testable": true,
+     "patch_valid": true,
+     "leak_scan_clean": true
+    },
+    "problems": [],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H1",
+     "hypothesis": "Implement an iterative code generation loop in workflow.py where the agent first plans the solution steps, then generates only the necessary code for the current step, compiles/runs it via python_exec, and only proceeds if the output indicates success.",
+     "target": "agent/workflow.py",
+     "tool_name": "python_exec",
+     "proposed_change": "Modify solve() to use a loop: 1. Ask model for plan. 2. Ask model for one small code snippet. 3. Call ctx.tool('python_exec', snippet). 4. If returncode != 0 or expected_output not matched, retry or adjust. 5. Repeat until solution complete.",
+     "prediction": {
+      "metric": "code_accuracy",
+      "direction": "increase"
+     },
+     "control": "Current single-shot workflow",
+     "potential_regression": "Higher token usage per step may cause timeouts on very long problems; requires careful token budget management."
+    },
+    "domains": null,
+    "seconds": 208,
+    "usage": {
+     "calls": 9,
+     "prompt_tokens": 39970,
+     "completion_tokens": 6571
+    },
+    "duplicate_of": null,
+    "verdict": {
+     "domains": [
+      "math",
+      "code",
+      "rtl"
+     ],
+     "diff": -0.09787538850038854,
+     "p": 0.9998744880510301,
+     "p_worse": 0.00012551194896988482,
+     "sd": 0.015974670249867807,
+     "champion_runs": 4,
+     "child_runs": 1,
+     "regression": 0.4258373205741627,
+     "expected_regression": 0.11164887743835113,
+     "p_regression": 2.219974116784542e-05,
+     "pass_dev": false,
+     "pass_regression": false
+    },
+    "prediction": {
+     "metric": "code_accuracy",
+     "direction": "increase",
+     "champion": 0.2840909090909091,
+     "child": 0.0,
+     "hit": false
+    }
+   },
+   {
+    "id": "r11",
+    "researcher": "qwen3.5-4b",
+    "seed": 11,
+    "assigned": [
+     "code",
+     "runtime_error"
+    ],
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "code_hash": "3224be61346cef46",
+    "dir": "~/alter/evo/runs/research-ability/qwen3.5-4b/candidates/r11",
+    "kind": [
+     "code",
+     "runtime_error",
+     "workflow"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": true,
+     "hypothesis_testable": true,
+     "patch_valid": true,
+     "leak_scan_clean": true
+    },
+    "problems": [],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H1",
+     "hypothesis": "Split the code generation task into two steps in workflow.py: first, use a reasoning-only pass to analyze the problem and outline the algorithm; second, use the reasoning output to generate the final code block. This ensures the model can complete the logical planning phase before attempting syntax-heavy code generation, reducing the likelihood of truncation mid-statement in critical code blocks.",
+     "target": "agent/workflow.py",
+     "tool_name": "",
+     "proposed_change": "Modify solve() to: 1. Call ctx.llm with thinking=True to get a 'plan' string. 2. Pass the original prompt + plan as context to a second ctx.llm call specifically for code generation, instructing it to write a complete, executable script based on the plan. If the second call exceeds the remaining budget, stop and return the plan as a fallback or attempt to prune non-essential comments.",
+     "prediction": {
+      "metric": "code_accuracy",
+      "direction": "increase"
+     },
+     "control": "Current single-call workflow with max_tokens=4096 and thinking=False",
+     "potential_regression": "Slight increase in 'wrong_answer' count if the two-step reasoning deviates from the optimal direct solution, or increased token usage causing 'time_limit' failures if the model is too verbose in the plan step."
+    },
+    "domains": null,
+    "seconds": 108,
+    "usage": {
+     "calls": 7,
+     "prompt_tokens": 33186,
+     "completion_tokens": 3257
+    },
+    "duplicate_of": null,
+    "verdict": {
+     "domains": [
+      "math",
+      "code",
+      "rtl"
+     ],
+     "diff": -0.024730477855477884,
+     "p": 0.9049995503743582,
+     "p_worse": 0.09500044962564178,
+     "sd": 0.015974670249867807,
+     "champion_runs": 4,
+     "child_runs": 1,
+     "regression": 0.15311004784688995,
+     "expected_regression": 0.11164887743835113,
+     "p_regression": 0.17944510952330284,
+     "pass_dev": false,
+     "pass_regression": true
+    },
+    "prediction": {
+     "metric": "code_accuracy",
+     "direction": "increase",
+     "champion": 0.2840909090909091,
+     "child": 0.25757575757575757,
+     "hit": false
+    }
+   },
+   {
+    "id": "r10",
+    "researcher": "qwen3.5-4b",
+    "seed": 10,
+    "assigned": [
+     "code",
+     "runtime_error"
+    ],
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "code_hash": "e3eaaaaeea91eee7",
+    "dir": "~/alter/evo/runs/research-ability/qwen3.5-4b/candidates/r10",
+    "kind": [
+     "code",
+     "runtime_error",
+     "workflow"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": true,
+     "hypothesis_testable": true,
+     "patch_valid": true,
+     "leak_scan_clean": true
+    },
+    "problems": [],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H1",
+     "hypothesis": "Implement an iterative tool loop in agent/workflow.py that generates code, runs python_exec, and retries up to 3 times with error context on failure.",
+     "target": "agent/workflow.py",
+     "tool_name": "python_exec",
+     "proposed_change": "Modify solve() to call ctx.tool('python_exec', ...), check for runtime_error or hidden test failures, and if failed, regenerate code with the failure log appended to the prompt.",
+     "prediction": {
+      "metric": "runtime_error_count",
+      "direction": "decrease"
+     },
+     "control": "Original single-call workflow",
+     "potential_regression": "Higher total completion tokens due to multiple calls; potential for infinite loops if model fails to recognize errors (mitigated by token budget limit)."
+    },
+    "domains": null,
+    "seconds": 185,
+    "usage": {
+     "calls": 9,
+     "prompt_tokens": 39572,
+     "completion_tokens": 6127
+    },
+    "duplicate_of": null,
+    "verdict": {
+     "domains": [
+      "math",
+      "code",
+      "rtl"
+     ],
+     "diff": -0.012686965811965822,
+     "p": 0.7549102509710022,
+     "p_worse": 0.24508974902899788,
+     "sd": 0.015974670249867807,
+     "champion_runs": 4,
+     "child_runs": 1,
+     "regression": 0.14354066985645933,
+     "expected_regression": 0.11164887743835113,
+     "p_regression": 0.23865858957657446,
+     "pass_dev": false,
+     "pass_regression": true
+    },
+    "prediction": {
+     "metric": "runtime_error_count",
+     "direction": "decrease",
+     "champion": 24.5,
+     "child": 3.0,
+     "hit": true
+    }
+   },
+   {
+    "id": "r12",
+    "researcher": "qwen3.5-4b",
+    "seed": 12,
+    "assigned": [
+     "code",
+     "runtime_error"
+    ],
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "code_hash": "8deb629c1990affb",
+    "dir": "~/alter/evo/runs/research-ability/qwen3.5-4b/candidates/r12",
+    "kind": [
+     "code",
+     "runtime_error",
+     "workflow"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": true,
+     "hypothesis_testable": true,
+     "patch_valid": true,
+     "leak_scan_clean": true
+    },
+    "problems": [],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H1",
+     "hypothesis": "Enable an iterative code verification loop in the workflow. The agent generates code, executes it using ctx.tool('python_exec', ...), and only accepts the answer if returncode is 0. If non-zero, it prompts the model to fix the logic up to 3 times before submitting.",
+     "target": "agent/workflow.py",
+     "tool_name": "python_exec",
+     "proposed_change": "Modify solve() to: 1. Generate initial code. 2. Call ctx.tool('python_exec', code=generated_code). 3. If returncode != 0, update the user message with the stderr and regenerate code; repeat max 3 times. 4. If loop finishes, submit the last generated code.",
+     "prediction": {
+      "metric": "code_accuracy",
+      "direction": "increase"
+     },
+     "control": "Run the experiment with the current one-shot workflow on the same 185 tasks.",
+     "potential_regression": "Increased cost due to multiple tool calls; potential for infinite loops if model cannot fix errors (mitigated by max 3 attempts)."
+    },
+    "domains": null,
+    "seconds": 196,
+    "usage": {
+     "calls": 8,
+     "prompt_tokens": 33623,
+     "completion_tokens": 6761
+    },
+    "duplicate_of": null,
+    "verdict": {
+     "domains": [
+      "math",
+      "code",
+      "rtl"
+     ],
+     "diff": -0.03373397435897438,
+     "p": 0.9588159991344009,
+     "p_worse": 0.041184000865599125,
+     "sd": 0.015974670249867807,
+     "champion_runs": 4,
+     "child_runs": 1,
+     "regression": 0.23444976076555024,
+     "expected_regression": 0.11164887743835113,
+     "p_regression": 0.00777447695079455,
+     "pass_dev": false,
+     "pass_regression": false
+    },
+    "prediction": {
+     "metric": "code_accuracy",
+     "direction": "increase",
+     "champion": 0.2840909090909091,
+     "child": 0.24242424242424243,
+     "hit": false
+    }
+   },
+   {
+    "id": "r16",
+    "researcher": "qwen3.5-4b",
+    "seed": 16,
+    "assigned": [
+     "rtl",
+     "mismatch"
+    ],
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "code_hash": "46573009b98309fe",
+    "dir": "~/alter/evo/runs/research-ability/qwen3.5-4b/candidates/r16",
+    "kind": [
+     "rtl",
+     "mismatch",
+     "workflow"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": true,
+     "patch_valid": true,
+     "leak_scan_clean": true
+    },
+    "problems": [],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H1",
+     "hypothesis": "Implement a verification loop in the workflow: first generate Verilog code, then call verilog_sim to run the hidden testbench. Only return the answer if the simulation passes (exit code 0 and no mismatch).",
+     "target": "agent/workflow.py",
+     "tool_name": "",
+     "proposed_change": "Modify solve(task, ctx) to: 1. Extract spec/module from task. 2. Call ctx.llm to generate Verilog. 3. Call ctx.tool('verilog_sim', {design: code, testbench: task['spec']}). 4. If log indicates 'mismatch' or 'compile_error', retry with a refined strategy or iterate. 5. Otherwise return answer.",
+     "prediction": {
+      "metric": "rtl_accuracy",
+      "direction": "increase"
+     },
+     "control": "Current single-shot workflow (HYPOTHESIS CONTROL)",
+     "potential_regression": "Increase 'compile_error' count if the model generates buggy code that fails simulation before it can be refined, or if the tool call takes too long."
+    },
+    "domains": null,
+    "seconds": 87,
+    "usage": {
+     "calls": 7,
+     "prompt_tokens": 33470,
+     "completion_tokens": 3774
+    },
+    "duplicate_of": null,
+    "verdict": {
+     "domains": [
+      "math",
+      "code",
+      "rtl"
+     ],
+     "diff": -0.1021294677544678,
+     "p": 0.9999052192781867,
+     "p_worse": 9.478072181336156e-05,
+     "sd": 0.015974670249867807,
+     "champion_runs": 4,
+     "child_runs": 1,
+     "regression": 0.5023923444976076,
+     "expected_regression": 0.11164887743835113,
+     "p_regression": 6.8872707562390805e-06,
+     "pass_dev": false,
+     "pass_regression": false
+    },
+    "prediction": {
+     "metric": "rtl_accuracy",
+     "direction": "increase",
+     "champion": 0.290625,
+     "child": 0.0125,
+     "hit": false
+    }
+   },
+   {
+    "id": "r13",
+    "researcher": "qwen3.5-4b",
+    "seed": 13,
+    "assigned": [
+     "rtl",
+     "mismatch"
+    ],
+    "status": "invalid_patch",
+    "module": "agent/workflow.py",
+    "code_hash": null,
+    "dir": "~/alter/evo/runs/research-ability/qwen3.5-4b/candidates/r13",
+    "kind": [
+     "rtl",
+     "mismatch",
+     "workflow"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": true,
+     "hypothesis_testable": true,
+     "patch_valid": false
+    },
+    "problems": [
+     "the workflow failed on math task aime_2025-1 with stand-in model answers: solve() must return {'answer': str} of at most 50000 characters"
+    ],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H1",
+     "hypothesis": "Implement a two-stage RTL workflow in agent/workflow.py that generates code, calls verilog_sim to check for compile errors and simulation mismatches, and iteratively refines the code based on tool feedback before final submission.",
+     "target": "agent/workflow.py",
+     "tool_name": "verilog_sim",
+     "proposed_change": "Modify solve() to loop: generate code -> call verilog_sim -> if error/mismatch, update prompt with error details and regenerate -> repeat until success or token limit.",
+     "prediction": {
+      "metric": "rtl_accuracy",
+      "direction": "increase"
+     },
+     "control": "Current single-shot workflow",
+     "potential_regression": "Higher token usage may trigger RuntimeError on harder tasks if loops don't terminate, but this is less likely than current mismatch rates."
+    },
+    "domains": null,
+    "seconds": 192,
+    "usage": {
+     "calls": 9,
+     "prompt_tokens": 42185,
+     "completion_tokens": 7900
+    }
+   },
+   {
+    "id": "r15",
+    "researcher": "qwen3.5-4b",
+    "seed": 15,
+    "assigned": [
+     "rtl",
+     "mismatch"
+    ],
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "code_hash": "70072f58e1ede8b3",
+    "dir": "~/alter/evo/runs/research-ability/qwen3.5-4b/candidates/r15",
+    "kind": [
+     "rtl",
+     "mismatch",
+     "workflow"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": true,
+     "patch_valid": true,
+     "leak_scan_clean": true
+    },
+    "problems": [],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H1",
+     "hypothesis": "Implement an iterative refinement loop in the workflow where the agent generates a partial RTL design, calls the `verilog_sim` tool to simulate it against the hidden testbench, and uses the simulation results (mismatch details) as feedback to iteratively refine the design until it passes or a max iteration limit is reached.",
+     "target": "agent/workflow.py",
+     "tool_name": "verilog_sim",
+     "proposed_change": "Modify `solve` to: 1. Initialize a counter for iterations. 2. In each iteration, generate code using `ctx.llm`. 3. Call `ctx.tool('verilog_sim', {'design': code, 'testbench': task['testbench']})`. 4. If the result indicates a mismatch, append the error log to the context and increment the counter. 5. Repeat until simulation passes or counter exceeds a threshold (e.g., 5). 6. Return the final valid code block.",
+     "prediction": {
+      "metric": "rtl_accuracy",
+      "direction": "increase"
+     },
+     "control": ",",
+     "potential_regression": "Increased token usage may hit the 8192 completion token budget for very complex tasks, potentially causing `RuntimeError` if the iterative process consumes too many tokens without converging quickly. However, this trades token budget efficiency for correctness on mismatched outputs."
+    },
+    "domains": null,
+    "seconds": 131,
+    "usage": {
+     "calls": 8,
+     "prompt_tokens": 35890,
+     "completion_tokens": 5668
+    },
+    "duplicate_of": null,
+    "verdict": {
+     "domains": [
+      "math",
+      "code",
+      "rtl"
+     ],
+     "diff": -0.11639714452214456,
+     "p": 0.9999590332037005,
+     "p_worse": 4.096679629954039e-05,
+     "sd": 0.015974670249867807,
+     "champion_runs": 4,
+     "child_runs": 1,
+     "regression": 0.5263157894736842,
+     "expected_regression": 0.11164887743835113,
+     "p_regression": 5.212181386712656e-06,
+     "pass_dev": false,
+     "pass_regression": false
+    },
+    "prediction": {
+     "metric": "rtl_accuracy",
+     "direction": "increase",
+     "champion": 0.290625,
+     "child": 0.0,
+     "hit": false
+    }
+   },
+   {
+    "id": "r14",
+    "researcher": "qwen3.5-4b",
+    "seed": 14,
+    "assigned": [
+     "rtl",
+     "mismatch"
+    ],
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "code_hash": "ad1bc8c029272df6",
+    "dir": "~/alter/evo/runs/research-ability/qwen3.5-4b/candidates/r14",
+    "kind": [
+     "rtl",
+     "mismatch",
+     "workflow"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": true,
+     "hypothesis_testable": true,
+     "patch_valid": true,
+     "leak_scan_clean": true
+    },
+    "problems": [],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H1",
+     "hypothesis": "Implementing an iterative self-correction loop using the `verilog_sim` tool will force the model to verify its logic against the testbench, correcting semantic errors that cause 'mismatch' failures.",
+     "target": "agent/workflow.py",
+     "tool_name": "verilog_sim",
+     "proposed_change": "Modify `solve` to: 1) Generate RTL code. 2) Call `ctx.tool('verilog_sim', ...)` with the generated code and spec. 3) If `result['timed_out']` is false and `result['compiled']` is true, check for mismatches. 4) If mismatches exist, append the log to context and call `ctx.llm` again to refine. 5) Repeat until pass.",
+     "prediction": {
+      "metric": "rtl_accuracy",
+      "direction": "increase"
+     },
+     "control": "Current single-shot `agent/workflow.py` with no tool calls.",
+     "potential_regression": "Increased token usage per task due to iterative calls; potential timeout on very hard problems if the loop doesn't converge."
+    },
+    "domains": null,
+    "seconds": 116,
+    "usage": {
+     "calls": 8,
+     "prompt_tokens": 36667,
+     "completion_tokens": 4806
+    },
+    "duplicate_of": null,
+    "verdict": {
+     "domains": [
+      "math",
+      "code",
+      "rtl"
+     ],
+     "diff": -0.009578962703962746,
+     "p": 0.6995579284439792,
+     "p_worse": 0.3004420715560208,
+     "sd": 0.015974670249867807,
+     "champion_runs": 4,
+     "child_runs": 1,
+     "regression": 0.0861244019138756,
+     "expected_regression": 0.11164887743835113,
+     "p_regression": 0.7159393630021511,
+     "pass_dev": false,
+     "pass_regression": true
+    },
+    "prediction": {
+     "metric": "rtl_accuracy",
+     "direction": "increase",
+     "champion": 0.290625,
+     "child": 0.275,
+     "hit": false
+    }
+   }
+  ]
+ },
+ "solver_usage": {
+  "calls": 6419,
+  "prompt_tokens": 2890888,
+  "completion_tokens": 11035363
+ }
+}

@@ -1,0 +1,31 @@
+{
+ "solved": {
+  "default_r1": 51,
+  "default_r2": 51
+ },
+ "server_errors": {
+  "default_r1": 0,
+  "default_r2": 0
+ },
+ "seconds": {
+  "default_r1": 84.294846534729,
+  "default_r2": 84.19020676612854
+ },
+ "server_start_seconds": {
+  "default": 39.5014374256134,
+  "invariant_1": 29.337785005569458,
+  "invariant_2": 29.35933256149292
+ },
+ "failed_to_start": [
+  "invariant_1",
+  "invariant_2"
+ ],
+ "same": {
+  "default_r1 vs default_r2": {
+   "answers": 51,
+   "verdicts": 61,
+   "tasks": 67
+  }
+ },
+ "slowdown": null
+}

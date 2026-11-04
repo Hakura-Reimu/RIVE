@@ -1,0 +1,144 @@
+{
+ "packs": {
+  "dev": 74,
+  "select": 249,
+  "test": 250
+ },
+ "scan": {
+  "a0": {
+   "select": 109,
+   "select_tokens": 1655,
+   "select_cut_off": 60,
+   "select_tasks": 249,
+   "test": 104
+  },
+  "retry2_expected": {
+   "select": 138,
+   "select_tokens": 2564,
+   "select_cut_off": 74,
+   "select_tasks": 249,
+   "test": 136
+  },
+  "review": {
+   "select": 122,
+   "select_tokens": 3442,
+   "select_cut_off": 89,
+   "select_tasks": 249,
+   "test": 127
+  },
+  "think": {
+   "select": 140,
+   "select_tokens": 4474,
+   "select_cut_off": 33,
+   "select_tasks": 249,
+   "test": 133
+  },
+  "retry2_expected_review": {
+   "select": 142,
+   "select_tokens": 3652,
+   "select_cut_off": 79,
+   "select_tasks": 249,
+   "test": 132
+  },
+  "think4096_retry1": {
+   "select": 137,
+   "select_tokens": 4737,
+   "select_cut_off": 78,
+   "select_tasks": 249,
+   "test": 137
+  }
+ },
+ "repeat": {
+  "a0": {
+   "scores": [
+    109,
+    112
+   ],
+   "flips": [
+    55
+   ],
+   "sd_of_difference": 7.416198487095663
+  },
+  "retry2_expected_review": {
+   "scores": [
+    142,
+    144
+   ],
+   "flips": [
+    46
+   ],
+   "sd_of_difference": 6.782329983125268
+  }
+ },
+ "gate": {
+  "a0_select": 109,
+  "best": "retry2_expected_review",
+  "best_select": 142,
+  "room": 33,
+  "pearson": 0.9128857509515668,
+  "spearman": 0.42857142857142855,
+  "near_best": [
+   "retry2_expected",
+   "think",
+   "retry2_expected_review",
+   "think4096_retry1"
+  ],
+  "near_best_pearson": -0.9788389158235424,
+  "single_family_best": {
+   "examples": 138,
+   "review": 122,
+   "thinking": 140
+  },
+  "families_past_margin": [
+   "examples",
+   "review",
+   "thinking"
+  ],
+  "best_combined": 142,
+  "best_single": 140,
+  "noise_sd_of_difference": 7.416198487095663,
+  "room_ok": true,
+  "correlated": true,
+  "two_levers": false,
+  "margin_ok": false,
+  "go_on": false
+ },
+ "check": {
+  "a0_select": 109,
+  "best": "retry2_expected_review",
+  "best_select": 142,
+  "room": 33,
+  "pearson": 0.9128857509515668,
+  "spearman": 0.42857142857142855,
+  "near_best": [
+   "retry2_expected",
+   "think",
+   "retry2_expected_review",
+   "think4096_retry1"
+  ],
+  "near_best_pearson": -0.9788389158235424,
+  "single_family_best": {
+   "examples": 138,
+   "review": 122,
+   "thinking": 140
+  },
+  "families_past_margin": [
+   "examples",
+   "review",
+   "thinking"
+  ],
+  "best_combined": 142,
+  "best_single": 140,
+  "noise_sd_of_difference": 7.416198487095663,
+  "room_ok": true,
+  "correlated": true,
+  "two_levers": false,
+  "margin_ok": false,
+  "m0c_select": null,
+  "m0c_kept": null,
+  "gap": null,
+  "unsaturated": null,
+  "qualifies": false
+ },
+ "runs": {}
+}

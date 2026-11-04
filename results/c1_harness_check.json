@@ -1,0 +1,29 @@
+{
+ "rendered_prompt_tokens": 68726,
+ "server_prompt_tokens": 68726,
+ "by_domain": {
+  "math": {
+   "n": 39,
+   "prompt_mismatches": [],
+   "rejudged_same_verdict": 39,
+   "rejudged_differ": {}
+  },
+  "code": {
+   "n": 66,
+   "prompt_mismatches": [],
+   "rejudged_same_verdict": 65,
+   "rejudged_differ": {
+    "lcb-abc396_g": {
+     "phase0": true,
+     "now": false
+    }
+   }
+  },
+  "rtl": {
+   "n": 80,
+   "prompt_mismatches": [],
+   "rejudged_same_verdict": 80,
+   "rejudged_differ": {}
+  }
+ }
+}

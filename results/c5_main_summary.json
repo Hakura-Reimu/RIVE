@@ -1,0 +1,534 @@
+{
+ "args": {
+  "generations": 10,
+  "run_dir": "~/alter/evo/runs/c5-main",
+  "sizes": "math=39,code=66,rtl=80",
+  "workers": 12,
+  "c1_check": "results/c1_baseline_check.json",
+  "c1_harness": "results/c1_harness_check.json"
+ },
+ "generations": [
+  {
+   "generation": 1,
+   "champion_before": "seed",
+   "champion_after": "seed",
+   "champion_macro": 0.2594988344988345,
+   "champion_by_domain": {
+    "code": 0.2727272727272727,
+    "math": 0.23076923076923078,
+    "rtl": 0.275
+   },
+   "candidates": [
+    {
+     "id": "g01c001",
+     "parent_source": "trunk",
+     "module": "agent/workflow.py",
+     "status": "interrupted",
+     "macro": 0.0909090909090909,
+     "vs_champion": -0.15082556332556335
+    },
+    {
+     "id": "g01c002",
+     "parent_source": "trunk",
+     "module": "tools/verilog_check_py.py",
+     "status": "invalid_patch",
+     "macro": null,
+     "vs_champion": null
+    },
+    {
+     "id": "g01c003",
+     "parent_source": "archive",
+     "module": "tools/verilog_syntax_checker.py",
+     "status": "invalid_patch",
+     "macro": null,
+     "vs_champion": null
+    },
+    {
+     "id": "g01c004",
+     "parent_source": "trunk",
+     "module": "agent/workflow.py",
+     "status": "evaluated",
+     "macro": 0.2831973581973582,
+     "vs_champion": 0.02369852369852371
+    },
+    {
+     "id": "g01c005",
+     "parent_source": "trunk",
+     "module": "agent/workflow.py",
+     "status": "evaluated",
+     "macro": 0.042550505050505054,
+     "vs_champion": -0.21694832944832942
+    }
+   ],
+   "seconds": 6752,
+   "llm_usage": {
+    "calls": 1100,
+    "prompt_tokens": 544229,
+    "completion_tokens": 2159087
+   }
+  },
+  {
+   "generation": 2,
+   "champion_before": "seed",
+   "champion_after": "seed",
+   "champion_macro": 0.2722125097125097,
+   "champion_by_domain": {
+    "code": 0.2727272727272727,
+    "math": 0.2564102564102564,
+    "rtl": 0.2875
+   },
+   "candidates": [
+    {
+     "id": "g02c006",
+     "parent_source": "trunk",
+     "module": "agent/workflow.py",
+     "status": "evaluated",
+     "macro": 0.26387917637917635,
+     "vs_champion": -0.00833333333333336
+    },
+    {
+     "id": "g02c007",
+     "parent_source": "trunk",
+     "module": "agent/workflow.py",
+     "status": "evaluated",
+     "macro": 0.26038267288267286,
+     "vs_champion": -0.011829836829836848
+    },
+    {
+     "id": "g02c008",
+     "parent_source": "archive",
+     "module": "tools/verilog_parser.py",
+     "status": "invalid_patch",
+     "macro": null,
+     "vs_champion": null
+    },
+    {
+     "id": "g02c009",
+     "parent_source": "trunk",
+     "module": "tools/verilog_semantic_checker.py",
+     "status": "invalid_patch",
+     "macro": null,
+     "vs_champion": null
+    }
+   ],
+   "seconds": 3594,
+   "llm_usage": {
+    "calls": 1777,
+    "prompt_tokens": 988890,
+    "completion_tokens": 3354470
+   }
+  },
+  {
+   "generation": 3,
+   "champion_before": "seed",
+   "champion_after": "seed",
+   "champion_macro": 0.2663170163170163,
+   "champion_by_domain": {
+    "code": 0.3181818181818182,
+    "math": 0.23076923076923078,
+    "rtl": 0.25
+   },
+   "candidates": [
+    {
+     "id": "g03c010",
+     "parent_source": "trunk",
+     "module": "tools/verilog_quick_syntax_check.py",
+     "status": "invalid_patch",
+     "macro": null,
+     "vs_champion": null
+    },
+    {
+     "id": "g03c011",
+     "parent_source": "archive",
+     "module": "tools/verilog_regex_checker.py",
+     "status": "invalid_patch",
+     "macro": null,
+     "vs_champion": null
+    },
+    {
+     "id": "g03c012",
+     "parent_source": "trunk",
+     "module": "agent/workflow.py",
+     "status": "evaluated",
+     "macro": 0.262995337995338,
+     "vs_champion": -0.003321678321678345
+    },
+    {
+     "id": "g03c013",
+     "parent_source": "trunk",
+     "module": "tools/verilog_semantic_validator.py",
+     "status": "invalid_patch",
+     "macro": null,
+     "vs_champion": null
+    }
+   ],
+   "seconds": 2643,
+   "llm_usage": {
+    "calls": 2192,
+    "prompt_tokens": 1355137,
+    "completion_tokens": 4108231
+   }
+  },
+  {
+   "generation": 4,
+   "champion_before": "seed",
+   "champion_after": "seed",
+   "champion_macro": 0.24173465423465423,
+   "champion_by_domain": {
+    "code": 0.25757575757575757,
+    "math": 0.20512820512820512,
+    "rtl": 0.2625
+   },
+   "candidates": [
+    {
+     "id": "g04c014",
+     "parent_source": "trunk",
+     "module": "agent/workflow.py",
+     "status": "invalid_patch",
+     "macro": null,
+     "vs_champion": null
+    },
+    {
+     "id": "g04c015",
+     "parent_source": "trunk",
+     "module": "agent/workflow.py",
+     "status": "evaluated",
+     "macro": 0.2454739704739705,
+     "vs_champion": 0.003739316239316254
+    },
+    {
+     "id": "g04c016",
+     "parent_source": "trunk",
+     "module": "agent/workflow.py",
+     "status": "evaluated",
+     "macro": 0.26278166278166276,
+     "vs_champion": 0.021047008547008528
+    },
+    {
+     "id": "g04c017",
+     "parent_source": "trunk",
+     "module": "agent/workflow.py",
+     "status": "invalid_patch",
+     "macro": null,
+     "vs_champion": null
+    }
+   ],
+   "seconds": 3047,
+   "llm_usage": {
+    "calls": 669,
+    "prompt_tokens": 401615,
+    "completion_tokens": 1223321
+   }
+  },
+  {
+   "generation": 5,
+   "champion_before": "seed",
+   "champion_after": "seed",
+   "champion_macro": 0.2662781662781663,
+   "champion_by_domain": {
+    "code": 0.24242424242424243,
+    "math": 0.2564102564102564,
+    "rtl": 0.3
+   },
+   "candidates": [
+    {
+     "id": "g05c018",
+     "parent_source": "trunk",
+     "module": "agent/prompts/math.md",
+     "status": "evaluated",
+     "macro": 0.25815850815850816,
+     "vs_champion": -0.008119658119658146
+    },
+    {
+     "id": "g05c019",
+     "parent_source": "archive",
+     "module": "agent/prompts/math.md",
+     "status": "evaluated",
+     "macro": 0.2592851592851593,
+     "vs_champion": -0.006993006993007034
+    },
+    {
+     "id": "g05c020",
+     "parent_source": "archive",
+     "module": "agent/prompts/math.md",
+     "status": "evaluated",
+     "macro": 0.22287296037296037,
+     "vs_champion": -0.04340520590520594
+    },
+    {
+     "id": "g05c021",
+     "parent_source": "trunk",
+     "module": "agent/workflow.py",
+     "status": "evaluated",
+     "macro": 0.18935508935508935,
+     "vs_champion": -0.07692307692307696
+    }
+   ],
+   "seconds": 4282,
+   "llm_usage": {
+    "calls": 1710,
+    "prompt_tokens": 971099,
+    "completion_tokens": 3083509
+   }
+  },
+  {
+   "generation": 6,
+   "champion_before": "seed",
+   "champion_after": "seed",
+   "champion_macro": 0.2748251748251748,
+   "champion_by_domain": {
+    "code": 0.24242424242424243,
+    "math": 0.28205128205128205,
+    "rtl": 0.3
+   },
+   "candidates": [
+    {
+     "id": "g06c022",
+     "parent_source": "trunk",
+     "module": "agent/prompts/rtl.md",
+     "status": "evaluated",
+     "macro": 0.2573135198135198,
+     "vs_champion": -0.017511655011655025
+    },
+    {
+     "id": "g06c023",
+     "parent_source": "trunk",
+     "module": "tools/python_syntax_checker.py",
+     "status": "evaluated",
+     "macro": 0.2588286713286713,
+     "vs_champion": -0.0159965034965035
+    },
+    {
+     "id": "g06c024",
+     "parent_source": "trunk",
+     "module": "tools/python_syntax_checker.py",
+     "status": "evaluated",
+     "macro": 0.2698135198135198,
+     "vs_champion": -0.005011655011655014
+    },
+    {
+     "id": "g06c025",
+     "parent_source": "archive",
+     "module": "tools/code_self_test_py.py",
+     "status": "invalid_patch",
+     "macro": null,
+     "vs_champion": null
+    }
+   ],
+   "seconds": 3723,
+   "llm_usage": {
+    "calls": 2497,
+    "prompt_tokens": 1491815,
+    "completion_tokens": 4580086
+   }
+  },
+  {
+   "generation": 7,
+   "champion_before": "seed",
+   "champion_after": "seed",
+   "champion_macro": 0.304458041958042,
+   "champion_by_domain": {
+    "code": 0.3181818181818182,
+    "math": 0.3076923076923077,
+    "rtl": 0.2875
+   },
+   "candidates": [
+    {
+     "id": "g07c026",
+     "parent_source": "archive",
+     "module": "agent/workflow.py",
+     "status": "invalid_patch",
+     "macro": null,
+     "vs_champion": null
+    },
+    {
+     "id": "g07c027",
+     "parent_source": "trunk",
+     "module": "agent/workflow.py",
+     "status": "invalid_patch",
+     "macro": null,
+     "vs_champion": null
+    },
+    {
+     "id": "g07c028",
+     "parent_source": "archive",
+     "module": "agent/prompts/code.md",
+     "status": "evaluated",
+     "macro": 0.28142968142968144,
+     "vs_champion": -0.023028360528360547
+    },
+    {
+     "id": "g07c029",
+     "parent_source": "trunk",
+     "module": "agent/workflow.py",
+     "status": "evaluated",
+     "macro": 0.28471250971250966,
+     "vs_champion": -0.019745532245532327
+    }
+   ],
+   "seconds": 2993,
+   "llm_usage": {
+    "calls": 3127,
+    "prompt_tokens": 1910249,
+    "completion_tokens": 5775920
+   }
+  },
+  {
+   "generation": 8,
+   "champion_before": "seed",
+   "champion_after": "seed",
+   "champion_macro": 0.28164335664335666,
+   "champion_by_domain": {
+    "code": 0.2878787878787879,
+    "math": 0.28205128205128205,
+    "rtl": 0.275
+   },
+   "candidates": [
+    {
+     "id": "g08c030",
+     "parent_source": "trunk",
+     "module": "tools/code_self_test.py",
+     "status": "evaluated",
+     "macro": 0.2765928515928516,
+     "vs_champion": -0.005050505050505083
+    },
+    {
+     "id": "g08c031",
+     "parent_source": "trunk",
+     "module": "tools/verilog_syntax_validator.py",
+     "status": "invalid_patch",
+     "macro": null,
+     "vs_champion": null
+    },
+    {
+     "id": "g08c032",
+     "parent_source": "archive",
+     "module": "tools/python_syntax_checker.py",
+     "status": "invalid_patch",
+     "macro": null,
+     "vs_champion": null
+    },
+    {
+     "id": "g08c033",
+     "parent_source": "archive",
+     "module": "tools/verilog_sim_runner.py",
+     "status": "evaluated",
+     "macro": 0.28386752136752136,
+     "vs_champion": 0.002224164724164701
+    }
+   ],
+   "seconds": 3121,
+   "llm_usage": {
+    "calls": 3733,
+    "prompt_tokens": 2415486,
+    "completion_tokens": 6909377
+   }
+  },
+  {
+   "generation": 9,
+   "champion_before": "seed",
+   "champion_after": "seed",
+   "champion_macro": 0.25444832944832946,
+   "champion_by_domain": {
+    "code": 0.25757575757575757,
+    "math": 0.23076923076923078,
+    "rtl": 0.275
+   },
+   "candidates": [
+    {
+     "id": "g09c034",
+     "parent_source": "archive",
+     "module": "agent/workflow.py",
+     "status": "invalid_patch",
+     "macro": null,
+     "vs_champion": null
+    },
+    {
+     "id": "g09c035",
+     "parent_source": "trunk",
+     "module": "agent/prompts/rtl.md",
+     "status": "evaluated",
+     "macro": 0.27132867132867133,
+     "vs_champion": 0.016880341880341876
+    },
+    {
+     "id": "g09c036",
+     "parent_source": "archive",
+     "module": "agent/prompts/rtl.md",
+     "status": "evaluated",
+     "macro": 0.29986402486402486,
+     "vs_champion": 0.0454156954156954
+    },
+    {
+     "id": "g09c037",
+     "parent_source": "archive",
+     "module": "agent/workflow.py",
+     "status": "evaluated",
+     "macro": 0.26521950271950273,
+     "vs_champion": 0.010771173271173273
+    }
+   ],
+   "seconds": 4054,
+   "llm_usage": {
+    "calls": 4510,
+    "prompt_tokens": 2995865,
+    "completion_tokens": 8492017
+   }
+  },
+  {
+   "generation": 10,
+   "champion_before": "seed",
+   "champion_after": "seed",
+   "champion_macro": 0.27747668997669,
+   "champion_by_domain": {
+    "code": 0.2878787878787879,
+    "math": 0.28205128205128205,
+    "rtl": 0.2625
+   },
+   "candidates": [
+    {
+     "id": "g10c038",
+     "parent_source": "trunk",
+     "module": "agent/workflow.py",
+     "status": "evaluated",
+     "macro": 0.2588286713286713,
+     "vs_champion": -0.018648018648018683
+    },
+    {
+     "id": "g10c039",
+     "parent_source": "trunk",
+     "module": "tools/code_self_test.py",
+     "status": "evaluated",
+     "macro": 0.2695998445998446,
+     "vs_champion": -0.00787684537684541
+    },
+    {
+     "id": "g10c040",
+     "parent_source": "trunk",
+     "module": "agent/workflow.py",
+     "status": "evaluated",
+     "macro": 0.17637917637917636,
+     "vs_champion": -0.10109751359751365
+    },
+    {
+     "id": "g10c041",
+     "parent_source": "trunk",
+     "module": "agent/prompts/code.md",
+     "status": "evaluated",
+     "macro": 0.2493978243978244,
+     "vs_champion": -0.028078865578865603
+    }
+   ],
+   "seconds": 4699,
+   "llm_usage": {
+    "calls": 5516,
+    "prompt_tokens": 3559849,
+    "completion_tokens": 10408458
+   }
+  }
+ ],
+ "resumed_at_generation": [
+  1,
+  4
+ ]
+}

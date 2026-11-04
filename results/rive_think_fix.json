@@ -1,0 +1,133 @@
+{
+ "runs": {
+  "t0": {
+   "tasks": 74,
+   "solved": 14,
+   "cut": 60,
+   "cut_inside_thinking": 58,
+   "forced": 0,
+   "mean_tokens": 7709,
+   "recheck_lines_per_1k": 2.81
+  },
+  "tb": {
+   "tasks": 74,
+   "solved": 36,
+   "cut": 32,
+   "cut_inside_thinking": 0,
+   "forced": 64,
+   "mean_tokens": 7076,
+   "recheck_lines_per_1k": 2.6
+  },
+  "tw": {
+   "tasks": 74,
+   "solved": 18,
+   "cut": 55,
+   "cut_inside_thinking": 54,
+   "forced": 0,
+   "mean_tokens": 7499,
+   "recheck_lines_per_1k": 0.11
+  },
+  "e1": {
+   "tasks": 74,
+   "solved": 41,
+   "cut": 17,
+   "cut_inside_thinking": 15,
+   "forced": 0,
+   "mean_tokens": 4837,
+   "recheck_lines_per_1k": 0.02
+  },
+  "e2": {
+   "tasks": 74,
+   "solved": 24,
+   "cut": 48,
+   "cut_inside_thinking": 46,
+   "forced": 0,
+   "mean_tokens": 6993,
+   "recheck_lines_per_1k": 0.0
+  },
+  "t16": {
+   "tasks": 74,
+   "solved": 28,
+   "cut": 46,
+   "cut_inside_thinking": 45,
+   "forced": 0,
+   "mean_tokens": 13702,
+   "recheck_lines_per_1k": 5.09
+  },
+  "t0_seed1": {
+   "tasks": 74,
+   "solved": 15,
+   "cut": 59,
+   "cut_inside_thinking": 59,
+   "forced": 0,
+   "mean_tokens": 7690,
+   "recheck_lines_per_1k": 3.19
+  },
+  "e_seed1": {
+   "tasks": 74,
+   "solved": 35,
+   "cut": 23,
+   "cut_inside_thinking": 22,
+   "forced": 0,
+   "mean_tokens": 4796,
+   "recheck_lines_per_1k": 0.02
+  }
+ },
+ "direction": {
+  "aucs": {
+   "8": 0.7756,
+   "9": 0.7821,
+   "10": 0.7824,
+   "11": 0.7779,
+   "12": 0.7767,
+   "13": 0.775,
+   "14": 0.7905,
+   "15": 0.7885,
+   "16": 0.8041,
+   "17": 0.8153,
+   "18": 0.8418,
+   "19": 0.8386,
+   "20": 0.8425,
+   "21": 0.8402,
+   "22": 0.8728,
+   "23": 0.8728,
+   "24": 0.8671,
+   "25": 0.8806,
+   "26": 0.8834
+  },
+  "positions": {
+   "a": {
+    "recheck": 1326,
+    "other": 2065
+   },
+   "b": {
+    "recheck": 1371,
+    "other": 1938
+   }
+  },
+  "edits": {
+   "e1": {
+    "layer": 20,
+    "auc": 0.8425
+   },
+   "e2": {
+    "layer": 26,
+    "auc": 0.8834
+   }
+  }
+ },
+ "edit": {
+  "best": "e1",
+  "reading": "works",
+  "better_than_tb": true,
+  "better_than_tw": true,
+  "confirmed": true
+ },
+ "longer_cap_helps": true,
+ "thinking_for_t2": {
+  "best": "e1",
+  "solved": 41,
+  "non_thinking_fp8": 32,
+  "worth_it": true
+ }
+}

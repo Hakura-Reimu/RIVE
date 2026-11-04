@@ -1,0 +1,166 @@
+{
+ "data": {
+  "samples": 1068,
+  "passed": 629,
+  "passed_by_round": {
+   "300000": 158,
+   "400000": 157,
+   "500000": 161,
+   "600000": 153
+  },
+  "solved_at_least_once": {
+   "dev/easy": "22 of 23",
+   "dev/hard": "6 of 23",
+   "dev/medium": "23 of 28",
+   "synthetic/easy": "67 of 70",
+   "synthetic/hard": "17 of 22",
+   "synthetic/medium": "84 of 101"
+  },
+  "rows": 392,
+  "rows_by_source": {
+   "dev": 93,
+   "synthetic": 299
+  },
+  "rows_by_difficulty": {
+   "medium": 185,
+   "easy": 173,
+   "hard": 34
+  },
+  "answer_chars": 2614,
+  "answer_tokens": 715
+ },
+ "training": {
+  "tag": "seed1",
+  "args": {
+   "model": "~/alter/models/Qwen3.5-4B",
+   "run_dir": "~/alter/rive/self",
+   "seed": 1,
+   "epochs": 2,
+   "lr": 0.0001,
+   "rank": 16,
+   "grad_accum": 8,
+   "max_len": 3072,
+   "probe": 0,
+   "no_upcast": false
+  },
+  "examples": 373,
+  "skipped_too_long": 19,
+  "steps": 94,
+  "answer_tokens": 214649,
+  "seconds": 946,
+  "tokens_per_s": 757.6,
+  "loss_first": [
+   0.3852,
+   0.2483,
+   0.2451,
+   0.2763,
+   0.219
+  ],
+  "loss_last": [
+   0.132,
+   0.0813,
+   0.1358,
+   0.159,
+   0.1044
+  ],
+  "peak_allocated_gib": 8.22,
+  "peak_reserved_gib": 8.72,
+  "exceeded_physical_vram": false,
+  "vllm_tensors": 496
+ },
+ "canary": {
+  "differ": 3,
+  "of": 3,
+  "starts": [
+   [
+    "```python\nclass Solution:\n    def maxSum(self, nums: List[int]) -> int:\n        # Dictionary to store the maximum number seen so far for each max digit\n        max_by_digit = {}\n        result = -1\n  ",
+    "```python\nfrom typing import List\n\nclass Solution:\n    def maxSum(self, nums: List[int]) -> int:\n        # Dictionary to store the maximum number seen so far for each max digit\n        max_by_digit = "
+   ],
+   [
+    "```python\nfrom typing import List\n\nclass Solution:\n    def sumOfSquares(self, nums: List[int]) -> int:\n        n = len(nums)\n        total = 0\n        # Iterate from 1 to n (1-indexed positions)\n     ",
+    "```python\nfrom typing import List\n\nclass Solution:\n    def sumOfSquares(self, nums: List[int]) -> int:\n        n = len(nums)\n        total = 0\n        # Iterate from 1 to n (1-indexed positions)\n     "
+   ],
+   [
+    "```python\nclass Solution:\n    def countTestedDevices(self, batteryPercentages: List[int]) -> int:\n        n = len(batteryPercentages)\n        tested_count = 0\n        current_decrease = 0  # Tracks ho",
+    "To solve this problem, we need to simulate the testing process efficiently without actually modifying the array repeatedly (which would be too slow if done naively). The key observation is that when a"
+   ]
+  ]
+ },
+ "evals": {
+  "self_a0_dev_s0": {
+   "solved": 27,
+   "tasks": 74,
+   "tokens": 1355,
+   "cut_off": 13,
+   "failures": {
+    "wrong_answer": 31,
+    "runtime_error": 12,
+    "load_error": 3,
+    "time_limit": 1
+   }
+  },
+  "self_a0_select_s0": {
+   "solved": 106,
+   "tasks": 249,
+   "tokens": 1296,
+   "cut_off": 37,
+   "failures": {
+    "wrong_answer": 84,
+    "time_limit": 8,
+    "load_error": 11,
+    "runtime_error": 40
+   }
+  },
+  "self_a0_select_s1": {
+   "solved": 104,
+   "tasks": 249,
+   "tokens": 1336,
+   "cut_off": 34,
+   "failures": {
+    "wrong_answer": 81,
+    "runtime_error": 46,
+    "load_error": 13,
+    "time_limit": 5
+   }
+  },
+  "self_a0_test_s0": {
+   "solved": 111,
+   "tasks": 250,
+   "tokens": 1294,
+   "cut_off": 39,
+   "failures": {
+    "wrong_answer": 73,
+    "runtime_error": 42,
+    "load_error": 16,
+    "time_limit": 8
+   }
+  },
+  "self_combo_select_s0": {
+   "solved": 131,
+   "tasks": 249,
+   "tokens": 3023,
+   "cut_off": 50,
+   "failures": {
+    "load_error": 9,
+    "wrong_answer": 68,
+    "runtime_error": 37,
+    "time_limit": 4
+   }
+  }
+ },
+ "reading": {
+  "base_a0_select": [
+   109,
+   112,
+   117
+  ],
+  "self_a0_select": [
+   106,
+   104
+  ],
+  "gain": -7.666666666666671,
+  "bar": 15,
+  "useful": false,
+  "harmful": false
+ }
+}

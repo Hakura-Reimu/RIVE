@@ -1,0 +1,624 @@
+{
+ "chosen": {
+  "edits": [
+   "hesprose_l20_m03",
+   "verify_amp_l20_m05"
+  ],
+  "notes": "I don't expect either edit to pass the held-out check. None of my 8 edits beat the unedited model on the dev set; every two-seed mean was 33.5\u201335.5 against 34 unedited, well below the noise threshold of 4.\n\nWhat I observed:\n- **How unedited answers fail.** About 15 answers per seed are cut off at the token limit. Most of these are long, wavering prose (\"Actually,\", \"Wait,\", \"But\", \"However\") on hard tasks (arc, abc_g, recent LeetCode). Deliberation inside code comments is common and helps on medium tasks: for abc314_c, a code-first answer without that deliberation was wrong.\n- **Direction `hes_vs_prose`.** Lines starting with Wait/Actually/Hmm/No,/Maybe/re-check, against ordinary prose lines (The/We/So/If\u2026). The AUC on held-out tasks is about 0.80\u20130.83 across layers. I used it at layer 20 on all writers, with a dose-response:\n  - Full removal (alpha 1): 23/24 solved, no cut-offs, 462 mean tokens, 69\u201370 of 74 answers starting with code. This reproduces the known loss: the direction also carries \"plan and deliberate before or inside the code\".\n  - alpha 0.4: 34/34 solved, fewer cut-offs (9/6), but more wrong answers (27/27). The cut-off answers just became wrong answers.\n  - Removal only in layers 20\u201331: 34/33, almost no change.\n  - Strengthening (alpha \u22120.3): 34/36 solved, wrong answers fell to 10/11, cut-offs rose to 28/24.\n- **Main finding.** More deliberation makes the answers that finish more often correct, but more answers hit the 4096-token cap. In every edit, wrong answers plus cut-offs stayed at about 35, so the edits only move failures between those two kinds rather than solving more tasks.\n- **Strengthening the \"verify against the sample\" direction** (alpha \u22120.5, built from only 70 lines) gave the same pattern: 31/39 solved, more cut-offs, fewer wrong answers.\n- **Other attempts that did nothing.** Combining that with partial `hes_vs_prose` removal gave 36/31. Strengthening the prompt-end \"explain first vs code first\" direction gave 34/37, but did not change how often answers started with code. Strengthening a direction scales it both ways, so it cannot push one way.\n- **Direction I did not use.** \"Late lines of cut-off answers vs other prose\" separates even at layer 4 (AUC 0.94), so it probably encodes position in the answer rather than behaviour.\n\nWhy these two:\n- `hesprose_l20_m03` (strengthen the hesitation direction, alpha \u22120.3) has a clear mechanism: more deliberation makes finished answers more accurate. It might help on held-out tasks if fewer of them run into the token cap.\n- `verify_amp_l20_m05` is the second choice and works the same way.\n\nBoth are noise-level on the dev set (+1 per seed).",
+  "spent_usd": 0.9074,
+  "evaluations": 7
+ },
+ "dev_evals": {
+  "base": {
+   "s0": {
+    "tasks": 74,
+    "solved": 34,
+    "cut": 14,
+    "mean_tokens": 1431,
+    "starts_with_code": 52,
+    "failures": {
+     "runtime_error": 6,
+     "wrong_answer": 19,
+     "load_error": 1,
+     "time_limit": 1,
+     "cut": 13
+    },
+    "seconds": 203
+   },
+   "s1": {
+    "tasks": 74,
+    "solved": 34,
+    "cut": 17,
+    "mean_tokens": 1490,
+    "starts_with_code": 50,
+    "failures": {
+     "wrong_answer": 17,
+     "runtime_error": 4,
+     "load_error": 1,
+     "cut": 16,
+     "time_limit": 2
+    },
+    "seconds": 209
+   }
+  },
+  "hesprose_l20_a1": {
+   "s0": {
+    "tasks": 74,
+    "solved": 23,
+    "cut": 0,
+    "mean_tokens": 462,
+    "starts_with_code": 69,
+    "failures": {
+     "wrong_answer": 33,
+     "load_error": 1,
+     "runtime_error": 17
+    },
+    "seconds": 83,
+    "vs_base": {
+     "gained": [
+      "t2-lcb-abc394_c",
+      "t2-lcb-train-2792",
+      "t2-lcb-train-2955",
+      "t2-lcb-train-abc305_b",
+      "t2-lcb-train-abc328_d"
+     ],
+     "lost": [
+      "t2-lcb-abc388_c",
+      "t2-lcb-abc393_a",
+      "t2-lcb-abc393_d",
+      "t2-lcb-train-1873_D",
+      "t2-lcb-train-2808",
+      "t2-lcb-train-2867",
+      "t2-lcb-train-3184",
+      "t2-lcb-train-3230",
+      "t2-lcb-train-3308",
+      "t2-lcb-train-abc311_d",
+      "t2-lcb-train-abc314_c",
+      "t2-lcb-train-abc315_b",
+      "t2-lcb-train-abc322_c",
+      "t2-lcb-train-abc324_e",
+      "t2-lcb-train-abc325_e",
+      "t2-lcb-train-abc330_c"
+     ]
+    }
+   },
+   "s1": {
+    "tasks": 74,
+    "solved": 24,
+    "cut": 0,
+    "mean_tokens": 491,
+    "starts_with_code": 70,
+    "failures": {
+     "wrong_answer": 34,
+     "runtime_error": 9,
+     "load_error": 1,
+     "time_limit": 6
+    },
+    "seconds": 102,
+    "vs_base": {
+     "gained": [
+      "t2-lcb-train-2955",
+      "t2-lcb-train-abc305_b",
+      "t2-lcb-train-abc311_b"
+     ],
+     "lost": [
+      "t2-lcb-abc393_a",
+      "t2-lcb-abc393_d",
+      "t2-lcb-train-2792",
+      "t2-lcb-train-2832",
+      "t2-lcb-train-2902",
+      "t2-lcb-train-2999",
+      "t2-lcb-train-3184",
+      "t2-lcb-train-3230",
+      "t2-lcb-train-abc314_c",
+      "t2-lcb-train-abc315_b",
+      "t2-lcb-train-abc322_c",
+      "t2-lcb-train-abc330_d",
+      "t2-lcb-train-abc331_c"
+     ]
+    }
+   }
+  },
+  "hesprose_l20_a04": {
+   "s0": {
+    "tasks": 74,
+    "solved": 34,
+    "cut": 9,
+    "mean_tokens": 1262,
+    "starts_with_code": 43,
+    "failures": {
+     "wrong_answer": 27,
+     "cut": 9,
+     "runtime_error": 4
+    },
+    "seconds": 202,
+    "vs_base": {
+     "gained": [
+      "t2-lcb-abc394_c",
+      "t2-lcb-train-1883_C",
+      "t2-lcb-train-2792",
+      "t2-lcb-train-2832",
+      "t2-lcb-train-2883",
+      "t2-lcb-train-abc305_b",
+      "t2-lcb-train-abc326_c",
+      "t2-lcb-train-abc328_d",
+      "t2-lcb-train-abc330_d"
+     ],
+     "lost": [
+      "t2-lcb-train-1873_D",
+      "t2-lcb-train-2866",
+      "t2-lcb-train-2887",
+      "t2-lcb-train-3018",
+      "t2-lcb-train-3230",
+      "t2-lcb-train-3308",
+      "t2-lcb-train-abc311_d",
+      "t2-lcb-train-abc322_c",
+      "t2-lcb-train-abc324_b"
+     ]
+    }
+   },
+   "s1": {
+    "tasks": 74,
+    "solved": 34,
+    "cut": 6,
+    "mean_tokens": 1085,
+    "starts_with_code": 42,
+    "failures": {
+     "wrong_answer": 27,
+     "runtime_error": 4,
+     "cut": 6,
+     "time_limit": 2,
+     "load_error": 1
+    },
+    "seconds": 172,
+    "vs_base": {
+     "gained": [
+      "t2-lcb-3799",
+      "t2-lcb-abc388_c",
+      "t2-lcb-train-2867",
+      "t2-lcb-train-2955",
+      "t2-lcb-train-abc311_b",
+      "t2-lcb-train-abc325_e"
+     ],
+     "lost": [
+      "t2-lcb-abc393_a",
+      "t2-lcb-train-2832",
+      "t2-lcb-train-3018",
+      "t2-lcb-train-3184",
+      "t2-lcb-train-abc315_b",
+      "t2-lcb-train-abc328_d"
+     ]
+    }
+   }
+  },
+  "prose_amp_l18_m03": {
+   "s0": {
+    "tasks": 74,
+    "solved": 34,
+    "cut": 15,
+    "mean_tokens": 1315,
+    "starts_with_code": 55,
+    "failures": {
+     "wrong_answer": 22,
+     "runtime_error": 3,
+     "time_limit": 2,
+     "cut": 13
+    },
+    "seconds": 203,
+    "vs_base": {
+     "gained": [
+      "t2-lcb-3799",
+      "t2-lcb-train-2832",
+      "t2-lcb-train-2856",
+      "t2-lcb-train-2883",
+      "t2-lcb-train-2902",
+      "t2-lcb-train-abc305_b",
+      "t2-lcb-train-abc326_c",
+      "t2-lcb-train-abc328_d",
+      "t2-lcb-train-abc330_d",
+      "t2-lcb-train-abc331_c",
+      "t2-lcb-train-abc334_e"
+     ],
+     "lost": [
+      "t2-lcb-train-1873_D",
+      "t2-lcb-train-2808",
+      "t2-lcb-train-3080",
+      "t2-lcb-train-3184",
+      "t2-lcb-train-3308",
+      "t2-lcb-train-abc311_b",
+      "t2-lcb-train-abc311_d",
+      "t2-lcb-train-abc314_c",
+      "t2-lcb-train-abc322_c",
+      "t2-lcb-train-abc324_e",
+      "t2-lcb-train-abc325_e"
+     ]
+    }
+   },
+   "s1": {
+    "tasks": 74,
+    "solved": 37,
+    "cut": 16,
+    "mean_tokens": 1416,
+    "starts_with_code": 54,
+    "failures": {
+     "wrong_answer": 14,
+     "runtime_error": 7,
+     "cut": 16
+    },
+    "seconds": 213,
+    "vs_base": {
+     "gained": [
+      "t2-lcb-3773",
+      "t2-lcb-abc388_c",
+      "t2-lcb-train-2883",
+      "t2-lcb-train-2955",
+      "t2-lcb-train-3308",
+      "t2-lcb-train-abc302_e",
+      "t2-lcb-train-abc325_e",
+      "t2-lcb-train-abc332_c"
+     ],
+     "lost": [
+      "t2-lcb-train-1873_D",
+      "t2-lcb-train-2832",
+      "t2-lcb-train-2866",
+      "t2-lcb-train-2902",
+      "t2-lcb-train-3018"
+     ]
+    }
+   }
+  },
+  "hesprose_late20_a1": {
+   "s0": {
+    "tasks": 74,
+    "solved": 34,
+    "cut": 11,
+    "mean_tokens": 1434,
+    "starts_with_code": 52,
+    "failures": {
+     "wrong_answer": 21,
+     "cut": 11,
+     "runtime_error": 7,
+     "time_limit": 1
+    },
+    "seconds": 214,
+    "vs_base": {
+     "gained": [
+      "t2-lcb-train-2792",
+      "t2-lcb-train-2902",
+      "t2-lcb-train-abc326_c",
+      "t2-lcb-train-abc328_d",
+      "t2-lcb-train-abc330_d"
+     ],
+     "lost": [
+      "t2-lcb-train-2808",
+      "t2-lcb-train-3184",
+      "t2-lcb-train-abc311_d",
+      "t2-lcb-train-abc324_e",
+      "t2-lcb-train-abc325_e"
+     ]
+    }
+   },
+   "s1": {
+    "tasks": 74,
+    "solved": 33,
+    "cut": 14,
+    "mean_tokens": 1490,
+    "starts_with_code": 52,
+    "failures": {
+     "runtime_error": 6,
+     "wrong_answer": 21,
+     "cut": 13,
+     "load_error": 1
+    },
+    "seconds": 218,
+    "vs_base": {
+     "gained": [
+      "t2-lcb-3720",
+      "t2-lcb-3750",
+      "t2-lcb-abc388_c",
+      "t2-lcb-train-2856",
+      "t2-lcb-train-2883",
+      "t2-lcb-train-abc311_b"
+     ],
+     "lost": [
+      "t2-lcb-abc394_c",
+      "t2-lcb-train-1873_D",
+      "t2-lcb-train-2902",
+      "t2-lcb-train-3080",
+      "t2-lcb-train-abc322_c",
+      "t2-lcb-train-abc326_c",
+      "t2-lcb-train-abc330_c"
+     ]
+    }
+   }
+  },
+  "hesprose_l20_m03": {
+   "s0": {
+    "tasks": 74,
+    "solved": 34,
+    "cut": 28,
+    "mean_tokens": 1981,
+    "starts_with_code": 45,
+    "failures": {
+     "wrong_answer": 10,
+     "cut": 25,
+     "runtime_error": 4,
+     "time_limit": 1
+    },
+    "seconds": 295,
+    "vs_base": {
+     "gained": [
+      "t2-lcb-3799",
+      "t2-lcb-train-2792",
+      "t2-lcb-train-2832",
+      "t2-lcb-train-2856",
+      "t2-lcb-train-2902",
+      "t2-lcb-train-3000",
+      "t2-lcb-train-abc326_c",
+      "t2-lcb-train-abc328_d",
+      "t2-lcb-train-abc330_d",
+      "t2-lcb-train-abc331_c"
+     ],
+     "lost": [
+      "t2-lcb-abc393_a",
+      "t2-lcb-train-2808",
+      "t2-lcb-train-2867",
+      "t2-lcb-train-3080",
+      "t2-lcb-train-3308",
+      "t2-lcb-train-abc311_d",
+      "t2-lcb-train-abc314_c",
+      "t2-lcb-train-abc315_b",
+      "t2-lcb-train-abc324_e",
+      "t2-lcb-train-abc325_e"
+     ]
+    }
+   },
+   "s1": {
+    "tasks": 74,
+    "solved": 36,
+    "cut": 24,
+    "mean_tokens": 1891,
+    "starts_with_code": 47,
+    "failures": {
+     "wrong_answer": 11,
+     "time_limit": 2,
+     "runtime_error": 1,
+     "cut": 23,
+     "load_error": 1
+    },
+    "seconds": 273,
+    "vs_base": {
+     "gained": [
+      "t2-lcb-3773",
+      "t2-lcb-abc388_c",
+      "t2-lcb-train-2867",
+      "t2-lcb-train-2883",
+      "t2-lcb-train-3308",
+      "t2-lcb-train-abc303_c",
+      "t2-lcb-train-abc305_b",
+      "t2-lcb-train-abc311_b"
+     ],
+     "lost": [
+      "t2-lcb-abc391_b",
+      "t2-lcb-train-2832",
+      "t2-lcb-train-2902",
+      "t2-lcb-train-3018",
+      "t2-lcb-train-3080",
+      "t2-lcb-train-abc314_c"
+     ]
+    }
+   }
+  },
+  "verify_amp_l20_m05": {
+   "s0": {
+    "tasks": 74,
+    "solved": 31,
+    "cut": 26,
+    "mean_tokens": 1879,
+    "starts_with_code": 37,
+    "failures": {
+     "wrong_answer": 15,
+     "runtime_error": 3,
+     "cut": 23,
+     "load_error": 2
+    },
+    "seconds": 442,
+    "vs_base": {
+     "gained": [
+      "t2-lcb-3773",
+      "t2-lcb-train-2792",
+      "t2-lcb-train-2832",
+      "t2-lcb-train-2856",
+      "t2-lcb-train-2883",
+      "t2-lcb-train-abc302_e",
+      "t2-lcb-train-abc305_b",
+      "t2-lcb-train-abc326_c",
+      "t2-lcb-train-abc328_d"
+     ],
+     "lost": [
+      "t2-lcb-train-2808",
+      "t2-lcb-train-2999",
+      "t2-lcb-train-3018",
+      "t2-lcb-train-3080",
+      "t2-lcb-train-3184",
+      "t2-lcb-train-3230",
+      "t2-lcb-train-3308",
+      "t2-lcb-train-abc311_b",
+      "t2-lcb-train-abc311_d",
+      "t2-lcb-train-abc314_c",
+      "t2-lcb-train-abc324_e",
+      "t2-lcb-train-abc330_c"
+     ]
+    }
+   },
+   "s1": {
+    "tasks": 74,
+    "solved": 39,
+    "cut": 22,
+    "mean_tokens": 1774,
+    "starts_with_code": 37,
+    "failures": {
+     "wrong_answer": 12,
+     "runtime_error": 2,
+     "time_limit": 2,
+     "cut": 19
+    },
+    "seconds": 437,
+    "vs_base": {
+     "gained": [
+      "t2-lcb-3773",
+      "t2-lcb-abc388_c",
+      "t2-lcb-train-2856",
+      "t2-lcb-train-2867",
+      "t2-lcb-train-2883",
+      "t2-lcb-train-2955",
+      "t2-lcb-train-abc305_b",
+      "t2-lcb-train-abc311_b",
+      "t2-lcb-train-abc311_d",
+      "t2-lcb-train-abc325_e",
+      "t2-lcb-train-abc332_c"
+     ],
+     "lost": [
+      "t2-lcb-abc394_c",
+      "t2-lcb-train-1873_D",
+      "t2-lcb-train-2902",
+      "t2-lcb-train-abc328_d",
+      "t2-lcb-train-abc330_d",
+      "t2-lcb-train-abc331_c"
+     ]
+    }
+   }
+  },
+  "verify_m05_hes_a04": {
+   "s0": {
+    "tasks": 74,
+    "solved": 36,
+    "cut": 7,
+    "mean_tokens": 1288,
+    "starts_with_code": 41,
+    "failures": {
+     "wrong_answer": 21,
+     "cut": 7,
+     "time_limit": 5,
+     "runtime_error": 5
+    },
+    "seconds": 331,
+    "vs_base": {
+     "gained": [
+      "t2-lcb-3799",
+      "t2-lcb-abc394_c",
+      "t2-lcb-train-2792",
+      "t2-lcb-train-2883",
+      "t2-lcb-train-abc326_c",
+      "t2-lcb-train-abc328_d",
+      "t2-lcb-train-abc330_d",
+      "t2-lcb-train-abc331_c",
+      "t2-lcb-train-abc332_c"
+     ],
+     "lost": [
+      "t2-lcb-abc388_c",
+      "t2-lcb-train-2808",
+      "t2-lcb-train-3080",
+      "t2-lcb-train-3184",
+      "t2-lcb-train-abc314_c",
+      "t2-lcb-train-abc324_e",
+      "t2-lcb-train-abc325_e"
+     ]
+    }
+   },
+   "s1": {
+    "tasks": 74,
+    "solved": 31,
+    "cut": 12,
+    "mean_tokens": 1375,
+    "starts_with_code": 42,
+    "failures": {
+     "wrong_answer": 22,
+     "cut": 12,
+     "runtime_error": 8,
+     "time_limit": 1
+    },
+    "seconds": 342,
+    "vs_base": {
+     "gained": [
+      "t2-lcb-3720",
+      "t2-lcb-abc388_c",
+      "t2-lcb-train-2867",
+      "t2-lcb-train-2883",
+      "t2-lcb-train-3025"
+     ],
+     "lost": [
+      "t2-lcb-train-2832",
+      "t2-lcb-train-3018",
+      "t2-lcb-train-3184",
+      "t2-lcb-train-abc314_c",
+      "t2-lcb-train-abc326_c",
+      "t2-lcb-train-abc328_d",
+      "t2-lcb-train-abc330_c",
+      "t2-lcb-train-abc331_c"
+     ]
+    }
+   }
+  }
+ },
+ "verify": {
+  "chosen": {
+   "edits": [
+    "hesprose_l20_m03",
+    "verify_amp_l20_m05"
+   ],
+   "notes": "I don't expect either edit to pass the held-out check. None of my 8 edits beat the unedited model on the dev set; every two-seed mean was 33.5\u201335.5 against 34 unedited, well below the noise threshold of 4.\n\nWhat I observed:\n- **How unedited answers fail.** About 15 answers per seed are cut off at the token limit. Most of these are long, wavering prose (\"Actually,\", \"Wait,\", \"But\", \"However\") on hard tasks (arc, abc_g, recent LeetCode). Deliberation inside code comments is common and helps on medium tasks: for abc314_c, a code-first answer without that deliberation was wrong.\n- **Direction `hes_vs_prose`.** Lines starting with Wait/Actually/Hmm/No,/Maybe/re-check, against ordinary prose lines (The/We/So/If\u2026). The AUC on held-out tasks is about 0.80\u20130.83 across layers. I used it at layer 20 on all writers, with a dose-response:\n  - Full removal (alpha 1): 23/24 solved, no cut-offs, 462 mean tokens, 69\u201370 of 74 answers starting with code. This reproduces the known loss: the direction also carries \"plan and deliberate before or inside the code\".\n  - alpha 0.4: 34/34 solved, fewer cut-offs (9/6), but more wrong answers (27/27). The cut-off answers just became wrong answers.\n  - Removal only in layers 20\u201331: 34/33, almost no change.\n  - Strengthening (alpha \u22120.3): 34/36 solved, wrong answers fell to 10/11, cut-offs rose to 28/24.\n- **Main finding.** More deliberation makes the answers that finish more often correct, but more answers hit the 4096-token cap. In every edit, wrong answers plus cut-offs stayed at about 35, so the edits only move failures between those two kinds rather than solving more tasks.\n- **Strengthening the \"verify against the sample\" direction** (alpha \u22120.5, built from only 70 lines) gave the same pattern: 31/39 solved, more cut-offs, fewer wrong answers.\n- **Other attempts that did nothing.** Combining that with partial `hes_vs_prose` removal gave 36/31. Strengthening the prompt-end \"explain first vs code first\" direction gave 34/37, but did not change how often answers started with code. Strengthening a direction scales it both ways, so it cannot push one way.\n- **Direction I did not use.** \"Late lines of cut-off answers vs other prose\" separates even at layer 4 (AUC 0.94), so it probably encodes position in the answer rather than behaviour.\n\nWhy these two:\n- `hesprose_l20_m03` (strengthen the hesitation direction, alpha \u22120.3) has a clear mechanism: more deliberation makes finished answers more accurate. It might help on held-out tasks if fewer of them run into the token cap.\n- `verify_amp_l20_m05` is the second choice and works the same way.\n\nBoth are noise-level on the dev set (+1 per seed).",
+   "spent_usd": 0.9074,
+   "evaluations": 7
+  },
+  "select": {
+   "base": {
+    "tasks": 249,
+    "solved": 118,
+    "cut": 58,
+    "mean_tokens": 1591,
+    "starts_with_code": 173,
+    "failures": {
+     "wrong_answer": 50,
+     "runtime_error": 18,
+     "cut": 55,
+     "time_limit": 6,
+     "load_error": 2
+    },
+    "seconds": 1097
+   },
+   "hesprose_l20_m03": {
+    "tasks": 249,
+    "solved": 117,
+    "cut": 80,
+    "mean_tokens": 1808,
+    "starts_with_code": 158,
+    "failures": {
+     "wrong_answer": 39,
+     "load_error": 5,
+     "cut": 74,
+     "runtime_error": 10,
+     "time_limit": 3,
+     "judge_error": 1
+    },
+    "seconds": 1348
+   },
+   "verify_amp_l20_m05": {
+    "tasks": 249,
+    "solved": 117,
+    "cut": 68,
+    "mean_tokens": 1766,
+    "starts_with_code": 128,
+    "failures": {
+     "wrong_answer": 50,
+     "runtime_error": 13,
+     "load_error": 4,
+     "cut": 63,
+     "time_limit": 2
+    },
+    "seconds": 1304
+   }
+  },
+  "works": false
+ }
+}

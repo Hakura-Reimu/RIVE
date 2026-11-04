@@ -1,0 +1,3078 @@
+{
+ "scan": {
+  "spec_nofail": {
+   "a0": [
+    40,
+    47,
+    182
+   ],
+   "review": [
+    40,
+    47,
+    438
+   ],
+   "sample4_majority": [
+    39,
+    45,
+    510
+   ],
+   "code_only": [
+    42,
+    47,
+    103
+   ],
+   "selftest_retry2": [
+    37,
+    50,
+    624
+   ],
+   "selftest_retry2_review": [
+    38,
+    49,
+    730
+   ],
+   "selftest_sample4_pass": [
+    39,
+    48,
+    631
+   ],
+   "agree5": [
+    41,
+    47,
+    736
+   ],
+   "agree5_t10": [
+    43,
+    47,
+    894
+   ],
+   "agree5_code_only": [
+    41,
+    47,
+    508
+   ]
+  },
+  "nofail": {
+   "a0": [
+    27,
+    36,
+    297
+   ],
+   "review": [
+    27,
+    37,
+    406
+   ],
+   "sample4_majority": [
+    26,
+    34,
+    514
+   ],
+   "code_only": [
+    28,
+    36,
+    64
+   ],
+   "selftest_retry2": [
+    27,
+    33,
+    1219
+   ],
+   "selftest_retry2_review": [
+    26,
+    30,
+    1277
+   ],
+   "selftest_sample4_pass": [
+    26,
+    34,
+    616
+   ],
+   "agree5": [
+    25,
+    35,
+    713
+   ],
+   "agree5_t10": [
+    24,
+    35,
+    920
+   ],
+   "agree5_code_only": [
+    25,
+    37,
+    420
+   ]
+  },
+  "fail_b2048": {
+   "a0": [
+    25,
+    40,
+    252
+   ],
+   "review": [
+    37,
+    43,
+    389
+   ],
+   "sample4_majority": [
+    25,
+    32,
+    715
+   ],
+   "code_only": [
+    27,
+    40,
+    64
+   ],
+   "retry2": [
+    36,
+    54,
+    435
+   ],
+   "retry2_review": [
+    43,
+    51,
+    528
+   ],
+   "sample4_pass": [
+    32,
+    45,
+    702
+   ],
+   "code_only_retry3_1024": [
+    36,
+    47,
+    135
+   ],
+   "agree5": [
+    25,
+    35,
+    864
+   ],
+   "agree5_t10": [
+    26,
+    37,
+    1002
+   ],
+   "agree5_code_only": [
+    26,
+    37,
+    446
+   ]
+  }
+ },
+ "choice": {
+  "sets": {
+   "spec_nofail": {
+    "a0_select": 47,
+    "best": "selftest_retry2",
+    "best_kind": "self_test",
+    "best_select": 50,
+    "room": false
+   },
+   "nofail": {
+    "a0_select": 36,
+    "best": "review",
+    "best_kind": "review",
+    "best_select": 37,
+    "room": false
+   },
+   "fail_b2048": {
+    "a0_select": 40,
+    "best": "retry2",
+    "best_kind": "test",
+    "best_select": 54,
+    "room": true,
+    "m0c_select": [
+     50,
+     46
+    ],
+    "m0c_kept": [
+     1,
+     1
+    ],
+    "gap": 6,
+    "unsaturated": true
+   }
+  },
+  "held_out": "fail_b2048",
+  "training": null
+ },
+ "repeat": {
+  "fail_b2048": {
+   "scores": {
+    "a0": [
+     40,
+     39,
+     40
+    ],
+    "retry2": [
+     54,
+     53,
+     52
+    ],
+    "m0c_s1": [
+     50,
+     49,
+     50
+    ],
+    "m0c_s2": [
+     46,
+     46,
+     48
+    ]
+   },
+   "mean": {
+    "a0": 39.666666666666664,
+    "retry2": 53,
+    "m0c_s1": 49.666666666666664,
+    "m0c_s2": 46.666666666666664
+   },
+   "room": 13.333333333333336,
+   "gap": 4.833333333333336,
+   "room_ok": true,
+   "unsaturated": true
+  }
+ },
+ "r002": {
+  "set": "fail_b2048",
+  "a0_test": 129,
+  "seeds": [
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8
+  ],
+  "groups": {
+   "m0c": {
+    "imp": [
+     23,
+     34,
+     30,
+     27,
+     22,
+     25,
+     22,
+     26
+    ],
+    "mean_imp": 26.125,
+    "ci": [
+     23.625,
+     29
+    ],
+    "p_vs_a0": 0.0078125,
+    "select": [
+     50,
+     46,
+     48,
+     50,
+     48,
+     49,
+     48,
+     45
+    ],
+    "rollouts": [
+     451,
+     451,
+     451,
+     451,
+     384,
+     451,
+     451,
+     451
+    ],
+    "completion_tokens": [
+     221527,
+     251484,
+     190245,
+     210956,
+     188862,
+     223324,
+     266733,
+     276042
+    ],
+    "improver_calls": [
+     8,
+     8,
+     10,
+     8,
+     10,
+     9,
+     8,
+     8
+    ]
+   },
+   "reflexion": {
+    "imp": [
+     26,
+     27,
+     21,
+     21,
+     31,
+     22,
+     32,
+     29
+    ],
+    "mean_imp": 26.125,
+    "ci": [
+     23.25,
+     29
+    ],
+    "p_vs_a0": 0.0078125,
+    "select": [
+     46,
+     50,
+     48,
+     48,
+     51,
+     48,
+     50,
+     50
+    ],
+    "rollouts": [
+     451,
+     451,
+     451,
+     509,
+     509,
+     451,
+     509,
+     509
+    ],
+    "completion_tokens": [
+     243589,
+     235532,
+     195461,
+     203816,
+     229566,
+     220288,
+     253028,
+     364818
+    ],
+    "improver_calls": [
+     13,
+     8,
+     8,
+     10,
+     10,
+     8,
+     11,
+     8
+    ]
+   },
+   "m_hand": {
+    "imp": [
+     31,
+     23,
+     23,
+     20,
+     23,
+     23,
+     31,
+     30
+    ],
+    "mean_imp": 25.5,
+    "ci": [
+     22.75,
+     28.375
+    ],
+    "p_vs_a0": 0.0078125,
+    "select": [
+     51,
+     47,
+     47,
+     48,
+     50,
+     50,
+     46,
+     48
+    ],
+    "rollouts": [
+     451,
+     451,
+     451,
+     509,
+     384,
+     509,
+     451,
+     509
+    ],
+    "completion_tokens": [
+     200443,
+     187586,
+     243858,
+     319279,
+     194914,
+     279797,
+     183850,
+     206366
+    ],
+    "improver_calls": [
+     8,
+     8,
+     10,
+     8,
+     10,
+     9,
+     8,
+     8
+    ]
+   },
+   "gepa": {
+    "imp": [
+     30,
+     23,
+     27,
+     21,
+     29,
+     26,
+     23,
+     29
+    ],
+    "mean_imp": 26,
+    "ci": [
+     23.875,
+     28.125
+    ],
+    "p_vs_a0": 0.0078125,
+    "select": [
+     50,
+     49,
+     48,
+     51,
+     50,
+     46,
+     50,
+     48
+    ],
+    "rollouts": [
+     425,
+     425,
+     419,
+     468,
+     422,
+     425,
+     418,
+     422
+    ],
+    "completion_tokens": [
+     295040,
+     306505,
+     176814,
+     477813,
+     420571,
+     166959,
+     222160,
+     220759
+    ],
+    "improver_calls": [
+     13,
+     14,
+     13,
+     10,
+     13,
+     14,
+     23,
+     14
+    ]
+   }
+  },
+  "vs_m0c": {
+   "reflexion": {
+    "diffs": [
+     3,
+     -7,
+     -9,
+     -6,
+     9,
+     -3,
+     10,
+     3
+    ],
+    "mean_diff": 0,
+    "ci": [
+     -4.625,
+     4.625
+    ],
+    "p": 1.0,
+    "sd": 7.309485031694875,
+    "detectable": 7.2360210060502155,
+    "seeds_for_3": 47,
+    "passed": false
+   },
+   "m_hand": {
+    "diffs": [
+     8,
+     -11,
+     -7,
+     -7,
+     1,
+     -2,
+     9,
+     4
+    ],
+    "mean_diff": -0.625,
+    "ci": [
+     -5.375,
+     4
+    ],
+    "p": 0.859375,
+    "sd": 7.386038953902926,
+    "detectable": 7.311805522577853,
+    "seeds_for_3": 48,
+    "passed": false
+   },
+   "gepa": {
+    "diffs": [
+     7,
+     -11,
+     -3,
+     -6,
+     7,
+     1,
+     1,
+     3
+    ],
+    "mean_diff": -0.125,
+    "ci": [
+     -4.375,
+     3.75
+    ],
+    "p": 1.0,
+    "sd": 6.266407036161723,
+    "detectable": 6.203426472523068,
+    "seeds_for_3": 35,
+    "passed": false
+   }
+  }
+ },
+ "archive": [],
+ "runs": {
+  "43031319fa_fail_b2048_s1": {
+   "improver": "reflexion",
+   "set": "fail_b2048",
+   "seed": 1,
+   "select_solved": 46,
+   "test_solved": 155,
+   "imp": 26,
+   "budget": {
+    "rollouts": 451,
+    "completion_tokens": 243589,
+    "prompt_tokens": 261488,
+    "improver_completion_tokens": 4244,
+    "improver_prompt_tokens": 36101,
+    "improver_calls": 13
+   },
+   "rounds": [
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 3,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 2,
+      "feedback": "stderr_and_test",
+      "review": true,
+      "max_tokens": 4096
+     },
+     "select_gain": 6,
+     "kept": true,
+     "predicted_gain": 12,
+     "keep_probability": 0.85,
+     "hypothesis": "Enabling `test_retry` with `feedback='stderr_and_test'` and increasing `attempts` to 3 with `select='passes_test'` will allow the model to self-correct based on actual test failures rather than guessing. Adding `temperature=0.5` introduces diverse reasoning paths to avoid repetitive wrong answers, and `review=true` adds a final quality check."
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 3,
+      "temperature": 0.3,
+      "select": "first",
+      "self_test": false,
+      "test_retry": 0,
+      "feedback": "stderr_and_test",
+      "review": false,
+      "max_tokens": 4096
+     },
+     "select_gain": -9,
+     "kept": false,
+     "predicted_gain": 6,
+     "keep_probability": 0.85,
+     "hypothesis": "Switching select to 'first' prevents the agent from wasting retries on its own incorrect logic, while lowering temperature and removing 'review' reduces hallucinations and token consumption."
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 3,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 2,
+      "feedback": "stderr_and_test",
+      "review": true,
+      "max_tokens": 2048
+     },
+     "select_gain": 2,
+     "kept": false,
+     "predicted_gain": -4,
+     "keep_probability": 0.3,
+     "hypothesis": ":max_tokens:2048, attempts:3, feedback:stderr_and_test, instruction:'', max_tokens:2048, review:true, select:passes_test, self_test:false, system_prompt:'', temperature:0.5, test_retry:2"
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 3,
+      "temperature": 0.3,
+      "select": "majority",
+      "self_test": false,
+      "test_retry": 0,
+      "feedback": "stderr",
+      "review": false,
+      "max_tokens": 2048
+     },
+     "select_gain": -9,
+     "kept": false,
+     "predicted_gain": 4,
+     "keep_probability": 0.62,
+     "hypothesis": "Switching to temperature 0.0 will force all 3 attempts to be identical, eliminating the noise of variation. If the model is fundamentally broken on logic at 0.5, getting 3 identical wrong answers is bad, but if it gets one correct at 0.0, it's guaranteed. However, the real fix is likely to change the selection strategy from 'passes_test' (which fails if the first logic is wrong and retries don't '"
+    }
+   ],
+   "improver_tokens": 4244
+  },
+  "43031319fa_fail_b2048_s2": {
+   "improver": "reflexion",
+   "set": "fail_b2048",
+   "seed": 2,
+   "select_solved": 50,
+   "test_solved": 156,
+   "imp": 27,
+   "budget": {
+    "rollouts": 451,
+    "completion_tokens": 235532,
+    "prompt_tokens": 298083,
+    "improver_completion_tokens": 3377,
+    "improver_prompt_tokens": 19093,
+    "improver_calls": 8
+   },
+   "rounds": [
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "Rewrite the entire function to fix the bug. Ensure variable names are safe (e.g., use 'total' instead of 'sum').",
+      "attempts": 3,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 3,
+      "feedback": "stderr",
+      "review": false,
+      "max_tokens": 4096
+     },
+     "select_gain": 10,
+     "kept": true,
+     "predicted_gain": 12,
+     "keep_probability": 0.85,
+     "hypothesis": "Increasing `attempts` to 3 and enabling `test_retry` with `select='passes_test'` will allow the agent to generate multiple independent solutions, automatically selecting one that passes the hidden tests and retrying until a syntactically valid and logically correct code is found, thereby fixing the 29 'wrong_answer' cases and the 6 'load_error' cases."
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "Rewrite the function to fix the bug. Crucially, ensure the solution passes all hidden assertions, not just the visible test. Use safe variable names.",
+      "attempts": 3,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 3,
+      "feedback": "stderr",
+      "review": false,
+      "max_tokens": 4096
+     },
+     "select_gain": 0,
+     "kept": false,
+     "predicted_gain": 5,
+     "keep_probability": 0.85,
+     "hypothesis": "Switching to temperature 0.0 ensures deterministic output, increasing the likelihood that a single correct attempt is found. Increasing max_tokens to 2048 allows full reasoning without cutoff, and refining the instruction explicitly targets hidden assertions to reduce the 17 wrong_answer failures."
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "Fix the bug in the following Python function. Ensure the logic handles all edge cases correctly and matches the expected output of the test.",
+      "attempts": 3,
+      "temperature": 0.5,
+      "select": "first",
+      "self_test": false,
+      "test_retry": 3,
+      "feedback": "stderr",
+      "review": false,
+      "max_tokens": 4096
+     },
+     "select_gain": -2,
+     "kept": false,
+     "predicted_gain": 5,
+     "keep_probability": 0.95,
+     "hypothesis": " passages and ensures deterministic behavior across attempts, preventing the model from oscillating between similar wrong answers."
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "Fix the bug in the following Python function. Return the complete corrected code.",
+      "attempts": 3,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 3,
+      "feedback": "stderr_and_test",
+      "review": false,
+      "max_tokens": 4096
+     },
+     "select_gain": -1,
+     "kept": false,
+     "predicted_gain": 12,
+     "keep_probability": 0.95,
+     "hypothesis": "A brief, direct instruction ('Fix the bug in the following Python function. Return the complete corrected code.') will reduce logical errors and syntax issues caused by over-constraining the model, allowing 'passes_test' to successfully select a correct solution without needing complex retries for logic flaws."
+    }
+   ],
+   "improver_tokens": 3377
+  },
+  "43031319fa_fail_b2048_s3": {
+   "improver": "reflexion",
+   "set": "fail_b2048",
+   "seed": 3,
+   "select_solved": 48,
+   "test_solved": 150,
+   "imp": 21,
+   "budget": {
+    "rollouts": 451,
+    "completion_tokens": 195461,
+    "prompt_tokens": 183041,
+    "improver_completion_tokens": 2626,
+    "improver_prompt_tokens": 20176,
+    "improver_calls": 8
+   },
+   "rounds": [
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 2,
+      "temperature": 0.5,
+      "select": "first",
+      "self_test": false,
+      "test_retry": 0,
+      "feedback": "stderr",
+      "review": true,
+      "max_tokens": 4096
+     },
+     "select_gain": 0,
+     "kept": false,
+     "predicted_gain": 15,
+     "keep_probability": 0.45,
+     "hypothesis": "Increasing temperature to 0.5 and attempts to 2 enables the model to generate diverse solutions, allowing it to correct logical errors and avoid token cut-offs by exploring simpler or different algorithmic approaches. Adding `review=true` further filters these diverse attempts for edge cases."
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 2,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 1,
+      "feedback": "stderr",
+      "review": false,
+      "max_tokens": 4096
+     },
+     "select_gain": 8,
+     "kept": true,
+     "predicted_gain": 5,
+     "keep_probability": 0.85,
+     "hypothesis": "Switching to 'select': 'passes_test' forces the agent to iterate until a solution works, while 'test_retry': 1 handles syntax errors by re-asking after an error message. Removing 'review' saves tokens for the critical fix steps."
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 2,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 2,
+      "feedback": "stderr",
+      "review": false,
+      "max_tokens": 2048
+     },
+     "select_gain": 1,
+     "kept": false,
+     "predicted_gain": 6,
+     "keep_probability": 0.7,
+     "hypothesis": "Lowering max_tokens to 2048 will reduce cutoffs, and raising test_retry to 2 will improve the success rate of logic fixes."
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 3,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 1,
+      "feedback": "stderr",
+      "review": false,
+      "max_tokens": 4096
+     },
+     "select_gain": 0,
+     "kept": false,
+     "predicted_gain": 2,
+     "keep_probability": 0.95,
+     "hypothesis": "Increasing attempts from 2 to 3 allows the 'passes_test' strategy to succeed on independent samples, fixing the deterministic failure mode caused by temperature 0.5."
+    }
+   ],
+   "improver_tokens": 2626
+  },
+  "43031319fa_fail_b2048_s4": {
+   "improver": "reflexion",
+   "set": "fail_b2048",
+   "seed": 4,
+   "select_solved": 48,
+   "test_solved": 150,
+   "imp": 21,
+   "budget": {
+    "rollouts": 509,
+    "completion_tokens": 203816,
+    "prompt_tokens": 185038,
+    "improver_completion_tokens": 4226,
+    "improver_prompt_tokens": 27736,
+    "improver_calls": 10
+   },
+   "rounds": [
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 1,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 1,
+      "feedback": "stderr",
+      "review": false,
+      "max_tokens": 4096
+     },
+     "select_gain": 5,
+     "kept": true,
+     "predicted_gain": 15,
+     "keep_probability": 0.65,
+     "hypothesis": "changing select to 'passes_test' and enabling test_retry=1 will fix logic/syntax issues by forcing validation and correction, and increasing max_tokens to 4096 will prevent the token cutoffs seen in 2 load_error cases."
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 2,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 1,
+      "feedback": "stderr",
+      "review": false,
+      "max_tokens": 4096
+     },
+     "select_gain": 3,
+     "kept": true,
+     "predicted_gain": 12,
+     "keep_probability": 0.85,
+     "hypothesis": "Increasing temperature to 0.7 encourages diverse reasoning paths to find the correct logic, while switching to 'majority' selection with 2 attempts allows the system to aggregate multiple attempts and select the most common correct solution, filtering out the consistently wrong answers observed in the feedback."
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 2,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": true,
+      "test_retry": 1,
+      "feedback": "stderr",
+      "review": false,
+      "max_tokens": 4096
+     },
+     "select_gain": 0,
+     "kept": false,
+     "predicted_gain": 3,
+     "keep_probability": 0.4,
+     "hypothesis": "Switching to `self_test: true` enables the model to understand the problem constraints better by generating test cases first, potentially guiding it to the correct logic before attempting the fix. This can reduce the 'wrong_answer' count by improving the model's internal understanding of the task requirements. Additionally, keeping `temperature: 0.5` allows for diverse attempts if the first self-`"
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 3,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 1,
+      "feedback": "stderr",
+      "review": false,
+      "max_tokens": 4096
+     },
+     "select_gain": 0,
+     "kept": false,
+     "predicted_gain": 5,
+     "keep_probability": 0.85,
+     "hypothesis": ":The current configuration fails primarily due to 'wrong_answer' (20 cases) and token cutoffs (8 cases). The feedback shows the model often generates code with logic errors or partial explanations that trigger hidden test failures. With `attempts` set to 2 and `max_tokens` shared across calls, the agent frequently runs out of tokens before successfully fixing the logic, especially when `test_retry"
+    }
+   ],
+   "improver_tokens": 4226
+  },
+  "43031319fa_fail_b2048_s5": {
+   "improver": "reflexion",
+   "set": "fail_b2048",
+   "seed": 5,
+   "select_solved": 51,
+   "test_solved": 160,
+   "imp": 31,
+   "budget": {
+    "rollouts": 509,
+    "completion_tokens": 229566,
+    "prompt_tokens": 226960,
+    "improver_completion_tokens": 2976,
+    "improver_prompt_tokens": 25589,
+    "improver_calls": 10
+   },
+   "rounds": [
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 2,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 1,
+      "feedback": "stderr",
+      "review": false,
+      "max_tokens": 4096
+     },
+     "select_gain": 8,
+     "kept": true,
+     "predicted_gain": 12,
+     "keep_probability": 0.18,
+     "hypothesis": "By switching select to 'passes_test' and enabling test_retry=1, the agent can generate an answer, run it against the hidden tests, and if it fails, retry the generation with the error feedback. This forces the model to correct logical errors before a task is marked as failed."
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 2,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 1,
+      "feedback": "stderr",
+      "review": true,
+      "max_tokens": 4096
+     },
+     "select_gain": -2,
+     "kept": false,
+     "predicted_gain": 12,
+     "keep_probability": 0.85,
+     "hypothesis": "Increasing max_tokens to 8192 and enabling review will eliminate cutoffs and improve correctness on the remaining logic errors."
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 2,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 2,
+      "feedback": "stderr",
+      "review": false,
+      "max_tokens": 4096
+     },
+     "select_gain": 3,
+     "kept": true,
+     "predicted_gain": 4,
+     "keep_probability": 0.85,
+     "hypothesis": "Increasing test_retry to 2 and removing review will allow the agent more opportunities to correct logic errors without introducing noise."
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 2,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 3,
+      "feedback": "stderr",
+      "review": false,
+      "max_tokens": 4096
+     },
+     "select_gain": -1,
+     "kept": false,
+     "predicted_gain": 3,
+     "keep_probability": 0.9,
+     "hypothesis": ": Increasing iteration depth to allow recovery from truncated or verbose responses."
+    }
+   ],
+   "improver_tokens": 2976
+  },
+  "43031319fa_fail_b2048_s6": {
+   "improver": "reflexion",
+   "set": "fail_b2048",
+   "seed": 6,
+   "select_solved": 48,
+   "test_solved": 151,
+   "imp": 22,
+   "budget": {
+    "rollouts": 451,
+    "completion_tokens": 220288,
+    "prompt_tokens": 249099,
+    "improver_completion_tokens": 2848,
+    "improver_prompt_tokens": 19604,
+    "improver_calls": 8
+   },
+   "rounds": [
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 3,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 2,
+      "feedback": "stderr",
+      "review": false,
+      "max_tokens": 4096
+     },
+     "select_gain": 8,
+     "kept": true,
+     "predicted_gain": 12,
+     "keep_probability": 0.85,
+     "hypothesis": "Enabling `test_retry` allows the agent to see syntax and runtime errors, while increasing `attempts` and `temperature` provides diversity to find the correct logical fix. Setting `select='passes_test'` ensures the loop continues until a working solution is found."
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 3,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 2,
+      "feedback": "stderr",
+      "review": false,
+      "max_tokens": 2048
+     },
+     "select_gain": 2,
+     "kept": false,
+     "predicted_gain": 12,
+     "keep_probability": 0.85,
+     "hypothesis": "Lowering max_tokens to 2048 eliminates truncation, enabling the passes_test selector to successfully identify correct fixes in tasks previously failing due to incomplete code."
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "Only return the corrected code in a single ```python block. Do not explain.",
+      "attempts": 3,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 2,
+      "feedback": "stderr",
+      "review": false,
+      "max_tokens": 1024
+     },
+     "select_gain": 0,
+     "kept": false,
+     "predicted_gain": 20,
+     "keep_probability": 0.97,
+     "hypothesis": ") will force the model to skip explanatory text, reducing the likelihood of cutoffs and ensuring complete code blocks pass the hidden tests."
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 3,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 2,
+      "feedback": "stderr",
+      "review": true,
+      "max_tokens": 4096
+     },
+     "select_gain": 0,
+     "kept": false,
+     "predicted_gain": 5,
+     "keep_probability": 0.52,
+     "hypothesis": "Restoring max_tokens to 4096 prevents cut-offs that degrade performance (as seen in r2), and enabling 'review' provides a critical safety pass to catch the logic errors causing 'wrong_answer' failures, which were prevalent in the development feedback."
+    }
+   ],
+   "improver_tokens": 2848
+  },
+  "43031319fa_fail_b2048_s7": {
+   "improver": "reflexion",
+   "set": "fail_b2048",
+   "seed": 7,
+   "select_solved": 50,
+   "test_solved": 161,
+   "imp": 32,
+   "budget": {
+    "rollouts": 509,
+    "completion_tokens": 253028,
+    "prompt_tokens": 244008,
+    "improver_completion_tokens": 4292,
+    "improver_prompt_tokens": 29143,
+    "improver_calls": 11
+   },
+   "rounds": [
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 3,
+      "temperature": 0.5,
+      "select": "first",
+      "self_test": false,
+      "test_retry": 0,
+      "feedback": "stderr",
+      "review": false,
+      "max_tokens": 4096
+     },
+     "select_gain": -5,
+     "kept": false,
+     "predicted_gain": -3,
+     "keep_probability": 0.8,
+     "hypothesis": "Raising attempts to 3 and temperature to 0.5 enables the model to explore multiple code generation strategies. This increases the probability of generating a concise, correct solution that fits within the 2048 token budget, directly addressing the cut-off failures seen in the feedback where 6 tasks were truncated."
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 3,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 0,
+      "feedback": "stderr",
+      "review": false,
+      "max_tokens": 4096
+     },
+     "select_gain": 4,
+     "kept": true,
+     "predicted_gain": 6,
+     "keep_probability": 0.95,
+     "hypothesis": "Increasing attempts to 3 and temperature to 0.5 will generate diverse solutions, increasing the probability that one of the three attempts correctly fixes the logic and passes hidden tests. While test_retry remains 0, multiple attempts provide redundancy to bypass the single-attempt failure mode. The 'passes_test' selector will then pick the successful variant among the three."
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 3,
+      "temperature": 0.5,
+      "select": "first",
+      "self_test": false,
+      "test_retry": 2,
+      "feedback": "stderr",
+      "review": false,
+      "max_tokens": 4096
+     },
+     "select_gain": 1,
+     "kept": false,
+     "predicted_gain": -2,
+     "keep_probability": 0.15,
+     "hypothesis": ": Changing `select` from 'passes_test' to 'first' combined with increasing `test_retry` to 2 allows the agent to keep an answer that is syntactically correct and passes the provided failing test (or is the best attempt), and then iteratively fix logic errors revealed by the hidden tests. Even if the first answer is wrong, subsequent retries with feedback ('stderr') can correct the logic without re"
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 3,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 3,
+      "feedback": "stderr",
+      "review": false,
+      "max_tokens": 4096
+     },
+     "select_gain": 6,
+     "kept": true,
+     "predicted_gain": 3,
+     "keep_probability": 0.65,
+     "hypothesis": ", Reverting `select` to `"
+    }
+   ],
+   "improver_tokens": 4292
+  },
+  "43031319fa_fail_b2048_s8": {
+   "improver": "reflexion",
+   "set": "fail_b2048",
+   "seed": 8,
+   "select_solved": 50,
+   "test_solved": 158,
+   "imp": 29,
+   "budget": {
+    "rollouts": 509,
+    "completion_tokens": 364818,
+    "prompt_tokens": 309787,
+    "improver_completion_tokens": 3410,
+    "improver_prompt_tokens": 20237,
+    "improver_calls": 8
+   },
+   "rounds": [
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "Analyze the provided failing test to identify the logical error in the current code. Explain your reasoning clearly. Then, provide the corrected code in a single ```python code block. Ensure the logic matches the test expectation.",
+      "attempts": 3,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 2,
+      "feedback": "stderr_and_test",
+      "review": true,
+      "max_tokens": 4096
+     },
+     "select_gain": -6,
+     "kept": false,
+     "predicted_gain": 12,
+     "keep_probability": 0.65,
+     "hypothesis": "Increasing temperature to 0.3 to encourage exploration of different fix strategies, adding a detailed instruction to force a 'analyze-then-code' workflow, increasing attempts to 3 with `select='passes_test'` to discard initial wrong answers, and enabling `review` to catch edge cases will significantly reduce logic errors."
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 3,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 0,
+      "feedback": "stderr",
+      "review": false,
+      "max_tokens": 2048
+     },
+     "select_gain": 4,
+     "kept": true,
+     "predicted_gain": 8,
+     "keep_probability": 0.45,
+     "hypothesis": "Lowering max_tokens to 2048 will eliminate the 6 syntax error cases caused by truncation. Increasing attempts to 3 with a moderate temperature should provide enough diverse attempts to find a correct fix for the 29 wrong-answer cases, while 'passes_test' selection ensures we keep a working solution."
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "Analyze the provided failing test to identify the logical error, correct the code, and ensure it passes. Keep the function names and signatures exactly as given.",
+      "attempts": 3,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 2,
+      "feedback": "stderr_and_test",
+      "review": true,
+      "max_tokens": 4096
+     },
+     "select_gain": 6,
+     "kept": true,
+     "predicted_gain": 8,
+     "keep_probability": 0.65,
+     "hypothesis": ", Increasing max_tokens to 4096 prevents cut-offs, and setting test_retry to 2 allows the agent to fix truncated or incorrect code before final selection. This addresses the primary failure mode (truncation leading to invalid code)."
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "Analyze the provided failing test to identify the logical error, correct the code, and ensure it passes. Keep the function names and signatures exactly as given.",
+      "attempts": 3,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 2,
+      "feedback": "stderr_and_test",
+      "review": false,
+      "max_tokens": 4096
+     },
+     "select_gain": 1,
+     "kept": false,
+     "predicted_gain": 12,
+     "keep_probability": 0.65,
+     "hypothesis": "Increasing max_tokens to 8192 will provide sufficient space for the model to perform deep logical reasoning and write complete code without truncation, directly addressing the 'wrong_answer' failures caused by cutoffs. Removing the `review` step reduces noise and cost, focusing the model solely on fixing the bug. This should significantly improve the 'judged' accuracy on hidden tests."
+    }
+   ],
+   "improver_tokens": 3410
+  },
+  "45519130e5_fail_b2048_s1": {
+   "improver": "m0c",
+   "set": "fail_b2048",
+   "seed": 1,
+   "select_solved": 50,
+   "test_solved": 152,
+   "imp": 23,
+   "budget": {
+    "rollouts": 451,
+    "completion_tokens": 221527,
+    "prompt_tokens": 213111,
+    "improver_completion_tokens": 3057,
+    "improver_prompt_tokens": 18464,
+    "improver_calls": 8
+   },
+   "rounds": [
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 3,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 2,
+      "feedback": "stderr",
+      "review": false,
+      "max_tokens": 2048
+     },
+     "select_gain": 10,
+     "kept": true,
+     "predicted_gain": 6,
+     "keep_probability": 0.92,
+     "hypothesis": "Increasing attempts to 3 allows the model to try different reasoning paths. Switching to `select: 'passes_test'` with `test_retry: 2` creates a feedback loop where the model is forced to generate a valid solution if the first 2 attempts fail. This addresses the 'wrong_answer' by enforcing correctness and the 'load_error' by forcing a successful execution before finalizing."
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 3,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 3,
+      "feedback": "stderr",
+      "review": false,
+      "max_tokens": 2048
+     },
+     "select_gain": -2,
+     "kept": false,
+     "predicted_gain": 6,
+     "keep_probability": 0.92,
+     "hypothesis": "Lowering temperature to 0.0 ensures deterministic, consistent reasoning across attempts, reducing the chance of the model drifting into incorrect logic paths during retries. Increasing test_retry to 3 provides a larger buffer to recover from transient generation errors (like syntax issues) without giving up prematurely, as seen in the 2 runtime errors where the model struggled to fix IndexError"
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 2,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 2,
+      "feedback": "stderr",
+      "review": false,
+      "max_tokens": 2048
+     },
+     "select_gain": -1,
+     "kept": false,
+     "predicted_gain": 3,
+     "keep_probability": 0.92,
+     "hypothesis": "Reducing `max_tokens` will not help if the model is already verbose; instead, we need to force concise output. However, simply lowering tokens risks hitting the limit faster. The better approach is to lower `temperature` to 0.0 for deterministic logic and reduce `attempts` to 2 to avoid divergence, while keeping `max_tokens` high enough to allow full reasoning if the prompt is structured correctly"
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 3,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 2,
+      "feedback": "stderr",
+      "review": false,
+      "max_tokens": 1024
+     },
+     "select_gain": -1,
+     "kept": false,
+     "predicted_gain": 8,
+     "keep_probability": 0.72,
+     "hypothesis": "Reducing max_tokens prevents truncation of reasoning steps that lead to correct code, and zero temperature ensures a single, consistent attempt that 'first' selection can capture correctly."
+    }
+   ],
+   "improver_tokens": 3057
+  },
+  "45519130e5_fail_b2048_s2": {
+   "improver": "m0c",
+   "set": "fail_b2048",
+   "seed": 2,
+   "select_solved": 46,
+   "test_solved": 163,
+   "imp": 34,
+   "budget": {
+    "rollouts": 451,
+    "completion_tokens": 251484,
+    "prompt_tokens": 338411,
+    "improver_completion_tokens": 3252,
+    "improver_prompt_tokens": 17689,
+    "improver_calls": 8
+   },
+   "rounds": [
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 2,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 2,
+      "feedback": "stderr_and_test",
+      "review": true,
+      "max_tokens": 1024
+     },
+     "select_gain": 6,
+     "kept": true,
+     "predicted_gain": 12,
+     "keep_probability": 0.65,
+     "hypothesis": "Increasing attempts to 2 and enabling test_retry with feedback='stderr_and_test' allows the agent to see the exact failure (syntax or logic) and correct it iteratively. Setting select='passes_test' ensures the final code is validated against the hidden tests rather than just being the first attempt. Reducing max_tokens per call to 1024 helps avoid truncation which caused load errors, while keeping"
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 4,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 2,
+      "feedback": "stderr_and_test",
+      "review": true,
+      "max_tokens": 2048
+     },
+     "select_gain": 2,
+     "kept": false,
+     "predicted_gain": 15,
+     "keep_probability": 0.9,
+     "hypothesis": "Raising max_tokens to 2048 eliminates cutoffs, lowering temperature to 0.0 ensures the first attempts are logically sound, and increasing attempts to 4 provides sufficient retries to correct logic errors before 'passes_test' locks in a wrong answer."
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 4,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 3,
+      "feedback": "stderr_and_test",
+      "review": false,
+      "max_tokens": 1024
+     },
+     "select_gain": 2,
+     "kept": false,
+     "predicted_gain": 4,
+     "keep_probability": 0.6,
+     "hypothesis": "removing 'review' eliminates redundant verification steps that may confuse the model, while increasing 'test_retry' to 3 provides more chances to correct syntax or logic errors revealed by the test. This combination targets the root cause of logic failures."
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 2,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 2,
+      "feedback": "stderr_and_test",
+      "review": true,
+      "max_tokens": 2048
+     },
+     "select_gain": -1,
+     "kept": false,
+     "predicted_gain": 5,
+     "keep_probability": 0.95,
+     "hypothesis": "Raising max_tokens to 2048 and setting temperature to 0.0 will eliminate truncation-induced failures and improve the consistency of logical bug fixes."
+    }
+   ],
+   "improver_tokens": 3252
+  },
+  "45519130e5_fail_b2048_s3": {
+   "improver": "m0c",
+   "set": "fail_b2048",
+   "seed": 3,
+   "select_solved": 48,
+   "test_solved": 159,
+   "imp": 30,
+   "budget": {
+    "rollouts": 451,
+    "completion_tokens": 190245,
+    "prompt_tokens": 210908,
+    "improver_completion_tokens": 3742,
+    "improver_prompt_tokens": 24773,
+    "improver_calls": 10
+   },
+   "rounds": [
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 2,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 2,
+      "feedback": "stderr_and_test",
+      "review": false,
+      "max_tokens": 4096
+     },
+     "select_gain": 8,
+     "kept": true,
+     "predicted_gain": 15,
+     "keep_probability": 0.85,
+     "hypothesis": "Increasing `attempts` to 2, `temperature` to 0.3 to encourage diverse reasoning paths, and setting `test_retry` to 2 will allow the agent to recover from syntax errors and logic mistakes by re-running tests with detailed error feedback. Increasing `max_tokens` to 4096 ensures code is not truncated."
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 2,
+      "temperature": 0.3,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 2,
+      "feedback": "stderr_and_test",
+      "review": false,
+      "max_tokens": 4096
+     },
+     "select_gain": 2,
+     "kept": false,
+     "predicted_gain": 14,
+     "keep_probability": 0.96,
+     "hypothesis": "Increasing `max_tokens` to 8192 will prevent the premature cutoff observed in 7 cases, allowing the model to generate complete logic. Additionally, reducing `temperature` to 0.0 ensures deterministic, error-free generation for the remaining 18 `wrong_answer` cases caused by divergent reasoning, rather than getting lucky with a partial answer."
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 2,
+      "temperature": 0.5,
+      "select": "first",
+      "self_test": false,
+      "test_retry": 2,
+      "feedback": "stderr_and_test",
+      "review": false,
+      "max_tokens": 1024
+     },
+     "select_gain": -1,
+     "kept": false,
+     "predicted_gain": 12,
+     "keep_probability": 0.85,
+     "hypothesis": "Reducing max_tokens to 1024 ensures the model stays within the shared budget without truncation. Setting temperature to 0.0 ensures deterministic, logical code generation without hallucinations. Increasing test_retry to 3 provides more chances to recover from edge cases after the initial fix."
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 2,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 2,
+      "feedback": "stderr_and_test",
+      "review": false,
+      "max_tokens": 2048
+     },
+     "select_gain": 0,
+     "kept": false,
+     "predicted_gain": 8,
+     "keep_probability": 0.92,
+     "hypothesis": "We need to increase `max_tokens` to 2048 to allow full code generation without truncation, and reduce `temperature` to 0.0 to ensure deterministic, logic-consistent code generation. This should fix the truncation issues seen in r2/r3 and reduce 'wrong_answer' failures caused by hallucinations."
+    }
+   ],
+   "improver_tokens": 3742
+  },
+  "45519130e5_fail_b2048_s4": {
+   "improver": "m0c",
+   "set": "fail_b2048",
+   "seed": 4,
+   "select_solved": 50,
+   "test_solved": 156,
+   "imp": 27,
+   "budget": {
+    "rollouts": 451,
+    "completion_tokens": 210956,
+    "prompt_tokens": 213671,
+    "improver_completion_tokens": 4032,
+    "improver_prompt_tokens": 19187,
+    "improver_calls": 8
+   },
+   "rounds": [
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 3,
+      "temperature": 0.5,
+      "select": "majority",
+      "self_test": false,
+      "test_retry": 0,
+      "feedback": "stderr",
+      "review": false,
+      "max_tokens": 4096
+     },
+     "select_gain": -3,
+     "kept": false,
+     "predicted_gain": 24,
+     "keep_probability": 0.85,
+     "hypothesis": "Increasing the number of attempts to 3 and setting 'select' to 'majority' will allow the model to explore multiple solution paths, increasing the chance of finding the correct logic for complex math problems. While token limits remain a risk for very long code, the majority selection strategy helps mitigate logical errors more significantly than attempting to force longer generations within a hard"
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 3,
+      "temperature": 0.5,
+      "select": "majority",
+      "self_test": false,
+      "test_retry": 0,
+      "feedback": "stderr",
+      "review": false,
+      "max_tokens": 2048
+     },
+     "select_gain": -3,
+     "kept": false,
+     "predicted_gain": 12,
+     "keep_probability": 0.45,
+     "hypothesis": "Enable temperature to generate diverse solutions and use 'majority' selection to filter for the most consistent answer across attempts, while reducing max_tokens slightly to prevent truncation of complex logic which causes load errors."
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 3,
+      "temperature": 0.5,
+      "select": "majority",
+      "self_test": false,
+      "test_retry": 2,
+      "feedback": "stderr_and_test",
+      "review": false,
+      "max_tokens": 2048
+     },
+     "select_gain": 10,
+     "kept": true,
+     "predicted_gain": 5,
+     "keep_probability": 0.75,
+     "hypothesis": ":4096 (which it currently has) is insufficient for 3 diverse attempts if they are long. However, the main issue is the lack of selection logic. We should keep attempts=3 but ensure select='majority' to filter out the bad ones. The previous failure on cutoff suggests the model output is getting long. A better strategy is to keep 3 attempts but reduce the per-call token limit to ensure they finish, "
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 3,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 2,
+      "feedback": "stderr_and_test",
+      "review": false,
+      "max_tokens": 4096
+     },
+     "select_gain": -1,
+     "kept": false,
+     "predicted_gain": 12,
+     "keep_probability": 0.85,
+     "hypothesis": ": 'passes_test' is needed to filter out majority-voted wrong answers that pass internal logic checks but fail hidden tests, and 'max_tokens' must be increased to 4096 to prevent truncation on complex problems."
+    }
+   ],
+   "improver_tokens": 4032
+  },
+  "45519130e5_fail_b2048_s5": {
+   "improver": "m0c",
+   "set": "fail_b2048",
+   "seed": 5,
+   "select_solved": 48,
+   "test_solved": 151,
+   "imp": 22,
+   "budget": {
+    "rollouts": 384,
+    "completion_tokens": 188862,
+    "prompt_tokens": 174708,
+    "improver_completion_tokens": 4389,
+    "improver_prompt_tokens": 26114,
+    "improver_calls": 10
+   },
+   "rounds": [
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 3,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 2,
+      "feedback": "stderr",
+      "review": false,
+      "max_tokens": 4096
+     },
+     "select_gain": 8,
+     "kept": true,
+     "predicted_gain": 12,
+     "keep_probability": 0.95,
+     "hypothesis": "Increasing temperature to 0.5 and attempts to 3 will enable the model to generate diverse code paths, increasing the chance of finding a correct logic. Setting select='passes_test' ensures the first valid solution is kept. Enabling test_retry=2 allows the agent to fix syntax errors or edge cases revealed by the hidden tests after an initial selection."
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 3,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 2,
+      "feedback": "stderr",
+      "review": false,
+      "max_tokens": 1024
+     },
+     "select_gain": 1,
+     "kept": false,
+     "predicted_gain": 8,
+     "keep_probability": 0.92,
+     "hypothesis": "Reducing max_tokens to 1024 will force the model to be more concise and stop generating excessive reasoning text, ensuring the full code block is produced within the limit. This should prevent the 'cut_off_by_token_limit' failures which dominate the error set."
+    },
+    {
+     "status": "stage_failed",
+     "config": null,
+     "select_gain": null,
+     "kept": null,
+     "predicted_gain": null,
+     "keep_probability": null,
+     "hypothesis": null
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 3,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 2,
+      "feedback": "stderr",
+      "review": false,
+      "max_tokens": 2048
+     },
+     "select_gain": 2,
+     "kept": false,
+     "predicted_gain": 6,
+     "keep_probability": 0.45,
+     "hypothesis": ", "
+    }
+   ],
+   "improver_tokens": 4389
+  },
+  "45519130e5_fail_b2048_s6": {
+   "improver": "m0c",
+   "set": "fail_b2048",
+   "seed": 6,
+   "select_solved": 49,
+   "test_solved": 154,
+   "imp": 25,
+   "budget": {
+    "rollouts": 451,
+    "completion_tokens": 223324,
+    "prompt_tokens": 234389,
+    "improver_completion_tokens": 3770,
+    "improver_prompt_tokens": 22304,
+    "improver_calls": 9
+   },
+   "rounds": [
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 3,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 2,
+      "feedback": "stderr_and_test",
+      "review": false,
+      "max_tokens": 4096
+     },
+     "select_gain": 9,
+     "kept": true,
+     "predicted_gain": 18,
+     "keep_probability": 0.92,
+     "hypothesis": "Switching to 'select': 'passes_test' combined with 'test_retry': 2 will force the agent to regenerate code only after verifying it against the failing test, allowing it to fix the logic errors seen in the failure examples."
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 2,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 2,
+      "feedback": "stderr_and_test",
+      "review": false,
+      "max_tokens": 2048
+     },
+     "select_gain": -1,
+     "kept": false,
+     "predicted_gain": 14,
+     "keep_probability": 0.85,
+     "hypothesis": "The hard system cap of 2048 tokens is overriding the `max_tokens` config, causing long reasoning chains to be truncated before the solution completes. Reducing `attempts` to 2 and setting `temperature` to 0.3 will discourage verbose elaboration, allowing the model to fit the concise fix within the 2048 limit without excessive context accumulation."
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 3,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 2,
+      "feedback": "stderr_and_test",
+      "review": true,
+      "max_tokens": 4096
+     },
+     "select_gain": -3,
+     "kept": false,
+     "predicted_gain": 5,
+     "keep_probability": 0.85,
+     "hypothesis": "The main failure cause is the effective token limit of 2048 truncating long reasoning chains before code completion, leading to incomplete fixes. Additionally, 'review': false allows logic errors (like is_Diff) to pass selection if the model hallucinates a passing test or generates flawed code that accidentally passes a subset of hidden tests. Increasing max_tokens ensures full context, and adding"
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 3,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": true,
+      "test_retry": 2,
+      "feedback": "stderr_and_test",
+      "review": false,
+      "max_tokens": 4096
+     },
+     "select_gain": -1,
+     "kept": false,
+     "predicted_gain": 8,
+     "keep_probability": 0.75,
+     "hypothesis": "Enabling `self_test` will allow the agent to create a minimal test harness for tasks that lack a provided failing test, reducing the need for long internal reasoning chains to diagnose issues. This helps avoid hitting the 2048 token limit while still utilizing `passes_test` and `test_retry` for verification. Since the token limit is the root cause, reducing the cognitive load via `self_test` is a "
+    }
+   ],
+   "improver_tokens": 3770
+  },
+  "45519130e5_fail_b2048_s7": {
+   "improver": "m0c",
+   "set": "fail_b2048",
+   "seed": 7,
+   "select_solved": 48,
+   "test_solved": 151,
+   "imp": 22,
+   "budget": {
+    "rollouts": 451,
+    "completion_tokens": 266733,
+    "prompt_tokens": 242765,
+    "improver_completion_tokens": 3619,
+    "improver_prompt_tokens": 19077,
+    "improver_calls": 8
+   },
+   "rounds": [
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 3,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 2,
+      "feedback": "stderr",
+      "review": false,
+      "max_tokens": 4096
+     },
+     "select_gain": 8,
+     "kept": true,
+     "predicted_gain": 5,
+     "keep_probability": 0.85,
+     "hypothesis": "Increasing `test_retry` to 2 coupled with `select:passes_test` will force the model to fix logic errors based on error messages, and raising `temperature` to 0.3 introduces necessary variation to avoid repeating the same incorrect logic. This addresses the 29 'wrong_answer' failures by enabling a corrective loop."
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 3,
+      "temperature": 0.5,
+      "select": "agreement",
+      "self_test": false,
+      "test_retry": 2,
+      "feedback": "stderr",
+      "review": false,
+      "max_tokens": 2048
+     },
+     "select_gain": -3,
+     "kept": false,
+     "predicted_gain": 12,
+     "keep_probability": 0.95,
+     "hypothesis": "Lowering temperature to 0.0 will make the model's reasoning deterministic and less prone to hallucinating incorrect logic. Increasing `max_tokens` to 2048 (or ensuring no cut-off happens) will prevent the truncation issues seen in examples. Switching `select` to 'agreement' with 3 attempts at 0.0 temperature forces the model to generate consistent examples, and the selection mechanism will pick a "
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 3,
+      "temperature": 1,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 2,
+      "feedback": "stderr",
+      "review": false,
+      "max_tokens": 4096
+     },
+     "select_gain": -7,
+     "kept": false,
+     "predicted_gain": 12,
+     "keep_probability": 0.75,
+     "hypothesis": ":diverse reasoning attempts, potentially allowing the model to 'guess' or derive the correct logic for complex mathematical or control flow bugs that low temperature misses."
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 3,
+      "temperature": 0.3,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 2,
+      "feedback": "stderr",
+      "review": true,
+      "max_tokens": 4096
+     },
+     "select_gain": -3,
+     "kept": false,
+     "predicted_gain": 3,
+     "keep_probability": 0.65,
+     "hypothesis": "Lowering temperature to 0.3 will make the model's reasoning more deterministic and focused, reducing hallucinated logic paths that lead to 'wrong_answer'. Enabling 'review' will add a final verification step to catch edge cases or simple logic errors that slipped through. Keeping 'test_retry' at 2 allows the model to fix its specific code error if the first attempt fails the test."
+    }
+   ],
+   "improver_tokens": 3619
+  },
+  "45519130e5_fail_b2048_s8": {
+   "improver": "m0c",
+   "set": "fail_b2048",
+   "seed": 8,
+   "select_solved": 45,
+   "test_solved": 155,
+   "imp": 26,
+   "budget": {
+    "rollouts": 451,
+    "completion_tokens": 276042,
+    "prompt_tokens": 300955,
+    "improver_completion_tokens": 3123,
+    "improver_prompt_tokens": 17724,
+    "improver_calls": 8
+   },
+   "rounds": [
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 2,
+      "temperature": 0.3,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 0,
+      "feedback": "stderr",
+      "review": false,
+      "max_tokens": 2048
+     },
+     "select_gain": 0,
+     "kept": false,
+     "predicted_gain": -2,
+     "keep_probability": 0.8,
+     "hypothesis": ":The `max_tokens` setting (4096) limits the total tokens per model call. The feedback shows 6 answers were cut off by the token limit. In cases like 't1-mbpp-245', the generated code is incomplete because the model reached the token limit. This is exacerbated by the single attempt (`attempts=1`) and low temperature (`temperature=0.0`), which prevents the model from exploring shorter, more concise,"
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 5,
+      "temperature": 0.3,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 2,
+      "feedback": "stderr",
+      "review": false,
+      "max_tokens": 4096
+     },
+     "select_gain": 5,
+     "kept": true,
+     "predicted_gain": 18,
+     "keep_probability": 0.95,
+     "hypothesis": ":The agent needs iterative refinement. With only 1 attempt, logical errors in the code are not caught. Setting attempts to 5 with a low temperature (0.3) allows for diverse but stable debugging attempts. Crucially, changing select to 'passes_test' and enabling test_retry (e.g., 2-3) ensures that if the first attempt fails, the model is forced to retry with the specific error message until a valid,"
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 5,
+      "temperature": 0.3,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 2,
+      "feedback": "stderr",
+      "review": true,
+      "max_tokens": 1024
+     },
+     "select_gain": 1,
+     "kept": false,
+     "predicted_gain": 3,
+     "keep_probability": 0.85,
+     "hypothesis": "Enabling `review` will catch the majority of logical errors causing 'wrong_answer' failures, and reducing `max_tokens` to 1024 will eliminate the cutoffs causing lost attempts without degrading performance for short Python functions."
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 5,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 2,
+      "feedback": "stderr",
+      "review": true,
+      "max_tokens": 1024
+     },
+     "select_gain": 1,
+     "kept": false,
+     "predicted_gain": 3,
+     "keep_probability": 0.85,
+     "hypothesis": "Enabling 'review' will fix the majority of 'wrong_answer' failures by adding a final logical check, and reducing 'max_tokens' to 1024 will eliminate the 'load_error' failures seen in truncated outputs."
+    }
+   ],
+   "improver_tokens": 3123
+  },
+  "adeaaa2c1e_fail_b2048_s1": {
+   "improver": "m_hand",
+   "set": "fail_b2048",
+   "seed": 1,
+   "select_solved": 51,
+   "test_solved": 160,
+   "imp": 31,
+   "budget": {
+    "rollouts": 451,
+    "completion_tokens": 200443,
+    "prompt_tokens": 223387,
+    "improver_completion_tokens": 3484,
+    "improver_prompt_tokens": 20978,
+    "improver_calls": 8
+   },
+   "rounds": [
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 2,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 2,
+      "feedback": "stderr",
+      "review": false,
+      "max_tokens": 4096
+     },
+     "select_gain": 11,
+     "kept": true,
+     "predicted_gain": 12,
+     "keep_probability": 0.85,
+     "hypothesis": "Enabling 'test_retry' allows the agent to see the specific error (RecursionError or assertion failure) and retry. Setting 'select' to 'passes_test' ensures the first code that actually passes the hidden tests is chosen, filtering out wrong answers. Increasing 'attempts' to 2 gives the model a second chance to generate correct logic or syntax if the first attempt fails the test check."
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 2,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": true,
+      "test_retry": 2,
+      "feedback": "stderr",
+      "review": false,
+      "max_tokens": 1024
+     },
+     "select_gain": -2,
+     "kept": false,
+     "predicted_gain": 8,
+     "keep_probability": 0.65,
+     "hypothesis": "Lowering `max_tokens` to 1024 forces the model to generate concise, direct code without long explanations, mitigating the cutoff risk. Enabling `self_test: true` creates a realistic, short test based on the problem statement, ensuring `passes_test` has a valid baseline to check against. Reducing `temperature` to 0.0 ensures deterministic, high-quality code generation for the first attempt, while `"
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 2,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 2,
+      "feedback": "stderr",
+      "review": false,
+      "max_tokens": 2048
+     },
+     "select_gain": -2,
+     "kept": false,
+     "predicted_gain": 5,
+     "keep_probability": 0.95,
+     "hypothesis": ": cannot generate valid assertions. Since select is 'passes_test' and test_retry is enabled, the model needs to generate full, correct code within the token budget. Reducing max_tokens from 4096 to 2048 forces the model to be more concise and prevents truncation of the solution, which is the direct cause of the failures seen in the feedback."
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 2,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 2,
+      "feedback": "stderr",
+      "review": true,
+      "max_tokens": 2048
+     },
+     "select_gain": -2,
+     "kept": false,
+     "predicted_gain": 3,
+     "keep_probability": 0.85,
+     "hypothesis": "Enabling 'review' will force the model to re-examine its code for edge cases and logical consistency after the initial attempt, directly addressing the 'wrong_answer' failures caused by missed details. Limiting tokens to 2048 will enforce conciseness, reducing the space for hallucinated reasoning."
+    }
+   ],
+   "improver_tokens": 3484
+  },
+  "adeaaa2c1e_fail_b2048_s2": {
+   "improver": "m_hand",
+   "set": "fail_b2048",
+   "seed": 2,
+   "select_solved": 47,
+   "test_solved": 152,
+   "imp": 23,
+   "budget": {
+    "rollouts": 451,
+    "completion_tokens": 187586,
+    "prompt_tokens": 192169,
+    "improver_completion_tokens": 3378,
+    "improver_prompt_tokens": 20955,
+    "improver_calls": 8
+   },
+   "rounds": [
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 2,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 1,
+      "feedback": "stderr_and_test",
+      "review": false,
+      "max_tokens": 2048
+     },
+     "select_gain": 7,
+     "kept": true,
+     "predicted_gain": 6,
+     "keep_probability": 0.42,
+     "hypothesis": "Enable 'test_retry' with feedback 'stderr_and_test' to allow the model to see the full error (including expected output) and fix it iteratively. Increase 'temperature' to 0.5 and 'attempts' to 2 to generate diverse solutions. Use 'select=passes_test' to prioritize correctness over the first guess. Reduce 'max_tokens' to 2048 to encourage concise, complete answers and avoid truncation risks."
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 2,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 1,
+      "feedback": "stderr_and_test",
+      "review": false,
+      "max_tokens": 4096
+     },
+     "select_gain": 0,
+     "kept": false,
+     "predicted_gain": 6,
+     "keep_probability": 0.95,
+     "hypothesis": "Increasing `max_tokens` to 4096 will prevent truncation, allowing the model to complete its reasoning and fix logic errors. Since the previous run with `max_tokens=4096` (r1) solved 35 of 58 tasks, this should recover the 6 truncation failures and potentially improve other complex cases."
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 2,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 2,
+      "feedback": "stderr_and_test",
+      "review": false,
+      "max_tokens": 4096
+     },
+     "select_gain": 1,
+     "kept": false,
+     "predicted_gain": 4,
+     "keep_probability": 0.65,
+     "hypothesis": "Increasing `test_retry` to 2 or 3 will give the model more opportunities to self-correct after seeing the error without changing the selection strategy. Increasing `max_tokens` to 4096 ensures no truncation occurs, allowing the model to use its full context window for reasoning."
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 2,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 2,
+      "feedback": "stderr_and_test",
+      "review": true,
+      "max_tokens": 4096
+     },
+     "select_gain": -2,
+     "kept": false,
+     "predicted_gain": 3,
+     "keep_probability": 0.65,
+     "hypothesis": "Increasing max_tokens to 4096 prevents code truncation, which is the root cause of most 'wrong_answer' failures. Adding 'review' provides a final safety check for edge cases."
+    }
+   ],
+   "improver_tokens": 3378
+  },
+  "adeaaa2c1e_fail_b2048_s3": {
+   "improver": "m_hand",
+   "set": "fail_b2048",
+   "seed": 3,
+   "select_solved": 47,
+   "test_solved": 152,
+   "imp": 23,
+   "budget": {
+    "rollouts": 451,
+    "completion_tokens": 243858,
+    "prompt_tokens": 203209,
+    "improver_completion_tokens": 3928,
+    "improver_prompt_tokens": 28712,
+    "improver_calls": 10
+   },
+   "rounds": [
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 2,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 1,
+      "feedback": "stderr_and_test",
+      "review": false,
+      "max_tokens": 2048
+     },
+     "select_gain": 7,
+     "kept": true,
+     "predicted_gain": 12,
+     "keep_probability": 0.45,
+     "hypothesis": "Increasing attempts with temperature > 0 encourages diverse reasoning paths. Switching 'select' to 'passes_test' with 'test_retry=1' allows the model to fix logic errors revealed by hidden tests. Reducing 'max_tokens' to 2048 prevents the truncation causing syntax errors."
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 2,
+      "temperature": 0.5,
+      "select": "majority",
+      "self_test": false,
+      "test_retry": 1,
+      "feedback": "stderr_and_test",
+      "review": false,
+      "max_tokens": 4096
+     },
+     "select_gain": -5,
+     "kept": false,
+     "predicted_gain": 4,
+     "keep_probability": 0.85,
+     "hypothesis": "Raising max_tokens to 4096 will fix the 6 cutoff cases and likely the 2 incomplete trace cases. Switching to 'majority' selection with temperature 0.3 should provide more robust error correction than 'passes_test' when the first attempt might be flawed, without risking the performance loss seen with higher temperatures and 'majority' selection."
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 5,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 3,
+      "feedback": "stderr_and_test",
+      "review": false,
+      "max_tokens": 2048
+     },
+     "select_gain": 1,
+     "kept": false,
+     "predicted_gain": 4,
+     "keep_probability": 0.95,
+     "hypothesis": "Increasing attempts to 5, temperature to 0.7, and max_tokens to 4096 will provide more diverse reasoning attempts and prevent token cutoffs. Raising test_retry to 3 gives the model more opportunities to self-correct logic errors after initial failures."
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 5,
+      "temperature": 1,
+      "select": "majority",
+      "self_test": false,
+      "test_retry": 0,
+      "feedback": "stderr_and_test",
+      "review": false,
+      "max_tokens": 2048
+     },
+     "select_gain": -18,
+     "kept": false,
+     "predicted_gain": 14,
+     "keep_probability": 0.9,
+     "hypothesis": "gets stuck in a local logic trap (e.g., off-by-one errors) and fails to self-correct even with multiple attempts because it doesn't see the failure until the very end of the execution trace. Increasing temperature to 1.0 forces the model to explore different logical paths, increasing the chance of hitting the correct logic variant. Switching `select` to 'majority' ensures that if the model gets it"
+    }
+   ],
+   "improver_tokens": 3928
+  },
+  "adeaaa2c1e_fail_b2048_s4": {
+   "improver": "m_hand",
+   "set": "fail_b2048",
+   "seed": 4,
+   "select_solved": 48,
+   "test_solved": 149,
+   "imp": 20,
+   "budget": {
+    "rollouts": 509,
+    "completion_tokens": 319279,
+    "prompt_tokens": 233934,
+    "improver_completion_tokens": 2915,
+    "improver_prompt_tokens": 22020,
+    "improver_calls": 8
+   },
+   "rounds": [
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "system message for every model call (empty by default)",
+      "instruction": "text appended to the task's prompt (empty by default)",
+      "attempts": 3,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 0,
+      "feedback": "stderr",
+      "review": false,
+      "max_tokens": 2048
+     },
+     "select_gain": 4,
+     "kept": true,
+     "predicted_gain": 12,
+     "keep_probability": 0.85,
+     "hypothesis": "Increasing attempts and temperature allows the model to generate diverse, complete solutions, while 'select: passes_test' ensures the correct code is chosen from those attempts. Reducing max_tokens slightly prevents unnecessary truncation overhead if the model is already cut off, but the primary fix is the multi-attempt strategy."
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 3,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 1,
+      "feedback": "stderr",
+      "review": false,
+      "max_tokens": 4096
+     },
+     "select_gain": 4,
+     "kept": true,
+     "predicted_gain": 12,
+     "keep_probability": 0.92,
+     "hypothesis": "Increasing max_tokens to 4096 will prevent truncation, and setting test_retry to 1 will allow recovery from errors that the initial pass misses."
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "Check for edge cases and logical errors. Return only the corrected code in a ```python block.",
+      "instruction": "",
+      "attempts": 3,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 1,
+      "feedback": "stderr",
+      "review": false,
+      "max_tokens": 2048
+     },
+     "select_gain": 0,
+     "kept": false,
+     "predicted_gain": 4,
+     "keep_probability": 0.9,
+     "hypothesis": "Introducing a concise system prompt that explicitly instructs the model to 'check for edge cases and logical errors' and 'return only the code block' will improve detection of the 19 logic bugs. Reducing `max_tokens` to 2048 will force the model to be more direct and prevent token cutoffs without sacrificing the ability to solve the tasks, as the prompt itself is very short."
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 3,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 0,
+      "feedback": "stderr",
+      "review": true,
+      "max_tokens": 2048
+     },
+     "select_gain": -4,
+     "kept": false,
+     "predicted_gain": 3,
+     "keep_probability": 0.95,
+     "hypothesis": "Lowering `max_tokens` to 2048 will prevent the 10 cutoff failures seen in examples like t1-mbpp-437, and enabling `review: true` will catch the 19 logical errors that persist through a single retry. Removing `test_retry` saves tokens for the review step."
+    }
+   ],
+   "improver_tokens": 2915
+  },
+  "adeaaa2c1e_fail_b2048_s5": {
+   "improver": "m_hand",
+   "set": "fail_b2048",
+   "seed": 5,
+   "select_solved": 50,
+   "test_solved": 152,
+   "imp": 23,
+   "budget": {
+    "rollouts": 384,
+    "completion_tokens": 194914,
+    "prompt_tokens": 177931,
+    "improver_completion_tokens": 3979,
+    "improver_prompt_tokens": 28962,
+    "improver_calls": 10
+   },
+   "rounds": [
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 3,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 2,
+      "feedback": "stderr",
+      "review": false,
+      "max_tokens": 2048
+     },
+     "select_gain": 10,
+     "kept": true,
+     "predicted_gain": 12,
+     "keep_probability": 0.85,
+     "hypothesis": "Increasing attempts to 3 with a moderate temperature (0.5) will increase the diversity of generated solutions, raising the probability that at least one attempt is logically correct. Enabling 'passes_test' selection ensures the correct logic is chosen. Enabling 'test_retry' allows fixing minor syntax issues if the logic is initially correct."
+    },
+    {
+     "status": "stage_failed",
+     "config": null,
+     "select_gain": null,
+     "kept": null,
+     "predicted_gain": null,
+     "keep_probability": null,
+     "hypothesis": null
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 3,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 2,
+      "feedback": "stderr",
+      "review": false,
+      "max_tokens": 4096
+     },
+     "select_gain": -2,
+     "kept": false,
+     "predicted_gain": 12,
+     "keep_probability": 0.95,
+     "hypothesis": "Increasing max_tokens to 4096 will eliminate the truncation errors, allowing the model to generate complete, correct solutions in one attempt without needing to hallucinate the rest of the code. This should significantly reduce 'wrong_answer' and 'cut_off_by_token_limit' failure counts while maintaining the effectiveness of the 'passes_test' selection strategy."
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 3,
+      "temperature": 0.3,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 2,
+      "feedback": "stderr",
+      "review": false,
+      "max_tokens": 4096
+     },
+     "select_gain": 0,
+     "kept": false,
+     "predicted_gain": -8,
+     "keep_probability": 0.12,
+     "hypothesis": ":The 2048 limit is cutting off valid solutions. Increasing `max_tokens` is necessary to prevent truncation, but the drop in `r3` suggests the model becomes verbose or hallucinates with too much space. A balanced approach is needed: ensure `max_tokens` is high enough to prevent cuts (4096) but potentially lower the `temperature` to 0.0 or very low to ensure deterministic, correct logic derivation, "
+    }
+   ],
+   "improver_tokens": 3979
+  },
+  "adeaaa2c1e_fail_b2048_s6": {
+   "improver": "m_hand",
+   "set": "fail_b2048",
+   "seed": 6,
+   "select_solved": 50,
+   "test_solved": 152,
+   "imp": 23,
+   "budget": {
+    "rollouts": 509,
+    "completion_tokens": 279797,
+    "prompt_tokens": 254564,
+    "improver_completion_tokens": 3580,
+    "improver_prompt_tokens": 24298,
+    "improver_calls": 9
+   },
+   "rounds": [
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 3,
+      "temperature": 0.3,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 1,
+      "feedback": "stderr",
+      "review": false,
+      "max_tokens": 4096
+     },
+     "select_gain": 6,
+     "kept": true,
+     "predicted_gain": 12,
+     "keep_probability": 0.98,
+     "hypothesis": "Enabling multiple attempts with non-zero temperature and selecting the first answer that passes the provided failing test should drastically reduce 'wrong_answer' failures. Adding test_retry will allow the model to fix syntax or logic errors revealed by the test output immediately."
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 3,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 1,
+      "feedback": "stderr",
+      "review": true,
+      "max_tokens": 2048
+     },
+     "select_gain": 2,
+     "kept": false,
+     "predicted_gain": 4,
+     "keep_probability": 0.25,
+     "hypothesis": "Reducing max_tokens to 2048 will eliminate truncation and improve code density. Enabling review will catch the logic gaps seen in runtime/wrong_answer failures."
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 3,
+      "temperature": 0.7,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 1,
+      "feedback": "stderr",
+      "review": false,
+      "max_tokens": 2048
+     },
+     "select_gain": -1,
+     "kept": false,
+     "predicted_gain": 4,
+     "keep_probability": 0.7,
+     "hypothesis": ":instead of relying on a second reasoning pass (review) that failed in r2, we should rely on the model's ability to reason better within the first attempt. Since `wrong_answer` is the dominant failure, increasing `temperature` to 0.7 might help the model generate more diverse and correct logic in the initial fix, avoiding the repetitive incorrect logic seen with 0.3. We will disable `review` to go"
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 3,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 2,
+      "feedback": "stderr",
+      "review": false,
+      "max_tokens": 2048
+     },
+     "select_gain": 4,
+     "kept": true,
+     "predicted_gain": 4,
+     "keep_probability": 0.95,
+     "hypothesis": "Lowering max_tokens to 2048 will prevent cutoffs by forcing the model to omit verbose traces. Increasing test_retry to 2 will provide a second chance to fix the 24 logic errors that pass the first retry."
+    }
+   ],
+   "improver_tokens": 3580
+  },
+  "adeaaa2c1e_fail_b2048_s7": {
+   "improver": "m_hand",
+   "set": "fail_b2048",
+   "seed": 7,
+   "select_solved": 46,
+   "test_solved": 160,
+   "imp": 31,
+   "budget": {
+    "rollouts": 451,
+    "completion_tokens": 183850,
+    "prompt_tokens": 245814,
+    "improver_completion_tokens": 3522,
+    "improver_prompt_tokens": 20886,
+    "improver_calls": 8
+   },
+   "rounds": [
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 1,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 2,
+      "feedback": "stderr_and_test",
+      "review": false,
+      "max_tokens": 2048
+     },
+     "select_gain": 6,
+     "kept": true,
+     "predicted_gain": 4,
+     "keep_probability": 0.08,
+     "hypothesis": "Increasing test_retry to 2 or 3 with 'stderr_and_test' feedback will allow the agent to regenerate code based on the full test output, fixing 'wrong_answer' cases that are syntactically valid but logically broken. Reducing max_tokens to 3000 prevents the 'load_error' caused by truncation. Keeping temperature at 0.0 ensures deterministic behavior during retries."
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 1,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 2,
+      "feedback": "stderr_and_test",
+      "review": true,
+      "max_tokens": 4096
+     },
+     "select_gain": -2,
+     "kept": false,
+     "predicted_gain": 15,
+     "keep_probability": 0.92,
+     "hypothesis": "I recommend increasing `max_tokens` to 4096 to prevent truncation in complex logical chains. I also propose enabling `review=true`. The 'wrong_answer' failures indicate the model generates code that passes its own logic but fails hidden tests due to subtle math errors (like using `3.1415` instead of `math.pi` or incorrect iteration logic). A `review` step allows the model to self-correct these nu-"
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 2,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 2,
+      "feedback": "stderr_and_test",
+      "review": false,
+      "max_tokens": 2048
+     },
+     "select_gain": 2,
+     "kept": false,
+     "predicted_gain": 8,
+     "keep_probability": 0.45,
+     "hypothesis": "Increasing 'attempts' to 2 with 'temperature' > 0.0 allows the 'majority' or 'passes_test' selection to pick the correct solution from multiple diverse attempts, mitigating the single-shot logic error. Reverting max_tokens to 2048 is sufficient as the token budget is shared, but the main gain comes from multiple attempts improving logical reasoning. We will keep 'review' as false to avoid cost and"
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 3,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 2,
+      "feedback": "stderr_and_test",
+      "review": false,
+      "max_tokens": 2048
+     },
+     "select_gain": 2,
+     "kept": false,
+     "predicted_gain": 4,
+     "keep_probability": 0.12,
+     "hypothesis": "More attempts with higher temperature allow the model to iterate on its reasoning process, correcting subtle logic errors that a single attempt or low temperature configuration misses. This directly targets the 'wrong_answer' failure mode by forcing the model to generate multiple variations of the solution before selection."
+    }
+   ],
+   "improver_tokens": 3522
+  },
+  "adeaaa2c1e_fail_b2048_s8": {
+   "improver": "m_hand",
+   "set": "fail_b2048",
+   "seed": 8,
+   "select_solved": 48,
+   "test_solved": 159,
+   "imp": 30,
+   "budget": {
+    "rollouts": 509,
+    "completion_tokens": 206366,
+    "prompt_tokens": 212552,
+    "improver_completion_tokens": 3730,
+    "improver_prompt_tokens": 20667,
+    "improver_calls": 8
+   },
+   "rounds": [
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 1,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 1,
+      "feedback": "stderr",
+      "review": false,
+      "max_tokens": 2048
+     },
+     "select_gain": 3,
+     "kept": true,
+     "predicted_gain": 12,
+     "keep_probability": 0.95,
+     "hypothesis": "Setting 'test_retry' to 1 and 'select' to 'passes_test' will force the agent to run the code against the provided test. If it fails (as seen in the 'wrong_answer' cases), the agent will receive the error and attempt to fix it in a retry step before keeping the result. This directly addresses the 29 logic errors."
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 2,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 2,
+      "feedback": "stderr_and_test",
+      "review": false,
+      "max_tokens": 4096
+     },
+     "select_gain": 5,
+     "kept": true,
+     "predicted_gain": 6,
+     "keep_probability": 0.85,
+     "hypothesis": "[2] "
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 2,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 3,
+      "feedback": "stderr_and_test",
+      "review": false,
+      "max_tokens": 4096
+     },
+     "select_gain": -1,
+     "kept": false,
+     "predicted_gain": 5,
+     "keep_probability": 0.95,
+     "hypothesis": "Raising temperature to 0.7 encourages more diverse reasoning paths, helping the model 're-derive' the correct logic rather than just patching the previous attempt. Increasing test_retry to 3 provides an extra iteration to correct the logic once the model finally generates a plausible code structure."
+    },
+    {
+     "status": "valid",
+     "config": {
+      "system_prompt": "",
+      "instruction": "",
+      "attempts": 2,
+      "temperature": 0.5,
+      "select": "passes_test",
+      "self_test": false,
+      "test_retry": 2,
+      "feedback": "stderr_and_test",
+      "review": false,
+      "max_tokens": 2048
+     },
+     "select_gain": 0,
+     "kept": false,
+     "predicted_gain": 3,
+     "keep_probability": 0.8,
+     "hypothesis": ">3 reduces performance (r3), suggesting 2 retries are optimal. Increasing temperature beyond 0.5 or adding self_test hasn't shown gains in this domain. The primary lever is reducing verbosity to avoid cutoffs."
+    }
+   ],
+   "improver_tokens": 3730
+  },
+  "gepa_fail_b2048_s1": {
+   "improver": "gepa",
+   "set": "fail_b2048",
+   "seed": 1,
+   "select_solved": 50,
+   "test_solved": 159,
+   "imp": 30,
+   "budget": {
+    "rollouts": 425,
+    "completion_tokens": 295040,
+    "prompt_tokens": 370453,
+    "improver_completion_tokens": 12867,
+    "improver_prompt_tokens": 15235,
+    "improver_calls": 13
+   },
+   "rounds": [],
+   "improver_tokens": 12867
+  },
+  "gepa_fail_b2048_s2": {
+   "improver": "gepa",
+   "set": "fail_b2048",
+   "seed": 2,
+   "select_solved": 49,
+   "test_solved": 152,
+   "imp": 23,
+   "budget": {
+    "rollouts": 425,
+    "completion_tokens": 306505,
+    "prompt_tokens": 496919,
+    "improver_completion_tokens": 11600,
+    "improver_prompt_tokens": 17928,
+    "improver_calls": 14
+   },
+   "rounds": [],
+   "improver_tokens": 11600
+  },
+  "gepa_fail_b2048_s3": {
+   "improver": "gepa",
+   "set": "fail_b2048",
+   "seed": 3,
+   "select_solved": 48,
+   "test_solved": 156,
+   "imp": 27,
+   "budget": {
+    "rollouts": 419,
+    "completion_tokens": 176814,
+    "prompt_tokens": 254343,
+    "improver_completion_tokens": 10630,
+    "improver_prompt_tokens": 14644,
+    "improver_calls": 13
+   },
+   "rounds": [],
+   "improver_tokens": 10630
+  },
+  "gepa_fail_b2048_s4": {
+   "improver": "gepa",
+   "set": "fail_b2048",
+   "seed": 4,
+   "select_solved": 51,
+   "test_solved": 150,
+   "imp": 21,
+   "budget": {
+    "rollouts": 468,
+    "completion_tokens": 477813,
+    "prompt_tokens": 435377,
+    "improver_completion_tokens": 9546,
+    "improver_prompt_tokens": 15191,
+    "improver_calls": 10
+   },
+   "rounds": [],
+   "improver_tokens": 9546
+  },
+  "gepa_fail_b2048_s5": {
+   "improver": "gepa",
+   "set": "fail_b2048",
+   "seed": 5,
+   "select_solved": 50,
+   "test_solved": 158,
+   "imp": 29,
+   "budget": {
+    "rollouts": 422,
+    "completion_tokens": 420571,
+    "prompt_tokens": 385407,
+    "improver_completion_tokens": 10476,
+    "improver_prompt_tokens": 19094,
+    "improver_calls": 13
+   },
+   "rounds": [],
+   "improver_tokens": 10476
+  },
+  "gepa_fail_b2048_s6": {
+   "improver": "gepa",
+   "set": "fail_b2048",
+   "seed": 6,
+   "select_solved": 46,
+   "test_solved": 155,
+   "imp": 26,
+   "budget": {
+    "rollouts": 425,
+    "completion_tokens": 166959,
+    "prompt_tokens": 162850,
+    "improver_completion_tokens": 10979,
+    "improver_prompt_tokens": 17223,
+    "improver_calls": 14
+   },
+   "rounds": [],
+   "improver_tokens": 10979
+  },
+  "gepa_fail_b2048_s7": {
+   "improver": "gepa",
+   "set": "fail_b2048",
+   "seed": 7,
+   "select_solved": 50,
+   "test_solved": 152,
+   "imp": 23,
+   "budget": {
+    "rollouts": 418,
+    "completion_tokens": 222160,
+    "prompt_tokens": 345099,
+    "improver_completion_tokens": 15942,
+    "improver_prompt_tokens": 27918,
+    "improver_calls": 23
+   },
+   "rounds": [],
+   "improver_tokens": 15942
+  },
+  "gepa_fail_b2048_s8": {
+   "improver": "gepa",
+   "set": "fail_b2048",
+   "seed": 8,
+   "select_solved": 48,
+   "test_solved": 158,
+   "imp": 29,
+   "budget": {
+    "rollouts": 422,
+    "completion_tokens": 220759,
+    "prompt_tokens": 288656,
+    "improver_completion_tokens": 10630,
+    "improver_prompt_tokens": 17404,
+    "improver_calls": 14
+   },
+   "rounds": [],
+   "improver_tokens": 10630
+  }
+ },
+ "forecasts": {
+  "m0c": {
+   "n": 31,
+   "gain_mse": 107.74193548387096,
+   "brier": 0.5064,
+   "mean_keep_probability": 0.8193548387096774,
+   "kept_rate": 0.25806451612903225
+  },
+  "m_hand": {
+   "n": 31,
+   "gain_mse": 76.35483870967742,
+   "brier": 0.43886451612903227,
+   "mean_keep_probability": 0.7309677419354839,
+   "kept_rate": 0.3548387096774194
+  },
+  "reflexion": {
+   "n": 32,
+   "gain_mse": 76.625,
+   "brier": 0.3954875,
+   "mean_keep_probability": 0.71375,
+   "kept_rate": 0.375
+  }
+ }
+}

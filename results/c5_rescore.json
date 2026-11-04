@@ -1,0 +1,756 @@
+{
+ "calibration": {
+  "1": {
+   "trials": 880,
+   "false_pass_one_run": 0.028409090909090908,
+   "false_pass_after_second_run": 0.014772727272727272,
+   "false_stop_regression": 0.042045454545454546
+  },
+  "2": {
+   "trials": 880,
+   "false_pass_one_run": 0.042045454545454546,
+   "false_pass_after_second_run": 0.011363636363636364,
+   "false_stop_regression": 0.017045454545454544
+  },
+  "3": {
+   "trials": 880,
+   "false_pass_one_run": 0.060227272727272727,
+   "false_pass_after_second_run": 0.025,
+   "false_stop_regression": 0.010227272727272727
+  },
+  "5": {
+   "trials": 880,
+   "false_pass_one_run": 0.05909090909090909,
+   "false_pass_after_second_run": 0.019318181818181818,
+   "false_stop_regression": 0.004545454545454545
+  },
+  "9": {
+   "trials": 880,
+   "false_pass_one_run": 0.075,
+   "false_pass_after_second_run": 0.023863636363636365,
+   "false_stop_regression": 0
+  }
+ },
+ "candidates": [
+  {
+   "id": "g01c001",
+   "domains": [
+    "code",
+    "math",
+    "rtl"
+   ],
+   "champion_runs": 1,
+   "old": {
+    "diff": -0.15082556332556332,
+    "p": 1.0,
+    "regression": 0.6956521739130435,
+    "pass_dev": false,
+    "pass_regression": false
+   },
+   "new": {
+    "diff": -0.15082556332556335,
+    "p": 0.9997372934080139,
+    "p_worse": 0.0002627065919861151,
+    "sd": 0.01818234327801695,
+    "regression": 0.6956521739130435,
+    "expected_regression": 0.11500000000000002,
+    "p_regression": 2.0693337226540763e-05,
+    "pass_dev": false,
+    "pass_regression": false
+   },
+   "second_run_needed": false
+  },
+  {
+   "id": "g01c004",
+   "domains": [
+    "code",
+    "math",
+    "rtl"
+   ],
+   "champion_runs": 2,
+   "old": {
+    "diff": 0.0236985236985237,
+    "p": 0.0414,
+    "regression": 0.04081632653061224,
+    "pass_dev": true,
+    "pass_regression": true
+   },
+   "new": {
+    "diff": 0.032580613830613836,
+    "p": 0.08143197634803973,
+    "p_worse": 0.9185680236519602,
+    "sd": 0.01774506108246775,
+    "regression": 0.042105263157894736,
+    "expected_regression": 0.11315789473684212,
+    "p_regression": 0.9243255601728012,
+    "pass_dev": false,
+    "pass_regression": true
+   },
+   "second_run_needed": false
+  },
+  {
+   "id": "g01c005",
+   "domains": [
+    "code",
+    "math",
+    "rtl"
+   ],
+   "champion_runs": 2,
+   "old": {
+    "diff": -0.21694832944832945,
+    "p": 1.0,
+    "regression": 0.8163265306122449,
+    "pass_dev": false,
+    "pass_regression": false
+   },
+   "new": {
+    "diff": -0.2080662393162393,
+    "p": 0.9999807529989796,
+    "p_worse": 1.924700102038644e-05,
+    "sd": 0.01774506108246775,
+    "regression": 0.8105263157894737,
+    "expected_regression": 0.11315789473684212,
+    "p_regression": 5.952576939458631e-06,
+    "pass_dev": false,
+    "pass_regression": false
+   },
+   "second_run_needed": false
+  },
+  {
+   "id": "g02c006",
+   "domains": [
+    "code",
+    "math",
+    "rtl"
+   ],
+   "champion_runs": 3,
+   "old": {
+    "diff": -0.008333333333333333,
+    "p": 0.6484,
+    "regression": 0.1568627450980392,
+    "pass_dev": false,
+    "pass_regression": false
+   },
+   "new": {
+    "diff": 0.006063843563843541,
+    "p": 0.38613875895521466,
+    "p_worse": 0.6138612410447853,
+    "sd": 0.01773573881305422,
+    "regression": 0.1095890410958904,
+    "expected_regression": 0.11067351598173518,
+    "p_regression": 0.5094189806399292,
+    "pass_dev": false,
+    "pass_regression": true
+   },
+   "second_run_needed": false
+  },
+  {
+   "id": "g02c007",
+   "domains": [
+    "code",
+    "math",
+    "rtl"
+   ],
+   "champion_runs": 3,
+   "old": {
+    "diff": -0.01182983682983683,
+    "p": 0.7,
+    "regression": 0.21568627450980393,
+    "pass_dev": false,
+    "pass_regression": false
+   },
+   "new": {
+    "diff": 0.0025673400673400515,
+    "p": 0.451168454575129,
+    "p_worse": 0.548831545424871,
+    "sd": 0.01773573881305422,
+    "regression": 0.19863013698630136,
+    "expected_regression": 0.11067351598173518,
+    "p_regression": 0.03765401998129305,
+    "pass_dev": false,
+    "pass_regression": false
+   },
+   "second_run_needed": false
+  },
+  {
+   "id": "g03c012",
+   "domains": [
+    "code",
+    "math",
+    "rtl"
+   ],
+   "champion_runs": 4,
+   "old": {
+    "diff": -0.0033216783216783222,
+    "p": 0.5603,
+    "regression": 0.22,
+    "pass_dev": false,
+    "pass_regression": false
+   },
+   "new": {
+    "diff": 0.0030545843045842735,
+    "p": 0.4379933977428376,
+    "p_worse": 0.5620066022571624,
+    "sd": 0.01716186770746442,
+    "regression": 0.15816326530612246,
+    "expected_regression": 0.11279434850863423,
+    "p_regression": 0.1670043356087425,
+    "pass_dev": false,
+    "pass_regression": true
+   },
+   "second_run_needed": false
+  },
+  {
+   "id": "g04c015",
+   "domains": [
+    "code",
+    "math",
+    "rtl"
+   ],
+   "champion_runs": 5,
+   "old": {
+    "diff": 0.00373931623931624,
+    "p": 0.4191,
+    "regression": 0.10869565217391304,
+    "pass_dev": false,
+    "pass_regression": true
+   },
+   "new": {
+    "diff": -0.010825563325563309,
+    "p": 0.7136971664052452,
+    "p_worse": 0.28630283359475484,
+    "sd": 0.017100659527036922,
+    "regression": 0.11983471074380166,
+    "expected_regression": 0.11520070838252658,
+    "p_regression": 0.4605066995553462,
+    "pass_dev": false,
+    "pass_regression": true
+   },
+   "second_run_needed": false
+  },
+  {
+   "id": "g04c016",
+   "domains": [
+    "code",
+    "math",
+    "rtl"
+   ],
+   "champion_runs": 5,
+   "old": {
+    "diff": 0.021047008547008545,
+    "p": 0.0919,
+    "regression": 0.06521739130434782,
+    "pass_dev": false,
+    "pass_regression": true
+   },
+   "new": {
+    "diff": 0.006482128982128965,
+    "p": 0.36725706847699596,
+    "p_worse": 0.632742931523004,
+    "sd": 0.017100659527036922,
+    "regression": 0.09917355371900827,
+    "expected_regression": 0.11520070838252658,
+    "p_regression": 0.6339235095522323,
+    "pass_dev": false,
+    "pass_regression": true
+   },
+   "second_run_needed": false
+  },
+  {
+   "id": "g05c018",
+   "domains": [
+    "math"
+   ],
+   "champion_runs": 6,
+   "old": {
+    "diff": -0.00811965811965812,
+    "p": 0.6549,
+    "regression": 0.16,
+    "pass_dev": false,
+    "pass_regression": false
+   },
+   "new": {
+    "diff": 0.051282051282051294,
+    "p": 0.07223715108395466,
+    "p_worse": 0.9277628489160453,
+    "sd": 0.03079511990361251,
+    "regression": 0.1111111111111111,
+    "expected_regression": 0.12358024691358024,
+    "p_regression": 0.544487830142268,
+    "pass_dev": false,
+    "pass_regression": true
+   },
+   "second_run_needed": false
+  },
+  {
+   "id": "g05c019",
+   "domains": [
+    "code",
+    "math",
+    "rtl"
+   ],
+   "champion_runs": 6,
+   "old": {
+    "diff": -0.006993006993006992,
+    "p": 0.6466,
+    "regression": 0.1,
+    "pass_dev": false,
+    "pass_regression": true
+   },
+   "new": {
+    "diff": 0.0013225200725200392,
+    "p": 0.4712435156127911,
+    "p_worse": 0.5287564843872089,
+    "sd": 0.01668738720528762,
+    "regression": 0.113013698630137,
+    "expected_regression": 0.11639269406392695,
+    "p_regression": 0.528807440667948,
+    "pass_dev": false,
+    "pass_regression": true
+   },
+   "second_run_needed": false
+  },
+  {
+   "id": "g05c020",
+   "domains": [
+    "code",
+    "math",
+    "rtl"
+   ],
+   "champion_runs": 6,
+   "old": {
+    "diff": -0.043405205905205906,
+    "p": 0.9881,
+    "regression": 0.18,
+    "pass_dev": false,
+    "pass_regression": false
+   },
+   "new": {
+    "diff": -0.03508967883967887,
+    "p": 0.9643676197360523,
+    "p_worse": 0.03563238026394767,
+    "sd": 0.01668738720528762,
+    "regression": 0.1780821917808219,
+    "expected_regression": 0.11639269406392695,
+    "p_regression": 0.09997892070506875,
+    "pass_dev": false,
+    "pass_regression": true
+   },
+   "second_run_needed": false
+  },
+  {
+   "id": "g05c021",
+   "domains": [
+    "code",
+    "math",
+    "rtl"
+   ],
+   "champion_runs": 6,
+   "old": {
+    "diff": -0.07692307692307693,
+    "p": 0.999,
+    "regression": 0.28,
+    "pass_dev": false,
+    "pass_regression": false
+   },
+   "new": {
+    "diff": -0.06860754985754988,
+    "p": 0.9989425569331025,
+    "p_worse": 0.0010574430668974454,
+    "sd": 0.01668738720528762,
+    "regression": 0.2705479452054795,
+    "expected_regression": 0.11639269406392695,
+    "p_regression": 0.002459668400595983,
+    "pass_dev": false,
+    "pass_regression": false
+   },
+   "second_run_needed": false
+  },
+  {
+   "id": "g06c022",
+   "domains": [
+    "rtl"
+   ],
+   "champion_runs": 7,
+   "old": {
+    "diff": -0.017511655011655008,
+    "p": 0.766,
+    "regression": 0.3137254901960784,
+    "pass_dev": false,
+    "pass_regression": false
+   },
+   "new": {
+    "diff": -0.06428571428571431,
+    "p": 0.9979949998459181,
+    "p_worse": 0.00200500015408188,
+    "sd": 0.017612981764124333,
+    "regression": 0.5548387096774194,
+    "expected_regression": 0.11784274193548389,
+    "p_regression": 1.5505908064834106e-05,
+    "pass_dev": false,
+    "pass_regression": false
+   },
+   "second_run_needed": false
+  },
+  {
+   "id": "g06c023",
+   "domains": [
+    "code",
+    "math",
+    "rtl"
+   ],
+   "champion_runs": 7,
+   "old": {
+    "diff": -0.015996503496503497,
+    "p": 0.877,
+    "regression": 0.09803921568627451,
+    "pass_dev": false,
+    "pass_regression": true
+   },
+   "new": {
+    "diff": -0.0015429015429015425,
+    "p": 0.5340521846551403,
+    "p_worse": 0.4659478153448597,
+    "sd": 0.016622194789196732,
+    "regression": 0.119533527696793,
+    "expected_regression": 0.11670007288629738,
+    "p_regression": 0.47575613590334975,
+    "pass_dev": false,
+    "pass_regression": true
+   },
+   "second_run_needed": false
+  },
+  {
+   "id": "g06c024",
+   "domains": [
+    "code",
+    "math",
+    "rtl"
+   ],
+   "champion_runs": 7,
+   "old": {
+    "diff": -0.0050116550116550114,
+    "p": 0.624,
+    "regression": 0.09803921568627451,
+    "pass_dev": false,
+    "pass_regression": true
+   },
+   "new": {
+    "diff": 0.009441946941946944,
+    "p": 0.3012700197681651,
+    "p_worse": 0.6987299802318349,
+    "sd": 0.016622194789196732,
+    "regression": 0.08454810495626822,
+    "expected_regression": 0.11670007288629738,
+    "p_regression": 0.7532667058746614,
+    "pass_dev": false,
+    "pass_regression": true
+   },
+   "second_run_needed": false
+  },
+  {
+   "id": "g07c028",
+   "domains": [
+    "code",
+    "math",
+    "rtl"
+   ],
+   "champion_runs": 8,
+   "old": {
+    "diff": -0.02302836052836053,
+    "p": 0.8416,
+    "regression": 0.19642857142857142,
+    "pass_dev": false,
+    "pass_regression": false
+   },
+   "new": {
+    "diff": 0.015547299922299918,
+    "p": 0.22527150616552963,
+    "p_worse": 0.7747284938344703,
+    "sd": 0.018975870770856457,
+    "regression": 0.11779448621553884,
+    "expected_regression": 0.11703523514669026,
+    "p_regression": 0.4934438105806068,
+    "pass_dev": false,
+    "pass_regression": true
+   },
+   "second_run_needed": false
+  },
+  {
+   "id": "g07c029",
+   "domains": [
+    "code",
+    "math",
+    "rtl"
+   ],
+   "champion_runs": 8,
+   "old": {
+    "diff": -0.019745532245532247,
+    "p": 0.8274,
+    "regression": 0.125,
+    "pass_dev": false,
+    "pass_regression": true
+   },
+   "new": {
+    "diff": 0.018830128205128138,
+    "p": 0.1813668531014539,
+    "p_worse": 0.8186331468985462,
+    "sd": 0.018975870770856457,
+    "regression": 0.06265664160401002,
+    "expected_regression": 0.11703523514669026,
+    "p_regression": 0.8755705078073721,
+    "pass_dev": false,
+    "pass_regression": true
+   },
+   "second_run_needed": false
+  },
+  {
+   "id": "g08c030",
+   "domains": [
+    "code",
+    "math",
+    "rtl"
+   ],
+   "champion_runs": 9,
+   "old": {
+    "diff": -0.005050505050505051,
+    "p": 0.6178,
+    "regression": 0.11538461538461539,
+    "pass_dev": false,
+    "pass_regression": true
+   },
+   "new": {
+    "diff": 0.008959250625917292,
+    "p": 0.32807068684400176,
+    "p_worse": 0.6719293131559982,
+    "sd": 0.018770884408491867,
+    "regression": 0.0975609756097561,
+    "expected_regression": 0.11513303769401333,
+    "p_regression": 0.6493245033622307,
+    "pass_dev": false,
+    "pass_regression": true
+   },
+   "second_run_needed": false
+  },
+  {
+   "id": "g08c033",
+   "domains": [
+    "code",
+    "math",
+    "rtl"
+   ],
+   "champion_runs": 9,
+   "old": {
+    "diff": 0.0022241647241647254,
+    "p": 0.4604,
+    "regression": 0.1346153846153846,
+    "pass_dev": false,
+    "pass_regression": true
+   },
+   "new": {
+    "diff": 0.016233920400587076,
+    "p": 0.21138944142297766,
+    "p_worse": 0.7886105585770223,
+    "sd": 0.018770884408491867,
+    "regression": 0.1263858093126386,
+    "expected_regression": 0.11513303769401333,
+    "p_regression": 0.4028843124253085,
+    "pass_dev": false,
+    "pass_regression": true
+   },
+   "second_run_needed": false
+  },
+  {
+   "id": "g09c035",
+   "domains": [
+    "rtl"
+   ],
+   "champion_runs": 10,
+   "old": {
+    "diff": 0.01688034188034188,
+    "p": 0.2444,
+    "regression": 0.20833333333333334,
+    "pass_dev": false,
+    "pass_regression": false
+   },
+   "new": {
+    "diff": 0.022499999999999964,
+    "p": 0.10268160270353681,
+    "p_worse": 0.8973183972964631,
+    "sd": 0.0163506726958757,
+    "regression": 0.31081081081081086,
+    "expected_regression": 0.11173541963015649,
+    "p_regression": 0.0040757902415319664,
+    "pass_dev": false,
+    "pass_regression": false
+   },
+   "second_run_needed": false
+  },
+  {
+   "id": "g09c036",
+   "domains": [
+    "code",
+    "math",
+    "rtl"
+   ],
+   "champion_runs": 10,
+   "old": {
+    "diff": 0.04541569541569542,
+    "p": 0.0559,
+    "regression": 0.22916666666666666,
+    "pass_dev": false,
+    "pass_regression": false
+   },
+   "new": {
+    "diff": 0.03354895104895106,
+    "p": 0.0501518833828198,
+    "p_worse": 0.9498481166171802,
+    "sd": 0.018494232490872925,
+    "regression": 0.23046092184368738,
+    "expected_regression": 0.11484548043455334,
+    "p_regression": 0.009789615554816899,
+    "pass_dev": false,
+    "pass_regression": false
+   },
+   "second_run_needed": false
+  },
+  {
+   "id": "g09c037",
+   "domains": [
+    "code",
+    "math",
+    "rtl"
+   ],
+   "champion_runs": 10,
+   "old": {
+    "diff": 0.010771173271173273,
+    "p": 0.3188,
+    "regression": 0.14583333333333334,
+    "pass_dev": false,
+    "pass_regression": true
+   },
+   "new": {
+    "diff": -0.0010955710955710685,
+    "p": 0.5222240193690519,
+    "p_worse": 0.477775980630948,
+    "sd": 0.018494232490872925,
+    "regression": 0.1342685370741483,
+    "expected_regression": 0.11484548043455334,
+    "p_regression": 0.3359154639471347,
+    "pass_dev": false,
+    "pass_regression": true
+   },
+   "second_run_needed": false
+  },
+  {
+   "id": "g10c038",
+   "domains": [
+    "code",
+    "math",
+    "rtl"
+   ],
+   "champion_runs": 11,
+   "old": {
+    "diff": -0.018648018648018648,
+    "p": 0.8376,
+    "regression": 0.13725490196078433,
+    "pass_dev": false,
+    "pass_regression": true
+   },
+   "new": {
+    "diff": -0.008501094864731218,
+    "p": 0.6703729714885011,
+    "p_worse": 0.32962702851149894,
+    "sd": 0.01818234327801695,
+    "regression": 0.13090909090909092,
+    "expected_regression": 0.11604545454545456,
+    "p_regression": 0.3731131599772421,
+    "pass_dev": false,
+    "pass_regression": true
+   },
+   "second_run_needed": false
+  },
+  {
+   "id": "g10c039",
+   "domains": [
+    "code",
+    "math",
+    "rtl"
+   ],
+   "champion_runs": 11,
+   "old": {
+    "diff": -0.007876845376845376,
+    "p": 0.6395,
+    "regression": 0.13725490196078433,
+    "pass_dev": false,
+    "pass_regression": true
+   },
+   "new": {
+    "diff": 0.0022700784064420554,
+    "p": 0.45302583406175445,
+    "p_worse": 0.5469741659382455,
+    "sd": 0.01818234327801695,
+    "regression": 0.11818181818181818,
+    "expected_regression": 0.11604545454545456,
+    "p_regression": 0.4814258373056896,
+    "pass_dev": false,
+    "pass_regression": true
+   },
+   "second_run_needed": false
+  },
+  {
+   "id": "g10c040",
+   "domains": [
+    "code",
+    "math",
+    "rtl"
+   ],
+   "champion_runs": 11,
+   "old": {
+    "diff": -0.10109751359751361,
+    "p": 1.0,
+    "regression": 0.49019607843137253,
+    "pass_dev": false,
+    "pass_regression": false
+   },
+   "new": {
+    "diff": -0.09095058981422618,
+    "p": 0.9999184801905467,
+    "p_worse": 8.151980945325096e-05,
+    "sd": 0.01818234327801695,
+    "regression": 0.4890909090909091,
+    "expected_regression": 0.11604545454545456,
+    "p_regression": 3.644824481228256e-07,
+    "pass_dev": false,
+    "pass_regression": false
+   },
+   "second_run_needed": false
+  },
+  {
+   "id": "g10c041",
+   "domains": [
+    "code"
+   ],
+   "champion_runs": 11,
+   "old": {
+    "diff": -0.02807886557886558,
+    "p": 0.8826,
+    "regression": 0.21568627450980393,
+    "pass_dev": false,
+    "pass_regression": false
+   },
+   "new": {
+    "diff": -0.03168044077134985,
+    "p": 0.8657760274184968,
+    "p_worse": 0.13422397258150318,
+    "sd": 0.02663785069671311,
+    "regression": 0.23618090452261306,
+    "expected_regression": 0.11478643216080404,
+    "p_regression": 0.06062668190202135,
+    "pass_dev": false,
+    "pass_regression": true
+   },
+   "second_run_needed": false
+  }
+ ]
+}

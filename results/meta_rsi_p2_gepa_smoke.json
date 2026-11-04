@@ -1,0 +1,80 @@
+{
+ "improver": "gepa_smoke",
+ "set": "spec_nofail",
+ "seed": 1,
+ "config": {
+  "system_prompt": "",
+  "instruction": "",
+  "attempts": 1,
+  "temperature": 0.0,
+  "select": "first",
+  "self_test": false,
+  "test_retry": 0,
+  "feedback": "stderr",
+  "review": false,
+  "max_tokens": 4096
+ },
+ "config_problems": [],
+ "select_solved": 46,
+ "candidates": [
+  {
+   "config": {
+    "system_prompt": "",
+    "instruction": "",
+    "attempts": 1,
+    "temperature": 0.0,
+    "select": "first",
+    "self_test": false,
+    "test_retry": 0,
+    "feedback": "stderr",
+    "review": false,
+    "max_tokens": 4096
+   },
+   "select_rate": 0.6865671641791045
+  },
+  {
+   "config": {
+    "system_prompt": "",
+    "instruction": "",
+    "attempts": 3,
+    "temperature": 0.5,
+    "select": "passes_test",
+    "self_test": false,
+    "test_retry": 2,
+    "feedback": "stderr_and_test",
+    "review": true,
+    "max_tokens": 4096
+   },
+   "select_rate": 0.6716417910447762
+  }
+ ],
+ "metric_calls": 152,
+ "reflection_calls": 3,
+ "final_agent": "~/alter/meta-rsi/p2/smoke/gepa_smoke_spec_nofail_s1/agents/38b30c8260ef",
+ "rounds": [],
+ "budget": {
+  "rollouts": 152,
+  "completion_tokens": 66320,
+  "prompt_tokens": 63538,
+  "improver_completion_tokens": 1969,
+  "improver_prompt_tokens": 3314,
+  "improver_calls": 3
+ },
+ "improver_usage": {
+  "calls": 3,
+  "prompt_tokens": 3314,
+  "completion_tokens": 1969
+ },
+ "start_config": {
+  "system_prompt": "",
+  "instruction": "",
+  "attempts": 1,
+  "temperature": 0.0,
+  "select": "first",
+  "self_test": false,
+  "test_retry": 0,
+  "feedback": "stderr",
+  "review": false,
+  "max_tokens": 4096
+ }
+}

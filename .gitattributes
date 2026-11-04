@@ -1,0 +1,2 @@
+# The code runs in WSL: keep LF line endings in the working tree on every checkout (shell scripts break on CRLF).
+* text=auto eol=lf

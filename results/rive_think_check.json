@@ -1,0 +1,126 @@
+{
+ "runs": {
+  "s_t0": {
+   "tasks": 249,
+   "solved": 53,
+   "cut": 194,
+   "cut_inside_thinking": 192,
+   "forced": 0,
+   "mean_tokens": 7627,
+   "recheck_lines_per_1k": 2.99,
+   "loops_when_cut": 2
+  },
+  "s_tb": {
+   "tasks": 249,
+   "solved": 134,
+   "cut": 104,
+   "cut_inside_thinking": 0,
+   "forced": 217,
+   "mean_tokens": 7013,
+   "recheck_lines_per_1k": 2.37,
+   "loops_when_cut": 0,
+   "changed": 218,
+   "vs_source": {
+    "gained": 82,
+    "lost": 1
+   }
+  },
+  "s_nt": {
+   "tasks": 249,
+   "solved": 120,
+   "cut": 58,
+   "cut_inside_thinking": 56,
+   "forced": 0,
+   "mean_tokens": 1617,
+   "recheck_lines_per_1k": 0.24,
+   "loops_when_cut": 1
+  },
+  "s_e1": {
+   "tasks": 249,
+   "solved": 126,
+   "cut": 76,
+   "cut_inside_thinking": 67,
+   "forced": 0,
+   "mean_tokens": 4899,
+   "recheck_lines_per_1k": 0.03,
+   "loops_when_cut": 28
+  },
+  "s_e1b": {
+   "tasks": 249,
+   "solved": 143,
+   "cut": 33,
+   "cut_inside_thinking": 0,
+   "forced": 87,
+   "mean_tokens": 4579,
+   "recheck_lines_per_1k": 0.03,
+   "loops_when_cut": 1,
+   "changed": 97,
+   "vs_source": {
+    "gained": 19,
+    "lost": 2
+   }
+  },
+  "s_e1_16": {
+   "tasks": 249,
+   "solved": 131,
+   "cut": 56,
+   "cut_inside_thinking": 54,
+   "forced": 0,
+   "mean_tokens": 6954,
+   "recheck_lines_per_1k": 0.02,
+   "loops_when_cut": 44,
+   "changed": 76,
+   "vs_source": {
+    "gained": 5,
+    "lost": 0
+   }
+  },
+  "s_e1_16b": {
+   "tasks": 249,
+   "solved": 144,
+   "cut": 18,
+   "cut_inside_thinking": 0,
+   "forced": 57,
+   "mean_tokens": 6729,
+   "recheck_lines_per_1k": 0.02,
+   "loops_when_cut": 7,
+   "changed": 60,
+   "vs_source": {
+    "gained": 13,
+    "lost": 0
+   }
+  },
+  "s_nt_e1": {
+   "tasks": 249,
+   "solved": 96,
+   "cut": 1,
+   "cut_inside_thinking": 1,
+   "forced": 0,
+   "mean_tokens": 693,
+   "recheck_lines_per_1k": 0.0,
+   "loops_when_cut": 1
+  }
+ },
+ "edit_holds": "holds",
+ "non_thinking_with_e1": {
+  "difference": -24,
+  "reading": "harmed"
+ },
+ "combinations": {
+  "s_e1b": true,
+  "s_e1_16": true,
+  "s_e1_16b": true
+ },
+ "edit_vs_no_edit": {
+  "best_edit": "s_e1_16b",
+  "best_without": "s_tb",
+  "worth_it": true
+ },
+ "thinking_for_t2": {
+  "best_thinking": "s_e1_16b",
+  "best_non_thinking": "s_nt",
+  "worth_it": true,
+  "non_thinking_greedy_fp8": 117,
+  "token_ratio": 4.2
+ }
+}

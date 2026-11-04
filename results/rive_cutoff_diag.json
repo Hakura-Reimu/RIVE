@@ -1,0 +1,104 @@
+{
+ "runs": {
+  "a0_greedy": {
+   "tasks": 74,
+   "solved": 35,
+   "cut": 21,
+   "solved_when_cut": 0,
+   "mean_tokens": 1682,
+   "loops_when_cut": 6,
+   "mean_repeated_cut": 0.266,
+   "mean_repeated_rest": 0.027
+  },
+  "a0_card": {
+   "tasks": 74,
+   "solved": 38,
+   "cut": 11,
+   "solved_when_cut": 2,
+   "mean_tokens": 1324,
+   "loops_when_cut": 0,
+   "mean_repeated_cut": 0.0,
+   "mean_repeated_rest": 0.018
+  },
+  "think_greedy": {
+   "tasks": 74,
+   "solved": 12,
+   "cut": 61,
+   "solved_when_cut": 0,
+   "mean_tokens": 7727,
+   "loops_when_cut": 13,
+   "mean_repeated_cut": 0.245,
+   "mean_repeated_rest": 0.314,
+   "cut_inside_thinking": 59
+  },
+  "think_card_code": {
+   "tasks": 74,
+   "solved": 16,
+   "cut": 58,
+   "solved_when_cut": 0,
+   "mean_tokens": 7695,
+   "loops_when_cut": 0,
+   "mean_repeated_cut": 0.021,
+   "mean_repeated_rest": 0.201,
+   "cut_inside_thinking": 58
+  },
+  "think_card_general": {
+   "tasks": 74,
+   "solved": 13,
+   "cut": 61,
+   "solved_when_cut": 0,
+   "mean_tokens": 7731,
+   "loops_when_cut": 0,
+   "mean_repeated_cut": 0.006,
+   "mean_repeated_rest": 0.071,
+   "cut_inside_thinking": 61
+  }
+ },
+ "pairs": {
+  "a0_card_vs_a0_greedy": {
+   "solved": [
+    35,
+    38
+   ],
+   "cut": [
+    21,
+    11
+   ],
+   "flips": 11,
+   "effective": false,
+   "better": false
+  },
+  "think_card_code_vs_think_greedy": {
+   "solved": [
+    12,
+    16
+   ],
+   "cut": [
+    61,
+    58
+   ],
+   "flips": 6,
+   "effective": false,
+   "better": false
+  },
+  "think_card_general_vs_think_greedy": {
+   "solved": [
+    12,
+    13
+   ],
+   "cut": [
+    61,
+    61
+   ],
+   "flips": 5,
+   "effective": false,
+   "better": false
+  }
+ },
+ "greedy_cut_loop_share": 0.232,
+ "cut_offs_are": "both",
+ "scan_a0_dev": {
+  "solved": 41,
+  "cut": 17
+ }
+}

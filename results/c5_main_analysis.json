@@ -1,0 +1,1477 @@
+{
+ "promotions": [],
+ "selection_retests": [
+  {
+   "candidate": "g01c004",
+   "diff": -0.03288654918359219,
+   "p": 0.973,
+   "regression": 0.13953488372093023,
+   "passed": false
+  }
+ ],
+ "parts": {
+  "generations 1-3": {
+   "candidates": 13,
+   "evaluated": 6,
+   "invalid": 7,
+   "tools": {
+    "tried": 7,
+    "valid": 0
+   },
+   "problems": {
+    "rtl/compile_error": 13
+   },
+   "module_kinds": {
+    "tool": 7,
+    "workflow": 6
+   },
+   "most_slots_on_one_problem": {
+    "1": 5,
+    "2": 4,
+    "3": 4
+   },
+   "pass_dev": 1,
+   "pass_regression": 1,
+   "diff": {
+    "mean": -0.06126003626003626,
+    "median": -0.010081585081585081,
+    "max": 0.0236985236985237,
+    "positive": 1,
+    "below_minus_5pp": 2
+   },
+   "macro": {
+    "median": 0.2616890054390054,
+    "max": 0.2831973581973582
+   },
+   "prediction_hits": {
+    "False": 4,
+    "True": 2
+   },
+   "reflect": {
+    "refuted": 6
+   },
+   "rule_verdict": {
+    "refuted": 2,
+    "supported": 1,
+    "inconclusive": 3
+   }
+  },
+  "generations 4-10": {
+   "candidates": 28,
+   "evaluated": 20,
+   "invalid": 8,
+   "tools": {
+    "tried": 8,
+    "valid": 5
+   },
+   "problems": {
+    "math/no_final_answer": 8,
+    "code/runtime_error": 7,
+    "rtl/mismatch": 5,
+    "code/wrong_answer": 4,
+    "rtl/compile_error": 3,
+    "math/wrong_answer": 1
+   },
+   "module_kinds": {
+    "workflow": 12,
+    "prompt": 8,
+    "tool": 8
+   },
+   "most_slots_on_one_problem": {
+    "4": 3,
+    "5": 3,
+    "6": 2,
+    "7": 3,
+    "8": 2,
+    "9": 3,
+    "10": 1
+   },
+   "pass_dev": 0,
+   "pass_regression": 11,
+   "diff": {
+    "mean": -0.01387043512043512,
+    "median": -0.007998251748251748,
+    "max": 0.04541569541569542,
+    "positive": 6,
+    "below_minus_5pp": 2
+   },
+   "macro": {
+    "median": 0.26103341103341104,
+    "max": 0.29986402486402486
+   },
+   "prediction_hits": {
+    "False": 11,
+    "None": 1,
+    "True": 8
+   },
+   "reflect": {
+    "refuted": 18,
+    "supported": 2
+   },
+   "rule_verdict": {
+    "inconclusive": 17,
+    "refuted": 3
+   }
+  }
+ },
+ "seed_against_itself": {
+  "runs": [
+   {
+    "task_set": "gen-001",
+    "macro": 0.24173465423465423,
+    "math": 0.20512820512820512,
+    "code": 0.25757575757575757,
+    "rtl": 0.2625
+   },
+   {
+    "task_set": "gen-001",
+    "macro": 0.2594988344988345,
+    "math": 0.23076923076923078,
+    "code": 0.2727272727272727,
+    "rtl": 0.275
+   },
+   {
+    "task_set": "gen-002",
+    "macro": 0.2722125097125097,
+    "math": 0.2564102564102564,
+    "code": 0.2727272727272727,
+    "rtl": 0.2875
+   },
+   {
+    "task_set": "gen-003",
+    "macro": 0.2663170163170163,
+    "math": 0.23076923076923078,
+    "code": 0.3181818181818182,
+    "rtl": 0.25
+   },
+   {
+    "task_set": "gen-004",
+    "macro": 0.24173465423465423,
+    "math": 0.20512820512820512,
+    "code": 0.25757575757575757,
+    "rtl": 0.2625
+   },
+   {
+    "task_set": "gen-005",
+    "macro": 0.2662781662781663,
+    "math": 0.2564102564102564,
+    "code": 0.24242424242424243,
+    "rtl": 0.3
+   },
+   {
+    "task_set": "gen-006",
+    "macro": 0.2748251748251748,
+    "math": 0.28205128205128205,
+    "code": 0.24242424242424243,
+    "rtl": 0.3
+   },
+   {
+    "task_set": "gen-007",
+    "macro": 0.304458041958042,
+    "math": 0.3076923076923077,
+    "code": 0.3181818181818182,
+    "rtl": 0.2875
+   },
+   {
+    "task_set": "gen-008",
+    "macro": 0.28164335664335666,
+    "math": 0.28205128205128205,
+    "code": 0.2878787878787879,
+    "rtl": 0.275
+   },
+   {
+    "task_set": "gen-009",
+    "macro": 0.25444832944832946,
+    "math": 0.23076923076923078,
+    "code": 0.25757575757575757,
+    "rtl": 0.275
+   },
+   {
+    "task_set": "gen-010",
+    "macro": 0.27747668997669,
+    "math": 0.28205128205128205,
+    "code": 0.2878787878787879,
+    "rtl": 0.2625
+   }
+  ],
+  "macro": {
+   "mean": 0.26732976619340254,
+   "sd": 0.01818234327801695,
+   "min": 0.24173465423465423,
+   "max": 0.304458041958042
+  },
+  "pairs": 110,
+  "pass_dev_share": 0.1,
+  "fail_regression_share": 0.2636363636363636,
+  "diff": {
+   "sd": 0.025713716459494832,
+   "q95": 0.03990870240870241,
+   "max": 0.06272338772338772
+  },
+  "regression": {
+   "median": 0.11538461538461539,
+   "q95": 0.18,
+   "max": 0.23214285714285715
+  },
+  "diffs": [
+   -0.06272338772338772,
+   -0.06272338772338772,
+   -0.05000971250971251,
+   -0.04495920745920746,
+   -0.03990870240870241,
+   -0.03990870240870241,
+   -0.03817987567987568,
+   -0.038141025641025644,
+   -0.035742035742035744,
+   -0.035742035742035744,
+   -0.03309052059052059,
+   -0.03309052059052059,
+   -0.03224553224553225,
+   -0.030477855477855476,
+   -0.030477855477855476,
+   -0.02963286713286713,
+   -0.027195027195027196,
+   -0.026981351981351983,
+   -0.024582362082362082,
+   -0.024582362082362082,
+   -0.024543512043512045,
+   -0.024543512043512045,
+   -0.02302836052836053,
+   -0.022814685314685317,
+   -0.022144522144522144,
+   -0.020376845376845375,
+   -0.01797785547785548,
+   -0.017764180264180265,
+   -0.017764180264180265,
+   -0.017764180264180265,
+   -0.015365190365190365,
+   -0.015326340326340325,
+   -0.015326340326340325,
+   -0.012713675213675215,
+   -0.012713675213675215,
+   -0.012713675213675215,
+   -0.011868686868686869,
+   -0.01182983682983683,
+   -0.011198523698523699,
+   -0.011159673659673658,
+   -0.00943084693084693,
+   -0.008547008547008546,
+   -0.008508158508158508,
+   -0.006818181818181818,
+   -0.006818181818181818,
+   -0.006779331779331779,
+   -0.005934343434343434,
+   -0.005895493395493394,
+   -0.005264180264180264,
+   -0.005050505050505051,
+   -0.004166666666666667,
+   -0.0026515151515151525,
+   -0.002612665112665112,
+   -3.8850038850038925e-05,
+   0.0,
+   0.0,
+   3.8850038850038925e-05,
+   0.002612665112665112,
+   0.0026515151515151525,
+   0.004166666666666667,
+   0.005050505050505051,
+   0.005264180264180264,
+   0.005895493395493394,
+   0.005934343434343434,
+   0.006779331779331779,
+   0.006818181818181818,
+   0.006818181818181818,
+   0.008508158508158508,
+   0.008547008547008546,
+   0.00943084693084693,
+   0.011159673659673658,
+   0.011198523698523699,
+   0.01182983682983683,
+   0.011868686868686869,
+   0.012713675213675215,
+   0.012713675213675215,
+   0.012713675213675215,
+   0.015326340326340325,
+   0.015326340326340325,
+   0.015365190365190365,
+   0.017764180264180265,
+   0.017764180264180265,
+   0.017764180264180265,
+   0.01797785547785548,
+   0.020376845376845375,
+   0.022144522144522144,
+   0.022814685314685317,
+   0.02302836052836053,
+   0.024543512043512045,
+   0.024543512043512045,
+   0.024582362082362082,
+   0.024582362082362082,
+   0.026981351981351983,
+   0.027195027195027196,
+   0.02963286713286713,
+   0.030477855477855476,
+   0.030477855477855476,
+   0.03224553224553225,
+   0.03309052059052059,
+   0.03309052059052059,
+   0.035742035742035744,
+   0.035742035742035744,
+   0.038141025641025644,
+   0.03817987567987568,
+   0.03990870240870241,
+   0.03990870240870241,
+   0.04495920745920746,
+   0.05000971250971251,
+   0.06272338772338772,
+   0.06272338772338772
+  ]
+ },
+ "usage": {
+  "per_generation": [
+   {
+    "generation": 1,
+    "seconds": 6752,
+    "calls": 1100,
+    "prompt_tokens": 544229,
+    "completion_tokens": 2159087
+   },
+   {
+    "generation": 2,
+    "seconds": 3594,
+    "calls": 677,
+    "prompt_tokens": 444661,
+    "completion_tokens": 1195383
+   },
+   {
+    "generation": 3,
+    "seconds": 2643,
+    "calls": 415,
+    "prompt_tokens": 366247,
+    "completion_tokens": 753761
+   },
+   {
+    "generation": 4,
+    "seconds": 3047,
+    "calls": 669,
+    "prompt_tokens": 401615,
+    "completion_tokens": 1223321
+   },
+   {
+    "generation": 5,
+    "seconds": 4282,
+    "calls": 1041,
+    "prompt_tokens": 569484,
+    "completion_tokens": 1860188
+   },
+   {
+    "generation": 6,
+    "seconds": 3723,
+    "calls": 787,
+    "prompt_tokens": 520716,
+    "completion_tokens": 1496577
+   },
+   {
+    "generation": 7,
+    "seconds": 2993,
+    "calls": 630,
+    "prompt_tokens": 418434,
+    "completion_tokens": 1195834
+   },
+   {
+    "generation": 8,
+    "seconds": 3121,
+    "calls": 606,
+    "prompt_tokens": 505237,
+    "completion_tokens": 1133457
+   },
+   {
+    "generation": 9,
+    "seconds": 4054,
+    "calls": 777,
+    "prompt_tokens": 580379,
+    "completion_tokens": 1582640
+   },
+   {
+    "generation": 10,
+    "seconds": 4699,
+    "calls": 1006,
+    "prompt_tokens": 563984,
+    "completion_tokens": 1916441
+   }
+  ],
+  "total": {
+   "seconds": 38908,
+   "calls": 7708,
+   "prompt_tokens": 4914986,
+   "completion_tokens": 14516689
+  }
+ },
+ "candidates": [
+  {
+   "id": "g01c001",
+   "generation": 1,
+   "parent_source": "trunk",
+   "module": "agent/workflow.py",
+   "problem": "rtl/compile_error",
+   "module_kind": "workflow",
+   "status": "interrupted",
+   "macro": 0.0909090909090909,
+   "diff": -0.15082556332556332,
+   "p": 1.0,
+   "regression": 0.6956521739130435,
+   "pass_dev": false,
+   "pass_regression": false,
+   "by_domain": {
+    "code": 0.015151515151515138,
+    "math": -0.20512820512820512,
+    "rtl": -0.2625
+   },
+   "prediction": {
+    "metric": "rtl_accuracy",
+    "direction": "increase",
+    "champion": 0.2625,
+    "child": 0.0,
+    "hit": false
+   },
+   "reflect": "refuted",
+   "rule_verdict": "refuted",
+   "share_of_seed_pairs_at_least_as_good": 1.0,
+   "vs_seed_runs": {
+    "diff_from_mean": -0.17642067528431166,
+    "z": -9.289778237225136
+   }
+  },
+  {
+   "id": "g01c002",
+   "generation": 1,
+   "parent_source": "trunk",
+   "module": "tools/verilog_check_py.py",
+   "problem": "rtl/compile_error",
+   "module_kind": "tool",
+   "status": "invalid_patch",
+   "problems": [
+    "tool has more than 150 lines",
+    "syntax error: expected '(' (<unknown>, line 23)"
+   ]
+  },
+  {
+   "id": "g01c003",
+   "generation": 1,
+   "parent_source": "archive",
+   "module": "tools/verilog_syntax_checker.py",
+   "problem": "rtl/compile_error",
+   "module_kind": "tool",
+   "status": "invalid_patch",
+   "problems": [
+    "the tool defines no top-level SCHEMA",
+    "the tool defines no top-level test(public)"
+   ]
+  },
+  {
+   "id": "g01c004",
+   "generation": 1,
+   "parent_source": "trunk",
+   "module": "agent/workflow.py",
+   "problem": "rtl/compile_error",
+   "module_kind": "workflow",
+   "status": "evaluated",
+   "macro": 0.2831973581973582,
+   "diff": 0.0236985236985237,
+   "p": 0.0414,
+   "regression": 0.04081632653061224,
+   "pass_dev": true,
+   "pass_regression": true,
+   "by_domain": {
+    "code": 0.04545454545454547,
+    "math": 0.025641025641025605,
+    "rtl": 0.0
+   },
+   "prediction": {
+    "metric": "compile_error_count",
+    "direction": "decrease",
+    "champion": 37,
+    "child": 34,
+    "hit": true
+   },
+   "reflect": "refuted",
+   "rule_verdict": "supported",
+   "share_of_seed_pairs_at_least_as_good": 0.2,
+   "vs_seed_runs": {
+    "diff_from_mean": 0.015867592003955655,
+    "z": 0.8355393189486507
+   }
+  },
+  {
+   "id": "g01c005",
+   "generation": 1,
+   "parent_source": "trunk",
+   "module": "agent/workflow.py",
+   "problem": "rtl/compile_error",
+   "module_kind": "workflow",
+   "status": "evaluated",
+   "macro": 0.042550505050505054,
+   "diff": -0.21694832944832945,
+   "p": 1.0,
+   "regression": 0.8163265306122449,
+   "pass_dev": false,
+   "pass_regression": false,
+   "by_domain": {
+    "code": -0.25757575757575757,
+    "math": -0.23076923076923078,
+    "rtl": -0.16250000000000003
+   },
+   "prediction": {
+    "metric": "rtl_accuracy",
+    "direction": "increase",
+    "champion": 0.275,
+    "child": 0.1125,
+    "hit": false
+   },
+   "reflect": "refuted",
+   "rule_verdict": "refuted",
+   "share_of_seed_pairs_at_least_as_good": 1.0,
+   "vs_seed_runs": {
+    "diff_from_mean": -0.22477926114289748,
+    "z": -11.836194850629987
+   }
+  },
+  {
+   "id": "g02c006",
+   "generation": 2,
+   "parent_source": "trunk",
+   "module": "agent/workflow.py",
+   "problem": "rtl/compile_error",
+   "module_kind": "workflow",
+   "status": "evaluated",
+   "macro": 0.26387917637917635,
+   "diff": -0.008333333333333333,
+   "p": 0.6484,
+   "regression": 0.1568627450980392,
+   "pass_dev": false,
+   "pass_regression": false,
+   "by_domain": {
+    "code": 0.0,
+    "math": 0.0,
+    "rtl": -0.024999999999999967
+   },
+   "prediction": {
+    "metric": "rtl_accuracy",
+    "direction": "increase",
+    "champion": 0.2875,
+    "child": 0.2625,
+    "hit": false
+   },
+   "reflect": "refuted",
+   "rule_verdict": "inconclusive",
+   "share_of_seed_pairs_at_least_as_good": 0.6090909090909091,
+   "vs_seed_runs": {
+    "diff_from_mean": -0.0034505898142261904,
+    "z": -0.1816976049441509
+   }
+  },
+  {
+   "id": "g02c007",
+   "generation": 2,
+   "parent_source": "trunk",
+   "module": "agent/workflow.py",
+   "problem": "rtl/compile_error",
+   "module_kind": "workflow",
+   "status": "evaluated",
+   "macro": 0.26038267288267286,
+   "diff": -0.01182983682983683,
+   "p": 0.7,
+   "regression": 0.21568627450980393,
+   "pass_dev": false,
+   "pass_regression": false,
+   "by_domain": {
+    "code": 0.015151515151515194,
+    "math": -0.025641025641025605,
+    "rtl": -0.024999999999999967
+   },
+   "prediction": {
+    "metric": "macro_accuracy",
+    "direction": "increase",
+    "champion": 0.2722125097125097,
+    "child": 0.26038267288267286,
+    "hit": false
+   },
+   "reflect": "refuted",
+   "rule_verdict": "inconclusive",
+   "share_of_seed_pairs_at_least_as_good": 0.6636363636363637,
+   "vs_seed_runs": {
+    "diff_from_mean": -0.0069470933107296795,
+    "z": -0.3658128852867388
+   }
+  },
+  {
+   "id": "g02c008",
+   "generation": 2,
+   "parent_source": "archive",
+   "module": "tools/verilog_parser.py",
+   "problem": "rtl/compile_error",
+   "module_kind": "tool",
+   "status": "invalid_patch",
+   "problems": [
+    "test() of tools/verilog_parser.py failed: AttributeError: module 'public_tools' has no attribute 'assert_equal'"
+   ]
+  },
+  {
+   "id": "g02c009",
+   "generation": 2,
+   "parent_source": "trunk",
+   "module": "tools/verilog_semantic_checker.py",
+   "problem": "rtl/compile_error",
+   "module_kind": "tool",
+   "status": "invalid_patch",
+   "problems": [
+    "test() of tools/verilog_semantic_checker.py failed: AssertionError: Tool test failed: Expected success, got failure: {'result': 'failure', 'errors': ['design.sv:35: syntax error', 'design.sv:35: error: Malformed statement']}"
+   ]
+  },
+  {
+   "id": "g03c010",
+   "generation": 3,
+   "parent_source": "trunk",
+   "module": "tools/verilog_quick_syntax_check.py",
+   "problem": "rtl/compile_error",
+   "module_kind": "tool",
+   "status": "invalid_patch",
+   "problems": [
+    "the tool defines no top-level SCHEMA"
+   ]
+  },
+  {
+   "id": "g03c011",
+   "generation": 3,
+   "parent_source": "archive",
+   "module": "tools/verilog_regex_checker.py",
+   "problem": "rtl/compile_error",
+   "module_kind": "tool",
+   "status": "invalid_patch",
+   "problems": [
+    "syntax error: unexpected character after line continuation character (<unknown>, line 48)"
+   ]
+  },
+  {
+   "id": "g03c012",
+   "generation": 3,
+   "parent_source": "trunk",
+   "module": "agent/workflow.py",
+   "problem": "rtl/compile_error",
+   "module_kind": "workflow",
+   "status": "evaluated",
+   "macro": 0.262995337995338,
+   "diff": -0.0033216783216783222,
+   "p": 0.5603,
+   "regression": 0.22,
+   "pass_dev": false,
+   "pass_regression": false,
+   "by_domain": {
+    "code": -0.06060606060606061,
+    "math": 0.025641025641025605,
+    "rtl": 0.025000000000000022
+   },
+   "prediction": {
+    "metric": "rtl_accuracy",
+    "direction": "increase",
+    "champion": 0.25,
+    "child": 0.275,
+    "hit": true
+   },
+   "reflect": "refuted",
+   "rule_verdict": "inconclusive",
+   "share_of_seed_pairs_at_least_as_good": 0.5363636363636364,
+   "vs_seed_runs": {
+    "diff_from_mean": -0.004334428198064566,
+    "z": -0.2282378563640825
+   }
+  },
+  {
+   "id": "g03c013",
+   "generation": 3,
+   "parent_source": "trunk",
+   "module": "tools/verilog_semantic_validator.py",
+   "problem": "rtl/compile_error",
+   "module_kind": "tool",
+   "status": "invalid_patch",
+   "problems": [
+    "syntax error: unterminated string literal (detected at line 85) (<unknown>, line 85)"
+   ]
+  },
+  {
+   "id": "g04c014",
+   "generation": 4,
+   "parent_source": "trunk",
+   "module": "agent/workflow.py",
+   "problem": "code/runtime_error",
+   "module_kind": "workflow",
+   "status": "invalid_patch",
+   "problems": [
+    "forbidden import: sys"
+   ]
+  },
+  {
+   "id": "g04c015",
+   "generation": 4,
+   "parent_source": "trunk",
+   "module": "agent/workflow.py",
+   "problem": "math/no_final_answer",
+   "module_kind": "workflow",
+   "status": "evaluated",
+   "macro": 0.2454739704739705,
+   "diff": 0.00373931623931624,
+   "p": 0.4191,
+   "regression": 0.10869565217391304,
+   "pass_dev": false,
+   "pass_regression": true,
+   "by_domain": {
+    "code": 0.0,
+    "math": -0.051282051282051266,
+    "rtl": 0.0625
+   },
+   "prediction": {
+    "metric": "math_accuracy",
+    "direction": "increase",
+    "champion": 0.20512820512820512,
+    "child": 0.15384615384615385,
+    "hit": false
+   },
+   "reflect": "refuted",
+   "rule_verdict": "inconclusive",
+   "share_of_seed_pairs_at_least_as_good": 0.4636363636363636,
+   "vs_seed_runs": {
+    "diff_from_mean": -0.021855795719432053,
+    "z": -1.150859983414162
+   }
+  },
+  {
+   "id": "g04c016",
+   "generation": 4,
+   "parent_source": "trunk",
+   "module": "agent/workflow.py",
+   "problem": "math/no_final_answer",
+   "module_kind": "workflow",
+   "status": "evaluated",
+   "macro": 0.26278166278166276,
+   "diff": 0.021047008547008545,
+   "p": 0.0919,
+   "regression": 0.06521739130434782,
+   "pass_dev": false,
+   "pass_regression": true,
+   "by_domain": {
+    "code": 0.0,
+    "math": 0.02564102564102566,
+    "rtl": 0.03749999999999998
+   },
+   "prediction": {
+    "metric": "no_final_answer_count",
+    "direction": "decrease",
+    "champion": 29,
+    "child": 29,
+    "hit": null
+   },
+   "reflect": "supported",
+   "rule_verdict": "inconclusive",
+   "share_of_seed_pairs_at_least_as_good": 0.22727272727272727,
+   "vs_seed_runs": {
+    "diff_from_mean": -0.004548103411739779,
+    "z": -0.23948934571835173
+   }
+  },
+  {
+   "id": "g04c017",
+   "generation": 4,
+   "parent_source": "trunk",
+   "module": "agent/workflow.py",
+   "problem": "math/no_final_answer",
+   "module_kind": "workflow",
+   "status": "invalid_patch",
+   "problems": [
+    "syntax error: invalid syntax (<unknown>, line 49)"
+   ]
+  },
+  {
+   "id": "g05c018",
+   "generation": 5,
+   "parent_source": "trunk",
+   "module": "agent/prompts/math.md",
+   "problem": "math/no_final_answer",
+   "module_kind": "prompt",
+   "status": "evaluated",
+   "macro": 0.25815850815850816,
+   "diff": -0.00811965811965812,
+   "p": 0.6549,
+   "regression": 0.16,
+   "pass_dev": false,
+   "pass_regression": false,
+   "by_domain": {
+    "code": 0.0,
+    "math": 0.02564102564102566,
+    "rtl": -0.04999999999999999
+   },
+   "prediction": {
+    "metric": "math_accuracy",
+    "direction": "increase",
+    "champion": 0.2564102564102564,
+    "child": 0.28205128205128205,
+    "hit": true
+   },
+   "reflect": "refuted",
+   "rule_verdict": "inconclusive",
+   "share_of_seed_pairs_at_least_as_good": 0.6090909090909091,
+   "vs_seed_runs": {
+    "diff_from_mean": -0.00917125803489438,
+    "z": -0.4829306608379951
+   }
+  },
+  {
+   "id": "g05c019",
+   "generation": 5,
+   "parent_source": "archive",
+   "module": "agent/prompts/math.md",
+   "problem": "math/no_final_answer",
+   "module_kind": "prompt",
+   "status": "evaluated",
+   "macro": 0.2592851592851593,
+   "diff": -0.006993006993006992,
+   "p": 0.6466,
+   "regression": 0.1,
+   "pass_dev": false,
+   "pass_regression": true,
+   "by_domain": {
+    "code": 0.030303030303030276,
+    "math": -0.051282051282051266,
+    "rtl": 0.0
+   },
+   "prediction": {
+    "metric": "math_accuracy",
+    "direction": "increase",
+    "champion": 0.2564102564102564,
+    "child": 0.20512820512820512,
+    "hit": false
+   },
+   "reflect": "refuted",
+   "rule_verdict": "inconclusive",
+   "share_of_seed_pairs_at_least_as_good": 0.6090909090909091,
+   "vs_seed_runs": {
+    "diff_from_mean": -0.008044606908243268,
+    "z": -0.4236046260609396
+   }
+  },
+  {
+   "id": "g05c020",
+   "generation": 5,
+   "parent_source": "archive",
+   "module": "agent/prompts/math.md",
+   "problem": "math/no_final_answer",
+   "module_kind": "prompt",
+   "status": "evaluated",
+   "macro": 0.22287296037296037,
+   "diff": -0.043405205905205906,
+   "p": 0.9881,
+   "regression": 0.18,
+   "pass_dev": false,
+   "pass_regression": false,
+   "by_domain": {
+    "code": -0.015151515151515166,
+    "math": -0.10256410256410253,
+    "rtl": -0.012500000000000011
+   },
+   "prediction": {
+    "metric": "no_final_answer_count",
+    "direction": "decrease",
+    "champion": 27,
+    "child": 33,
+    "hit": false
+   },
+   "reflect": "refuted",
+   "rule_verdict": "refuted",
+   "share_of_seed_pairs_at_least_as_good": 0.9636363636363636,
+   "vs_seed_runs": {
+    "diff_from_mean": -0.044456805820442175,
+    "z": -2.340960698295282
+   }
+  },
+  {
+   "id": "g05c021",
+   "generation": 5,
+   "parent_source": "trunk",
+   "module": "agent/workflow.py",
+   "problem": "math/wrong_answer",
+   "module_kind": "workflow",
+   "status": "evaluated",
+   "macro": 0.18935508935508935,
+   "diff": -0.07692307692307693,
+   "p": 0.999,
+   "regression": 0.28,
+   "pass_dev": false,
+   "pass_regression": false,
+   "by_domain": {
+    "code": 0.0,
+    "math": -0.23076923076923075,
+    "rtl": 0.0
+   },
+   "prediction": {
+    "metric": "macro_accuracy",
+    "direction": "increase",
+    "champion": 0.2662781662781663,
+    "child": 0.18935508935508935,
+    "hit": false
+   },
+   "reflect": "refuted",
+   "rule_verdict": "refuted",
+   "share_of_seed_pairs_at_least_as_good": 1.0,
+   "vs_seed_runs": {
+    "diff_from_mean": -0.07797467683831319,
+    "z": -4.105910232912705
+   }
+  },
+  {
+   "id": "g06c022",
+   "generation": 6,
+   "parent_source": "trunk",
+   "module": "agent/prompts/rtl.md",
+   "problem": "rtl/compile_error",
+   "module_kind": "prompt",
+   "status": "evaluated",
+   "macro": 0.2573135198135198,
+   "diff": -0.017511655011655008,
+   "p": 0.766,
+   "regression": 0.3137254901960784,
+   "pass_dev": false,
+   "pass_regression": false,
+   "by_domain": {
+    "code": 0.06060606060606061,
+    "math": -0.02564102564102566,
+    "rtl": -0.0875
+   },
+   "prediction": {
+    "metric": "rtl_accuracy",
+    "direction": "increase",
+    "champion": 0.3,
+    "child": 0.2125,
+    "hit": false
+   },
+   "reflect": "refuted",
+   "rule_verdict": "inconclusive",
+   "share_of_seed_pairs_at_least_as_good": 0.7272727272727273,
+   "vs_seed_runs": {
+    "diff_from_mean": -0.010016246379882743,
+    "z": -0.5274251869207882
+   }
+  },
+  {
+   "id": "g06c023",
+   "generation": 6,
+   "parent_source": "trunk",
+   "module": "tools/python_syntax_checker.py",
+   "problem": "code/runtime_error",
+   "module_kind": "tool",
+   "status": "evaluated",
+   "macro": 0.2588286713286713,
+   "diff": -0.015996503496503497,
+   "p": 0.877,
+   "regression": 0.09803921568627451,
+   "pass_dev": false,
+   "pass_regression": true,
+   "by_domain": {
+    "code": 0.015151515151515138,
+    "math": -0.02564102564102566,
+    "rtl": -0.03749999999999998
+   },
+   "prediction": {
+    "metric": "macro_accuracy",
+    "direction": "increase",
+    "champion": 0.2748251748251748,
+    "child": 0.2588286713286713,
+    "hit": false
+   },
+   "reflect": "refuted",
+   "rule_verdict": "inconclusive",
+   "share_of_seed_pairs_at_least_as_good": 0.7272727272727273,
+   "vs_seed_runs": {
+    "diff_from_mean": -0.008501094864731218,
+    "z": -0.44764189877233274
+   }
+  },
+  {
+   "id": "g06c024",
+   "generation": 6,
+   "parent_source": "trunk",
+   "module": "tools/python_syntax_checker.py",
+   "problem": "code/runtime_error",
+   "module_kind": "tool",
+   "status": "evaluated",
+   "macro": 0.2698135198135198,
+   "diff": -0.0050116550116550114,
+   "p": 0.624,
+   "regression": 0.09803921568627451,
+   "pass_dev": false,
+   "pass_regression": true,
+   "by_domain": {
+    "code": 0.06060606060606061,
+    "math": -0.02564102564102566,
+    "rtl": -0.04999999999999999
+   },
+   "prediction": {
+    "metric": "code_accuracy",
+    "direction": "increase",
+    "champion": 0.24242424242424243,
+    "child": 0.30303030303030304,
+    "hit": true
+   },
+   "reflect": "refuted",
+   "rule_verdict": "inconclusive",
+   "share_of_seed_pairs_at_least_as_good": 0.5454545454545454,
+   "vs_seed_runs": {
+    "diff_from_mean": 0.0024837536201172683,
+    "z": 0.13078694030396548
+   }
+  },
+  {
+   "id": "g06c025",
+   "generation": 6,
+   "parent_source": "archive",
+   "module": "tools/code_self_test_py.py",
+   "problem": "code/wrong_answer",
+   "module_kind": "tool",
+   "status": "invalid_patch",
+   "problems": [
+    "no top-level function named run"
+   ]
+  },
+  {
+   "id": "g07c026",
+   "generation": 7,
+   "parent_source": "archive",
+   "module": "agent/workflow.py",
+   "problem": "code/runtime_error",
+   "module_kind": "workflow",
+   "status": "invalid_patch",
+   "problems": [
+    "the workflow failed on code task lcb-3674 with stand-in model answers: solve() must return {'answer': str} of at most 50000 characters"
+   ]
+  },
+  {
+   "id": "g07c027",
+   "generation": 7,
+   "parent_source": "trunk",
+   "module": "agent/workflow.py",
+   "problem": "code/runtime_error",
+   "module_kind": "workflow",
+   "status": "invalid_patch",
+   "problems": [
+    "the workflow failed on code task lcb-3674 with stand-in model answers: TypeError: public_tools.python_exec() argument after ** must be a mapping, not str"
+   ]
+  },
+  {
+   "id": "g07c028",
+   "generation": 7,
+   "parent_source": "archive",
+   "module": "agent/prompts/code.md",
+   "problem": "code/runtime_error",
+   "module_kind": "prompt",
+   "status": "evaluated",
+   "macro": 0.28142968142968144,
+   "diff": -0.02302836052836053,
+   "p": 0.8416,
+   "regression": 0.19642857142857142,
+   "pass_dev": false,
+   "pass_regression": false,
+   "by_domain": {
+    "code": -0.030303030303030276,
+    "math": -0.05128205128205132,
+    "rtl": 0.012500000000000011
+   },
+   "prediction": {
+    "metric": "runtime_error_count",
+    "direction": "decrease",
+    "champion": 24,
+    "child": 22,
+    "hit": true
+   },
+   "reflect": "refuted",
+   "rule_verdict": "inconclusive",
+   "share_of_seed_pairs_at_least_as_good": 0.8,
+   "vs_seed_runs": {
+    "diff_from_mean": 0.014099915236278904,
+    "z": 0.7424588161087875
+   }
+  },
+  {
+   "id": "g07c029",
+   "generation": 7,
+   "parent_source": "trunk",
+   "module": "agent/workflow.py",
+   "problem": "math/no_final_answer",
+   "module_kind": "workflow",
+   "status": "evaluated",
+   "macro": 0.28471250971250966,
+   "diff": -0.019745532245532247,
+   "p": 0.8274,
+   "regression": 0.125,
+   "pass_dev": false,
+   "pass_regression": true,
+   "by_domain": {
+    "code": -0.04545454545454547,
+    "math": -0.05128205128205132,
+    "rtl": 0.03750000000000003
+   },
+   "prediction": {
+    "metric": "macro_accuracy",
+    "direction": "increase",
+    "champion": 0.304458041958042,
+    "child": 0.28471250971250966,
+    "hit": false
+   },
+   "reflect": "refuted",
+   "rule_verdict": "inconclusive",
+   "share_of_seed_pairs_at_least_as_good": 0.7636363636363637,
+   "vs_seed_runs": {
+    "diff_from_mean": 0.017382743519107124,
+    "z": 0.9153226070971032
+   }
+  },
+  {
+   "id": "g08c030",
+   "generation": 8,
+   "parent_source": "trunk",
+   "module": "tools/code_self_test.py",
+   "problem": "rtl/mismatch",
+   "module_kind": "tool",
+   "status": "evaluated",
+   "macro": 0.2765928515928516,
+   "diff": -0.005050505050505051,
+   "p": 0.6178,
+   "regression": 0.11538461538461539,
+   "pass_dev": false,
+   "pass_regression": true,
+   "by_domain": {
+    "code": -0.015151515151515194,
+    "math": 0.0,
+    "rtl": 0.0
+   },
+   "prediction": {
+    "metric": "macro_accuracy",
+    "direction": "increase",
+    "champion": 0.28164335664335666,
+    "child": 0.2765928515928516,
+    "hit": false
+   },
+   "reflect": "refuted",
+   "rule_verdict": "inconclusive",
+   "share_of_seed_pairs_at_least_as_good": 0.5545454545454546,
+   "vs_seed_runs": {
+    "diff_from_mean": 0.009263085399449034,
+    "z": 0.487766011634872
+   }
+  },
+  {
+   "id": "g08c031",
+   "generation": 8,
+   "parent_source": "trunk",
+   "module": "tools/verilog_syntax_validator.py",
+   "problem": "rtl/compile_error",
+   "module_kind": "tool",
+   "status": "invalid_patch",
+   "problems": [
+    "test() of tools/verilog_syntax_validator.py failed: AssertionError: Crash detection failed: {'crashed': True, 'stdout': '', 'error': 'Timeout/Error'}"
+   ]
+  },
+  {
+   "id": "g08c032",
+   "generation": 8,
+   "parent_source": "archive",
+   "module": "tools/python_syntax_checker.py",
+   "problem": "code/wrong_answer",
+   "module_kind": "tool",
+   "status": "invalid_patch",
+   "problems": [
+    "syntax error: unterminated triple-quoted f-string literal (detected at line 108) (<unknown>, line 106)"
+   ]
+  },
+  {
+   "id": "g08c033",
+   "generation": 8,
+   "parent_source": "archive",
+   "module": "tools/verilog_sim_runner.py",
+   "problem": "rtl/mismatch",
+   "module_kind": "tool",
+   "status": "evaluated",
+   "macro": 0.28386752136752136,
+   "diff": 0.0022241647241647254,
+   "p": 0.4604,
+   "regression": 0.1346153846153846,
+   "pass_dev": false,
+   "pass_regression": true,
+   "by_domain": {
+    "code": 0.045454545454545414,
+    "math": -0.051282051282051266,
+    "rtl": 0.012499999999999956
+   },
+   "prediction": {
+    "metric": "rtl_accuracy",
+    "direction": "increase",
+    "champion": 0.275,
+    "child": 0.2875,
+    "hit": true
+   },
+   "reflect": "refuted",
+   "rule_verdict": "inconclusive",
+   "share_of_seed_pairs_at_least_as_good": 0.4818181818181818,
+   "vs_seed_runs": {
+    "diff_from_mean": 0.016537755174118818,
+    "z": 0.8708280810143131
+   }
+  },
+  {
+   "id": "g09c034",
+   "generation": 9,
+   "parent_source": "archive",
+   "module": "agent/workflow.py",
+   "problem": "code/wrong_answer",
+   "module_kind": "workflow",
+   "status": "invalid_patch",
+   "problems": [
+    "syntax error: expected 'except' or 'finally' block (<unknown>, line 155)"
+   ]
+  },
+  {
+   "id": "g09c035",
+   "generation": 9,
+   "parent_source": "trunk",
+   "module": "agent/prompts/rtl.md",
+   "problem": "rtl/mismatch",
+   "module_kind": "prompt",
+   "status": "evaluated",
+   "macro": 0.27132867132867133,
+   "diff": 0.01688034188034188,
+   "p": 0.2444,
+   "regression": 0.20833333333333334,
+   "pass_dev": false,
+   "pass_regression": false,
+   "by_domain": {
+    "code": 0.0,
+    "math": 0.025641025641025605,
+    "rtl": 0.024999999999999967
+   },
+   "prediction": {
+    "metric": "rtl_accuracy",
+    "direction": "increase",
+    "champion": 0.275,
+    "child": 0.3,
+    "hit": true
+   },
+   "reflect": "supported",
+   "rule_verdict": "inconclusive",
+   "share_of_seed_pairs_at_least_as_good": 0.2727272727272727,
+   "vs_seed_runs": {
+    "diff_from_mean": 0.003998905135268793,
+    "z": 0.2105702284524209
+   }
+  },
+  {
+   "id": "g09c036",
+   "generation": 9,
+   "parent_source": "archive",
+   "module": "agent/prompts/rtl.md",
+   "problem": "rtl/mismatch",
+   "module_kind": "prompt",
+   "status": "evaluated",
+   "macro": 0.29986402486402486,
+   "diff": 0.04541569541569542,
+   "p": 0.0559,
+   "regression": 0.22916666666666666,
+   "pass_dev": false,
+   "pass_regression": false,
+   "by_domain": {
+    "code": 0.06060606060606061,
+    "math": 0.025641025641025605,
+    "rtl": 0.04999999999999999
+   },
+   "prediction": {
+    "metric": "rtl_accuracy",
+    "direction": "increase",
+    "champion": 0.275,
+    "child": 0.325,
+    "hit": true
+   },
+   "reflect": "refuted",
+   "rule_verdict": "inconclusive",
+   "share_of_seed_pairs_at_least_as_good": 0.02727272727272727,
+   "vs_seed_runs": {
+    "diff_from_mean": 0.03253425867062232,
+    "z": 1.7131554885816547
+   }
+  },
+  {
+   "id": "g09c037",
+   "generation": 9,
+   "parent_source": "archive",
+   "module": "agent/workflow.py",
+   "problem": "rtl/mismatch",
+   "module_kind": "workflow",
+   "status": "evaluated",
+   "macro": 0.26521950271950273,
+   "diff": 0.010771173271173273,
+   "p": 0.3188,
+   "regression": 0.14583333333333334,
+   "pass_dev": false,
+   "pass_regression": true,
+   "by_domain": {
+    "code": 0.04545454545454547,
+    "math": -0.02564102564102566,
+    "rtl": 0.012499999999999956
+   },
+   "prediction": {
+    "metric": "rtl_accuracy",
+    "direction": "increase",
+    "champion": 0.275,
+    "child": 0.2875,
+    "hit": true
+   },
+   "reflect": "refuted",
+   "rule_verdict": "inconclusive",
+   "share_of_seed_pairs_at_least_as_good": 0.36363636363636365,
+   "vs_seed_runs": {
+    "diff_from_mean": -0.0021102634738998094,
+    "z": -0.11112008081282325
+   }
+  },
+  {
+   "id": "g10c038",
+   "generation": 10,
+   "parent_source": "trunk",
+   "module": "agent/workflow.py",
+   "problem": "math/no_final_answer",
+   "module_kind": "workflow",
+   "status": "evaluated",
+   "macro": 0.2588286713286713,
+   "diff": -0.018648018648018648,
+   "p": 0.8376,
+   "regression": 0.13725490196078433,
+   "pass_dev": false,
+   "pass_regression": true,
+   "by_domain": {
+    "code": -0.03030303030303033,
+    "math": -0.02564102564102566,
+    "rtl": 0.0
+   },
+   "prediction": {
+    "metric": "macro_accuracy",
+    "direction": "increase",
+    "champion": 0.27747668997669,
+    "child": 0.2588286713286713,
+    "hit": false
+   },
+   "reflect": "refuted",
+   "rule_verdict": "inconclusive",
+   "share_of_seed_pairs_at_least_as_good": 0.7636363636363637,
+   "vs_seed_runs": {
+    "diff_from_mean": -0.008501094864731218,
+    "z": -0.44764189877233274
+   }
+  },
+  {
+   "id": "g10c039",
+   "generation": 10,
+   "parent_source": "trunk",
+   "module": "tools/code_self_test.py",
+   "problem": "code/wrong_answer",
+   "module_kind": "tool",
+   "status": "evaluated",
+   "macro": 0.2695998445998446,
+   "diff": -0.007876845376845376,
+   "p": 0.6395,
+   "regression": 0.13725490196078433,
+   "pass_dev": false,
+   "pass_regression": true,
+   "by_domain": {
+    "code": 0.015151515151515138,
+    "math": -0.051282051282051266,
+    "rtl": 0.012500000000000011
+   },
+   "prediction": {
+    "metric": "macro_accuracy",
+    "direction": "increase",
+    "champion": 0.27747668997669,
+    "child": 0.2695998445998446,
+    "hit": false
+   },
+   "reflect": "refuted",
+   "rule_verdict": "inconclusive",
+   "share_of_seed_pairs_at_least_as_good": 0.6090909090909091,
+   "vs_seed_runs": {
+    "diff_from_mean": 0.0022700784064420554,
+    "z": 0.11953545094969623
+   }
+  },
+  {
+   "id": "g10c040",
+   "generation": 10,
+   "parent_source": "trunk",
+   "module": "agent/workflow.py",
+   "problem": "rtl/compile_error",
+   "module_kind": "workflow",
+   "status": "evaluated",
+   "macro": 0.17637917637917636,
+   "diff": -0.10109751359751361,
+   "p": 1.0,
+   "regression": 0.49019607843137253,
+   "pass_dev": false,
+   "pass_regression": false,
+   "by_domain": {
+    "code": -0.015151515151515194,
+    "math": -0.02564102564102566,
+    "rtl": -0.2625
+   },
+   "prediction": {
+    "metric": "compile_error_count",
+    "direction": "decrease",
+    "champion": 37,
+    "child": 80,
+    "hit": false
+   },
+   "reflect": "refuted",
+   "rule_verdict": "refuted",
+   "share_of_seed_pairs_at_least_as_good": 1.0,
+   "vs_seed_runs": {
+    "diff_from_mean": -0.09095058981422618,
+    "z": -4.789182495517422
+   }
+  },
+  {
+   "id": "g10c041",
+   "generation": 10,
+   "parent_source": "trunk",
+   "module": "agent/prompts/code.md",
+   "problem": "code/runtime_error",
+   "module_kind": "prompt",
+   "status": "evaluated",
+   "macro": 0.2493978243978244,
+   "diff": -0.02807886557886558,
+   "p": 0.8826,
+   "regression": 0.21568627450980393,
+   "pass_dev": false,
+   "pass_regression": false,
+   "by_domain": {
+    "code": -0.04545454545454547,
+    "math": -0.051282051282051266,
+    "rtl": 0.012500000000000011
+   },
+   "prediction": {
+    "metric": "runtime_error_count",
+    "direction": "decrease",
+    "champion": 25,
+    "child": 19,
+    "hit": true
+   },
+   "reflect": "refuted",
+   "rule_verdict": "inconclusive",
+   "share_of_seed_pairs_at_least_as_good": 0.8545454545454545,
+   "vs_seed_runs": {
+    "diff_from_mean": -0.017931941795578138,
+    "z": -0.9442417243630356
+   }
+  }
+ ]
+}

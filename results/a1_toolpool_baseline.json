@@ -1,0 +1,354 @@
+{
+  "model": "Qwen/Qwen3.5-4B@851bf6e806efd8d0a36b00ddf55e13ccb7b8cd0a",
+  "round": 0,
+  "decoding": "greedy, non-thinking",
+  "router": "identity (all tools, shuffled)",
+  "by_k": {
+    "0": {
+      "mean_prompt_tokens": 533,
+      "max_prompt_tokens": 1107,
+      "seconds": 187.7,
+      "accuracy": {
+        "dev": {
+          "n": 274,
+          "acc": 0.898,
+          "ci95": [
+            0.856,
+            0.928
+          ]
+        },
+        "dev/irrelevance": {
+          "n": 102,
+          "acc": 0.912,
+          "ci95": [
+            0.841,
+            0.953
+          ]
+        },
+        "dev/multiple": {
+          "n": 87,
+          "acc": 0.908,
+          "ci95": [
+            0.829,
+            0.953
+          ]
+        },
+        "dev/parallel_multiple": {
+          "n": 85,
+          "acc": 0.871,
+          "ci95": [
+            0.783,
+            0.926
+          ]
+        },
+        "selection": {
+          "n": 189,
+          "acc": 0.915,
+          "ci95": [
+            0.867,
+            0.947
+          ]
+        },
+        "selection/irrelevance": {
+          "n": 65,
+          "acc": 0.923,
+          "ci95": [
+            0.832,
+            0.967
+          ]
+        },
+        "selection/multiple": {
+          "n": 65,
+          "acc": 0.969,
+          "ci95": [
+            0.895,
+            0.992
+          ]
+        },
+        "selection/parallel_multiple": {
+          "n": 59,
+          "acc": 0.847,
+          "ci95": [
+            0.735,
+            0.918
+          ]
+        }
+      },
+      "failures": {
+        "dev": {
+          "invalid_arguments": 10,
+          "irrelevance_violation": 9,
+          "missing_call": 5,
+          "wrong_tool": 2,
+          "no_call": 2
+        },
+        "selection": {
+          "invalid_arguments": 5,
+          "missing_call": 5,
+          "irrelevance_violation": 5,
+          "no_call": 1
+        }
+      }
+    },
+    "8": {
+      "mean_prompt_tokens": 1603,
+      "max_prompt_tokens": 2250,
+      "seconds": 326.5,
+      "accuracy": {
+        "dev": {
+          "n": 274,
+          "acc": 0.854,
+          "ci95": [
+            0.807,
+            0.891
+          ]
+        },
+        "dev/irrelevance": {
+          "n": 102,
+          "acc": 0.843,
+          "ci95": [
+            0.76,
+            0.901
+          ]
+        },
+        "dev/multiple": {
+          "n": 87,
+          "acc": 0.908,
+          "ci95": [
+            0.829,
+            0.953
+          ]
+        },
+        "dev/parallel_multiple": {
+          "n": 85,
+          "acc": 0.812,
+          "ci95": [
+            0.716,
+            0.881
+          ]
+        },
+        "selection": {
+          "n": 189,
+          "acc": 0.884,
+          "ci95": [
+            0.83,
+            0.922
+          ]
+        },
+        "selection/irrelevance": {
+          "n": 65,
+          "acc": 0.892,
+          "ci95": [
+            0.794,
+            0.947
+          ]
+        },
+        "selection/multiple": {
+          "n": 65,
+          "acc": 0.954,
+          "ci95": [
+            0.873,
+            0.984
+          ]
+        },
+        "selection/parallel_multiple": {
+          "n": 59,
+          "acc": 0.797,
+          "ci95": [
+            0.677,
+            0.88
+          ]
+        }
+      },
+      "failures": {
+        "dev": {
+          "irrelevance_violation": 16,
+          "invalid_arguments": 12,
+          "wrong_tool": 5,
+          "no_call": 4,
+          "missing_call": 3
+        },
+        "selection": {
+          "irrelevance_violation": 7,
+          "no_call": 6,
+          "invalid_arguments": 4,
+          "missing_call": 4,
+          "wrong_tool": 1
+        }
+      }
+    },
+    "16": {
+      "mean_prompt_tokens": 2671,
+      "max_prompt_tokens": 3371,
+      "seconds": 472.8,
+      "accuracy": {
+        "dev": {
+          "n": 274,
+          "acc": 0.843,
+          "ci95": [
+            0.795,
+            0.881
+          ]
+        },
+        "dev/irrelevance": {
+          "n": 102,
+          "acc": 0.833,
+          "ci95": [
+            0.749,
+            0.893
+          ]
+        },
+        "dev/multiple": {
+          "n": 87,
+          "acc": 0.908,
+          "ci95": [
+            0.829,
+            0.953
+          ]
+        },
+        "dev/parallel_multiple": {
+          "n": 85,
+          "acc": 0.788,
+          "ci95": [
+            0.69,
+            0.862
+          ]
+        },
+        "selection": {
+          "n": 189,
+          "acc": 0.894,
+          "ci95": [
+            0.842,
+            0.93
+          ]
+        },
+        "selection/irrelevance": {
+          "n": 65,
+          "acc": 0.877,
+          "ci95": [
+            0.775,
+            0.936
+          ]
+        },
+        "selection/multiple": {
+          "n": 65,
+          "acc": 0.969,
+          "ci95": [
+            0.895,
+            0.992
+          ]
+        },
+        "selection/parallel_multiple": {
+          "n": 59,
+          "acc": 0.831,
+          "ci95": [
+            0.715,
+            0.905
+          ]
+        }
+      },
+      "failures": {
+        "selection": {
+          "irrelevance_violation": 8,
+          "missing_call": 6,
+          "no_call": 3,
+          "invalid_arguments": 3
+        },
+        "dev": {
+          "irrelevance_violation": 17,
+          "invalid_arguments": 12,
+          "missing_call": 10,
+          "no_call": 3,
+          "wrong_tool": 1
+        }
+      }
+    },
+    "32": {
+      "mean_prompt_tokens": 4802,
+      "max_prompt_tokens": 5653,
+      "seconds": 871.1,
+      "accuracy": {
+        "dev": {
+          "n": 274,
+          "acc": 0.799,
+          "ci95": [
+            0.748,
+            0.842
+          ]
+        },
+        "dev/irrelevance": {
+          "n": 102,
+          "acc": 0.794,
+          "ci95": [
+            0.706,
+            0.861
+          ]
+        },
+        "dev/multiple": {
+          "n": 87,
+          "acc": 0.874,
+          "ci95": [
+            0.788,
+            0.928
+          ]
+        },
+        "dev/parallel_multiple": {
+          "n": 85,
+          "acc": 0.729,
+          "ci95": [
+            0.627,
+            0.812
+          ]
+        },
+        "selection": {
+          "n": 189,
+          "acc": 0.831,
+          "ci95": [
+            0.771,
+            0.877
+          ]
+        },
+        "selection/irrelevance": {
+          "n": 65,
+          "acc": 0.785,
+          "ci95": [
+            0.67,
+            0.867
+          ]
+        },
+        "selection/multiple": {
+          "n": 65,
+          "acc": 0.969,
+          "ci95": [
+            0.895,
+            0.992
+          ]
+        },
+        "selection/parallel_multiple": {
+          "n": 59,
+          "acc": 0.729,
+          "ci95": [
+            0.604,
+            0.826
+          ]
+        }
+      },
+      "failures": {
+        "selection": {
+          "irrelevance_violation": 14,
+          "missing_call": 11,
+          "invalid_arguments": 3,
+          "no_call": 2,
+          "wrong_tool": 2
+        },
+        "dev": {
+          "irrelevance_violation": 21,
+          "invalid_arguments": 11,
+          "missing_call": 11,
+          "wrong_tool": 9,
+          "no_call": 3
+        }
+      }
+    }
+  }
+}

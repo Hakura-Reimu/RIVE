@@ -1,0 +1,48 @@
+{
+ "lora_think": {
+  "tasks": 74,
+  "solved": 34,
+  "cut": 25,
+  "cut_inside_thinking": 24,
+  "forced": 0,
+  "mean_tokens": 4882,
+  "recheck_lines_per_1k": 0.02,
+  "tokens_per_second": 523
+ },
+ "lora_plain": {
+  "tasks": 74,
+  "solved": 37,
+  "cut": 18,
+  "cut_inside_thinking": 18,
+  "forced": 0,
+  "mean_tokens": 1457,
+  "recheck_lines_per_1k": 0.26,
+  "tokens_per_second": 536
+ },
+ "lora_mixed": {
+  "tasks": 16,
+  "solved": 14,
+  "cut": 0,
+  "cut_inside_thinking": 0,
+  "forced": 0,
+  "mean_tokens": 1165,
+  "recheck_lines_per_1k": 0.0,
+  "tokens_per_second": 315
+ },
+ "same_as_e1": {
+  "recheck_gone": true,
+  "tokens": true,
+  "solved": true,
+  "cut": true,
+  "speed_vs_merged": 0.93,
+  "all": true
+ },
+ "plain_unchanged": {
+  "solved": true,
+  "tokens": true
+ },
+ "mixed": {
+  "think_recheck_per_1k": 0.0,
+  "plain_recheck_per_1k": 0.0
+ }
+}

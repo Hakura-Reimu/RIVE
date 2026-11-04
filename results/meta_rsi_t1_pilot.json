@@ -1,0 +1,65 @@
+{
+ "tasks": {
+  "problems": 40,
+  "tasks": {
+   "spec_fail_1": 31,
+   "nospec_fail_1": 31,
+   "nospec_fail_2": 27,
+   "spec_nofail_2": 27
+  },
+  "bugs1_candidates": 160,
+  "bugs1_usable": 141,
+  "bugs2_candidates": 161,
+  "bugs2_usable": 153,
+  "spec_fail_1_no_mutant": 9,
+  "nospec_fail_1_no_mutant": 9,
+  "nospec_fail_2_no_mutant": 13,
+  "spec_nofail_2_no_mutant": 13,
+  "check_seconds": 19
+ },
+ "a0": {
+  "spec_fail_1": {
+   "tasks": 31,
+   "solved": 20,
+   "rate": 0.645,
+   "failures": {
+    "wrong_answer": 11
+   },
+   "mean_tokens": 112,
+   "mean_seconds": 3.0
+  },
+  "nospec_fail_1": {
+   "tasks": 31,
+   "solved": 14,
+   "rate": 0.452,
+   "failures": {
+    "wrong_answer": 16,
+    "runtime_error": 1
+   },
+   "mean_tokens": 508,
+   "mean_seconds": 12.3
+  },
+  "nospec_fail_2": {
+   "tasks": 27,
+   "solved": 11,
+   "rate": 0.407,
+   "failures": {
+    "wrong_answer": 13,
+    "load_error": 2,
+    "runtime_error": 1
+   },
+   "mean_tokens": 504,
+   "mean_seconds": 12.3
+  },
+  "spec_nofail_2": {
+   "tasks": 27,
+   "solved": 18,
+   "rate": 0.667,
+   "failures": {
+    "wrong_answer": 9
+   },
+   "mean_tokens": 197,
+   "mean_seconds": 5.0
+  }
+ }
+}

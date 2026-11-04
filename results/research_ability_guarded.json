@@ -1,0 +1,1621 @@
+{
+ "researchers": [
+  "qwen3.5-4b"
+ ],
+ "seed_runs": 4,
+ "situations": [
+  [
+   "r01",
+   1,
+   [
+    "rtl",
+    "compile_error"
+   ]
+  ],
+  [
+   "r02",
+   2,
+   [
+    "rtl",
+    "compile_error"
+   ]
+  ],
+  [
+   "r03",
+   3,
+   [
+    "rtl",
+    "compile_error"
+   ]
+  ],
+  [
+   "r04",
+   4,
+   [
+    "rtl",
+    "compile_error"
+   ]
+  ],
+  [
+   "r05",
+   5,
+   [
+    "math",
+    "no_final_answer"
+   ]
+  ],
+  [
+   "r06",
+   6,
+   [
+    "math",
+    "no_final_answer"
+   ]
+  ],
+  [
+   "r07",
+   7,
+   [
+    "math",
+    "no_final_answer"
+   ]
+  ],
+  [
+   "r08",
+   8,
+   [
+    "math",
+    "no_final_answer"
+   ]
+  ],
+  [
+   "r09",
+   9,
+   [
+    "code",
+    "runtime_error"
+   ]
+  ],
+  [
+   "r10",
+   10,
+   [
+    "code",
+    "runtime_error"
+   ]
+  ],
+  [
+   "r11",
+   11,
+   [
+    "code",
+    "runtime_error"
+   ]
+  ],
+  [
+   "r12",
+   12,
+   [
+    "code",
+    "runtime_error"
+   ]
+  ],
+  [
+   "r13",
+   13,
+   [
+    "rtl",
+    "mismatch"
+   ]
+  ],
+  [
+   "r14",
+   14,
+   [
+    "rtl",
+    "mismatch"
+   ]
+  ],
+  [
+   "r15",
+   15,
+   [
+    "rtl",
+    "mismatch"
+   ]
+  ],
+  [
+   "r16",
+   16,
+   [
+    "rtl",
+    "mismatch"
+   ]
+  ]
+ ],
+ "summary": {
+  "qwen3.5-4b": {
+   "steps": 16,
+   "status": {
+    "invalid_patch": 11,
+    "valid": 5
+   },
+   "duplicates": 0,
+   "measured": 5,
+   "evidence_matches_records": 12,
+   "mean_diff_measured": -0.04791666666666668,
+   "mean_diff_per_step": -0.014973958333333336,
+   "se_per_step": 0.007679708587773841,
+   "better": 0,
+   "worse": 3,
+   "prediction_hits": {
+    "True": 3,
+    "False": 2
+   },
+   "rejected_by_locality": 0,
+   "rejected_by_prescreen": 3,
+   "prescreens": 16,
+   "median_seconds": 169.5,
+   "median_completion_tokens": 6468.5
+  }
+ },
+ "proposals": {
+  "qwen3.5-4b": [
+   {
+    "id": "r01",
+    "researcher": "qwen3.5-4b",
+    "seed": 1,
+    "assigned": [
+     "rtl",
+     "compile_error"
+    ],
+    "status": "invalid_patch",
+    "module": "agent/workflow.py",
+    "code_hash": null,
+    "dir": "~/alter/evo/runs/research-ability-guarded/qwen3.5-4b/candidates/r01",
+    "kind": [
+     "rtl",
+     "compile_error",
+     "workflow"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": true,
+     "hypothesis_testable": true,
+     "patch_valid": false
+    },
+    "attempts": 3,
+    "problems": [
+     "ctx.llm(max_tokens=8192) changes nothing: one call returns at most 4096 completion tokens; the 8192 of a task are used through more calls"
+    ],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H1",
+     "hypothesis": "Increase the max_tokens parameter in the LLM call within agent/workflow.py from 4096 to 8192 to prevent truncation of complex RTL code before the end of the module.",
+     "target": "agent/workflow.py",
+     "tool_name": "",
+     "proposed_change": "ctx.llm(messages, max_tokens=8192, ...)",
+     "prediction": {
+      "metric": "rtl_accuracy",
+      "direction": "increase"
+     },
+     "control": "Current agent with max_tokens=4096",
+     "potential_regression": "slight increase in runtime due to larger token consumption per task, but no increase in 'wrong_answer' failures if truncation is the sole cause of errors."
+    },
+    "local_to": null,
+    "prescreen": null,
+    "domains": null,
+    "seconds": 67,
+    "usage": {
+     "calls": 9,
+     "prompt_tokens": 38435,
+     "completion_tokens": 3491
+    },
+    "prescreen_usage": {
+     "calls": 0,
+     "prompt_tokens": 0,
+     "completion_tokens": 0
+    }
+   },
+   {
+    "id": "r02",
+    "researcher": "qwen3.5-4b",
+    "seed": 2,
+    "assigned": [
+     "rtl",
+     "compile_error"
+    ],
+    "status": "invalid_patch",
+    "module": "agent/workflow.py",
+    "code_hash": null,
+    "dir": "~/alter/evo/runs/research-ability-guarded/qwen3.5-4b/candidates/r02",
+    "kind": [
+     "rtl",
+     "compile_error",
+     "workflow"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": true,
+     "hypothesis_testable": true,
+     "patch_valid": false
+    },
+    "attempts": 3,
+    "problems": [
+     "forbidden call: locals()"
+    ],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H1",
+     "hypothesis": "Modify workflow.py to implement an iterative self-correction loop where the agent generates code, asks the model to identify `always @(posedge ...)` blocks with non-reg outputs, rewrites the interface, and resubmits.",
+     "target": "agent/workflow.py",
+     "tool_name": "",
+     "proposed_change": "Add a loop in solve() that checks for compile errors; if present, injects a debug prompt asking the model to fix specific port type mismatches identified in the error log before generating a new code block.",
+     "prediction": {
+      "metric": "rtl_accuracy",
+      "direction": "increase"
+     },
+     "control": "Current single-shot workflow",
+     "potential_regression": "If the model cannot find the error or the loop exceeds token budget, accuracy may drop or hit time limits."
+    },
+    "local_to": null,
+    "prescreen": [
+     [
+      {
+       "id": "Prob039_always_if",
+       "domain": "rtl",
+       "correct": false,
+       "failure": "compile_error",
+       "llm_calls": 1,
+       "seconds": 4.2
+      },
+      {
+       "id": "synchronizer",
+       "domain": "rtl",
+       "correct": false,
+       "failure": "compile_error",
+       "llm_calls": 1,
+       "seconds": 10.4
+      },
+      {
+       "id": "Prob022_mux2to1",
+       "domain": "rtl",
+       "correct": false,
+       "failure": "compile_error",
+       "llm_calls": 1,
+       "seconds": 1.69
+      }
+     ]
+    ],
+    "domains": null,
+    "seconds": 139,
+    "usage": {
+     "calls": 9,
+     "prompt_tokens": 38421,
+     "completion_tokens": 6613
+    },
+    "prescreen_usage": {
+     "calls": 3,
+     "prompt_tokens": 1205,
+     "completion_tokens": 743
+    }
+   },
+   {
+    "id": "r03",
+    "researcher": "qwen3.5-4b",
+    "seed": 3,
+    "assigned": [
+     "rtl",
+     "compile_error"
+    ],
+    "status": "invalid_patch",
+    "module": "agent/workflow.py",
+    "code_hash": null,
+    "dir": "~/alter/evo/runs/research-ability-guarded/qwen3.5-4b/candidates/r03",
+    "kind": [
+     "rtl",
+     "compile_error",
+     "workflow"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": true,
+     "hypothesis_testable": true,
+     "patch_valid": false
+    },
+    "attempts": 3,
+    "problems": [
+     "the workflow failed on rtl task JC_counter with stand-in model answers: TypeError: Context.tool() got an unexpected keyword argument 'design'"
+    ],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H1",
+     "hypothesis": "Modify agent/workflow.py to insert a mandatory pre-verification step using ctx.tool('verilog_sim', ...) immediately after the initial code generation. If the tool returns a non-compiled status (compile_error), the workflow will append the error log to the context and call the model again to fix the syntax before returning the final answer.",
+     "target": "agent/workflow.py",
+     "tool_name": "verilog_sim",
+     "proposed_change": "Add a loop in solve() that generates the Verilog block, calls verilog_sim(design=..., testbench=DummyTB), and if not compiled, updates the system message with the error and retries the LLM call once.",
+     "prediction": {
+      "metric": "rtl_accuracy",
+      "direction": "increase"
+     },
+     "control": "Current agent",
+     "potential_regression": "Slight increase in token usage due to retries, but no change to math or code domains."
+    },
+    "local_to": null,
+    "prescreen": null,
+    "domains": null,
+    "seconds": 114,
+    "usage": {
+     "calls": 9,
+     "prompt_tokens": 39322,
+     "completion_tokens": 5886
+    },
+    "prescreen_usage": {
+     "calls": 0,
+     "prompt_tokens": 0,
+     "completion_tokens": 0
+    }
+   },
+   {
+    "id": "r04",
+    "researcher": "qwen3.5-4b",
+    "seed": 4,
+    "assigned": [
+     "rtl",
+     "compile_error"
+    ],
+    "status": "invalid_patch",
+    "module": "tools/verilog_port_checker.py",
+    "code_hash": null,
+    "dir": "~/alter/evo/runs/research-ability-guarded/qwen3.5-4b/candidates/r04",
+    "kind": [
+     "rtl",
+     "compile_error",
+     "tool"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": true,
+     "patch_valid": false,
+     "tool_example_similarity": 0.161
+    },
+    "attempts": 3,
+    "problems": [
+     "test() of tools/verilog_port_checker.py failed: AssertionError: Expected direction error, got: [\"Port 'y' is declared in the interface but missing from the module.\"]"
+    ],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H1",
+     "hypothesis": "Implement a tool `verilog_port_checker` that parses the interface spec and candidate module code to verify port modes (wire vs reg) match the interface declarations. If mismatch, the tool returns an error forcing a rewrite of the port declarations before compilation.",
+     "target": "tool",
+     "tool_name": "verilog_port_checker",
+     "proposed_change": "Create `tools/verilog_port_checker.py` defining `SCHEMA`, `run`, and `test`. Modify `agent/workflow.py` to call `ctx.tool('verilog_port_checker', ...)` after code generation for RTL tasks. If the tool returns `{'valid': False}`, trigger a step where the agent rewrites the port declarations based on the error list.",
+     "prediction": {
+      "metric": "rtl_accuracy",
+      "direction": "increase"
+     },
+     "control": ": The current workflow (single-pass generation, no tool calls).",
+     "potential_regression": ": None, as the tool only blocks invalid code from compilation."
+    },
+    "local_to": null,
+    "prescreen": null,
+    "domains": null,
+    "seconds": 229,
+    "usage": {
+     "calls": 12,
+     "prompt_tokens": 65773,
+     "completion_tokens": 11960
+    },
+    "prescreen_usage": {
+     "calls": 0,
+     "prompt_tokens": 0,
+     "completion_tokens": 0
+    }
+   },
+   {
+    "id": "r05",
+    "researcher": "qwen3.5-4b",
+    "seed": 5,
+    "assigned": [
+     "math",
+     "no_final_answer"
+    ],
+    "status": "invalid_patch",
+    "module": "agent/workflow.py",
+    "code_hash": null,
+    "dir": "~/alter/evo/runs/research-ability-guarded/qwen3.5-4b/candidates/r05",
+    "kind": [
+     "math",
+     "no_final_answer",
+     "workflow"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": true,
+     "hypothesis_testable": true,
+     "patch_valid": false
+    },
+    "attempts": 3,
+    "problems": [
+     "ctx.llm(max_tokens=8192) changes nothing: one call returns at most 4096 completion tokens; the 8192 of a task are used through more calls"
+    ],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H1",
+     "hypothesis": "Increase the token budget for a single model call from 4096 to 8192 to prevent truncation of long reasoning chains on complex math problems.",
+     "target": "agent/workflow.py",
+     "tool_name": "",
+     "proposed_change": "Change `max_tokens=4096` to `max_tokens=8192` in the `solve` function.",
+     "prediction": {
+      "metric": "no_final_answer_count",
+      "direction": "decrease"
+     },
+     "control": ":The current agent (max_tokens=4096) used on the same 185 tasks.",
+     "potential_regression": "Potential increase in `wrong_answer` count due to harder reasoning with more context, or runtime errors if the budget is exceeded by simpler tasks (less likely given the current truncation pattern)."
+    },
+    "local_to": null,
+    "prescreen": null,
+    "domains": null,
+    "seconds": 76,
+    "usage": {
+     "calls": 9,
+     "prompt_tokens": 36700,
+     "completion_tokens": 3896
+    },
+    "prescreen_usage": {
+     "calls": 0,
+     "prompt_tokens": 0,
+     "completion_tokens": 0
+    }
+   },
+   {
+    "id": "r06",
+    "researcher": "qwen3.5-4b",
+    "seed": 6,
+    "assigned": [
+     "math",
+     "no_final_answer"
+    ],
+    "status": "invalid_patch",
+    "module": "tools/step_solver.py",
+    "code_hash": null,
+    "dir": "~/alter/evo/runs/research-ability-guarded/qwen3.5-4b/candidates/r06",
+    "kind": [
+     "math",
+     "no_final_answer",
+     "tool"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": true,
+     "hypothesis_testable": true,
+     "patch_valid": false,
+     "tool_example_similarity": 0.12
+    },
+    "attempts": 3,
+    "problems": [
+     "no top-level function named run"
+    ],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H1",
+     "hypothesis": "Add a tool `step_solver` that accepts a problem statement and a current step index, returning the next reasoning step and an intermediate result. The workflow will use this tool iteratively until a final answer is produced.",
+     "target": "tool",
+     "tool_name": "step_solver",
+     "proposed_change": "Create `tools/step_solver.py` defining `SCHEMA` for input `{problem, step_index}` and output `{reasoning, intermediate_result, is_final}`. Update `agent/workflow.py` to loop: call `step_solver`, check `is_final`, if false pass reasoning as context to next iteration.",
+     "prediction": {
+      "metric": "math_accuracy",
+      "direction": "increase"
+     },
+     "control": "Run with current `workflow.py` and `tools/step_solver.py` (if H1 selected) vs current `workflow.py` alone (H1=change tool, control=no change tool).",
+     "potential_regression": "If the tool output format is not strictly JSON or reasoning is too verbose, it may exceed the shared token budget faster than before."
+    },
+    "local_to": null,
+    "prescreen": [
+     [
+      {
+       "id": "hmmt_feb_2026-14",
+       "domain": "math",
+       "correct": false,
+       "failure": "no_final_answer",
+       "llm_calls": 0,
+       "seconds": 0.3
+      },
+      {
+       "id": "aime_2025-16",
+       "domain": "math",
+       "correct": false,
+       "failure": "no_final_answer",
+       "llm_calls": 0,
+       "seconds": 0.29
+      },
+      {
+       "id": "hmmt_feb_2026-1",
+       "domain": "math",
+       "correct": false,
+       "failure": "no_final_answer",
+       "llm_calls": 0,
+       "seconds": 0.29
+      }
+     ]
+    ],
+    "domains": null,
+    "seconds": 185,
+    "usage": {
+     "calls": 12,
+     "prompt_tokens": 53447,
+     "completion_tokens": 9538
+    },
+    "prescreen_usage": {
+     "calls": 0,
+     "prompt_tokens": 0,
+     "completion_tokens": 0
+    }
+   },
+   {
+    "id": "r07",
+    "researcher": "qwen3.5-4b",
+    "seed": 7,
+    "assigned": [
+     "math",
+     "no_final_answer"
+    ],
+    "status": "invalid_patch",
+    "module": "agent/workflow.py",
+    "code_hash": null,
+    "dir": "~/alter/evo/runs/research-ability-guarded/qwen3.5-4b/candidates/r07",
+    "kind": [
+     "math",
+     "no_final_answer",
+     "workflow"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": true,
+     "hypothesis_testable": true,
+     "other_domains_unchanged": true,
+     "prescreen_passed": false,
+     "patch_valid": false
+    },
+    "attempts": 3,
+    "problems": [
+     "the pre-screen ran this version with the real model on 3 development tasks that the current agent solves, and it got 3 wrong: aime_2026-2 (math) no_final_answer, empty answer; aime_2025-17 (math) no_final_answer, empty answer; aime_2026-5 (math) no_final_answer, empty answer"
+    ],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H1",
+     "hypothesis": "Use a multi-step iterative reasoning process where the agent first asks the model to outline a plan and then iteratively refines the solution in subsequent calls, ensuring the reasoning fits within the global budget by breaking long chains into smaller, manageable segments.",
+     "target": "agent/workflow.py",
+     "tool_name": "",
+     "proposed_change": "Modify solve() to detect if the domain is 'math'. If so, instead of a single call, the agent will first generate a high-level plan. If the plan is incomplete or the response indicates more tokens are needed for the final answer, it will trigger a second call to continue the reasoning from the last token. This splits the cognitive load across multiple calls, reducing the token density per call while maintaining the total budget constraint.",
+     "prediction": {
+      "metric": "math_accuracy",
+      "direction": "increase"
+     },
+     "control": "The original single-call workflow (max_tokens=4096) is used as the control group for comparison.",
+     "potential_regression": "Increased risk of 'runtime_error' if the iterative loop fails to terminate or if the cumulative token count exceeds the 8192 limit due to overhead from multiple calls."
+    },
+    "local_to": null,
+    "prescreen": [
+     [
+      {
+       "id": "aime_2026-2",
+       "domain": "math",
+       "correct": false,
+       "failure": "no_final_answer",
+       "llm_calls": 2,
+       "seconds": 61.07
+      },
+      {
+       "id": "aime_2025-17",
+       "domain": "math",
+       "correct": false,
+       "failure": "no_final_answer",
+       "llm_calls": 2,
+       "seconds": 61.07
+      },
+      {
+       "id": "aime_2026-5",
+       "domain": "math",
+       "correct": false,
+       "failure": "no_final_answer",
+       "llm_calls": 2,
+       "seconds": 61.05
+      }
+     ],
+     [
+      {
+       "id": "aime_2026-2",
+       "domain": "math",
+       "correct": false,
+       "failure": "no_final_answer",
+       "llm_calls": 2,
+       "seconds": 61.1
+      },
+      {
+       "id": "aime_2025-17",
+       "domain": "math",
+       "correct": false,
+       "failure": "no_final_answer",
+       "llm_calls": 2,
+       "seconds": 61.12
+      },
+      {
+       "id": "aime_2026-5",
+       "domain": "math",
+       "correct": false,
+       "failure": "no_final_answer",
+       "llm_calls": 2,
+       "seconds": 61.12
+      }
+     ],
+     [
+      {
+       "id": "aime_2026-2",
+       "domain": "math",
+       "correct": false,
+       "failure": "no_final_answer",
+       "llm_calls": 2,
+       "seconds": 61.38
+      },
+      {
+       "id": "aime_2025-17",
+       "domain": "math",
+       "correct": false,
+       "failure": "no_final_answer",
+       "llm_calls": 2,
+       "seconds": 61.4
+      },
+      {
+       "id": "aime_2026-5",
+       "domain": "math",
+       "correct": false,
+       "failure": "no_final_answer",
+       "llm_calls": 2,
+       "seconds": 61.4
+      }
+     ]
+    ],
+    "domains": null,
+    "seconds": 324,
+    "usage": {
+     "calls": 9,
+     "prompt_tokens": 41419,
+     "completion_tokens": 7185
+    },
+    "prescreen_usage": {
+     "calls": 18,
+     "prompt_tokens": 3708,
+     "completion_tokens": 27648
+    }
+   },
+   {
+    "id": "r08",
+    "researcher": "qwen3.5-4b",
+    "seed": 8,
+    "assigned": [
+     "math",
+     "no_final_answer"
+    ],
+    "status": "invalid_patch",
+    "module": "agent/workflow.py",
+    "code_hash": null,
+    "dir": "~/alter/evo/runs/research-ability-guarded/qwen3.5-4b/candidates/r08",
+    "kind": [
+     "math",
+     "no_final_answer",
+     "workflow"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": true,
+     "hypothesis_testable": true,
+     "other_domains_unchanged": true,
+     "prescreen_passed": false,
+     "patch_valid": false
+    },
+    "attempts": 3,
+    "problems": [
+     "the pre-screen ran this version with the real model on 3 development tasks that the current agent solves, and it got 3 wrong: aime_2025-26 (math) no_final_answer, empty answer; aime_2026-2 (math) no_final_answer, empty answer; aime_2026-5 (math) no_final_answer, empty answer"
+    ],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H1",
+     "hypothesis": "Enable the `thinking` mode for the single LLM call in `agent/workflow.py` to force structured reasoning before the answer.",
+     "target": "agent/workflow.py",
+     "tool_name": "",
+     "proposed_change": "Modify `solve` to call `ctx.llm(messages, max_tokens=4096, thinking=True)` instead of `ctx.llm(messages, max_tokens=4096)`.",
+     "prediction": {
+      "metric": "math_accuracy",
+      "direction": "increase"
+     },
+     "control": "Current agent with `thinking=False`",
+     "potential_regression": "No, but may increase token usage slightly if reasoning is verbose, though the constraint ensures answer completion."
+    },
+    "local_to": null,
+    "prescreen": [
+     [
+      {
+       "id": "aime_2025-26",
+       "domain": "math",
+       "correct": false,
+       "failure": "no_final_answer",
+       "llm_calls": 1,
+       "seconds": 82.46
+      },
+      {
+       "id": "aime_2026-2",
+       "domain": "math",
+       "correct": false,
+       "failure": "no_final_answer",
+       "llm_calls": 1,
+       "seconds": 82.44
+      },
+      {
+       "id": "aime_2026-5",
+       "domain": "math",
+       "correct": false,
+       "failure": "no_final_answer",
+       "llm_calls": 1,
+       "seconds": 82.46
+      }
+     ],
+     [
+      {
+       "id": "aime_2025-26",
+       "domain": "math",
+       "correct": false,
+       "failure": "no_final_answer",
+       "llm_calls": 1,
+       "seconds": 82.37
+      },
+      {
+       "id": "aime_2026-2",
+       "domain": "math",
+       "correct": false,
+       "failure": "no_final_answer",
+       "llm_calls": 1,
+       "seconds": 82.39
+      },
+      {
+       "id": "aime_2026-5",
+       "domain": "math",
+       "correct": false,
+       "failure": "no_final_answer",
+       "llm_calls": 1,
+       "seconds": 82.39
+      }
+     ]
+    ],
+    "domains": null,
+    "seconds": 310,
+    "usage": {
+     "calls": 9,
+     "prompt_tokens": 38849,
+     "completion_tokens": 7475
+    },
+    "prescreen_usage": {
+     "calls": 6,
+     "prompt_tokens": 672,
+     "completion_tokens": 24576
+    }
+   },
+   {
+    "id": "r09",
+    "researcher": "qwen3.5-4b",
+    "seed": 9,
+    "assigned": [
+     "code",
+     "runtime_error"
+    ],
+    "status": "invalid_patch",
+    "module": "agent/workflow.py",
+    "code_hash": null,
+    "dir": "~/alter/evo/runs/research-ability-guarded/qwen3.5-4b/candidates/r09",
+    "kind": [
+     "code",
+     "runtime_error",
+     "workflow"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": true,
+     "hypothesis_testable": true,
+     "patch_valid": false
+    },
+    "attempts": 3,
+    "problems": [
+     "syntax error: expected 'except' or 'finally' block (<unknown>, line 140)"
+    ],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H1",
+     "hypothesis": "Modify agent/workflow.py to implement an iterative loop for code tasks: first parse the starter code and constraints using python_exec to analyze feasibility; then generate solution chunks (max 1500 chars) in a loop, verifying each chunk's syntax and logical consistency via python_exec before submitting the final answer.",
+     "target": "agent/workflow.py",
+     "tool_name": "",
+     "proposed_change": "Wrap the solve function for 'code' domain in a loop that calls python_exec on the starter code first, then iteratively generates and verifies solution fragments until a valid complete solution is found, preventing mid-generation token cutoffs.",
+     "prediction": {
+      "metric": "code_accuracy",
+      "direction": "increase"
+     },
+     "control": "Current single-shot workflow that generates the full answer in one call without intermediate verification.",
+     "potential_regression": "Increased latency due to multiple tool calls; potential for infinite loops if verification fails repeatedly without a max iteration cap."
+    },
+    "local_to": null,
+    "prescreen": [
+     [
+      {
+       "id": "lcb-abc388_c",
+       "domain": "code",
+       "correct": false,
+       "failure": "wrong_answer",
+       "llm_calls": 7,
+       "seconds": 160.63
+      },
+      {
+       "id": "lcb-3747",
+       "domain": "code",
+       "correct": false,
+       "failure": "load_error",
+       "llm_calls": 10,
+       "seconds": 30.23
+      },
+      {
+       "id": "lcb-3754",
+       "domain": "code",
+       "correct": false,
+       "failure": "load_error",
+       "llm_calls": 6,
+       "seconds": 160.59
+      }
+     ]
+    ],
+    "domains": null,
+    "seconds": 301,
+    "usage": {
+     "calls": 9,
+     "prompt_tokens": 40805,
+     "completion_tokens": 7280
+    },
+    "prescreen_usage": {
+     "calls": 23,
+     "prompt_tokens": 10571,
+     "completion_tokens": 17834
+    }
+   },
+   {
+    "id": "r10",
+    "researcher": "qwen3.5-4b",
+    "seed": 10,
+    "assigned": [
+     "code",
+     "runtime_error"
+    ],
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "code_hash": "d272c45569468c20",
+    "dir": "~/alter/evo/runs/research-ability-guarded/qwen3.5-4b/candidates/r10",
+    "kind": [
+     "code",
+     "runtime_error",
+     "workflow"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": true,
+     "hypothesis_testable": true,
+     "other_domains_unchanged": true,
+     "prescreen_passed": true,
+     "patch_valid": true,
+     "leak_scan_clean": true
+    },
+    "attempts": 1,
+    "problems": [],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H1",
+     "hypothesis": "Implement an iterative execution loop in `agent/workflow.py` for code tasks: generate code, call `python_exec`, and if `runtime_error` or `load_error` occurs, append the error log to the context and retry generation (max 3 attempts).",
+     "target": "agent/workflow.py",
+     "tool_name": "",
+     "proposed_change": "Modify `solve()` to detect `runtime_error`/`load_error` from `python_exec` output and trigger a retry with the error message in the user prompt.",
+     "prediction": {
+      "metric": "runtime_error_count",
+      "direction": "decrease"
+     },
+     "control": "Current single-shot workflow (25 runtime errors expected)",
+     "potential_regression": "Minor increase in token usage due to retries; negligible impact on math/rtl domains as they are unaffected."
+    },
+    "local_to": "code",
+    "prescreen": [
+     [
+      {
+       "id": "lcb-abc394_a",
+       "domain": "code",
+       "correct": true,
+       "failure": null,
+       "llm_calls": 3,
+       "seconds": 4.82
+      },
+      {
+       "id": "lcb-3704",
+       "domain": "code",
+       "correct": true,
+       "failure": null,
+       "llm_calls": 3,
+       "seconds": 7.94
+      },
+      {
+       "id": "lcb-3778",
+       "domain": "code",
+       "correct": true,
+       "failure": null,
+       "llm_calls": 3,
+       "seconds": 5.99
+      }
+     ]
+    ],
+    "domains": [
+     "code"
+    ],
+    "seconds": 68,
+    "usage": {
+     "calls": 7,
+     "prompt_tokens": 33605,
+     "completion_tokens": 2849
+    },
+    "prescreen_usage": {
+     "calls": 9,
+     "prompt_tokens": 3572,
+     "completion_tokens": 843
+    },
+    "duplicate_of": null,
+    "verdict": {
+     "domains": [
+      "code"
+     ],
+     "diff": -0.0681818181818182,
+     "p": 0.9840428239923209,
+     "p_worse": 0.01595717600767911,
+     "sd": 0.025181789748724797,
+     "champion_runs": 4,
+     "child_runs": 1,
+     "regression": 0.2564102564102564,
+     "expected_regression": 0.10424063116370809,
+     "p_regression": 0.02382813691293862,
+     "pass_dev": false,
+     "pass_regression": false
+    },
+    "prediction": {
+     "metric": "runtime_error_count",
+     "direction": "decrease",
+     "champion": 25.75,
+     "child": 5.0,
+     "hit": true
+    }
+   },
+   {
+    "id": "r11",
+    "researcher": "qwen3.5-4b",
+    "seed": 11,
+    "assigned": [
+     "code",
+     "runtime_error"
+    ],
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "code_hash": "e822f928c99af195",
+    "dir": "~/alter/evo/runs/research-ability-guarded/qwen3.5-4b/candidates/r11",
+    "kind": [
+     "code",
+     "runtime_error",
+     "workflow"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": true,
+     "hypothesis_testable": true,
+     "other_domains_unchanged": true,
+     "prescreen_passed": true,
+     "patch_valid": true,
+     "leak_scan_clean": true
+    },
+    "attempts": 3,
+    "problems": [],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H1",
+     "hypothesis": "Increase the `max_tokens` parameter in `workflow.py` from 4096 to 8192 to allow the model to generate complete, syntactically valid code without truncation.",
+     "target": "agent/workflow.py",
+     "tool_name": "",
+     "proposed_change": "Modify `solve` function to call `ctx.llm(messages, max_tokens=8192)` instead of 4096.",
+     "prediction": {
+      "metric": "runtime_error_count",
+      "direction": "decrease"
+     },
+     "control": ":current_agent",
+     "potential_regression": "If the increase still results in high `runtime_error` counts, it implies the model generates valid code but fails on hidden tests due to logic errors, or the 8192 limit is still insufficient for extremely complex tasks."
+    },
+    "local_to": "code",
+    "prescreen": [
+     [
+      {
+       "id": "lcb-abc393_f",
+       "domain": "code",
+       "correct": true,
+       "failure": null,
+       "llm_calls": 1,
+       "seconds": 72.48
+      },
+      {
+       "id": "lcb-abc396_d",
+       "domain": "code",
+       "correct": true,
+       "failure": null,
+       "llm_calls": 2,
+       "seconds": 16.43
+      },
+      {
+       "id": "lcb-3778",
+       "domain": "code",
+       "correct": true,
+       "failure": null,
+       "llm_calls": 2,
+       "seconds": 4.38
+      }
+     ]
+    ],
+    "domains": [
+     "code"
+    ],
+    "seconds": 165,
+    "usage": {
+     "calls": 9,
+     "prompt_tokens": 37174,
+     "completion_tokens": 4609
+    },
+    "prescreen_usage": {
+     "calls": 5,
+     "prompt_tokens": 3615,
+     "completion_tokens": 4750
+    },
+    "duplicate_of": null,
+    "verdict": {
+     "domains": [
+      "code"
+     ],
+     "diff": -0.022727272727272763,
+     "p": 0.7828876667844418,
+     "p_worse": 0.2171123332155582,
+     "sd": 0.025181789748724797,
+     "champion_runs": 4,
+     "child_runs": 1,
+     "regression": 0.1282051282051282,
+     "expected_regression": 0.10424063116370809,
+     "p_regression": 0.36735213568609726,
+     "pass_dev": false,
+     "pass_regression": true
+    },
+    "prediction": {
+     "metric": "runtime_error_count",
+     "direction": "decrease",
+     "champion": 25.75,
+     "child": 25.0,
+     "hit": true
+    }
+   },
+   {
+    "id": "r12",
+    "researcher": "qwen3.5-4b",
+    "seed": 12,
+    "assigned": [
+     "code",
+     "runtime_error"
+    ],
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "code_hash": "f6b14c0a402e4ee3",
+    "dir": "~/alter/evo/runs/research-ability-guarded/qwen3.5-4b/candidates/r12",
+    "kind": [
+     "code",
+     "runtime_error",
+     "workflow"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": true,
+     "hypothesis_testable": true,
+     "other_domains_unchanged": true,
+     "prescreen_passed": true,
+     "patch_valid": true,
+     "leak_scan_clean": true
+    },
+    "attempts": 1,
+    "problems": [],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H1",
+     "hypothesis": "Implement an iterative execution loop in agent/workflow.py that generates code, runs python_exec on it, and feeds the error log back to the model for refinement until tests pass or timeout.",
+     "target": "agent/workflow.py",
+     "tool_name": "python_exec",
+     "proposed_change": "Modify solve() to: 1) Generate initial code. 2) Call ctx.tool('python_exec', ...). 3) If returncode != 0 or hidden tests fail (simulated via output parsing), append error/stderr to context and call llm again with a 'Fix this error' prompt. 4) Repeat. If success, return answer.",
+     "prediction": {
+      "metric": "runtime_error_count",
+      "direction": "decrease"
+     },
+     "control": "Current single-call workflow",
+     "potential_regression": "Total token usage per task may increase, risking more cuts, but the 8192 shared budget allows multiple calls. Wrong answers due to bad logic should decrease if the model fixes specific syntax/runtime issues effectively."
+    },
+    "local_to": "code",
+    "prescreen": [
+     [
+      {
+       "id": "lcb-abc392_b",
+       "domain": "code",
+       "correct": true,
+       "failure": null,
+       "llm_calls": 1,
+       "seconds": 5.28
+      },
+      {
+       "id": "lcb-3747",
+       "domain": "code",
+       "correct": true,
+       "failure": null,
+       "llm_calls": 3,
+       "seconds": 7.06
+      },
+      {
+       "id": "lcb-abc392_d",
+       "domain": "code",
+       "correct": true,
+       "failure": null,
+       "llm_calls": 1,
+       "seconds": 10.44
+      }
+     ]
+    ],
+    "domains": [
+     "code"
+    ],
+    "seconds": 92,
+    "usage": {
+     "calls": 7,
+     "prompt_tokens": 32077,
+     "completion_tokens": 3942
+    },
+    "prescreen_usage": {
+     "calls": 5,
+     "prompt_tokens": 1837,
+     "completion_tokens": 1074
+    },
+    "duplicate_of": null,
+    "verdict": {
+     "domains": [
+      "code"
+     ],
+     "diff": 0.007575757575757569,
+     "p": 0.39606699142659124,
+     "p_worse": 0.6039330085734087,
+     "sd": 0.025181789748724797,
+     "champion_runs": 4,
+     "child_runs": 1,
+     "regression": 0.07692307692307693,
+     "expected_regression": 0.10424063116370809,
+     "p_regression": 0.650260472272224,
+     "pass_dev": false,
+     "pass_regression": true
+    },
+    "prediction": {
+     "metric": "runtime_error_count",
+     "direction": "decrease",
+     "champion": 25.75,
+     "child": 5.0,
+     "hit": true
+    }
+   },
+   {
+    "id": "r13",
+    "researcher": "qwen3.5-4b",
+    "seed": 13,
+    "assigned": [
+     "rtl",
+     "mismatch"
+    ],
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "code_hash": "586faea958ee1f59",
+    "dir": "~/alter/evo/runs/research-ability-guarded/qwen3.5-4b/candidates/r13",
+    "kind": [
+     "rtl",
+     "mismatch",
+     "workflow"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": true,
+     "hypothesis_testable": true,
+     "other_domains_unchanged": true,
+     "prescreen_passed": true,
+     "patch_valid": true,
+     "leak_scan_clean": true
+    },
+    "attempts": 3,
+    "problems": [],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H1",
+     "hypothesis": "Implement an iterative debugging loop in agent/workflow.py where the agent generates Verilog code, immediately calls ctx.tool('verilog_sim') to check for compilation errors or simulation mismatches, and if failures occur, regenerates the code with the specific error feedback before returning the final answer.",
+     "target": "agent/workflow.py",
+     "tool_name": "verilog_sim",
+     "proposed_change": "Modify solve() to handle RTL tasks as a loop: generate code -> call verilog_sim -> if compile_error or mismatch, append error log to context and regenerate; otherwise return answer.",
+     "prediction": {
+      "metric": "rtl_accuracy",
+      "direction": "increase"
+     },
+     "control": ": The current agent (single-shot generation).",
+     "potential_regression": ": Code tasks may see a slight increase in runtime errors if the agent wastes tokens re-generating code for code syntax issues, but the RTL focus mitigates this."
+    },
+    "local_to": "rtl",
+    "prescreen": [
+     [
+      {
+       "id": "width_8to16",
+       "domain": "rtl",
+       "correct": true,
+       "failure": null,
+       "llm_calls": 3,
+       "seconds": 34.19
+      },
+      {
+       "id": "Prob020_mt2015_eq2",
+       "domain": "rtl",
+       "correct": true,
+       "failure": null,
+       "llm_calls": 3,
+       "seconds": 3.99
+      },
+      {
+       "id": "Prob019_m2014_q4f",
+       "domain": "rtl",
+       "correct": true,
+       "failure": null,
+       "llm_calls": 3,
+       "seconds": 5.82
+      }
+     ]
+    ],
+    "domains": [
+     "rtl"
+    ],
+    "seconds": 174,
+    "usage": {
+     "calls": 9,
+     "prompt_tokens": 42257,
+     "completion_tokens": 7199
+    },
+    "prescreen_usage": {
+     "calls": 9,
+     "prompt_tokens": 7326,
+     "completion_tokens": 2178
+    },
+    "duplicate_of": null,
+    "verdict": {
+     "domains": [
+      "rtl"
+     ],
+     "diff": -0.09062499999999998,
+     "p": 0.9994927189868037,
+     "p_worse": 0.0005072810131962989,
+     "sd": 0.018232964556086223,
+     "champion_runs": 4,
+     "child_runs": 1,
+     "regression": 0.4020618556701031,
+     "expected_regression": 0.10987311657414753,
+     "p_regression": 0.0004037298603111918,
+     "pass_dev": false,
+     "pass_regression": false
+    },
+    "prediction": {
+     "metric": "rtl_accuracy",
+     "direction": "increase",
+     "champion": 0.303125,
+     "child": 0.2125,
+     "hit": false
+    }
+   },
+   {
+    "id": "r14",
+    "researcher": "qwen3.5-4b",
+    "seed": 14,
+    "assigned": [
+     "rtl",
+     "mismatch"
+    ],
+    "status": "valid",
+    "module": "agent/prompts/rtl.md",
+    "code_hash": "a5650475cc87931a",
+    "dir": "~/alter/evo/runs/research-ability-guarded/qwen3.5-4b/candidates/r14",
+    "kind": [
+     "rtl",
+     "mismatch",
+     "prompt"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": true,
+     "other_domains_unchanged": true,
+     "prescreen_passed": true,
+     "patch_valid": true,
+     "leak_scan_clean": true
+    },
+    "attempts": 1,
+    "problems": [],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H1",
+     "hypothesis": "Inject a detailed, domain-specific system prompt (agent/prompts/rtl.md) containing a 'Design Checklist' (e.g., 'Always use always @(posedge clk) for synchronous logic', 'Initialize registers', 'Match port directions').",
+     "target": "agent/prompts/rtl.md",
+     "tool_name": "",
+     "proposed_change": "Replace the empty agent/prompts/rtl.md with a 4000-character string containing a Verilog design pattern checklist and a reasoning step requiring the model to explicitly list which checklist items apply to the problem.",
+     "prediction": {
+      "metric": "rtl_accuracy",
+      "direction": "increase"
+     },
+     "control": "current_agent_with_empty_prompt",
+     "potential_regression": "If the checklist is too generic, it may not fix functional logic errors, only syntax ones."
+    },
+    "local_to": "rtl",
+    "prescreen": [
+     [
+      {
+       "id": "Prob050_kmap1",
+       "domain": "rtl",
+       "correct": true,
+       "failure": null,
+       "llm_calls": 1,
+       "seconds": 6.26
+      },
+      {
+       "id": "Prob012_xnorgate",
+       "domain": "rtl",
+       "correct": true,
+       "failure": null,
+       "llm_calls": 1,
+       "seconds": 2.29
+      },
+      {
+       "id": "Prob069_truthtable1",
+       "domain": "rtl",
+       "correct": false,
+       "failure": "mismatch",
+       "llm_calls": 1,
+       "seconds": 3.09
+      }
+     ]
+    ],
+    "domains": [
+     "rtl"
+    ],
+    "seconds": 49,
+    "usage": {
+     "calls": 7,
+     "prompt_tokens": 33640,
+     "completion_tokens": 2133
+    },
+    "prescreen_usage": {
+     "calls": 3,
+     "prompt_tokens": 2078,
+     "completion_tokens": 551
+    },
+    "duplicate_of": null,
+    "verdict": {
+     "domains": [
+      "rtl"
+     ],
+     "diff": -0.06562499999999999,
+     "p": 0.9962050306924856,
+     "p_worse": 0.0037949693075143864,
+     "sd": 0.018232964556086223,
+     "champion_runs": 4,
+     "child_runs": 1,
+     "regression": 0.3711340206185567,
+     "expected_regression": 0.10987311657414753,
+     "p_regression": 0.0008441226890692857,
+     "pass_dev": false,
+     "pass_regression": false
+    },
+    "prediction": {
+     "metric": "rtl_accuracy",
+     "direction": "increase",
+     "champion": 0.303125,
+     "child": 0.2375,
+     "hit": false
+    }
+   },
+   {
+    "id": "r15",
+    "researcher": "qwen3.5-4b",
+    "seed": 15,
+    "assigned": [
+     "rtl",
+     "mismatch"
+    ],
+    "status": "invalid_patch",
+    "module": "agent/workflow.py",
+    "code_hash": null,
+    "dir": "~/alter/evo/runs/research-ability-guarded/qwen3.5-4b/candidates/r15",
+    "kind": [
+     "rtl",
+     "mismatch",
+     "workflow"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": true,
+     "other_domains_unchanged": true,
+     "prescreen_passed": false,
+     "patch_valid": false
+    },
+    "attempts": 3,
+    "problems": [
+     "the pre-screen ran this version with the real model on 3 development tasks that the current agent solves, and it got 3 wrong: JC_counter (rtl) compile_error, answer ends 'No valid Verilog code generated after 5 attempts.'; Prob008_m2014_q4h (rtl) compile_error, answer ends 'No valid Verilog code generated after 5 attempts.'; Prob019_m2014_q4f (rtl) compile_error, answer ends 'No valid Verilog code generated after 5 attempts.'"
+    ],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H1",
+     "hypothesis": "Implement an iterative refinement loop in workflow.py where the agent generates RTL code, calls verilog_sim, and retries with error logs until success.",
+     "target": "agent/workflow.py",
+     "tool_name": "verilog_sim",
+     "proposed_change": "Replace the single-shot ctx.llm call with a loop that calls ctx.tool('verilog_sim') on generated code and passes error logs back to ctx.llm for the next iteration.",
+     "prediction": {
+      "metric": "rtl_accuracy",
+      "direction": "increase"
+     },
+     "control": "The current single-shot workflow applied to all tasks.",
+     "potential_regression": "Increased token usage may cause more 'cut_off_by_token_limit' failures due to the loop overhead, or reduced 'compile_error' recovery if the model doesn't fix syntax issues."
+    },
+    "local_to": null,
+    "prescreen": [
+     [
+      {
+       "id": "JC_counter",
+       "domain": "rtl",
+       "correct": false,
+       "failure": "compile_error",
+       "llm_calls": 1,
+       "seconds": 81.97
+      },
+      {
+       "id": "Prob008_m2014_q4h",
+       "domain": "rtl",
+       "correct": true,
+       "failure": null,
+       "llm_calls": 2,
+       "seconds": 125.31
+      },
+      {
+       "id": "Prob019_m2014_q4f",
+       "domain": "rtl",
+       "correct": false,
+       "failure": "compile_error",
+       "llm_calls": 1,
+       "seconds": 81.95
+      }
+     ],
+     [
+      {
+       "id": "JC_counter",
+       "domain": "rtl",
+       "correct": false,
+       "failure": "compile_error",
+       "llm_calls": 2,
+       "seconds": 167.43
+      },
+      {
+       "id": "Prob008_m2014_q4h",
+       "domain": "rtl",
+       "correct": false,
+       "failure": "compile_error",
+       "llm_calls": 3,
+       "seconds": 167.47
+      },
+      {
+       "id": "Prob019_m2014_q4f",
+       "domain": "rtl",
+       "correct": false,
+       "failure": "compile_error",
+       "llm_calls": 3,
+       "seconds": 167.45
+      }
+     ],
+     [
+      {
+       "id": "JC_counter",
+       "domain": "rtl",
+       "correct": false,
+       "failure": "compile_error",
+       "llm_calls": 2,
+       "seconds": 167.08
+      },
+      {
+       "id": "Prob008_m2014_q4h",
+       "domain": "rtl",
+       "correct": false,
+       "failure": "compile_error",
+       "llm_calls": 3,
+       "seconds": 167.12
+      },
+      {
+       "id": "Prob019_m2014_q4f",
+       "domain": "rtl",
+       "correct": false,
+       "failure": "compile_error",
+       "llm_calls": 3,
+       "seconds": 167.1
+      }
+     ]
+    ],
+    "domains": null,
+    "seconds": 586,
+    "usage": {
+     "calls": 9,
+     "prompt_tokens": 38586,
+     "completion_tokens": 6324
+    },
+    "prescreen_usage": {
+     "calls": 20,
+     "prompt_tokens": 4051,
+     "completion_tokens": 63772
+    }
+   },
+   {
+    "id": "r16",
+    "researcher": "qwen3.5-4b",
+    "seed": 16,
+    "assigned": [
+     "rtl",
+     "mismatch"
+    ],
+    "status": "invalid_patch",
+    "module": "agent/workflow.py",
+    "code_hash": null,
+    "dir": "~/alter/evo/runs/research-ability-guarded/qwen3.5-4b/candidates/r16",
+    "kind": [
+     "rtl",
+     "mismatch",
+     "workflow"
+    ],
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": true,
+     "patch_valid": false
+    },
+    "attempts": 3,
+    "problems": [
+     "syntax error: f-string: single '}' is not allowed (<unknown>, line 47)"
+    ],
+    "error": null,
+    "hypothesis": {
+     "hypothesis_id": "H1",
+     "hypothesis": "Add a new tool `rtl_check` that wraps `public.verilog_sim`, parses the compiler/simulator logs to detect subtle syntax warnings (like oversized constants) and logic mismatches, and returns a structured `{passed, log}` result. The workflow will then iteratively refine the generated code based on these specific logs until the design passes or tokens run out.",
+     "target": "agent/workflow.py",
+     "tool_name": "rtl_check",
+     "proposed_change": "1. Create `tools/rtl_check.py` defining SCHEMA and run() to invoke `public.verilog_sim` and return a clear PASS/FAIL signal with error details. 2. Modify `agent/workflow.py`'s `solve` function to first generate Verilog code, then call `ctx.tool(",
+     "prediction": {
+      "metric": "rtl_accuracy",
+      "direction": "increase"
+     },
+     "control": "current_agent",
+     "potential_regression": "If the tool output is too noisy, the LLM might not fix the code effectively, leading to a slight drop in accuracy compared to a perfect tool, but likely an improvement over the current baseline which fails on 22 mismatch cases due to lack of feedback."
+    },
+    "local_to": null,
+    "prescreen": null,
+    "domains": null,
+    "seconds": 206,
+    "usage": {
+     "calls": 9,
+     "prompt_tokens": 42904,
+     "completion_tokens": 10654
+    },
+    "prescreen_usage": {
+     "calls": 0,
+     "prompt_tokens": 0,
+     "completion_tokens": 0
+    }
+   }
+  ]
+ },
+ "solver_usage": {
+  "calls": 1470,
+  "prompt_tokens": 815199,
+  "completion_tokens": 2504171
+ }
+}

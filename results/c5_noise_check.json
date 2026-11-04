@@ -1,0 +1,1160 @@
+{
+ "n": 185,
+ "all_dev": {
+  "diff": 0.003952991452991453,
+  "p": 0.4113,
+  "regression": 0.08333333333333333
+ },
+ "by_domain": {
+  "math": {
+   "n": 39,
+   "accuracy": [
+    0.2564,
+    0.2308
+   ],
+   "changed": 1,
+   "regression": 0.1
+  },
+  "code": {
+   "n": 66,
+   "accuracy": [
+    0.2576,
+    0.2576
+   ],
+   "changed": 2,
+   "regression": 0.0588
+  },
+  "rtl": {
+   "n": 80,
+   "accuracy": [
+    0.2625,
+    0.3
+   ],
+   "changed": 7,
+   "regression": 0.0952
+  }
+ },
+ "pilot_sized_samples": {
+  "samples": 200,
+  "dev_gate_passed": 0.05,
+  "regression_gate_failed": 0.74,
+  "median_regression": 0.09090909090909091
+ },
+ "items": [
+  {
+   "id": "aime_2025-1",
+   "domain": "math",
+   "run1": true,
+   "run2": true
+  },
+  {
+   "id": "aime_2025-2",
+   "domain": "math",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "aime_2025-5",
+   "domain": "math",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "aime_2025-7",
+   "domain": "math",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "aime_2025-9",
+   "domain": "math",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "aime_2025-16",
+   "domain": "math",
+   "run1": true,
+   "run2": true
+  },
+  {
+   "id": "aime_2025-17",
+   "domain": "math",
+   "run1": true,
+   "run2": true
+  },
+  {
+   "id": "aime_2025-20",
+   "domain": "math",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "aime_2025-22",
+   "domain": "math",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "aime_2025-25",
+   "domain": "math",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "aime_2025-26",
+   "domain": "math",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "aime_2025-27",
+   "domain": "math",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "aime_2025-29",
+   "domain": "math",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "aime_2026-2",
+   "domain": "math",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "aime_2026-5",
+   "domain": "math",
+   "run1": true,
+   "run2": true
+  },
+  {
+   "id": "aime_2026-6",
+   "domain": "math",
+   "run1": true,
+   "run2": true
+  },
+  {
+   "id": "aime_2026-9",
+   "domain": "math",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "aime_2026-11",
+   "domain": "math",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "aime_2026-13",
+   "domain": "math",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "aime_2026-15",
+   "domain": "math",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "aime_2026-17",
+   "domain": "math",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "aime_2026-18",
+   "domain": "math",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "aime_2026-19",
+   "domain": "math",
+   "run1": true,
+   "run2": true
+  },
+  {
+   "id": "aime_2026-22",
+   "domain": "math",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "aime_2026-26",
+   "domain": "math",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "hmmt_feb_2026-1",
+   "domain": "math",
+   "run1": true,
+   "run2": true
+  },
+  {
+   "id": "hmmt_feb_2026-7",
+   "domain": "math",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "hmmt_feb_2026-8",
+   "domain": "math",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "hmmt_feb_2026-9",
+   "domain": "math",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "hmmt_feb_2026-12",
+   "domain": "math",
+   "run1": true,
+   "run2": false
+  },
+  {
+   "id": "hmmt_feb_2026-14",
+   "domain": "math",
+   "run1": true,
+   "run2": true
+  },
+  {
+   "id": "hmmt_feb_2026-18",
+   "domain": "math",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "hmmt_feb_2026-20",
+   "domain": "math",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "hmmt_feb_2026-22",
+   "domain": "math",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "hmmt_feb_2026-23",
+   "domain": "math",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "hmmt_feb_2026-24",
+   "domain": "math",
+   "run1": true,
+   "run2": true
+  },
+  {
+   "id": "hmmt_feb_2026-25",
+   "domain": "math",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "hmmt_feb_2026-29",
+   "domain": "math",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "hmmt_feb_2026-30",
+   "domain": "math",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "lcb-abc387_f",
+   "domain": "code",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "lcb-abc388_g",
+   "domain": "code",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "lcb-abc388_c",
+   "domain": "code",
+   "run1": true,
+   "run2": true
+  },
+  {
+   "id": "lcb-abc388_f",
+   "domain": "code",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "lcb-abc389_d",
+   "domain": "code",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "lcb-abc390_e",
+   "domain": "code",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "lcb-abc391_d",
+   "domain": "code",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "lcb-abc391_a",
+   "domain": "code",
+   "run1": true,
+   "run2": true
+  },
+  {
+   "id": "lcb-abc391_e",
+   "domain": "code",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "lcb-abc392_b",
+   "domain": "code",
+   "run1": true,
+   "run2": true
+  },
+  {
+   "id": "lcb-abc392_d",
+   "domain": "code",
+   "run1": false,
+   "run2": true
+  },
+  {
+   "id": "lcb-abc393_f",
+   "domain": "code",
+   "run1": true,
+   "run2": false
+  },
+  {
+   "id": "lcb-abc393_e",
+   "domain": "code",
+   "run1": true,
+   "run2": true
+  },
+  {
+   "id": "lcb-abc393_b",
+   "domain": "code",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "lcb-abc394_a",
+   "domain": "code",
+   "run1": true,
+   "run2": true
+  },
+  {
+   "id": "lcb-abc394_g",
+   "domain": "code",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "lcb-abc394_e",
+   "domain": "code",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "lcb-abc395_f",
+   "domain": "code",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "lcb-abc396_g",
+   "domain": "code",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "lcb-abc396_d",
+   "domain": "code",
+   "run1": true,
+   "run2": true
+  },
+  {
+   "id": "lcb-abc397_e",
+   "domain": "code",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "lcb-abc398_b",
+   "domain": "code",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "lcb-abc398_d",
+   "domain": "code",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "lcb-abc398_g",
+   "domain": "code",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "lcb-abc399_e",
+   "domain": "code",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "lcb-abc399_b",
+   "domain": "code",
+   "run1": true,
+   "run2": true
+  },
+  {
+   "id": "lcb-abc400_a",
+   "domain": "code",
+   "run1": true,
+   "run2": true
+  },
+  {
+   "id": "lcb-arc190_d",
+   "domain": "code",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "lcb-arc191_d",
+   "domain": "code",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "lcb-arc191_c",
+   "domain": "code",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "lcb-arc192_e",
+   "domain": "code",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "lcb-arc192_b",
+   "domain": "code",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "lcb-arc193_a",
+   "domain": "code",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "lcb-arc193_d",
+   "domain": "code",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "lcb-arc194_b",
+   "domain": "code",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "lcb-arc194_d",
+   "domain": "code",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "lcb-arc195_e",
+   "domain": "code",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "lcb-arc196_a",
+   "domain": "code",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "lcb-3674",
+   "domain": "code",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "lcb-3731",
+   "domain": "code",
+   "run1": true,
+   "run2": true
+  },
+  {
+   "id": "lcb-3725",
+   "domain": "code",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "lcb-3704",
+   "domain": "code",
+   "run1": true,
+   "run2": true
+  },
+  {
+   "id": "lcb-3751",
+   "domain": "code",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "lcb-3754",
+   "domain": "code",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "lcb-3748",
+   "domain": "code",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "lcb-3760",
+   "domain": "code",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "lcb-3709",
+   "domain": "code",
+   "run1": true,
+   "run2": true
+  },
+  {
+   "id": "lcb-3733",
+   "domain": "code",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "lcb-3781",
+   "domain": "code",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "lcb-3705",
+   "domain": "code",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "lcb-3786",
+   "domain": "code",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "lcb-3770",
+   "domain": "code",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "lcb-3789",
+   "domain": "code",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "lcb-3750",
+   "domain": "code",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "lcb-3801",
+   "domain": "code",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "lcb-3809",
+   "domain": "code",
+   "run1": true,
+   "run2": true
+  },
+  {
+   "id": "lcb-3794",
+   "domain": "code",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "lcb-3832",
+   "domain": "code",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "lcb-3793",
+   "domain": "code",
+   "run1": true,
+   "run2": true
+  },
+  {
+   "id": "lcb-3777",
+   "domain": "code",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "lcb-3747",
+   "domain": "code",
+   "run1": true,
+   "run2": true
+  },
+  {
+   "id": "lcb-3701",
+   "domain": "code",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "lcb-3723",
+   "domain": "code",
+   "run1": true,
+   "run2": true
+  },
+  {
+   "id": "lcb-3763",
+   "domain": "code",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "lcb-3778",
+   "domain": "code",
+   "run1": true,
+   "run2": true
+  },
+  {
+   "id": "lcb-3785",
+   "domain": "code",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "Prob001_zero",
+   "domain": "rtl",
+   "run1": true,
+   "run2": true
+  },
+  {
+   "id": "Prob008_m2014_q4h",
+   "domain": "rtl",
+   "run1": true,
+   "run2": true
+  },
+  {
+   "id": "Prob012_xnorgate",
+   "domain": "rtl",
+   "run1": true,
+   "run2": true
+  },
+  {
+   "id": "Prob013_m2014_q4e",
+   "domain": "rtl",
+   "run1": true,
+   "run2": true
+  },
+  {
+   "id": "Prob016_m2014_q4j",
+   "domain": "rtl",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "Prob019_m2014_q4f",
+   "domain": "rtl",
+   "run1": true,
+   "run2": true
+  },
+  {
+   "id": "Prob020_mt2015_eq2",
+   "domain": "rtl",
+   "run1": true,
+   "run2": true
+  },
+  {
+   "id": "Prob022_mux2to1",
+   "domain": "rtl",
+   "run1": true,
+   "run2": true
+  },
+  {
+   "id": "Prob023_vector100r",
+   "domain": "rtl",
+   "run1": false,
+   "run2": true
+  },
+  {
+   "id": "Prob026_alwaysblock1",
+   "domain": "rtl",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "Prob031_dff",
+   "domain": "rtl",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "Prob037_review2015_count1k",
+   "domain": "rtl",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "Prob038_count15",
+   "domain": "rtl",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "Prob039_always_if",
+   "domain": "rtl",
+   "run1": true,
+   "run2": true
+  },
+  {
+   "id": "Prob042_vector4",
+   "domain": "rtl",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "Prob046_dff8p",
+   "domain": "rtl",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "Prob050_kmap1",
+   "domain": "rtl",
+   "run1": true,
+   "run2": true
+  },
+  {
+   "id": "Prob051_gates4",
+   "domain": "rtl",
+   "run1": true,
+   "run2": true
+  },
+  {
+   "id": "Prob053_m2014_q4d",
+   "domain": "rtl",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "Prob054_edgedetect",
+   "domain": "rtl",
+   "run1": true,
+   "run2": true
+  },
+  {
+   "id": "Prob059_wire4",
+   "domain": "rtl",
+   "run1": true,
+   "run2": true
+  },
+  {
+   "id": "Prob061_2014_q4a",
+   "domain": "rtl",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "Prob064_vector3",
+   "domain": "rtl",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "Prob065_7420",
+   "domain": "rtl",
+   "run1": true,
+   "run2": true
+  },
+  {
+   "id": "Prob066_edgecapture",
+   "domain": "rtl",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "Prob067_countslow",
+   "domain": "rtl",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "Prob069_truthtable1",
+   "domain": "rtl",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "Prob070_ece241_2013_q2",
+   "domain": "rtl",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "Prob073_dff16e",
+   "domain": "rtl",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "Prob076_always_case",
+   "domain": "rtl",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "Prob079_fsm3onehot",
+   "domain": "rtl",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "Prob084_ece241_2013_q12",
+   "domain": "rtl",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "Prob091_2012_q2b",
+   "domain": "rtl",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "Prob093_ece241_2014_q3",
+   "domain": "rtl",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "Prob101_circuit4",
+   "domain": "rtl",
+   "run1": true,
+   "run2": false
+  },
+  {
+   "id": "Prob106_always_nolatches",
+   "domain": "rtl",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "Prob110_fsm2",
+   "domain": "rtl",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "Prob111_fsm2s",
+   "domain": "rtl",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "Prob112_always_case2",
+   "domain": "rtl",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "Prob113_2012_q1g",
+   "domain": "rtl",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "Prob115_shift18",
+   "domain": "rtl",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "Prob118_history_shift",
+   "domain": "rtl",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "Prob119_fsm3",
+   "domain": "rtl",
+   "run1": true,
+   "run2": false
+  },
+  {
+   "id": "Prob120_fsm3s",
+   "domain": "rtl",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "Prob121_2014_q3bfsm",
+   "domain": "rtl",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "Prob122_kmap4",
+   "domain": "rtl",
+   "run1": false,
+   "run2": true
+  },
+  {
+   "id": "Prob123_bugs_addsubz",
+   "domain": "rtl",
+   "run1": true,
+   "run2": true
+  },
+  {
+   "id": "Prob126_circuit6",
+   "domain": "rtl",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "Prob127_lemmings1",
+   "domain": "rtl",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "Prob129_ece241_2013_q8",
+   "domain": "rtl",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "Prob130_circuit5",
+   "domain": "rtl",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "Prob132_always_if2",
+   "domain": "rtl",
+   "run1": true,
+   "run2": true
+  },
+  {
+   "id": "Prob136_m2014_q6",
+   "domain": "rtl",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "Prob139_2013_q2bfsm",
+   "domain": "rtl",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "Prob140_fsm_hdlc",
+   "domain": "rtl",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "Prob142_lemmings2",
+   "domain": "rtl",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "Prob143_fsm_onehot",
+   "domain": "rtl",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "Prob144_conwaylife",
+   "domain": "rtl",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "Prob145_circuit8",
+   "domain": "rtl",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "Prob147_circuit10",
+   "domain": "rtl",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "Prob151_review2015_fsm",
+   "domain": "rtl",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "Prob152_lemmings3",
+   "domain": "rtl",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "Prob155_lemmings4",
+   "domain": "rtl",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "Prob156_review2015_fancytimer",
+   "domain": "rtl",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "accu",
+   "domain": "rtl",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "adder_8bit",
+   "domain": "rtl",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "adder_bcd",
+   "domain": "rtl",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "adder_pipe_64bit",
+   "domain": "rtl",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "fixed_point_substractor",
+   "domain": "rtl",
+   "run1": false,
+   "run2": true
+  },
+  {
+   "id": "JC_counter",
+   "domain": "rtl",
+   "run1": true,
+   "run2": true
+  },
+  {
+   "id": "counter_12",
+   "domain": "rtl",
+   "run1": true,
+   "run2": true
+  },
+  {
+   "id": "LFSR",
+   "domain": "rtl",
+   "run1": false,
+   "run2": true
+  },
+  {
+   "id": "freq_div",
+   "domain": "rtl",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "freq_divbyfrac",
+   "domain": "rtl",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "edge_detect",
+   "domain": "rtl",
+   "run1": true,
+   "run2": true
+  },
+  {
+   "id": "parallel2serial",
+   "domain": "rtl",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "serial2parallel",
+   "domain": "rtl",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "synchronizer",
+   "domain": "rtl",
+   "run1": true,
+   "run2": true
+  },
+  {
+   "id": "traffic_light",
+   "domain": "rtl",
+   "run1": false,
+   "run2": false
+  },
+  {
+   "id": "width_8to16",
+   "domain": "rtl",
+   "run1": false,
+   "run2": true
+  }
+ ],
+ "llm_usage": {
+  "calls": 370,
+  "prompt_tokens": 137452,
+  "completion_tokens": 737222
+ }
+}

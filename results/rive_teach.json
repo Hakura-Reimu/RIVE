@@ -1,0 +1,188 @@
+{
+ "plan": {
+  "costs": {
+   "make": {
+    "requests": 5,
+    "cny": 0.0130466,
+    "cny_offpeak": 0.0130466,
+    "output_tokens": 3205.8
+   },
+   "solve": {
+    "requests": 3,
+    "cny": 0.004112666666666666,
+    "cny_offpeak": 0.004112666666666666,
+    "output_tokens": 925.3333333333334
+   },
+   "dev": {
+    "requests": 74,
+    "cny": 0.01924777027027027,
+    "cny_offpeak": 0.010183027027027027,
+    "output_tokens": 2403.891891891892
+   }
+  },
+  "problems": 334,
+  "spend_cny": 8.0
+ },
+ "data": {
+  "problems_written": 334,
+  "synthetic_solved": 299,
+  "synthetic_passed": 193,
+  "synthetic_kept": 193,
+  "dropped": {},
+  "dev_solved": 74,
+  "dev_passed": 56,
+  "rows": 249,
+  "kept_by_type": {
+   "stdin/easy": 37,
+   "stdin/medium": 41,
+   "functional/easy": 33,
+   "functional/hard": 16,
+   "functional/medium": 60,
+   "stdin/hard": 6
+  },
+  "answer_chars": 1059
+ },
+ "training": {
+  "tag": "seed1",
+  "args": {
+   "model": "~/alter/models/Qwen3.5-4B",
+   "run_dir": "~/alter/rive/teach",
+   "seed": 1,
+   "epochs": 2,
+   "lr": 0.0001,
+   "rank": 16,
+   "grad_accum": 8,
+   "max_len": 3072,
+   "probe": 0,
+   "no_upcast": false
+  },
+  "examples": 249,
+  "skipped_too_long": 0,
+  "steps": 63,
+  "answer_tokens": 73217,
+  "seconds": 427,
+  "tokens_per_s": 795.4,
+  "loss_first": [
+   0.6921,
+   0.7064,
+   0.6217,
+   0.5145,
+   0.5278
+  ],
+  "loss_last": [
+   0.2789,
+   0.2359,
+   0.3109,
+   0.3661,
+   0.1713
+  ],
+  "peak_allocated_gib": 7.2,
+  "peak_reserved_gib": 7.94,
+  "exceeded_physical_vram": false,
+  "vllm_tensors": 496
+ },
+ "canary": {
+  "differ": 3,
+  "of": 3,
+  "starts": [
+   [
+    "```python\nclass Solution:\n    def maxSum(self, nums: List[int]) -> int:\n        # Dictionary to store the maximum number seen so far for each max digit\n        max_by_digit = {}\n        result = -1\n  ",
+    "Group numbers by their maximum digit, keeping only the largest value seen for each digit. Then sum the two largest values for each digit group. The overall maximum is the answer, or -1 if no group has"
+   ],
+   [
+    "```python\nfrom typing import List\n\nclass Solution:\n    def sumOfSquares(self, nums: List[int]) -> int:\n        n = len(nums)\n        total = 0\n        # Iterate from 1 to n (1-indexed positions)\n     ",
+    "Iterate over all indices from 1 to n, check if the index divides n, and add the square of the corresponding array element. The time complexity is O(n) and space complexity is O(1).\n\n```python\nfrom typ"
+   ],
+   [
+    "```python\nclass Solution:\n    def countTestedDevices(self, batteryPercentages: List[int]) -> int:\n        n = len(batteryPercentages)\n        tested_count = 0\n        current_decrease = 0  # Tracks ho",
+    "Maintain a running count of tested devices; each tested device decreases the effective battery of all later devices by 1. A device is tested exactly when its original percentage is at least this runni"
+   ]
+  ]
+ },
+ "evals": {
+  "base_a0_select_s2": {
+   "solved": 117,
+   "tasks": 249,
+   "tokens": 1596,
+   "cut_off": 62,
+   "failures": {
+    "wrong_answer": 53,
+    "runtime_error": 60,
+    "time_limit": 7,
+    "load_error": 12
+   }
+  },
+  "teach_a0_dev_s0": {
+   "solved": 19,
+   "tasks": 74,
+   "tokens": 265,
+   "cut_off": 0,
+   "failures": {
+    "wrong_answer": 37,
+    "runtime_error": 17,
+    "time_limit": 1
+   }
+  },
+  "teach_a0_select_s0": {
+   "solved": 56,
+   "tasks": 249,
+   "tokens": 321,
+   "cut_off": 1,
+   "failures": {
+    "wrong_answer": 134,
+    "runtime_error": 53,
+    "load_error": 2,
+    "time_limit": 4
+   }
+  },
+  "teach_a0_select_s1": {
+   "solved": 63,
+   "tasks": 249,
+   "tokens": 324,
+   "cut_off": 2,
+   "failures": {
+    "wrong_answer": 124,
+    "runtime_error": 59,
+    "time_limit": 3
+   }
+  },
+  "teach_a0_test_s0": {
+   "solved": 61,
+   "tasks": 250,
+   "tokens": 301,
+   "cut_off": 0,
+   "failures": {
+    "runtime_error": 41,
+    "wrong_answer": 142,
+    "time_limit": 5,
+    "load_error": 1
+   }
+  },
+  "teach_combo_select_s0": {
+   "solved": 70,
+   "tasks": 249,
+   "tokens": 1065,
+   "cut_off": 0,
+   "failures": {
+    "wrong_answer": 143,
+    "runtime_error": 33,
+    "time_limit": 3
+   }
+  }
+ },
+ "reading": {
+  "base_a0_select": [
+   109,
+   112,
+   117
+  ],
+  "teach_a0_select": [
+   56,
+   63
+  ],
+  "gain": -53.16666666666667,
+  "bar": 15,
+  "useful": false
+ },
+ "teacher_cost_cny": 8.0898
+}

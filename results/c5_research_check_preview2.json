@@ -1,0 +1,102 @@
+{
+ "blocked": [
+  {
+   "domain": "rtl",
+   "failure": "compile_error",
+   "module": null,
+   "failures": 9,
+   "example": "Implement a `verilog_semantic_validator` tool in `tools/verilog_semantic_validator.py` that takes the generated Verilog module and a dummy testbench, "
+  },
+  {
+   "domain": "rtl",
+   "failure": "compile_error",
+   "module": "tool",
+   "failures": 7,
+   "example": "Implement a `verilog_semantic_validator` tool in `tools/verilog_semantic_validator.py` that takes the generated Verilog module and a dummy testbench, "
+  },
+  {
+   "domain": "rtl",
+   "failure": "compile_error",
+   "module": "workflow",
+   "failures": 4,
+   "example": "Implement a lightweight regex-based Verilog syntax validator in `tools/verilog_regex_checker.py` that checks for fatal structural errors (e.g., `wire`"
+  }
+ ],
+ "preview": [
+  {
+   "id": "p014",
+   "status": "valid",
+   "module": "agent/workflow.py",
+   "kind": [
+    "math",
+    "no_final_answer",
+    "workflow"
+   ],
+   "diagnose_attempts": 1,
+   "diagnose_errors": [],
+   "hypothesis": "Split math tasks into two LLM calls: first for reasoning/derivation, second specifically for formatting the final answer in `boxed{}`.",
+   "implement_attempts": 2,
+   "problems": [],
+   "error": null,
+   "note": null
+  },
+  {
+   "id": "p015",
+   "status": "valid",
+   "module": "agent/workflow.py",
+   "kind": [
+    "math",
+    "no_final_answer",
+    "workflow"
+   ],
+   "diagnose_attempts": 1,
+   "diagnose_errors": [],
+   "hypothesis": "Modify agent/workflow.py to set thinking=True and a smaller max_tokens (e.g., 1024) for the reasoning step, followed by a second LLM call for the final answer, effectively splitting the generation into two phases to avoid the 12288 token reasoning cutoff within the 8192 budget.",
+   "implement_attempts": 1,
+   "problems": [],
+   "error": null,
+   "note": null
+  },
+  {
+   "id": "p016",
+   "status": "valid",
+   "module": "agent/workflow.py",
+   "kind": [
+    "code",
+    "wrong_answer",
+    "workflow"
+   ],
+   "diagnose_attempts": 1,
+   "diagnose_errors": [],
+   "hypothesis": "Implement a self-correction loop in agent/workflow.py for code tasks where the agent generates code, runs it via python_exec against hidden tests, and iteratively refines the code if tests fail.",
+   "implement_attempts": 1,
+   "problems": [],
+   "error": null,
+   "note": null
+  },
+  {
+   "id": "p017",
+   "status": "valid",
+   "module": "agent/workflow.py",
+   "kind": [
+    "math",
+    "no_final_answer",
+    "workflow"
+   ],
+   "diagnose_attempts": 1,
+   "diagnose_errors": [],
+   "hypothesis": "Increase the `max_tokens` parameter in the `ctx.llm` call within `agent/workflow.py` from 4096 to 8192 specifically for math tasks.",
+   "implement_attempts": 2,
+   "problems": [],
+   "error": null,
+   "note": null
+  }
+ ],
+ "tool_template": {},
+ "valid_tools": {},
+ "llm_usage": {
+  "calls": 30,
+  "prompt_tokens": 162291,
+  "completion_tokens": 16160
+ }
+}

@@ -1,0 +1,85 @@
+{
+ "evals": {
+  "base_8192_select_s0": {
+   "solved": 111,
+   "tasks": 249,
+   "tokens": 2471,
+   "cut_off": 36,
+   "failures": {
+    "wrong_answer": 77,
+    "load_error": 10,
+    "runtime_error": 42,
+    "time_limit": 9
+   }
+  },
+  "reason_8192_select_s0": {
+   "solved": 83,
+   "tasks": 249,
+   "tokens": 2714,
+   "cut_off": 40,
+   "failures": {
+    "wrong_answer": 78,
+    "runtime_error": 72,
+    "load_error": 12,
+    "time_limit": 4
+   }
+  }
+ },
+ "cut_at_4096": {
+  "base_8192_select_s0": {
+   "cut": 60,
+   "solved_now": 11,
+   "still_cut": 30,
+   "solved_before": 109
+  },
+  "reason_8192_select_s0": {
+   "cut": 65,
+   "solved_now": 2,
+   "still_cut": 30,
+   "solved_before": 79
+  }
+ },
+ "probe": {
+  "tag": "probe-4096",
+  "args": {
+   "model": "~/alter/models/Qwen3.5-4B",
+   "run_dir": "~/alter/rive/long",
+   "seed": 1,
+   "epochs": 2,
+   "lr": 0.0001,
+   "rank": 16,
+   "grad_accum": 8,
+   "max_len": 4096,
+   "probe": 3,
+   "no_upcast": false
+  },
+  "examples": 14,
+  "skipped_too_long": 10,
+  "steps": 3,
+  "answer_tokens": 40009,
+  "seconds": 144,
+  "tokens_per_s": 662.8,
+  "loss_first": [
+   1.1871,
+   1.0338,
+   0.9416
+  ],
+  "loss_last": [
+   1.1871,
+   1.0338,
+   0.9416
+  ],
+  "peak_allocated_gib": 10.12,
+  "peak_reserved_gib": 10.98,
+  "exceeded_physical_vram": false,
+  "vllm_tensors": 496
+ },
+ "reading": {
+  "base_8192": 111,
+  "reason_8192": 83,
+  "gap": 28,
+  "case": "N",
+  "gap_at_4096": 30.66666666666667,
+  "base_gain_from_length": -1.6666666666666714
+ }
+}

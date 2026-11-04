@@ -1,0 +1,34 @@
+{
+ "tag": "mxfp4_offload",
+ "kv_cache_tokens": 79782,
+ "long": {
+  "prompt_tokens": 60822,
+  "seconds": 22.3,
+  "answer": "MARMALADE-47",
+  "found": true
+ },
+ "plain": {
+  "tasks": 16,
+  "solved": 6,
+  "cut": 1,
+  "forced": 0,
+  "mean_tokens": 426,
+  "failures": {
+   "wrong_answer": 7,
+   "runtime_error": 2,
+   "cut": 1
+  },
+  "seconds": 45,
+  "tokens_per_s": 150
+ },
+ "think": {
+  "tasks": 8,
+  "solved": 8,
+  "cut": 0,
+  "forced": 5,
+  "mean_tokens": 13640,
+  "failures": {},
+  "seconds": 420,
+  "tokens_per_s": 260
+ }
+}

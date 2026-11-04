@@ -1,0 +1,176 @@
+{
+ "runs": {
+  "plain_s0": {
+   "tasks": 74,
+   "solved": 29,
+   "cut": 22,
+   "forced": 0,
+   "mean_tokens": 1718,
+   "failures": {
+    "wrong_answer": 20,
+    "runtime_error": 4,
+    "cut": 20,
+    "load_error": 1
+   },
+   "closed_by_itself": 0,
+   "recheck_lines_per_1k": 0.31,
+   "looping_cut": 0,
+   "looping_forced_thinking": 0,
+   "wait_comment_lines": 10
+  },
+  "think16k_s0": {
+   "tasks": 74,
+   "solved": 41,
+   "cut": 27,
+   "forced": 56,
+   "mean_tokens": 16591,
+   "failures": {
+    "runtime_error": 4,
+    "cut": 26,
+    "wrong_answer": 3
+   },
+   "closed_by_itself": 18,
+   "recheck_lines_per_1k": 3.76,
+   "looping_cut": 0,
+   "looping_forced_thinking": 5,
+   "wait_comment_lines": 430
+  },
+  "e1_plain_s0": {
+   "tasks": 74,
+   "solved": 31,
+   "cut": 4,
+   "forced": 0,
+   "mean_tokens": 961,
+   "failures": {
+    "wrong_answer": 26,
+    "runtime_error": 9,
+    "time_limit": 4,
+    "cut": 4
+   },
+   "closed_by_itself": 0,
+   "recheck_lines_per_1k": 0.0,
+   "looping_cut": 0,
+   "looping_forced_thinking": 0,
+   "wait_comment_lines": 0
+  },
+  "e1_think16k_s0": {
+   "tasks": 74,
+   "solved": 41,
+   "cut": 8,
+   "forced": 40,
+   "mean_tokens": 12016,
+   "failures": {
+    "runtime_error": 3,
+    "wrong_answer": 22,
+    "cut": 8
+   },
+   "closed_by_itself": 34,
+   "recheck_lines_per_1k": 0.0,
+   "looping_cut": 0,
+   "looping_forced_thinking": 32,
+   "wait_comment_lines": 0
+  },
+  "e1h_plain_s0": {
+   "tasks": 74,
+   "solved": 37,
+   "cut": 7,
+   "forced": 0,
+   "mean_tokens": 1355,
+   "failures": {
+    "wrong_answer": 21,
+    "runtime_error": 5,
+    "time_limit": 4,
+    "cut": 7
+   },
+   "closed_by_itself": 0,
+   "recheck_lines_per_1k": 0.01,
+   "looping_cut": 0,
+   "looping_forced_thinking": 0,
+   "wait_comment_lines": 1
+  },
+  "e1h_think16k_s0": {
+   "tasks": 74,
+   "solved": 44,
+   "cut": 12,
+   "forced": 26,
+   "mean_tokens": 11987,
+   "failures": {
+    "wrong_answer": 12,
+    "runtime_error": 6,
+    "cut": 12
+   },
+   "closed_by_itself": 48,
+   "recheck_lines_per_1k": 0.12,
+   "looping_cut": 0,
+   "looping_forced_thinking": 6,
+   "wait_comment_lines": 1
+  }
+ },
+ "readings": {
+  "e1": "no use",
+  "e1_non_thinking": "no clear change",
+  "e1h": "no use",
+  "e1h_non_thinking": "helped"
+ },
+ "flips": {
+  "e1_think16k_s0 vs think16k_s0": {
+   "first_only": 6,
+   "second_only": 6
+  },
+  "e1_plain_s0 vs plain_s0": {
+   "first_only": 7,
+   "second_only": 5
+  },
+  "e1h_think16k_s0 vs think16k_s0": {
+   "first_only": 5,
+   "second_only": 2
+  },
+  "e1h_plain_s0 vs plain_s0": {
+   "first_only": 12,
+   "second_only": 4
+  },
+  "e1h_think16k_s0 vs e1_think16k_s0": {
+   "first_only": 6,
+   "second_only": 3
+  }
+ },
+ "direction": {
+  "source": "think16k_s0",
+  "aucs": {
+   "8": 0.7922,
+   "9": 0.7934,
+   "10": 0.7957,
+   "11": 0.7951,
+   "12": 0.7967,
+   "13": 0.7965,
+   "14": 0.8112,
+   "15": 0.8139,
+   "16": 0.8264,
+   "17": 0.8357,
+   "18": 0.8543,
+   "19": 0.8524,
+   "20": 0.8574,
+   "21": 0.8554,
+   "22": 0.8858,
+   "23": 0.8834,
+   "24": 0.8791,
+   "25": 0.8867,
+   "26": 0.8871
+  },
+  "positions": {
+   "a": {
+    "recheck": 495,
+    "other": 715
+   },
+   "b": {
+    "recheck": 455,
+    "other": 649
+   }
+  },
+  "e1": {
+   "layer": 20,
+   "auc": 0.8574
+  },
+  "peak_gpu_gib": 6.15
+ }
+}

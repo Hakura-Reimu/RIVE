@@ -1,0 +1,158 @@
+{
+ "data": {
+  "synthetic_solved": 272,
+  "synthetic_passed": 225,
+  "synthetic_kept": 225,
+  "dropped": {},
+  "dev_solved": 74,
+  "dev_passed": 57,
+  "rows": 282,
+  "kept_by_type": {
+   "stdin/easy": 41,
+   "stdin/medium": 46,
+   "functional/easy": 39,
+   "functional/hard": 17,
+   "functional/medium": 69,
+   "stdin/hard": 13
+  },
+  "empty_reasoning": 0,
+  "reasoning_chars": 2633,
+  "answer_chars": 3638,
+  "teacher_cost_cny": 2.9289
+ },
+ "training": {
+  "tag": "seed1",
+  "args": {
+   "model": "~/alter/models/Qwen3.5-4B",
+   "run_dir": "~/alter/rive/reason",
+   "seed": 1,
+   "epochs": 2,
+   "lr": 0.0001,
+   "rank": 16,
+   "grad_accum": 8,
+   "max_len": 3072,
+   "probe": 0,
+   "no_upcast": false
+  },
+  "examples": 238,
+  "skipped_too_long": 44,
+  "steps": 60,
+  "answer_tokens": 235916,
+  "seconds": 896,
+  "tokens_per_s": 728.5,
+  "loss_first": [
+   1.5974,
+   1.574,
+   1.3545,
+   1.4105,
+   1.3834
+  ],
+  "loss_last": [
+   1.1322,
+   0.8774,
+   0.9028,
+   0.9588,
+   0.7057
+  ],
+  "peak_allocated_gib": 8.23,
+  "peak_reserved_gib": 8.74,
+  "exceeded_physical_vram": false,
+  "vllm_tensors": 496
+ },
+ "canary": {
+  "differ": 3,
+  "of": 3,
+  "starts": [
+   [
+    "```python\nclass Solution:\n    def maxSum(self, nums: List[int]) -> int:\n        # Dictionary to store the maximum number seen so far for each max digit\n        max_by_digit = {}\n        result = -1\n  ",
+    "We need answer with explanation <=5 sentences then code block only. Need solve. Need include import List? Starter uses List. We can import from typing. Need complete solution.\n\nWe need maximize sum fo"
+   ],
+   [
+    "```python\nfrom typing import List\n\nclass Solution:\n    def sumOfSquares(self, nums: List[int]) -> int:\n        n = len(nums)\n        total = 0\n        # Iterate from 1 to n (1-indexed positions)\n     ",
+    "We need answer with explanation max 5 sentences then code block only. Need include import List? Starter uses List. We can import from typing. Need complete solution.\n\nNeed be careful: 1-indexed i divi"
+   ],
+   [
+    "```python\nclass Solution:\n    def countTestedDevices(self, batteryPercentages: List[int]) -> int:\n        n = len(batteryPercentages)\n        tested_count = 0\n        current_decrease = 0  # Tracks ho",
+    "We need answer with explanation <=5 sentences then code block only. Need solve.\n\nWe need implement count tested. Naive O(n^2) fine n<=100. But can do O(n) by tracking decrements.\n\nLet tested count. Ma"
+   ]
+  ]
+ },
+ "evals": {
+  "reason_a0_dev_s0": {
+   "solved": 29,
+   "tasks": 74,
+   "tokens": 1662,
+   "cut_off": 14,
+   "failures": {
+    "wrong_answer": 25,
+    "load_error": 5,
+    "runtime_error": 14,
+    "time_limit": 1
+   }
+  },
+  "reason_a0_select_s0": {
+   "solved": 79,
+   "tasks": 249,
+   "tokens": 1838,
+   "cut_off": 65,
+   "failures": {
+    "wrong_answer": 68,
+    "runtime_error": 71,
+    "load_error": 27,
+    "time_limit": 4
+   }
+  },
+  "reason_a0_select_s1": {
+   "solved": 85,
+   "tasks": 249,
+   "tokens": 1865,
+   "cut_off": 69,
+   "failures": {
+    "load_error": 29,
+    "wrong_answer": 63,
+    "runtime_error": 69,
+    "time_limit": 3
+   }
+  },
+  "reason_a0_test_s0": {
+   "solved": 90,
+   "tasks": 250,
+   "tokens": 1874,
+   "cut_off": 73,
+   "failures": {
+    "wrong_answer": 61,
+    "load_error": 30,
+    "runtime_error": 66,
+    "time_limit": 3
+   }
+  },
+  "reason_combo_select_s0": {
+   "solved": 115,
+   "tasks": 249,
+   "tokens": 3916,
+   "cut_off": 75,
+   "failures": {
+    "wrong_answer": 62,
+    "runtime_error": 58,
+    "load_error": 13,
+    "time_limit": 1
+   }
+  }
+ },
+ "reading": {
+  "base_a0_select": [
+   109,
+   112,
+   117
+  ],
+  "reason_a0_select": [
+   79,
+   85
+  ],
+  "gain": -30.66666666666667,
+  "bar": 15,
+  "useful": false,
+  "over_6_18": 22.5
+ },
+ "teacher_cost_cny": 2.9289
+}

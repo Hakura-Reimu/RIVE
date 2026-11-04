@@ -1,0 +1,1203 @@
+{
+ "pairs": 8,
+ "test_solved": {
+  "m1": [
+   128,
+   128,
+   128,
+   128,
+   128,
+   128,
+   128,
+   128
+  ],
+  "m0": [
+   128,
+   128,
+   146,
+   128,
+   128,
+   128,
+   128,
+   153
+  ]
+ },
+ "mig": {
+  "1": 0,
+  "2": 0,
+  "3": -18,
+  "4": 0,
+  "5": 0,
+  "6": 0,
+  "7": 0,
+  "8": -25
+ },
+ "mean_mig": -5.375,
+ "sign_flip_p": 0.5,
+ "kept_a_change": {
+  "m1": [
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false,
+   false
+  ],
+  "m0": [
+   false,
+   false,
+   true,
+   false,
+   false,
+   false,
+   false,
+   true
+  ]
+ },
+ "valid_proposals": {
+  "m1": [
+   1,
+   1,
+   4,
+   0,
+   0,
+   1,
+   3,
+   2
+  ],
+  "m0": [
+   4,
+   2,
+   3,
+   2,
+   3,
+   3,
+   3,
+   3
+  ]
+ },
+ "effect_fixed": [
+  1,
+  null,
+  0,
+  0,
+  null,
+  0,
+  null,
+  2,
+  2,
+  2,
+  1,
+  1,
+  0,
+  0,
+  0,
+  null,
+  null,
+  null,
+  0,
+  0,
+  0,
+  2,
+  null,
+  null,
+  3,
+  1,
+  1,
+  null,
+  0,
+  2,
+  1,
+  null
+ ],
+ "improver_tokens": {
+  "m1": [
+   26164,
+   31146,
+   12553,
+   35364,
+   25629,
+   28432,
+   18528,
+   29849
+  ],
+  "m0": [
+   17919,
+   25123,
+   26997,
+   21671,
+   22576,
+   19797,
+   23868,
+   20039
+  ]
+ },
+ "rounds": {
+  "m0_hint_s1": [
+   {
+    "round": 1,
+    "status": "invalid_patch",
+    "module": "agent/workflow.py",
+    "hypothesis": "Modify agent/workflow.py to implement an iterative loop: generate code, execute via python_exec, and if returncode != 0, send stderr and current answer back to LLM for retry (max 2 total calls)."
+   },
+   {
+    "round": 2,
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "hypothesis": "Implement an iterative loop in agent/workflow.py that generates code, executes it via ctx.tool('python_exec', ...), and if returncode != 0, extracts stderr and appends it to the prompt for a subsequent generation attempt, repeating up to 3 times.",
+    "dev_solved": 25,
+    "select_solved": 39,
+    "select_gain": -1,
+    "kept": false
+   },
+   {
+    "round": 3,
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "hypothesis": "Implement an iterative loop in agent/workflow.py that generates code, executes it via ctx.tool('python_exec', ...), and if returncode != 0, extracts stderr and sends the current code plus stderr back to the LLM for revision, repeating up to 2 times. This directly addresses the 30 'wrong_answer' failures by providing feedback. Measurable prediction: Macro accuracy increases from 0.431 to >0.70, and 'wrong_answer' count drops significantly. Pre-screen validation will pass because the loop includes",
+    "dev_solved": 26,
+    "select_solved": 40,
+    "select_gain": 0,
+    "kept": false
+   },
+   {
+    "round": 4,
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "hypothesis": "Implement an iterative debug loop in agent/workflow.py: generate code, run it with ctx.tool('python_exec'), and if returncode!=0, extract stderr and append the failing test/error to the prompt for a second LLM call (max 2 total attempts).",
+    "dev_solved": 25,
+    "select_solved": 40,
+    "select_gain": 0,
+    "kept": false
+   }
+  ],
+  "m0_hint_s2": [
+   {
+    "round": 1,
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "hypothesis": "Implement an iterative feedback loop in agent/workflow.py where the agent generates code, executes it via ctx.tool('python_exec'), and re-prompts with stderr if the returncode is non-zero (up to 2 retries).",
+    "dev_solved": 32,
+    "select_solved": 44,
+    "select_gain": 4,
+    "kept": true
+   },
+   {
+    "round": 2,
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "hypothesis": "Enforce a post-generation parser in agent/workflow.py that extracts only the first code block found in the model's response and validates that it contains no `assert` statements or hidden test code before execution. This directly addresses the 'load_error' caused by the model including test assertions (e.g., t1-mbpp-162) and ensures the executed code is pure function definitions, reducing both 'load_error' and 'wrong_answer' due to malformed execution contexts.",
+    "dev_solved": 31,
+    "select_solved": 44,
+    "select_gain": 0,
+    "kept": false
+   },
+   {
+    "round": 3,
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "hypothesis": "Modify agent/workflow.py to extract the 'stderr' and 'stdout' fields from the `python_exec` tool result and format them as a clear text block within the user prompt for retry attempts, replacing the raw dictionary injection.",
+    "dev_solved": 26,
+    "select_solved": 36,
+    "select_gain": -8,
+    "kept": false
+   },
+   {
+    "round": 4,
+    "status": "duplicate",
+    "module": "agent/workflow.py",
+    "hypothesis": "The agent fails to persist the previous assistant's code and error logs because the variable `current_code` is overwritten or not properly sequenced in the loop before re-prompting. The logic attempts to append `prev_response` but the variable definition inside the `else` block is disconnected from the `messages` construction."
+   }
+  ],
+  "m0_hint_s3": [
+   {
+    "round": 1,
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "hypothesis": "Implement an iterative verification loop in agent/workflow.py using python_exec to run the generated code against the failing_test, regenerating if the returncode is non-zero, repeating at most twice.",
+    "dev_solved": 26,
+    "select_solved": 41,
+    "select_gain": 1,
+    "kept": false
+   },
+   {
+    "round": 2,
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "hypothesis": "Implement an iterative verification loop in agent/workflow.py using python_exec to run the generated code against the failing_test, regenerating if the returncode is not 0.",
+    "dev_solved": 27,
+    "select_solved": 39,
+    "select_gain": -1,
+    "kept": false
+   },
+   {
+    "round": 3,
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "hypothesis": "Implement an iterative verification loop in agent/workflow.py that executes the generated code against the failing_test via ctx.tool('python_exec'). If the returncode is non-zero, the agent re-prompts the LLM with the original prompt, current code, and stderr, repeating up to 3 times.",
+    "dev_solved": 25,
+    "select_solved": 39,
+    "select_gain": -1,
+    "kept": false
+   },
+   {
+    "round": 4,
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "hypothesis": "Implement a strict iterative verification loop in workflow.py that executes the generated code against the failing_test via python_exec. If the returncode is non-zero, regenerate the code with the specific error message and test context, repeating this process up to two times total. If all attempts fail, return the best generated code.",
+    "dev_solved": 26,
+    "select_solved": 38,
+    "select_gain": -2,
+    "kept": false
+   }
+  ],
+  "m0_s1": [
+   {
+    "round": 1,
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "hypothesis": "Implement a multi-step debugging loop: The agent first asks the model to analyze the specific failure in the provided test, then generates the fixed code, and finally uses the `python_exec` tool to run the code against the failing test. If the tool returns non-zero exit code, the loop retries with the error message as new context.",
+    "dev_solved": 31,
+    "select_solved": 39,
+    "select_gain": -1,
+    "kept": false
+   },
+   {
+    "round": 2,
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "hypothesis": "Implement an iterative execution loop in workflow.py where the agent generates a fix, then uses ctx.tool('python_exec') to run it against the failing test. If the test fails, the error message is fed back to the model for the next iteration.",
+    "dev_solved": 35,
+    "select_solved": 42,
+    "select_gain": 2,
+    "kept": false
+   },
+   {
+    "round": 3,
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "hypothesis": "Implement an iterative execution loop in agent/workflow.py where the agent generates a fix, then calls ctx.tool('python_exec') to run it against the failing test, repeating until the test passes or a max iteration is reached.",
+    "dev_solved": 30,
+    "select_solved": 38,
+    "select_gain": -2,
+    "kept": false
+   },
+   {
+    "round": 4,
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "hypothesis": "Add an iterative verification loop in agent/workflow.py where the agent generates a fix, then calls ctx.tool('python_exec') to run the failing test against the new code, repeating until the test passes or a max iteration count is reached.",
+    "dev_solved": 25,
+    "select_solved": 40,
+    "select_gain": 0,
+    "kept": false
+   }
+  ],
+  "m0_s2": [
+   {
+    "round": 1,
+    "status": "invalid_patch",
+    "module": "agent/workflow.py",
+    "hypothesis": "Introduce a self-correction loop in the workflow where the agent generates code, invokes the `python_exec` tool to run it against the failing test, and iteratively regenerates code only if execution fails, continuing until the test passes."
+   },
+   {
+    "round": 2,
+    "status": "valid",
+    "module": "agent/prompts/code.md",
+    "hypothesis": "Update the system prompt in agent/prompts/code.md to explicitly forbid conversational filler and enforce a strict output format containing only the ```python block.",
+    "dev_solved": 28,
+    "select_solved": 40,
+    "select_gain": 0,
+    "kept": false
+   },
+   {
+    "round": 3,
+    "status": "invalid_patch",
+    "module": "agent/workflow.py",
+    "hypothesis": "Implement a self-correction loop in agent/workflow.py where the agent iteratively generates code, runs it via python_exec, and only accepts the output if the hidden tests pass."
+   },
+   {
+    "round": 4,
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "hypothesis": "Implement a self-correction loop in agent/workflow.py that generates a fix, calls python_exec to run it against the failing test, and iterates until the test passes or tokens are exhausted.",
+    "dev_solved": 26,
+    "select_solved": 36,
+    "select_gain": -4,
+    "kept": false
+   }
+  ],
+  "m0_s3": [
+   {
+    "round": 1,
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "hypothesis": "Integrate the python_exec tool into the workflow to enable iterative debugging where the model analyzes the code, the tool executes the failing test, and the model refines the code based on actual runtime errors or test output rather than guessing.",
+    "dev_solved": 25,
+    "select_solved": 39,
+    "select_gain": -1,
+    "kept": false
+   },
+   {
+    "round": 2,
+    "status": "invalid_patch",
+    "module": "agent/workflow.py",
+    "hypothesis": "Modify agent/workflow.py to implement an iterative loop where the agent generates code, calls ctx.tool('python_exec') with the fixed code and the failing test, and retries LLM generation only if execution fails or the test assertion passes with a wrong value. This directly addresses the 30 'wrong_answer' and 5 'cut_off' failures by grounding the model in reality."
+   },
+   {
+    "round": 3,
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "hypothesis": "Modify agent/workflow.py to implement an iterative loop: after the initial LLM generation, call ctx.tool('python_exec') with the generated code and the failing test. If the execution fails (non-zero return code or non-empty stderr/stdout indicating failure), re-prompt the LLM with the specific execution error log. Repeat until success or max iterations reached. This directly addresses the 'wrong_answer' and 'runtime_error' failures by providing ground-truth feedback from the tool.",
+    "dev_solved": 27,
+    "select_solved": 27,
+    "select_gain": -13,
+    "kept": false
+   },
+   {
+    "round": 4,
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "hypothesis": "Modify agent/workflow.py to implement an iterative loop: after the initial LLM generation, call ctx.tool('python_exec') with the generated code and the failing test. If the tool returns a non-zero returncode or stderr indicating a failure, append this error message to the context and call ctx.llm again to generate a corrected version. If successful, return the answer.",
+    "dev_solved": 33,
+    "select_solved": 44,
+    "select_gain": 4,
+    "kept": true
+   }
+  ],
+  "m0_s4": [
+   {
+    "round": 1,
+    "status": "invalid_patch",
+    "module": "agent/workflow.py",
+    "hypothesis": "The agent fails because it cannot perform effective self-correction via tool execution; providing concrete execution feedback will allow the model to iteratively fix logic errors rather than guessing on the first attempt.",
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": true,
+     "other_domains_unchanged": true,
+     "prescreen_passed": false,
+     "patch_valid": false
+    },
+    "attempts": 3
+   },
+   {
+    "round": 2,
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "hypothesis": "Implement a python_exec tool call in agent/workflow.py to execute the buggy code and failing test before generating a fix, allowing the model to verify logic against actual errors.",
+    "checks": {
+     "diagnose_evidence_matches_records": true,
+     "hypothesis_testable": true,
+     "other_domains_unchanged": true,
+     "prescreen_passed": true,
+     "patch_valid": true
+    },
+    "attempts": 1,
+    "select_solved": 37,
+    "select_gain": -3,
+    "kept": false
+   },
+   {
+    "round": 3,
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "hypothesis": "Implement a `python_exec` tool in `agent/workflow.py` that triggers a loop: the agent generates code, the tool runs the candidate against the failing test, and if the test passes or no error occurs, the answer is returned; otherwise, the agent refines the code based on the execution output. This creates an iterative self-correction mechanism.",
+    "checks": {
+     "diagnose_evidence_matches_records": true,
+     "hypothesis_testable": true,
+     "other_domains_unchanged": true,
+     "prescreen_passed": true,
+     "patch_valid": true
+    },
+    "attempts": 3,
+    "select_solved": 27,
+    "select_gain": -13,
+    "kept": false
+   },
+   {
+    "round": 4,
+    "status": "invalid_patch",
+    "module": "agent/workflow.py",
+    "hypothesis": "Implement an iterative loop in `agent/workflow.py` where the agent generates a fix, calls `ctx.tool('python_exec', ...)` to run the candidate code against the failing test, and iteratively refines the code until the test passes or a max iteration limit is reached.",
+    "checks": {
+     "diagnose_evidence_matches_records": true,
+     "hypothesis_testable": true,
+     "other_domains_unchanged": true,
+     "prescreen_passed": false,
+     "patch_valid": false
+    },
+    "attempts": 3
+   }
+  ],
+  "m0_s5": [
+   {
+    "round": 1,
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "hypothesis": "Introduce an iterative verification loop using the python_exec tool. The agent will first execute the original buggy code to capture any runtime errors or specific failure states, then pass these concrete logs and the failing test logic back to the LLM in a second step before asking for a fix. This forces the model to reason about actual execution failures rather than guessing based on a single visible test.",
+    "checks": {
+     "diagnose_evidence_matches_records": true,
+     "hypothesis_testable": true,
+     "other_domains_unchanged": true,
+     "prescreen_passed": true,
+     "patch_valid": true
+    },
+    "attempts": 1,
+    "select_solved": 37,
+    "select_gain": -3,
+    "kept": false
+   },
+   {
+    "round": 2,
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "hypothesis": "Implement an iterative self-verification loop in agent/workflow.py where the agent attempts to fix the code, then uses ctx.tool('python_exec') to run the new code against the failing test. The loop continues until tests pass or token budget is exhausted.",
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": true,
+     "other_domains_unchanged": true,
+     "prescreen_passed": true,
+     "patch_valid": true
+    },
+    "attempts": 3,
+    "select_solved": 39,
+    "select_gain": -1,
+    "kept": false
+   },
+   {
+    "round": 3,
+    "status": "invalid_patch",
+    "module": "agent/workflow.py",
+    "hypothesis": "Implement an iterative self-verification loop in agent/workflow.py where the agent generates code, executes it via ctx.tool('python_exec'), and only accepts the answer if the returncode is 0 without triggering the hidden test failure. This targets the 'missing_tool' cause by enforcing structural verification rather than relying on model instruction following.",
+    "checks": {
+     "diagnose_evidence_matches_records": true,
+     "hypothesis_testable": true,
+     "patch_valid": false
+    },
+    "attempts": 3
+   },
+   {
+    "round": 4,
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "hypothesis": "Implement an iterative self-verification loop in agent/workflow.py where the agent generates a fix, executes it via ctx.tool('python_exec'), and iterates until the code passes the hidden tests defined in the task context.",
+    "checks": {
+     "diagnose_evidence_matches_records": true,
+     "hypothesis_testable": true,
+     "other_domains_unchanged": true,
+     "prescreen_passed": true,
+     "patch_valid": true
+    },
+    "attempts": 2,
+    "select_solved": 38,
+    "select_gain": -2,
+    "kept": false
+   }
+  ],
+  "m0_s6": [
+   {
+    "round": 1,
+    "status": "valid",
+    "module": "agent/prompts/code.md",
+    "hypothesis": "Update `agent/prompts/code.md` to include a strict system instruction: 'You are a code fixer. Your ONLY output must be the complete corrected code inside a single ```python block. Do not provide explanations, reasoning, or chatter. Do not output any text outside the code block.'",
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": true,
+     "other_domains_unchanged": true,
+     "prescreen_passed": true,
+     "patch_valid": true
+    },
+    "attempts": 1,
+    "select_solved": 37,
+    "select_gain": -3,
+    "kept": false
+   },
+   {
+    "round": 2,
+    "status": "valid",
+    "module": "agent/prompts/code.md",
+    "hypothesis": "Update agent/prompts/code.md to include a strict system prompt instructing the model to output ONLY the corrected code block without any reasoning or conversational text.",
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": true,
+     "other_domains_unchanged": true,
+     "prescreen_passed": true,
+     "patch_valid": true
+    },
+    "attempts": 1,
+    "select_solved": 37,
+    "select_gain": -3,
+    "kept": false
+   },
+   {
+    "round": 3,
+    "status": "invalid_patch",
+    "module": "agent/workflow.py",
+    "hypothesis": "Implement an iterative execution loop in agent/workflow.py that generates code, runs it via ctx.tool('python_exec'), and iteratively refines it until it passes the failing_test.",
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": true,
+     "patch_valid": false
+    },
+    "attempts": 3
+   },
+   {
+    "round": 4,
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "hypothesis": "Implement an iterative execution loop in `agent/workflow.py` that generates code, runs it via `ctx.tool('python_exec')`, and refines it only upon failure to handle logical errors (wrong_answer) and handle large outputs gracefully.",
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": true,
+     "other_domains_unchanged": true,
+     "prescreen_passed": true,
+     "patch_valid": true
+    },
+    "attempts": 1,
+    "select_solved": 40,
+    "select_gain": 0,
+    "kept": false
+   }
+  ],
+  "m0_s7": [
+   {
+    "round": 1,
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "hypothesis": "Introduce the python_exec tool into agent/workflow.py to enable iterative debugging where the agent generates code, executes it to check against hidden tests, and refines the solution based on runtime errors.",
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": true,
+     "other_domains_unchanged": true,
+     "prescreen_passed": true,
+     "patch_valid": true
+    },
+    "attempts": 2,
+    "select_solved": 39,
+    "select_gain": -1,
+    "kept": false
+   },
+   {
+    "round": 2,
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "hypothesis": "Introduce an iterative debugging loop in agent/workflow.py that calls python_exec to verify generated code against the failing test and retries generation upon failure.",
+    "checks": {
+     "diagnose_evidence_matches_records": true,
+     "hypothesis_testable": true,
+     "other_domains_unchanged": true,
+     "prescreen_passed": true,
+     "patch_valid": true
+    },
+    "attempts": 1,
+    "select_solved": 39,
+    "select_gain": -1,
+    "kept": false
+   },
+   {
+    "round": 3,
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "hypothesis": "Introduce an iterative debugging loop in agent/workflow.py that calls python_exec to run generated code against the failing_test and retries generation upon failure.",
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": true,
+     "other_domains_unchanged": true,
+     "prescreen_passed": true,
+     "patch_valid": true
+    },
+    "attempts": 3,
+    "select_solved": 36,
+    "select_gain": -4,
+    "kept": false
+   },
+   {
+    "round": 4,
+    "status": "invalid_patch",
+    "module": "agent/workflow.py",
+    "hypothesis": "Integrate the python_exec tool into agent/workflow.py and implement an iterative generation loop that executes the generated code against the failing_test until it passes. Prediction: Accuracy will increase significantly from 0.431 to >0.90, as the agent replaces hallucinated fixes with verified ones.",
+    "checks": {
+     "diagnose_evidence_matches_records": true,
+     "hypothesis_testable": true,
+     "patch_valid": false
+    },
+    "attempts": 3
+   }
+  ],
+  "m0_s8": [
+   {
+    "round": 1,
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "hypothesis": "Add a fixed-point iteration loop to workflow.py that calls python_exec to run the generated solution against the failing test, repeating the generation step only if the execution fails or the test assertion is false.",
+    "checks": {
+     "diagnose_evidence_matches_records": true,
+     "hypothesis_testable": true,
+     "other_domains_unchanged": true,
+     "prescreen_passed": true,
+     "patch_valid": true
+    },
+    "attempts": 1,
+    "select_solved": 40,
+    "select_gain": 0,
+    "kept": false
+   },
+   {
+    "round": 2,
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "hypothesis": "Implement a fixed-point iteration loop in agent/workflow.py that generates code, runs it via ctx.tool('python_exec') against the failing test, and re-generates if the test fails.",
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": true,
+     "other_domains_unchanged": true,
+     "prescreen_passed": true,
+     "patch_valid": true
+    },
+    "attempts": 2,
+    "select_solved": 46,
+    "select_gain": 6,
+    "kept": true,
+    "dev_solved": 35
+   },
+   {
+    "round": 3,
+    "status": "invalid_patch",
+    "module": "agent/workflow.py",
+    "hypothesis": "The model fails to generalize from the visible test to hidden edge cases because it lacks an explicit instruction to simulate robustness checks. By forcing the model to internally reason about edge cases (negative, zero, large inputs) before fixing the code, it can generate solutions that pass both visible and hidden tests.",
+    "checks": {
+     "diagnose_evidence_matches_records": true,
+     "hypothesis_testable": true,
+     "other_domains_unchanged": true,
+     "prescreen_passed": false,
+     "patch_valid": false
+    },
+    "attempts": 3
+   },
+   {
+    "round": 4,
+    "status": "valid",
+    "module": "agent/prompts/code.md",
+    "hypothesis": "Explicitly instruct the model in the system prompt to analyze the failing test assertion for logical traps (e.g., division by zero, boundary conditions, integer overflow) before generating a fix, specifically requiring it to list these traps and ensure the fix addresses them.",
+    "checks": {
+     "diagnose_evidence_matches_records": true,
+     "hypothesis_testable": true,
+     "other_domains_unchanged": true,
+     "prescreen_passed": true,
+     "patch_valid": true
+    },
+    "attempts": 1,
+    "select_solved": 48,
+    "select_gain": 2,
+    "kept": false
+   }
+  ],
+  "m1_s1": [
+   {
+    "round": 1,
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "hypothesis": "Add an iterative feedback loop where the agent executes `python_exec` on its generated solution. If the test fails, the agent is prompted to fix the specific error before generating a final answer.",
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": true,
+     "other_domains_unchanged": true,
+     "prescreen_passed": true,
+     "effect_fixed": 1,
+     "patch_valid": true
+    },
+    "attempts": 2,
+    "select_solved": 33,
+    "select_gain": -7,
+    "kept": false
+   },
+   {
+    "round": 2,
+    "status": "invalid_patch",
+    "module": "agent/workflow.py",
+    "hypothesis": "Add an iterative feedback loop in agent/workflow.py where the agent executes its generated code via ctx.tool('python_exec') immediately after generation. If the test fails, the agent receives the specific failure reason and is prompted to fix it before a second model call. This targets the 30 'wrong_answer' failures caused by logic errors that the model cannot self-verify.",
+    "checks": {
+     "diagnose_evidence_matches_records": true,
+     "hypothesis_testable": true,
+     "other_domains_unchanged": true,
+     "prescreen_passed": false,
+     "patch_valid": false
+    },
+    "attempts": 3
+   },
+   {
+    "round": 3,
+    "status": "invalid_patch",
+    "module": "agent/workflow.py",
+    "hypothesis": "Modify agent/workflow.py to add a single execution step: after the initial LLM call, run the generated code via ctx.tool('python_exec'). If the failing test fails, append the specific failure message and original failing test to the LLM context for a second call to fix only that logic error, then run again immediately. Stop after one fix iteration or token limit.",
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": true,
+     "other_domains_unchanged": true,
+     "prescreen_passed": true,
+     "effect_fixed": 0,
+     "patch_valid": false
+    },
+    "attempts": 3
+   },
+   {
+    "round": 4,
+    "status": "invalid_patch",
+    "module": "agent/workflow.py",
+    "hypothesis": "Force the model to generate only the code block by re-prompting with a strict 'output only code' constraint if the initial response is too verbose or contains excessive reasoning, thereby preventing truncation due to token budget.",
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": true,
+     "other_domains_unchanged": true,
+     "prescreen_passed": true,
+     "effect_fixed": 0,
+     "patch_valid": false
+    },
+    "attempts": 3
+   }
+  ],
+  "m1_s2": [
+   {
+    "round": 1,
+    "status": "invalid_patch",
+    "module": "agent/workflow.py",
+    "hypothesis": "Add a `python_exec` tool and modify `agent/workflow.py` to implement an iterative loop: generate code -> execute against `failing_test` and hidden logic -> if fail, send error details back to LLM -> repeat.",
+    "checks": {
+     "diagnose_evidence_matches_records": true,
+     "hypothesis_testable": true,
+     "patch_valid": false
+    },
+    "attempts": 3
+   },
+   {
+    "round": 2,
+    "status": "invalid_patch",
+    "module": "agent/workflow.py",
+    "hypothesis": "Change agent/workflow.py to implement an iterative loop: after the initial LLM call, generate code, call ctx.tool('python_exec',...), and if the returncode is non-zero, re-prompt the LLM with the error until it passes or max iterations (3) are reached.",
+    "checks": {
+     "diagnose_evidence_matches_records": true,
+     "hypothesis_testable": true,
+     "other_domains_unchanged": true,
+     "prescreen_passed": true,
+     "effect_fixed": 0,
+     "patch_valid": false
+    },
+    "attempts": 3
+   },
+   {
+    "round": 3,
+    "status": "invalid_patch",
+    "module": "agent/workflow.py",
+    "hypothesis": "Add an iterative loop in `agent/workflow.py` that executes generated code against the `failing_test` using `ctx.tool('python_exec')`. If the test fails, the loop re-prompts the model with the specific failure details (stderr/returncode) to refine the code until it passes.",
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": true,
+     "patch_valid": false
+    },
+    "attempts": 3
+   },
+   {
+    "round": 4,
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "hypothesis": "Add an iterative loop in agent/workflow.py that generates code, executes it against the failing_test via python_exec, and if the test fails, prompts the model again with the specific failure details as context. The loop terminates only when the test passes or a max iteration is reached.",
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": true,
+     "other_domains_unchanged": true,
+     "prescreen_passed": true,
+     "effect_fixed": 2,
+     "patch_valid": true
+    },
+    "attempts": 2,
+    "select_solved": 38,
+    "select_gain": -2,
+    "kept": false
+   }
+  ],
+  "m1_s3": [
+   {
+    "round": 1,
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "hypothesis": "Modify the user message in solve() to explicitly forbid any reasoning text before the code block, forcing a direct ```python block output.",
+    "checks": {
+     "diagnose_evidence_matches_records": true,
+     "hypothesis_testable": true,
+     "other_domains_unchanged": true,
+     "prescreen_passed": true,
+     "effect_fixed": 2,
+     "patch_valid": true
+    },
+    "attempts": 1,
+    "select_solved": 41,
+    "select_gain": 1,
+    "kept": false
+   },
+   {
+    "round": 2,
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "hypothesis": "Modify the user message in agent/workflow.py to explicitly instruct the model to output ONLY the corrected code block without any reasoning text, thereby eliminating token consumption on reasoning and fitting the entire solution within the 4096-token budget.",
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": true,
+     "other_domains_unchanged": true,
+     "prescreen_passed": true,
+     "effect_fixed": 2,
+     "patch_valid": true
+    },
+    "attempts": 1,
+    "select_solved": 36,
+    "select_gain": -4,
+    "kept": false
+   },
+   {
+    "round": 3,
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "hypothesis": "In the system prompt, explicitly forbid all non-code text by adding: 'Output ONLY the corrected code inside a ```python block. Do not include any reasoning, explanation, or conversational text before or after the code.'",
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": true,
+     "other_domains_unchanged": true,
+     "prescreen_passed": true,
+     "effect_fixed": 1,
+     "patch_valid": true
+    },
+    "attempts": 3,
+    "select_solved": 38,
+    "select_gain": -2,
+    "kept": false
+   },
+   {
+    "round": 4,
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "hypothesis": "Modify the user message in solve() to prepend a strict instruction: 'Think silently about the bug, then output ONLY the corrected code inside a single ```python block. Do not include any explanation, reasoning text, or other content before or after the code block.' This forces the model to suppress verbose reasoning that consumes tokens and distracts from the exact fix, addressing the 30 'wrong_answer' failures caused by logic errors in generated text.",
+    "checks": {
+     "diagnose_evidence_matches_records": true,
+     "hypothesis_testable": true,
+     "other_domains_unchanged": true,
+     "prescreen_passed": true,
+     "effect_fixed": 1,
+     "patch_valid": true
+    },
+    "attempts": 2,
+    "select_solved": 39,
+    "select_gain": -1,
+    "kept": false
+   }
+  ],
+  "m1_s4": [
+   {
+    "round": 1,
+    "status": "invalid_patch",
+    "module": "agent/workflow.py",
+    "hypothesis": "Modify agent/workflow.py to extract the failing test from the prompt, generate a fix, and automatically invoke python_exec to run the test on the generated fix before returning.",
+    "checks": {
+     "diagnose_evidence_matches_records": true,
+     "hypothesis_testable": true,
+     "other_domains_unchanged": true,
+     "prescreen_passed": true,
+     "effect_fixed": 0,
+     "patch_valid": false
+    },
+    "attempts": 3
+   },
+   {
+    "round": 2,
+    "status": "invalid_patch",
+    "module": "agent/workflow.py",
+    "hypothesis": "Modify agent/workflow.py to implement an iterative loop: first call the model to generate a fix, then immediately invoke the python_exec tool with the generated code and the failing test. If the tool returns a non-zero exit code or non-empty stderr, pass the error message back to the model and repeat the generation. Continue until the tool passes or a runtime limit is reached.",
+    "checks": {
+     "diagnose_evidence_matches_records": true,
+     "hypothesis_testable": true,
+     "other_domains_unchanged": true,
+     "prescreen_passed": true,
+     "effect_fixed": 0,
+     "patch_valid": false
+    },
+    "attempts": 3
+   },
+   {
+    "round": 3,
+    "status": "invalid_patch",
+    "module": "agent/workflow.py",
+    "hypothesis": "Modify agent/workflow.py to implement an iterative loop: generate code, run ctx.tool('python_exec', ...), and if returncode != 0, append the stderr and failing test to the user message before a second model call to refine the fix.",
+    "checks": {
+     "diagnose_evidence_matches_records": true,
+     "hypothesis_testable": true,
+     "other_domains_unchanged": true,
+     "prescreen_passed": true,
+     "effect_fixed": 0,
+     "patch_valid": false
+    },
+    "attempts": 3
+   },
+   {
+    "round": 4,
+    "status": "invalid_patch",
+    "module": "tools/fixer.py",
+    "hypothesis": "Define a new tool `tools/fixer.py` named `fixer` that accepts `code` and `failing_test` arguments, executes `code` against `failing_test` using `public.python_exec`, and returns `{'returncode': int, 'stdout': str}`. Modify `agent/workflow.py` to call `ctx.tool('fixer', code=..., failing_test=...)` in an iterative loop after generating code, retrying until `returncode == 0` or a max loop is reached.",
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": true,
+     "patch_valid": false
+    },
+    "attempts": 3
+   }
+  ],
+  "m1_s5": [
+   {
+    "round": 1,
+    "status": "invalid_patch",
+    "module": "agent/workflow.py",
+    "hypothesis": "Implement an iterative fix loop in the workflow: after the initial model call, the agent will extract the proposed fix, call the `python_exec` tool with the corrected code and the original failing test, and only return the answer if the execution passes. If the tool returns a runtime error or wrong answer, the agent will request a new fix.",
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": true,
+     "patch_valid": false
+    },
+    "attempts": 3
+   },
+   {
+    "round": 2,
+    "status": "invalid_patch",
+    "module": "agent/workflow.py",
+    "hypothesis": "Add an iterative debug loop in agent/workflow.py: after the initial model call, execute the proposed fix using public.python_exec, check against hidden tests, and if any fail, extract the error message and retry with the new context.",
+    "checks": {
+     "diagnose_evidence_matches_records": true,
+     "hypothesis_testable": true,
+     "patch_valid": false
+    },
+    "attempts": 3
+   },
+   {
+    "round": 3,
+    "status": "invalid_patch",
+    "module": "agent/workflow.py",
+    "hypothesis": "Modify agent/workflow.py to add a post-generation verification step: after the initial LLM call, extract the proposed code, call ctx.tool('python_exec', code=proposed_code, stdin='') using the task's failing_test logic (or the full original test if available in context), and if the returncode is non-zero, feed the error output back to the LLM for a retry. This enforces external validation of the fix.",
+    "checks": {
+     "diagnose_evidence_matches_records": true,
+     "hypothesis_testable": true,
+     "other_domains_unchanged": true,
+     "prescreen_passed": true,
+     "effect_fixed": 0,
+     "patch_valid": false
+    },
+    "attempts": 3
+   },
+   {
+    "round": 4,
+    "status": "invalid_patch",
+    "module": "agent/workflow.py",
+    "hypothesis": "Modify agent/workflow.py to add a post-generation verification loop: extract code from LLM output, call ctx.tool('python_exec', code=code), and if returncode != 0 or specific errors occur, append error details to the context and re-call LLM with an instruction to fix the reported error.",
+    "checks": {
+     "diagnose_evidence_matches_records": true,
+     "hypothesis_testable": true,
+     "other_domains_unchanged": true,
+     "prescreen_passed": true,
+     "effect_fixed": 0,
+     "patch_valid": false
+    },
+    "attempts": 3
+   }
+  ],
+  "m1_s6": [
+   {
+    "round": 1,
+    "status": "invalid_patch",
+    "module": "agent/workflow.py",
+    "hypothesis": "The model fails because it cannot verify its logic against hidden tests; enforcing an iterative loop where the agent must run `python_exec` and only proceed if all hidden tests pass will dramatically reduce `wrong_answer` failures.",
+    "checks": {
+     "diagnose_evidence_matches_records": true,
+     "hypothesis_testable": true,
+     "other_domains_unchanged": true,
+     "prescreen_passed": true,
+     "effect_fixed": 0,
+     "patch_valid": false
+    },
+    "attempts": 3
+   },
+   {
+    "round": 2,
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "hypothesis": "Modify agent/workflow.py to implement a strict iterative loop: generate code, execute it via ctx.tool('python_exec', ...), and only proceed to the next iteration if execution fails or the output does not satisfy the failing test logic. This forces the model to self-correct based on empirical execution results rather than relying on a single generation guess.",
+    "checks": {
+     "diagnose_evidence_matches_records": true,
+     "hypothesis_testable": true,
+     "other_domains_unchanged": true,
+     "prescreen_passed": true,
+     "effect_fixed": 2,
+     "patch_valid": true
+    },
+    "attempts": 2,
+    "select_solved": 42,
+    "select_gain": 2,
+    "kept": false
+   },
+   {
+    "round": 3,
+    "status": "invalid_patch",
+    "module": "agent/workflow.py",
+    "hypothesis": "Implement a strict iterative loop in agent/workflow.py where the agent generates code, executes it via ctx.tool('python_exec'), and only proceeds to the next iteration if the hidden tests pass. If execution fails (RuntimeError or wrong_answer), the agent receives the error and generates a corrected code block in the same loop.",
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": true,
+     "patch_valid": false
+    },
+    "attempts": 3
+   },
+   {
+    "round": 4,
+    "status": "invalid_patch",
+    "module": "agent/workflow.py",
+    "hypothesis": "Implement a strict iterative loop in agent/workflow.py where the agent generates code, executes it via ctx.tool('python_exec', ...), and repeats up to 5 times until tests pass or max iterations reached. This targets the 'model_capability' limitation by providing concrete execution feedback.",
+    "checks": {
+     "diagnose_evidence_matches_records": true,
+     "hypothesis_testable": true,
+     "patch_valid": false
+    },
+    "attempts": 3
+   }
+  ],
+  "m1_s7": [
+   {
+    "round": 1,
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "hypothesis": "Enable the `thinking` flag in the first LLM call to allow the model to reason about the bug before generating code.",
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": true,
+     "other_domains_unchanged": true,
+     "prescreen_passed": true,
+     "effect_fixed": 3,
+     "patch_valid": true
+    },
+    "attempts": 1,
+    "select_solved": 42,
+    "select_gain": 2,
+    "kept": false
+   },
+   {
+    "round": 2,
+    "status": "valid",
+    "module": "agent/prompts/code.md",
+    "hypothesis": "The model fails due to lack of specific coding guidance when the system prompt is empty; providing a 'Senior Python Debugger' persona will improve logical accuracy without causing token overflow.",
+    "checks": {
+     "diagnose_evidence_matches_records": true,
+     "hypothesis_testable": true,
+     "other_domains_unchanged": true,
+     "prescreen_passed": true,
+     "effect_fixed": 1,
+     "patch_valid": true
+    },
+    "attempts": 1,
+    "select_solved": 36,
+    "select_gain": -4,
+    "kept": false
+   },
+   {
+    "round": 3,
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "hypothesis": "Enabling the `thinking` flag in the LLM call allows the model to reason about the bug before generating code, which should reduce both 'Fix Misinterpretation' and 'Logic Hallucination' errors by forcing the model to explicitly verify trivial details (like `sum` initialization) and check if its generated logic actually solves the test case.",
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": true,
+     "other_domains_unchanged": true,
+     "prescreen_passed": true,
+     "effect_fixed": 1,
+     "patch_valid": true
+    },
+    "attempts": 1,
+    "select_solved": 41,
+    "select_gain": 1,
+    "kept": false
+   },
+   {
+    "round": 4,
+    "status": "invalid_patch",
+    "module": "tools/python_debug.py",
+    "hypothesis": "Add a new tool `python_debug` that executes the provided code snippet against the failing test and returns the specific error state (e.g., IndexError location, assertion failure message). The workflow will first call `ctx.tool('python_debug', ...)` to get the ground truth of why the code fails, then pass this result as context back to the LLM to generate the fix, forcing a two-step reasoning process: 'Diagnose Error -> Generate Fix' rather than a single-shot 'Guess Fix' approach.",
+    "checks": {
+     "diagnose_evidence_matches_records": true,
+     "hypothesis_testable": true,
+     "patch_valid": false,
+     "tool_example_similarity": 0.27
+    },
+    "attempts": 3
+   }
+  ],
+  "m1_s8": [
+   {
+    "round": 1,
+    "status": "invalid_patch",
+    "module": "agent/workflow.py",
+    "hypothesis": "Modify agent/workflow.py to implement an iterative loop: generate a fix, execute the failing test via ctx.tool('python_exec', ...), and regenerate the fix if the test fails. This allows the model to learn from concrete execution feedback rather than guessing.",
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": true,
+     "other_domains_unchanged": true,
+     "prescreen_passed": true,
+     "effect_fixed": 0,
+     "patch_valid": false
+    },
+    "attempts": 3
+   },
+   {
+    "round": 2,
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "hypothesis": "Implement an iterative loop in agent/workflow.py that generates a fix, extracts the code, executes it via ctx.tool('python_exec'), and regenerates if the test fails.",
+    "checks": {
+     "diagnose_evidence_matches_records": true,
+     "hypothesis_testable": true,
+     "other_domains_unchanged": true,
+     "prescreen_passed": true,
+     "effect_fixed": 2,
+     "patch_valid": true
+    },
+    "attempts": 3,
+    "select_solved": 41,
+    "select_gain": 1,
+    "kept": false
+   },
+   {
+    "round": 3,
+    "status": "valid",
+    "module": "agent/workflow.py",
+    "hypothesis": "Implement an iterative loop in agent/workflow.py that extracts the code block from the LLM response, executes it via ctx.tool('python_exec'), and regenerates the answer only if the execution returns a non-zero exit code or non-empty stderr, specifically validating against the task's failing_test.",
+    "checks": {
+     "diagnose_evidence_matches_records": true,
+     "hypothesis_testable": true,
+     "other_domains_unchanged": true,
+     "prescreen_passed": true,
+     "effect_fixed": 1,
+     "patch_valid": true
+    },
+    "attempts": 2,
+    "select_solved": 33,
+    "select_gain": -7,
+    "kept": false
+   },
+   {
+    "round": 4,
+    "status": "invalid_patch",
+    "module": "agent/workflow.py",
+    "hypothesis": "Modify agent/workflow.py to implement an iterative verification loop that extracts the code block from the LLM response, executes it against the specific failing_test provided in the task context using ctx.tool('python_exec'), and regenerates the fix if the test fails.",
+    "checks": {
+     "diagnose_evidence_matches_records": false,
+     "hypothesis_testable": true,
+     "patch_valid": false
+    },
+    "attempts": 3
+   }
+  ]
+ }
+}
