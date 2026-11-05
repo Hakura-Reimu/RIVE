@@ -1,0 +1,52 @@
+{
+ "answers": 8,
+ "agreement": {
+  "qwen3.5-4b": {
+   "mean_abs_gap": 0.1841,
+   "mean_gap": 0.0595,
+   "server_mean_logprob": -0.4565,
+   "trainer_mean_logprob": -0.516
+  },
+  "rl-0014": {
+   "mean_abs_gap": 0.1635,
+   "mean_gap": 0.0755,
+   "server_mean_logprob": -0.4848,
+   "trainer_mean_logprob": -0.5603
+  },
+  "rl-0029": {
+   "mean_abs_gap": 0.4184,
+   "mean_gap": 0.3788,
+   "server_mean_logprob": -1.5476,
+   "trainer_mean_logprob": -1.9264
+  }
+ },
+ "update": {
+  "iteration": 30,
+  "positive": {
+   "answers": 24,
+   "mean_change_per_token": 0.00221,
+   "rose": 13
+  },
+  "negative": {
+   "answers": 32,
+   "mean_change_per_token": -0.02625,
+   "fell": 28
+  },
+  "weighted_change": 469.715
+ },
+ "agreement_own_answers": {
+  "iteration": 30,
+  "qwen3.5-4b": {
+   "mean_abs_gap": 0.2869,
+   "mean_gap": 0.0843,
+   "server_mean_logprob": -1.306,
+   "trainer_mean_logprob": -1.3903
+  },
+  "rl-0029": {
+   "mean_abs_gap": 0.2375,
+   "mean_gap": 0.1485,
+   "server_mean_logprob": -1.3871,
+   "trainer_mean_logprob": -1.5356
+  }
+ }
+}

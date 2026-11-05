@@ -1,0 +1,764 @@
+{
+ "settings": {
+  "mix": {
+   "code": 12,
+   "math": 8,
+   "logic": 6,
+   "writing": 6
+  },
+  "G": 8,
+  "steps": 2,
+  "lr": 3e-05,
+  "iterations": 150,
+  "dev_every": 15,
+  "easy_loss": 0.05
+ },
+ "dev": {
+  "30": {
+   "logic": 0.0,
+   "writing": 0.7185185185185186,
+   "code": 0.013513513513513514,
+   "math": 0.1417910447761194
+  },
+  "0": {
+   "code": 0.5,
+   "math": 0.6865671641791045,
+   "writing": 0.6518518518518519,
+   "logic": 0.8148148148148148
+  },
+  "15": {
+   "writing": 0.6666666666666666,
+   "logic": 0.45925925925925926,
+   "math": 0.6492537313432836,
+   "code": 0.5
+  }
+ },
+ "chosen": 15,
+ "evals": {
+  "base_math_100000": 133,
+  "tuned_logic_easy_100000": 69,
+  "base_math_medium_0": 88,
+  "base_math_medium_100000": 92,
+  "tuned_select_0": 109,
+  "base_logic_easy_0": 95,
+  "tuned_writing_medium_100000": 75,
+  "tuned_logic_medium_100000": 49,
+  "base_writing_0": 124,
+  "tuned_logic_easy_0": 72,
+  "base_writing_medium_0": 84,
+  "tuned_writing_0": 134,
+  "tuned_math_easy_100000": 88,
+  "base_logic_medium_0": 85,
+  "tuned_math_0": 124,
+  "base_math_easy_100000": 91,
+  "tuned_logic_100000": 91,
+  "base_writing_easy_100000": 93,
+  "base_logic_0": 157,
+  "base_writing_medium_100000": 81,
+  "tuned_writing_100000": 144,
+  "base_writing_100000": 127,
+  "base_select_0": 111,
+  "tuned_logic_0": 92,
+  "base_logic_100000": 163,
+  "base_math_easy_0": 89,
+  "tuned_writing_medium_0": 79,
+  "tuned_test_0": 104,
+  "tuned_select_100000": 103,
+  "base_writing_easy_0": 90,
+  "base_math_0": 136,
+  "base_logic_easy_100000": 93,
+  "tuned_math_100000": 127,
+  "tuned_math_medium_100000": 90,
+  "tuned_math_medium_0": 84,
+  "tuned_math_easy_0": 88,
+  "base_logic_medium_100000": 84,
+  "tuned_writing_easy_100000": 95,
+  "tuned_writing_easy_0": 91,
+  "tuned_logic_medium_0": 54,
+  "base_select_100000": 113
+ },
+ "classes": {
+  "base_math_100000": {
+   "level 5": [
+    133,
+    250
+   ]
+  },
+  "tuned_logic_easy_100000": {
+   "easy knights": [
+    33,
+    34
+   ],
+   "easy seating": [
+    25,
+    33
+   ],
+   "easy target": [
+    11,
+    33
+   ]
+  },
+  "base_math_medium_0": {
+   "level 3": [
+    49,
+    50
+   ],
+   "level 4": [
+    39,
+    50
+   ]
+  },
+  "base_math_medium_100000": {
+   "level 3": [
+    49,
+    50
+   ],
+   "level 4": [
+    43,
+    50
+   ]
+  },
+  "tuned_select_0": {
+   "easy": [
+    62,
+    80
+   ],
+   "hard": [
+    8,
+    74
+   ],
+   "medium": [
+    39,
+    95
+   ]
+  },
+  "base_logic_easy_0": {
+   "easy knights": [
+    34,
+    34
+   ],
+   "easy seating": [
+    33,
+    33
+   ],
+   "easy target": [
+    28,
+    33
+   ]
+  },
+  "tuned_writing_medium_100000": {
+   "medium, 3 instructions": [
+    32,
+    42
+   ],
+   "medium, 2 instructions": [
+    43,
+    58
+   ]
+  },
+  "tuned_logic_medium_100000": {
+   "medium knights": [
+    30,
+    34
+   ],
+   "medium seating": [
+    16,
+    33
+   ],
+   "medium target": [
+    3,
+    33
+   ]
+  },
+  "base_writing_0": {
+   "hard, 3 instructions": [
+    77,
+    147
+   ],
+   "hard, 4 instructions": [
+    47,
+    103
+   ]
+  },
+  "tuned_logic_easy_0": {
+   "easy knights": [
+    33,
+    34
+   ],
+   "easy seating": [
+    28,
+    33
+   ],
+   "easy target": [
+    11,
+    33
+   ]
+  },
+  "base_writing_medium_0": {
+   "medium, 3 instructions": [
+    36,
+    42
+   ],
+   "medium, 2 instructions": [
+    48,
+    58
+   ]
+  },
+  "tuned_writing_0": {
+   "hard, 3 instructions": [
+    84,
+    147
+   ],
+   "hard, 4 instructions": [
+    50,
+    103
+   ]
+  },
+  "tuned_math_easy_100000": {
+   "level 1": [
+    42,
+    43
+   ],
+   "level 2": [
+    46,
+    50
+   ]
+  },
+  "base_logic_medium_0": {
+   "medium knights": [
+    34,
+    34
+   ],
+   "medium seating": [
+    29,
+    33
+   ],
+   "medium target": [
+    22,
+    33
+   ]
+  },
+  "tuned_math_0": {
+   "level 5": [
+    124,
+    250
+   ]
+  },
+  "base_math_easy_100000": {
+   "level 1": [
+    42,
+    43
+   ],
+   "level 2": [
+    49,
+    50
+   ]
+  },
+  "tuned_logic_100000": {
+   "hard knights": [
+    57,
+    84
+   ],
+   "hard seating": [
+    27,
+    83
+   ],
+   "hard target": [
+    7,
+    83
+   ]
+  },
+  "base_writing_easy_100000": {
+   "easy, 1 instructions": [
+    57,
+    60
+   ],
+   "easy, 2 instructions": [
+    36,
+    40
+   ]
+  },
+  "base_logic_0": {
+   "hard knights": [
+    65,
+    84
+   ],
+   "hard seating": [
+    52,
+    83
+   ],
+   "hard target": [
+    40,
+    83
+   ]
+  },
+  "base_writing_medium_100000": {
+   "medium, 3 instructions": [
+    32,
+    42
+   ],
+   "medium, 2 instructions": [
+    49,
+    58
+   ]
+  },
+  "tuned_writing_100000": {
+   "hard, 3 instructions": [
+    93,
+    147
+   ],
+   "hard, 4 instructions": [
+    51,
+    103
+   ]
+  },
+  "base_writing_100000": {
+   "hard, 3 instructions": [
+    87,
+    147
+   ],
+   "hard, 4 instructions": [
+    40,
+    103
+   ]
+  },
+  "base_select_0": {
+   "easy": [
+    67,
+    80
+   ],
+   "hard": [
+    8,
+    74
+   ],
+   "medium": [
+    36,
+    95
+   ]
+  },
+  "tuned_logic_0": {
+   "hard knights": [
+    60,
+    84
+   ],
+   "hard seating": [
+    26,
+    83
+   ],
+   "hard target": [
+    6,
+    83
+   ]
+  },
+  "base_logic_100000": {
+   "hard knights": [
+    70,
+    84
+   ],
+   "hard seating": [
+    50,
+    83
+   ],
+   "hard target": [
+    43,
+    83
+   ]
+  },
+  "base_math_easy_0": {
+   "level 1": [
+    41,
+    43
+   ],
+   "level 2": [
+    48,
+    50
+   ]
+  },
+  "tuned_writing_medium_0": {
+   "medium, 3 instructions": [
+    37,
+    42
+   ],
+   "medium, 2 instructions": [
+    42,
+    58
+   ]
+  },
+  "tuned_test_0": {
+   "easy": [
+    69,
+    81
+   ],
+   "hard": [
+    3,
+    72
+   ],
+   "medium": [
+    32,
+    97
+   ]
+  },
+  "tuned_select_100000": {
+   "easy": [
+    68,
+    80
+   ],
+   "hard": [
+    4,
+    74
+   ],
+   "medium": [
+    31,
+    95
+   ]
+  },
+  "base_writing_easy_0": {
+   "easy, 1 instructions": [
+    57,
+    60
+   ],
+   "easy, 2 instructions": [
+    33,
+    40
+   ]
+  },
+  "base_math_0": {
+   "level 5": [
+    136,
+    250
+   ]
+  },
+  "base_logic_easy_100000": {
+   "easy knights": [
+    34,
+    34
+   ],
+   "easy seating": [
+    31,
+    33
+   ],
+   "easy target": [
+    28,
+    33
+   ]
+  },
+  "tuned_math_100000": {
+   "level 5": [
+    127,
+    250
+   ]
+  },
+  "tuned_math_medium_100000": {
+   "level 3": [
+    48,
+    50
+   ],
+   "level 4": [
+    42,
+    50
+   ]
+  },
+  "tuned_math_medium_0": {
+   "level 3": [
+    46,
+    50
+   ],
+   "level 4": [
+    38,
+    50
+   ]
+  },
+  "tuned_math_easy_0": {
+   "level 1": [
+    41,
+    43
+   ],
+   "level 2": [
+    47,
+    50
+   ]
+  },
+  "base_logic_medium_100000": {
+   "medium knights": [
+    34,
+    34
+   ],
+   "medium seating": [
+    28,
+    33
+   ],
+   "medium target": [
+    22,
+    33
+   ]
+  },
+  "tuned_writing_easy_100000": {
+   "easy, 1 instructions": [
+    59,
+    60
+   ],
+   "easy, 2 instructions": [
+    36,
+    40
+   ]
+  },
+  "tuned_writing_easy_0": {
+   "easy, 1 instructions": [
+    58,
+    60
+   ],
+   "easy, 2 instructions": [
+    33,
+    40
+   ]
+  },
+  "tuned_logic_medium_0": {
+   "medium knights": [
+    31,
+    34
+   ],
+   "medium seating": [
+    19,
+    33
+   ],
+   "medium target": [
+    4,
+    33
+   ]
+  },
+  "base_select_100000": {
+   "easy": [
+    67,
+    80
+   ],
+   "hard": [
+    7,
+    74
+   ],
+   "medium": [
+    39,
+    95
+   ]
+  }
+ },
+ "train_pass_rate": {
+  "code": [
+   0.583,
+   0.604,
+   0.594,
+   0.677,
+   0.74,
+   0.615,
+   0.729,
+   0.667,
+   0.688,
+   0.625,
+   0.688,
+   0.615,
+   0.74,
+   0.75,
+   0.583,
+   0.646,
+   0.51,
+   0.552,
+   0.552,
+   0.542,
+   0.469,
+   0.302,
+   0.219,
+   0.198,
+   0.198,
+   0.052,
+   0.0,
+   0.0,
+   0.0,
+   0.01,
+   0.031
+  ],
+  "math": [
+   0.609,
+   0.688,
+   0.766,
+   0.766,
+   0.562,
+   0.656,
+   0.422,
+   0.484,
+   0.812,
+   0.562,
+   0.359,
+   0.656,
+   0.734,
+   0.422,
+   0.516,
+   0.703,
+   0.625,
+   0.469,
+   0.547,
+   0.328,
+   0.234,
+   0.094,
+   0.156,
+   0.031,
+   0.016,
+   0.125,
+   0.109,
+   0.016,
+   0.0,
+   0.0,
+   0.031
+  ],
+  "logic": [
+   0.5,
+   0.667,
+   0.521,
+   0.729,
+   0.667,
+   0.396,
+   0.792,
+   0.875,
+   0.75,
+   0.521,
+   0.312,
+   0.708,
+   0.5,
+   0.604,
+   0.521,
+   0.271,
+   0.333,
+   0.021,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.0,
+   0.021
+  ],
+  "writing": [
+   0.604,
+   0.708,
+   0.833,
+   0.417,
+   0.604,
+   0.354,
+   0.5,
+   0.562,
+   0.354,
+   0.688,
+   0.354,
+   0.771,
+   0.708,
+   0.396,
+   0.792,
+   0.729,
+   0.729,
+   0.312,
+   0.312,
+   0.479,
+   0.583,
+   0.292,
+   0.521,
+   0.583,
+   0.521,
+   0.75,
+   0.25,
+   0.5,
+   0.625,
+   0.583,
+   0.375
+  ]
+ },
+ "readings": {
+  "code": {
+   "tuned": 106,
+   "base": 112.66666666666667,
+   "gain": -6.666666666666671,
+   "base_now": 112,
+   "easy": {
+    "base": 67,
+    "tuned": 65
+   },
+   "easy_drop": 2,
+   "easy_n": 80,
+   "verdict": "no use",
+   "test_gain": 0,
+   "confirmed": false
+  },
+  "math": {
+   "hard": {
+    "tuned": 125.5,
+    "base": 134.5,
+    "gain": -9.0,
+    "base_runs": [
+     136,
+     133
+    ]
+   },
+   "medium": {
+    "tuned": 87,
+    "base": 90,
+    "n": 100
+   },
+   "easy": {
+    "tuned": 88,
+    "base": 90,
+    "drop": 2,
+    "n": 93
+   },
+   "verdict": "no use"
+  },
+  "logic": {
+   "hard": {
+    "tuned": 91.5,
+    "base": 160,
+    "gain": -68.5,
+    "base_runs": [
+     157,
+     163
+    ]
+   },
+   "medium": {
+    "tuned": 51.5,
+    "base": 84.5,
+    "n": 100
+   },
+   "easy": {
+    "tuned": 70.5,
+    "base": 94,
+    "drop": 23.5,
+    "n": 100
+   },
+   "verdict": "harmful"
+  },
+  "writing": {
+   "hard": {
+    "tuned": 139,
+    "base": 125.5,
+    "gain": 13.5,
+    "base_runs": [
+     124,
+     127
+    ]
+   },
+   "medium": {
+    "tuned": 77,
+    "base": 82.5,
+    "n": 100
+   },
+   "easy": {
+    "tuned": 93,
+    "base": 91.5,
+    "drop": -1.5,
+    "n": 100
+   },
+   "verdict": "no use"
+  }
+ }
+}

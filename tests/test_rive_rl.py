@@ -23,3 +23,28 @@ def test_batches_cover_an_epoch_without_repeats_and_are_fixed():
 def test_policy_names():
     assert rive_rl.name_of(0) == rive_rl.BASE
     assert rive_rl.name_of(1) == "rl-0000"
+
+
+def test_token_ids_read_the_servers_logprobs():
+    from types import SimpleNamespace as N
+    lp = N(content=[N(token="token_id:12", logprob=-0.1234567), N(token="token_id:248046", logprob=-2.0)])
+    assert rive_rl.token_ids(lp) == ([12, 248046], [-0.12346, -2.0])
+    assert rive_rl.token_ids(None) == ([], [])
+
+
+def test_dev_drop_stop_needs_two_checks_in_a_row_under_the_base(tmp_path):
+    import json
+    (tmp_path / "dev").mkdir()
+
+    def check(n, rate):
+        for d in rive_rl.DEV_SIZE:
+            rows = [{"correct": i < rate * 100} for i in range(100)]
+            (tmp_path / "dev" / f"{n:04d}_{d}.json").write_text(json.dumps(rows))
+    check(0, 0.66)
+    check(15, 0.60)
+    assert not rive_rl.dev_drop_stop(tmp_path)  # one check under the line
+    check(30, 0.64)
+    assert not rive_rl.dev_drop_stop(tmp_path)  # 0.64 is within 5 points
+    check(45, 0.61)
+    check(60, 0.50)
+    assert rive_rl.dev_drop_stop(tmp_path)

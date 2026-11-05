@@ -69,6 +69,20 @@ MAX_TOKENS = 4096  # a0's cap (T2), for every domain
 BASE_A0_SELECT = (109, 112, 117)  # the base model's a0 on the selection pack (sections 6.17, 6.18)
 BASE_A0_TEST = 104                # and on the test pack (6.17)
 BAR, CONFIRM = 15, 8
+# Section 6.26 (--version 2): the same loop and evaluations with 6.26's recipe, in its own directory. Training
+# answers are sampled at a0's temperature from the plain distribution, with their token ids and log-probabilities
+# (the server runs with LOGPROBS); answers cut off at MAX_TOKENS get no loss; the trainer runs recipe v2.
+V2 = False
+PREFIX, RESULT = "rl-", "rive_rl.json"
+ROLLOUT = {"temperature": 0.7, "top_p": 1.0, "presence_penalty": 0.0, "top_k": -1, "min_p": 0.0}
+LOGPROBS = "--logprobs-mode processed_logprobs"
+DEV_DROP = 0.05  # v2: two development checks in a row this far under the base model's mean end the training
+
+
+def set_version(version):
+    global V2, OUT, LR, LOOP_HOURS, PREFIX, RESULT
+    if version == 2:
+        V2, OUT, LR, LOOP_HOURS, PREFIX, RESULT = True, HOME / "alter/rive/rl2", 1e-5, 50, "rl2-", "rive_rl2.json"
 
 
 def log(msg):
@@ -82,22 +96,48 @@ def beat():
 class Sampler(synth.T2Model):
     """T2's model, keeping every whole reply. T2 gives every task of a run the same seed, so the copies of one
     problem in a batch would get the same answer: the k-th call with the same prompt and seed samples with
-    seed + 7919 k instead."""
+    seed + 7919 k instead. In v2 it samples with ROLLOUT and keeps each reply's tokens (self.tokens, in step with
+    self.replies)."""
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.seen, self.replies = Counter(), defaultdict(list)
+        self.seen, self.replies, self.tokens = Counter(), defaultdict(list), defaultdict(list)
 
     def generate(self, messages, max_tokens=1024, temperature=0.0, thinking=False, seed=0):
         key = messages[-1]["content"]
         with self._lock:
             k = self.seen[(key, seed)]
             self.seen[(key, seed)] += 1
-        r = super().generate(messages, max_tokens=max_tokens, temperature=temperature, thinking=thinking,
-                             seed=seed + 7919 * k)
+        if V2 and not thinking:
+            c = self.client.chat.completions.create(model=self.model, messages=messages, max_tokens=max_tokens,
+                                                    seed=seed + 7919 * k, **rollout_args())
+            self._count(c)
+            r = {"text": c.choices[0].message.content or "", "finish_reason": c.choices[0].finish_reason,
+                 "prompt_tokens": c.usage.prompt_tokens if c.usage else 0,
+                 "completion_tokens": c.usage.completion_tokens if c.usage else 0}
+            tokens = token_ids(c.choices[0].logprobs)
+        else:
+            r = super().generate(messages, max_tokens=max_tokens, temperature=temperature, thinking=thinking,
+                                 seed=seed + 7919 * k)
+            tokens = (None, None)
         with self._lock:
             self.replies[key].append(r["text"])
+            self.tokens[key].append(tokens)
         return r
+
+
+def rollout_args():
+    """v2's sampling for training answers: a0's temperature, the plain distribution, the tokens returned."""
+    return {"temperature": ROLLOUT["temperature"], "top_p": ROLLOUT["top_p"],
+            "presence_penalty": ROLLOUT["presence_penalty"], "logprobs": True,
+            "extra_body": {"top_k": ROLLOUT["top_k"], "min_p": ROLLOUT["min_p"],
+                           "chat_template_kwargs": {"enable_thinking": False}, "return_tokens_as_token_ids": True}}
+
+
+def token_ids(logprobs):
+    """The sampled token ids and their log-probabilities from a reply's logprobs ("token_id:N" tokens)."""
+    content = (logprobs.content if logprobs else None) or []
+    return [int(t.token.split(":", 1)[1]) for t in content], [round(t.logprob, 5) for t in content]
 
 
 # ---- the server -----------------------------------------------------------------------------------------------
@@ -120,10 +160,17 @@ def served():
 def start_server():
     """The FP8 server (scripts/serve.sh) with runtime LoRA loading and sleep mode."""
     if served() is not None:
-        return
+        running = subprocess.run(["pgrep", "-af", "[v]llm serve"], capture_output=True, text=True).stdout
+        if not V2 or LOGPROBS in running:
+            return
+        log("the server runs without v2's log-probabilities: restarting it")
+        subprocess.run(["pkill", "-f", "bin/vllm serve"])
+        while served() is not None:
+            time.sleep(5)
+        time.sleep(20)  # its GPU memory is freed
     env = {"VLLM_SERVER_DEV_MODE": "1", "VLLM_ALLOW_RUNTIME_LORA_UPDATING": "True"}
     cmd = (f"setsid nohup bash {ROOT}/scripts/serve.sh {MODEL} {BASE} --enable-lora --max-lora-rank 16 "
-           f"--max-loras 2 --enable-sleep-mode >> {SERVER_LOG} 2>&1 < /dev/null &")
+           f"--max-loras 2 --enable-sleep-mode {LOGPROBS if V2 else ''} >> {SERVER_LOG} 2>&1 < /dev/null &")
     subprocess.run(["bash", "-c", " ".join(f"{k}={v}" for k, v in env.items()) + " " + cmd], check=True)
     for _ in range(120):
         time.sleep(5)
@@ -146,7 +193,7 @@ def use(name, path=None):
     if name != BASE and name not in have:
         http("POST", "/v1/load_lora_adapter", {"lora_name": name, "lora_path": str(path)})
     for other in have - {name, BASE}:
-        if other.startswith("rl-"):
+        if other.startswith("rl"):  # either version's adapters
             http("POST", "/v1/unload_lora_adapter", {"lora_name": other})
 
 
@@ -224,12 +271,16 @@ def sample_code(out, tasks, model, g, seed_base):
     if any(r.get("server_errors", 0) for r in results):
         raise SystemExit("the model server failed calls")
     left = {k: list(v) for k, v in t2.solver.replies.items()}
+    tokens = {k: list(v) for k, v in t2.solver.tokens.items()}
     rows = []
     for task, r in zip(copies, results):
         kept = left.get(task["public"]["prompt"], [])
         j = next((i for i, text in enumerate(kept) if text[-1500:] == r["answer"]), None)
         rows.append({**{k: r[k] for k in ("id", "correct", "failure", "tokens", "truncated_calls")}, "domain": "code",
                      "prompt": task["public"]["prompt"], "answer": kept.pop(j) if j is not None else None})
+        if V2:
+            ids, lps = tokens[task["public"]["prompt"]].pop(j) if j is not None else (None, None)
+            rows[-1].update(ids=ids, logprobs=lps)
     return rows
 
 
@@ -238,28 +289,31 @@ def sample(out, batch, model, g, seed_base):
     others = [t for d in ("math", "logic", "writing") for t in batch[d]]
     with ThreadPoolExecutor(max_workers=2) as ex:
         code = ex.submit(sample_code, out, batch["code"], model, g, seed_base)
-        direct = ex.submit(sample_direct, others, model, g, seed_base)
+        direct = ex.submit(sample_direct, others, model, g, seed_base, V2)
         code_rows, (jobs, replies) = code.result(), direct.result()
     return code_rows + judge_direct(jobs, replies)
 
 
-def sample_direct(tasks, model, g, seed_base):
+def sample_direct(tasks, model, g, seed_base, rollout=False):
     """G answers per problem of the other domains: one non-thinking call with a0's sampling (the model card's, at
-    temperature 0.7) and cap. They are judged afterwards by judge_direct, in the main thread (math-verify needs it)."""
+    temperature 0.7) and cap; with `rollout` (v2's training answers), ROLLOUT's sampling, keeping the tokens. They
+    are judged afterwards by judge_direct, in the main thread (math-verify needs it)."""
     from openai import OpenAI
     client = OpenAI(base_url=f"{URL}/v1", api_key="EMPTY", timeout=1800)
     card = synth.CARD[False]
     jobs = [(t, j) for t in tasks for j in range(g)]
+    a0 = {"temperature": 0.7, "top_p": card["top_p"], "presence_penalty": card["presence_penalty"],
+          "extra_body": {"top_k": card["top_k"], "min_p": card["min_p"],
+                         "chat_template_kwargs": {"enable_thinking": False}}}
 
     def one(job):
         task, j = job
         r = client.chat.completions.create(
             model=model, messages=[{"role": "user", "content": task["public"]["prompt"]}], max_tokens=MAX_TOKENS,
-            temperature=0.7, top_p=card["top_p"], presence_penalty=card["presence_penalty"], seed=seed_base + 7919 * j,
-            extra_body={"top_k": card["top_k"], "min_p": card["min_p"],
-                        "chat_template_kwargs": {"enable_thinking": False}})
+            seed=seed_base + 7919 * j, **(rollout_args() if rollout else a0))
         beat()
-        return r.choices[0].message.content or "", r.usage.completion_tokens, r.choices[0].finish_reason == "length"
+        reply = (r.choices[0].message.content or "", r.usage.completion_tokens, r.choices[0].finish_reason == "length")
+        return reply + (token_ids(r.choices[0].logprobs) if rollout else ())
 
     with ThreadPoolExecutor(max_workers=16) as ex:
         return jobs, list(ex.map(one, jobs))
@@ -267,10 +321,12 @@ def sample_direct(tasks, model, g, seed_base):
 
 def judge_direct(jobs, replies):
     rows = []
-    for (task, _), (text, tokens, cut) in zip(jobs, replies):
+    for (task, _), (text, tokens, cut, *sampled) in zip(jobs, replies):
         ok, failure = rt.judge(task, text)
         rows.append({"id": task["id"], "domain": task["domain"], "correct": ok, "failure": failure, "tokens": tokens,
                      "truncated_calls": int(cut), "prompt": task["public"]["prompt"], "answer": text})
+        if sampled:
+            rows[-1].update(ids=sampled[0], logprobs=sampled[1])
     return rows
 
 
@@ -304,7 +360,7 @@ def canary(name):
 
 def name_of(n):
     """The policy after n iterations: the base model, or the adapter trained in iteration n - 1."""
-    return BASE if n == 0 else f"rl-{n - 1:04d}"
+    return BASE if n == 0 else f"{PREFIX}{n - 1:04d}"
 
 
 def adapter_dir(out, it):
@@ -315,11 +371,15 @@ def train(out, it, rows, weights, lr):
     batch = out / "iters" / f"{it:04d}" / "batch.jsonl"
     with open(batch, "w") as f:
         for r, w in zip(rows, weights):
-            if w and r["answer"] is not None:
-                f.write(json.dumps({"id": r["id"], "prompt": r["prompt"], "answer": r["answer"], "weight": w},
-                                   ensure_ascii=False) + "\n")
+            if w and r["answer"] is not None and not (V2 and (r["truncated_calls"] or not r.get("ids"))):
+                row = {"id": r["id"], "prompt": r["prompt"], "answer": r["answer"], "weight": w}
+                if V2:  # an answer cut off at MAX_TOKENS gets no loss (it still counts in its problem's mean)
+                    row.update(ids=r["ids"], logprobs=r["logprobs"])
+                f.write(json.dumps(row, ensure_ascii=False) + "\n")
     cmd = [sys.executable, str(ROOT / "scripts/rive_rl_train.py"), "--batch", str(batch), "--out",
            str(adapter_dir(out, it)), "--steps", str(STEPS), "--lr", str(lr), "--seed", str(it)]
+    if V2:
+        cmd += ["--recipe", "v2", "--temperature", str(ROLLOUT["temperature"])]
     if it > 0:
         cmd += ["--init", str(adapter_dir(out, it - 1))]
     proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
@@ -367,9 +427,20 @@ def domain_stats(rows):
     return out
 
 
-def loop(out, iters, mix, g, every, lr, dev_sizes, strict_canary=True):
+def dev_drop_stop(out):
+    """v2's stop rule: the last two development checks both at least DEV_DROP under the base model's mean."""
+    rates = dev_rates(out)
+    means = {n: statistics.mean(r.values()) for n, r in rates.items() if len(r) == len(DEV_SIZE)}
+    later = sorted(n for n in means if n > 0)
+    return 0 in means and len(later) >= 2 and all(means[n] <= means[0] - DEV_DROP for n in later[-2:])
+
+
+def loop(out, iters, mix, g, every, lr, dev_sizes, strict_canary=True, dev_stop=False):
     if (out / "halted.json").exists():
         raise SystemExit(f"halted for a check: {(out / 'halted.json').read_text()}")
+    if (out / "stopped.json").exists():
+        log(f"training stopped by the development rule: {(out / 'stopped.json').read_text()}")
+        return
     problems = Problems()
     (out / "iters").mkdir(parents=True, exist_ok=True)
     (out / "dev").mkdir(parents=True, exist_ok=True)
@@ -397,6 +468,11 @@ def loop(out, iters, mix, g, every, lr, dev_sizes, strict_canary=True):
                 log(f"canary: {differ} of 3 answers differ from the base model's")
                 if differ < 2 and strict_canary:
                     raise SystemExit("the adapter does not change the answers")
+            if dev_stop and dev_drop_stop(out):
+                write_json(out / "stopped.json", {"after": n, "dev": dev_rates(out)})
+                log(f"two development checks in a row at least {DEV_DROP:.0%} under the base model's: no more "
+                    "iterations; the checkpoints done are evaluated")
+                break
         if not need_iteration:
             continue
         d.mkdir(parents=True, exist_ok=True)
@@ -424,8 +500,9 @@ def loop(out, iters, mix, g, every, lr, dev_sizes, strict_canary=True):
             raise SystemExit("the training pass rate stayed below half of iteration 0's for 10 iterations")
 
 
-def dev_rates(out=OUT):
+def dev_rates(out=None):
     """{checkpoint: {domain: pass rate}} of the development checks done."""
+    out = out or OUT
     out_rates = defaultdict(dict)
     for f in (out / "dev").glob("*_*.json"):
         n, domain = f.stem.split("_", 1)
@@ -434,7 +511,7 @@ def dev_rates(out=OUT):
     return dict(out_rates)
 
 
-def chosen(out=OUT):
+def chosen(out=None):
     """The checkpoint with the best mean development pass rate over the four domains (ties: the later), among those
     after at least one iteration with all four checked."""
     rates = dev_rates(out)
@@ -444,8 +521,20 @@ def chosen(out=OUT):
 
 # ---- steps ------------------------------------------------------------------------------------------------------
 
+def reuse_base(out):
+    """v2 takes section 6.25's development check and evaluations of the base model (the same settings and seeds)."""
+    src = HOME / "alter/rive/rl"
+    for sub, pattern in (("dev", "0000_*.json"), ("evals", "base_*.json")):
+        (out / sub).mkdir(parents=True, exist_ok=True)
+        for f in (src / sub).glob(pattern):
+            if not (out / sub / f.name).exists():
+                shutil.copy2(f, out / sub / f.name)
+
+
 def run_step(args):
-    loop(OUT, args.iters, MIX, G, DEV_EVERY, LR, DEV_SIZE)
+    if V2:
+        reuse_base(OUT)
+    loop(OUT, args.iters, MIX, G, DEV_EVERY, LR, DEV_SIZE, dev_stop=V2)
 
 
 def smoke_step(args):
@@ -454,6 +543,8 @@ def smoke_step(args):
 
 
 def eval_step(args):
+    if V2:
+        reuse_base(OUT)
     n, rates = chosen()
     log(f"dev by checkpoint: {json.dumps(rates)}; chosen: after {n} iterations")
     problems, packs = Problems(), rive_teach.packs()
@@ -507,7 +598,8 @@ def report_step(args):
     level.update({t["id"]: f"{t['level']}, {len(t['constraints'])} instructions" for k in sets["writing"]
                   for t in problems.eval[k]})
     res = {"settings": {"mix": MIX, "G": G, "steps": STEPS, "lr": LR, "iterations": ITERS, "dev_every": DEV_EVERY,
-                        "easy_loss": EASY_LOSS},
+                        "easy_loss": EASY_LOSS, **({"recipe": "v2 (section 6.26)", "rollout": ROLLOUT,
+                                                    "loop_hours": LOOP_HOURS, "dev_drop": DEV_DROP} if V2 else {})},
            "dev": rates, "chosen": n, "evals": solved,
            "classes": {k: by_class(v, lambda i: level.get(i, "?")) for k, v in rows.items()},
            "train_pass_rate": {d: [round(s["domains"][d]["passed"] / s["domains"][d]["samples"], 3)
@@ -538,7 +630,7 @@ def report_step(args):
                                   "easy": {"tuned": mean("tuned", f"{d}_easy"), "base": mean("base", f"{d}_easy"),
                                            "drop": drop, "n": n_easy},
                                   "verdict": verdict(gain, drop, n_easy)}
-    write_json(ROOT / "results" / "rive_rl.json", res)
+    write_json(ROOT / "results" / RESULT, res)
     log(f"report {json.dumps({k: v for k, v in res.items() if k != 'train_pass_rate'})}")
 
 
@@ -549,7 +641,9 @@ def main():
     p = argparse.ArgumentParser()
     p.add_argument("step", choices=STEPS_)
     p.add_argument("--iters", type=int, default=ITERS)
+    p.add_argument("--version", type=int, choices=[1, 2], default=1, help="1: section 6.25; 2: section 6.26")
     args = p.parse_args()
+    set_version(args.version)
     OUT.mkdir(parents=True, exist_ok=True)
     STEPS_[args.step](args)
 

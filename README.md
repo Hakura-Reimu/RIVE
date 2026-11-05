@@ -57,6 +57,7 @@ python scripts/rive_t2.py scan                       # T2 的配置扫描
 python scripts/rive_think_fix.py run t0 tb tw        # 思考截断的几种处理（6.13）
 python scripts/rive_9b.py run think16k_s0            # 9B 的评测（6.23）
 python scripts/watchdog.py --heartbeat <文件> -- bash scripts/rive_rl_chain.sh   # 强化学习（6.25）
+python scripts/watchdog.py --heartbeat <文件> -- bash scripts/rive_rl2_chain.sh  # 强化学习第二版（6.26）
 ```
 
 各脚本开头的说明写有用法和输出位置。说明里的 `docs/rive-design.md section 6.x` 指项目内部的实验记录，没有公开；编号和 [`docs/experiments.md`](docs/experiments.md) 的小节相同。
