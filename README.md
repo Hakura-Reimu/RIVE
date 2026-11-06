@@ -87,3 +87,7 @@ python scripts/watchdog.py --heartbeat <文件> -- bash scripts/rive_rl2_chain.s
 - 评测不能逐位复现。结论只针对超过门槛的差别，更小的差别这里量不出来。
 - 强化学习的两版各只跑了一次、一个种子，训练量小（第二版约 26 小时、23,040 个回答）。
 - 数学、逻辑、文字的训练题和评测题来自同一个分布。逻辑题和文字题是用本仓库里的生成器出的，不是公认的评测集。
+
+## 许可证
+
+代码和文档按 [Apache License 2.0](LICENSE) 发布。数据集和模型权重不在仓库里，按各自的许可证使用。`rive/meta_rsi/prompt_opt.py` 的提示词参照 PenguinHarness（Apache-2.0）的写法，出处写在文件开头。

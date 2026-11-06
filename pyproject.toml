@@ -3,6 +3,7 @@ name = "rive"
 version = "0.0.1"
 description = "RIVE (Retrospective Inference and Verified Evolution): self-improving agent experiments on one GPU"
 requires-python = ">=3.12"
+license = "Apache-2.0"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
