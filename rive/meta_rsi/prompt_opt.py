@@ -1,7 +1,8 @@
-"""Prompt-level improvers for RIVE's baselines (docs/rive-design.md section 6.27): OPRO (Yang et al. 2023, arXiv
-2309.03409) and APE (Zhou et al. 2022, arXiv 2211.01910), as PenguinHarness specifies them in its
-opro-rsi-toolkit and ape-rsi-toolkit skills (github.com/Prism-Shadow/penguin-harness, Apache-2.0). The model and
-the scorer are passed in, so the same code serves any domain:
+"""Prompt-level improvers for RIVE's baselines (docs/rive-design.md section 6.27; not run: the line ended after
+section 6.26): OPRO (Yang et al. 2023, arXiv 2309.03409) and APE (Zhou et al. 2022, arXiv 2211.01910), as
+PenguinHarness specifies them in its opro-rsi-toolkit and ape-rsi-toolkit skills
+(github.com/Prism-Shadow/penguin-harness, Apache-2.0). The model and the scorer are passed in, so the same code
+serves any domain:
 
   propose(prompt) -> text           one call of the optimizer model (RIVE: the 4B itself, so the result is self-made)
   score(instruction) -> 0-100       the target's pass rate on the selection problems with this instruction
